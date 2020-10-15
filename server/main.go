@@ -8,6 +8,7 @@ import (
 	"net/http/httputil"
 	"os"
 
+	"github.com/nickrobison/iot-lis/parser"
 	"github.com/rs/zerolog/log"
 	"rsc.io/quote"
 )
@@ -41,6 +42,11 @@ const (
 
 func hello(w http.ResponseWriter, req *http.Request) {
 	log.Print("Hello there")
+
+	err := parser.MakeParser()
+	if err != nil {
+		panic(err)
+	}
 
 	// Dump the request
 	requestDump, err := httputil.DumpRequest(req, true)
@@ -87,7 +93,7 @@ func handleRequest(conn net.Conn) {
 func main() {
 	fmt.Println(quote.Hello())
 
-	l, err := net.Listen("tcp", "192.168.2.1:8080")
+	l, err := net.Listen("tcp", ":8080")
 	if err != nil {
 		log.Err(err).Msg("Error")
 		os.Exit(1)
