@@ -2,10 +2,13 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"net"
 	"os"
+	"strconv"
 	"syscall"
 
+	"github.com/nickrobison/iot-lis/parser"
 	"github.com/rs/zerolog/log"
 )
 
@@ -80,6 +83,9 @@ func handleRequest(conn net.Conn) {
 		onCRLF := func(data []byte, atEOF bool) (advance int, token []byte, err error) {
 			// Since we're looking at two bytes in a row, we need to take care not to read over the end of the slice
 			for i := 0; i < len(data)-1; i++ {
+				if string(data[i]) == "\004" {
+					return 0, data, bufio.ErrFinalToken
+				}
 				if string(data[i:i+2]) == "\r\n" {
 					return i + 2, data[:i], nil
 				}
@@ -99,16 +105,115 @@ func handleRequest(conn net.Conn) {
 		scanner := bufio.NewScanner(br)
 		scanner.Split(onCRLF)
 
+		payload := parser.HSTIMPayload{}
+
 		log.Debug().Msg("Starting scan")
 		for scanner.Scan() {
-			str := scanner.Text()
-			log.Debug().Str("msg", str).Msg("Reading from device")
-			conn.Write([]byte(ACK))
-			// if str == "\004" {
-			// 	log.Debug().Msg("Received EOT, exiting")
-			// 	break
-			// }
+			msg := scanner.Bytes()
+			log.Debug().Str("msg", string(msg)).Msg("Reading from device")
+			// If the final byte is EOT, exit out
+			if string(msg[0]) == "\004" {
+				break
+			}
 
+			// The first byte should be STX
+			if string(msg[0]) != "\002" {
+				log.Error().Msg("Malformed packet, expecting STX as first byte")
+			}
+
+			lineNum := func(msg []byte) (msgNumber int, offset int, err error) {
+				for idx, b := range msg {
+					if '0' <= b && b <= '9' {
+						continue
+					}
+					vs := string(msg[:idx])
+					val, err := strconv.Atoi(vs)
+					if err != nil {
+						return 0, 0, fmt.Errorf("Cannot parse %s as integer", vs)
+					}
+					// Return the offset, plus one, since we're working with a slice of the original message
+					return val, idx + 1, nil
+				}
+
+				return 0, 0, nil
+			}
+
+			// Get the line number from the byte array
+			msgNumber, offset, err := lineNum(msg[1:])
+			if err != nil {
+				log.Error().Err(err).Msg("Cannot extract line number")
+				return
+			}
+			log.Debug().Int("msg number", msgNumber).Msg("")
+			p, err := parser.MakeParser()
+			if err != nil {
+				log.Error().Err(err).Msg("Cannot create msg parser")
+				return
+			}
+			msgType := msg[offset]
+
+			switch msgType {
+			case 'C':
+				{
+					c, err := p.ParseComment(msg[offset:])
+					if err != nil {
+						log.Error().Err(err).Msg("Cannot parse comment")
+						return
+					}
+					payload.Comments = append(payload.Comments, c)
+					break
+				}
+			case 'H':
+				{
+					h, err := p.ParseHeader(msg[offset:])
+					if err != nil {
+						log.Error().Err(err).Msg("Cannot parse header")
+						return
+					}
+					payload.Header = h
+					break
+				}
+			case 'O':
+				{
+					o, err := p.ParseOrder(msg[offset:])
+					if err != nil {
+						log.Error().Err(err).Msg("Cannot parse order")
+						return
+					}
+					payload.Order = o
+					break
+				}
+			case 'P':
+				{
+					p, err := p.ParsePatient(msg[offset:])
+					if err != nil {
+						log.Error().Err(err).Msg("Cannot parse patient")
+						return
+					}
+					payload.Patient = p
+					break
+				}
+			case 'R':
+				{
+					r, err := p.ParseResult(msg[offset:])
+					if err != nil {
+						log.Error().Err(err).Msg("Cannot parse result")
+						return
+					}
+					payload.Results = append(payload.Results, r)
+					break
+				}
+			case 'L':
+				{
+					log.Debug().Msg("Received terminator message")
+					break
+				}
+			default:
+				{
+					log.Error().Msgf("Unknown payload type: `%s`", string(msgType))
+				}
+			}
+			conn.Write([]byte(ACK))
 		}
 		if err := scanner.Err(); err != nil {
 			log.Error().Err(err).Msg("Cannot scan input")
