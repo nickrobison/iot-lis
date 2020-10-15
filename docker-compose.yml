@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+    server:
+        build:
+            context: .
+            dockerfile: docker/server.dev.Dockerfile
+        environment: 
+            - GOBIN=/app/go/bin
+        volumes:
+            - ./server:/app/go:cached
+        ports:
+            - "8080:8080"
+        stdin_open: true
+        tty: true
