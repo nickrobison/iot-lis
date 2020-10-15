@@ -1,16 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"io"
+	"bufio"
 	"net"
-	"net/http"
-	"net/http/httputil"
 	"os"
+	"syscall"
 
-	"github.com/nickrobison/iot-lis/parser"
 	"github.com/rs/zerolog/log"
-	"rsc.io/quote"
 )
 
 // public class ProtocolASCII {
@@ -33,65 +29,95 @@ import (
 
 //   }
 
+// HSTIMDelim is an enum which holds various transmission delimeters
 type HSTIMDelim string
 
 const (
+
+	// EOT marks the end of the transmission
 	EOT HSTIMDelim = "\004"
+	// ACK is send by the receiver after each transmission
 	ACK HSTIMDelim = "\006"
+	// ENQ is the first message sent by the device, to mark a new transmission
+	ENQ HSTIMDelim = "\005"
 )
-
-func hello(w http.ResponseWriter, req *http.Request) {
-	log.Print("Hello there")
-
-	err := parser.MakeParser()
-	if err != nil {
-		panic(err)
-	}
-
-	// Dump the request
-	requestDump, err := httputil.DumpRequest(req, true)
-	if err != nil {
-		log.Error().Msg("ACK")
-		return
-	}
-
-	log.Print(string(requestDump))
-
-	fmt.Fprintf(w, "hello\n")
-}
 
 func handleRequest(conn net.Conn) {
 	defer conn.Close()
-	log.Info().Msg("Handling request")
-	buf := make([]byte, 1024)
-	// Read the incoming connection into the buffer.
+	// Since it's possible
 	for {
-		log.Info().Msg("Reading")
-		reqLen, err := conn.Read(buf)
+		log.Info().Msg("Handling request")
+
+		// Create a new buffered reader from the connection
+		br := bufio.NewReader(conn)
+
+		log.Debug().Int("buffer size", br.Size()).Msg("")
+
+		// Look at the first byte to see what it is
+		bt, err := br.ReadByte()
 		if err != nil {
-			if err != io.EOF {
-				fmt.Println("Error reading:", err.Error())
+			// Determine if the read error is related
+			operr, ok := err.(*net.OpError)
+			if ok {
+				if operr.Err.Error() == syscall.ECONNRESET.Error() {
+					log.Debug().Msg("Connection closed by peer")
+					return
+				}
+
 			}
-			break
+			log.Error().Err(err).Msg("Cannot read first bytes")
+			return
 		}
 
-		trimmedBody := string(buf[0:reqLen])
-		log.Info().Int("Request length", reqLen).Msgf("Request body: %s", trimmedBody)
+		// Check to ensure we have an ENQ byte
+		if string(bt) != "\005" {
+			log.Error().Str("msg", string(bt)).Msg("Incorrect ENQ")
+			return
 
-		if trimmedBody == "\004" {
-			break
 		}
-
-		// Acknowledge
 		conn.Write([]byte(ACK))
-		// }
 
+		onCRLF := func(data []byte, atEOF bool) (advance int, token []byte, err error) {
+			// Since we're looking at two bytes in a row, we need to take care not to read over the end of the slice
+			for i := 0; i < len(data)-1; i++ {
+				if string(data[i:i+2]) == "\r\n" {
+					return i + 2, data[:i], nil
+				}
+			}
+
+			// If the final byte is EOT that means the transmission has ended and we can exit
+			if string(data[len(data)-1]) == "\004" {
+				return 0, data, bufio.ErrFinalToken
+			}
+
+			if !atEOF {
+				return 0, nil, nil
+			}
+			return 0, data, bufio.ErrFinalToken
+		}
+		log.Debug().Msg("Creating scanner")
+		scanner := bufio.NewScanner(br)
+		scanner.Split(onCRLF)
+
+		log.Debug().Msg("Starting scan")
+		for scanner.Scan() {
+			str := scanner.Text()
+			log.Debug().Str("msg", str).Msg("Reading from device")
+			conn.Write([]byte(ACK))
+			// if str == "\004" {
+			// 	log.Debug().Msg("Received EOT, exiting")
+			// 	break
+			// }
+
+		}
+		if err := scanner.Err(); err != nil {
+			log.Error().Err(err).Msg("Cannot scan input")
+		}
 	}
-	log.Debug().Msg("Stream completed, closing")
 }
 
 func main() {
-	fmt.Println(quote.Hello())
+	log.Info().Msg("Starting Service")
 
 	l, err := net.Listen("tcp", ":8080")
 	if err != nil {
@@ -108,9 +134,4 @@ func main() {
 		log.Info().Msg("New request")
 		go handleRequest(conn)
 	}
-
-	// http.HandleFunc("/", hello)
-
-	// http.ListenAndServe(":8080", nil)
-
 }
