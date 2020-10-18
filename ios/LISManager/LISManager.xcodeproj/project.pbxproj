@@ -1,0 +1,806 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 53;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0095356EE6256D4D971956A6 /* Pods_LISManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D04AC6448C1E33DE10C191A /* Pods_LISManagerTests.framework */; };
+		24C99D6184BE532A0A42FA22 /* Pods_LISManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BCA2E0633D3C788345F9B8 /* Pods_LISManager.framework */; };
+		5F7F0DB4D353455339A386AC /* Pods_LISManager_LISManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0320F9B6BA5602B00305FAD /* Pods_LISManager_LISManagerUITests.framework */; };
+		EBAFE43C253A114200BF8868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE43B253A114200BF8868 /* AppDelegate.swift */; };
+		EBAFE43E253A114200BF8868 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE43D253A114200BF8868 /* SceneDelegate.swift */; };
+		EBAFE440253A114200BF8868 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE43F253A114200BF8868 /* ContentView.swift */; };
+		EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE441253A114200BF8868 /* LISManager.xcdatamodeld */; };
+		EBAFE445253A114500BF8868 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBAFE444253A114500BF8868 /* Assets.xcassets */; };
+		EBAFE448253A114500BF8868 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBAFE447253A114500BF8868 /* Preview Assets.xcassets */; };
+		EBAFE44B253A114500BF8868 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBAFE449253A114500BF8868 /* LaunchScreen.storyboard */; };
+		EBAFE456253A114500BF8868 /* LISManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE455253A114500BF8868 /* LISManagerTests.swift */; };
+		EBAFE461253A114500BF8868 /* LISManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE460253A114500BF8868 /* LISManagerUITests.swift */; };
+		EBAFE47E253A136700BF8868 /* PreferencesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE47D253A136700BF8868 /* PreferencesManager.swift */; };
+		EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE486253A152E00BF8868 /* MainOnboardingView.swift */; };
+		EBAFE48F253A158B00BF8868 /* InitialOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE48E253A158B00BF8868 /* InitialOnboardingView.swift */; };
+		EBAFE495253A161200BF8868 /* FullscreenButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE494253A161200BF8868 /* FullscreenButton.swift */; };
+		EBAFE49D253A166A00BF8868 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE49C253A166A00BF8868 /* ActivityIndicator.swift */; };
+		EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */; };
+		EBAFE4A7253A1B7900BF8868 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE4A6253A1B7900BF8868 /* LocationManager.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EBAFE452253A114500BF8868 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBAFE430253A114200BF8868 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBAFE437253A114200BF8868;
+			remoteInfo = LISManager;
+		};
+		EBAFE45D253A114500BF8868 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EBAFE430253A114200BF8868 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EBAFE437253A114200BF8868;
+			remoteInfo = LISManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EB1E3E90253CBC510097AC63 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		002A53C572BFD85C93C02A91 /* Pods-LISManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		263BB1C329B0808CB90E884B /* Pods-LISManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.debug.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.debug.xcconfig"; sourceTree = "<group>"; };
+		41BCA2E0633D3C788345F9B8 /* Pods_LISManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D04AC6448C1E33DE10C191A /* Pods_LISManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B21CA0EA8A2CFD0CE185F9E5 /* Pods-LISManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.release.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.release.xcconfig"; sourceTree = "<group>"; };
+		C0320F9B6BA5602B00305FAD /* Pods_LISManager_LISManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISManager_LISManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C45F0B72970D0B4C84DF7713 /* Pods-LISManager-LISManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager-LISManagerUITests.debug.xcconfig"; path = "Target Support Files/Pods-LISManager-LISManagerUITests/Pods-LISManager-LISManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		DCB6E7C37D51CF6F3E11068C /* Pods-LISManager-LISManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager-LISManagerUITests.release.xcconfig"; path = "Target Support Files/Pods-LISManager-LISManagerUITests/Pods-LISManager-LISManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		E7EA41C2B2F0605AE37E2700 /* Pods-LISManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.release.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.release.xcconfig"; sourceTree = "<group>"; };
+		EB1E3EA5253CBF4E0097AC63 /* LISManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LISManager.entitlements; sourceTree = "<group>"; };
+		EBAFE438253A114200BF8868 /* LISManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LISManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBAFE43B253A114200BF8868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EBAFE43D253A114200BF8868 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		EBAFE43F253A114200BF8868 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EBAFE442253A114200BF8868 /* LISManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LISManager.xcdatamodel; sourceTree = "<group>"; };
+		EBAFE444253A114500BF8868 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EBAFE447253A114500BF8868 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EBAFE44A253A114500BF8868 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EBAFE44C253A114500BF8868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBAFE451253A114500BF8868 /* LISManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LISManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBAFE455253A114500BF8868 /* LISManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LISManagerTests.swift; sourceTree = "<group>"; };
+		EBAFE457253A114500BF8868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBAFE45C253A114500BF8868 /* LISManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LISManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBAFE460253A114500BF8868 /* LISManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LISManagerUITests.swift; sourceTree = "<group>"; };
+		EBAFE462253A114500BF8868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EBAFE47D253A136700BF8868 /* PreferencesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesManager.swift; sourceTree = "<group>"; };
+		EBAFE486253A152E00BF8868 /* MainOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOnboardingView.swift; sourceTree = "<group>"; };
+		EBAFE48E253A158B00BF8868 /* InitialOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialOnboardingView.swift; sourceTree = "<group>"; };
+		EBAFE494253A161200BF8868 /* FullscreenButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenButton.swift; sourceTree = "<group>"; };
+		EBAFE49C253A166A00BF8868 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInformation.swift; sourceTree = "<group>"; };
+		EBAFE4A6253A1B7900BF8868 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EBAFE435253A114200BF8868 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24C99D6184BE532A0A42FA22 /* Pods_LISManager.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBAFE44E253A114500BF8868 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0095356EE6256D4D971956A6 /* Pods_LISManagerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBAFE459253A114500BF8868 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5F7F0DB4D353455339A386AC /* Pods_LISManager_LISManagerUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		211F522C2ADDD7B43E60AFB6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				41BCA2E0633D3C788345F9B8 /* Pods_LISManager.framework */,
+				C0320F9B6BA5602B00305FAD /* Pods_LISManager_LISManagerUITests.framework */,
+				8D04AC6448C1E33DE10C191A /* Pods_LISManagerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C26A041B9ADCE0D3058C1DBD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				263BB1C329B0808CB90E884B /* Pods-LISManager.debug.xcconfig */,
+				E7EA41C2B2F0605AE37E2700 /* Pods-LISManager.release.xcconfig */,
+				C45F0B72970D0B4C84DF7713 /* Pods-LISManager-LISManagerUITests.debug.xcconfig */,
+				DCB6E7C37D51CF6F3E11068C /* Pods-LISManager-LISManagerUITests.release.xcconfig */,
+				002A53C572BFD85C93C02A91 /* Pods-LISManagerTests.debug.xcconfig */,
+				B21CA0EA8A2CFD0CE185F9E5 /* Pods-LISManagerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EBAFE42F253A114200BF8868 = {
+			isa = PBXGroup;
+			children = (
+				EBAFE43A253A114200BF8868 /* LISManager */,
+				EBAFE454253A114500BF8868 /* LISManagerTests */,
+				EBAFE45F253A114500BF8868 /* LISManagerUITests */,
+				EBAFE439253A114200BF8868 /* Products */,
+				C26A041B9ADCE0D3058C1DBD /* Pods */,
+				211F522C2ADDD7B43E60AFB6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EBAFE439253A114200BF8868 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EBAFE438253A114200BF8868 /* LISManager.app */,
+				EBAFE451253A114500BF8868 /* LISManagerTests.xctest */,
+				EBAFE45C253A114500BF8868 /* LISManagerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EBAFE43A253A114200BF8868 /* LISManager */ = {
+			isa = PBXGroup;
+			children = (
+				EB1E3EA5253CBF4E0097AC63 /* LISManager.entitlements */,
+				EBAFE493253A160000BF8868 /* Elements */,
+				EBAFE485253A151900BF8868 /* Onboarding */,
+				EBAFE43B253A114200BF8868 /* AppDelegate.swift */,
+				EBAFE43D253A114200BF8868 /* SceneDelegate.swift */,
+				EBAFE43F253A114200BF8868 /* ContentView.swift */,
+				EBAFE444253A114500BF8868 /* Assets.xcassets */,
+				EBAFE449253A114500BF8868 /* LaunchScreen.storyboard */,
+				EBAFE44C253A114500BF8868 /* Info.plist */,
+				EBAFE441253A114200BF8868 /* LISManager.xcdatamodeld */,
+				EBAFE446253A114500BF8868 /* Preview Content */,
+				EBAFE47D253A136700BF8868 /* PreferencesManager.swift */,
+				EBAFE4A6253A1B7900BF8868 /* LocationManager.swift */,
+			);
+			path = LISManager;
+			sourceTree = "<group>";
+		};
+		EBAFE446253A114500BF8868 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				EBAFE447253A114500BF8868 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EBAFE454253A114500BF8868 /* LISManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				EBAFE455253A114500BF8868 /* LISManagerTests.swift */,
+				EBAFE457253A114500BF8868 /* Info.plist */,
+			);
+			path = LISManagerTests;
+			sourceTree = "<group>";
+		};
+		EBAFE45F253A114500BF8868 /* LISManagerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EBAFE460253A114500BF8868 /* LISManagerUITests.swift */,
+				EBAFE462253A114500BF8868 /* Info.plist */,
+			);
+			path = LISManagerUITests;
+			sourceTree = "<group>";
+		};
+		EBAFE485253A151900BF8868 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				EBAFE486253A152E00BF8868 /* MainOnboardingView.swift */,
+				EBAFE48E253A158B00BF8868 /* InitialOnboardingView.swift */,
+				EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		EBAFE493253A160000BF8868 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				EBAFE494253A161200BF8868 /* FullscreenButton.swift */,
+				EBAFE49C253A166A00BF8868 /* ActivityIndicator.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EBAFE437253A114200BF8868 /* LISManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBAFE465253A114500BF8868 /* Build configuration list for PBXNativeTarget "LISManager" */;
+			buildPhases = (
+				6DE7DEF7C6078AD91BD2ABFE /* [CP] Check Pods Manifest.lock */,
+				EBAFE434253A114200BF8868 /* Sources */,
+				EBAFE435253A114200BF8868 /* Frameworks */,
+				EBAFE436253A114200BF8868 /* Resources */,
+				EB1E3E90253CBC510097AC63 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LISManager;
+			productName = LISManager;
+			productReference = EBAFE438253A114200BF8868 /* LISManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EBAFE450253A114500BF8868 /* LISManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBAFE468253A114500BF8868 /* Build configuration list for PBXNativeTarget "LISManagerTests" */;
+			buildPhases = (
+				A87E561C3B0FBB41CBF7B074 /* [CP] Check Pods Manifest.lock */,
+				EBAFE44D253A114500BF8868 /* Sources */,
+				EBAFE44E253A114500BF8868 /* Frameworks */,
+				EBAFE44F253A114500BF8868 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EBAFE453253A114500BF8868 /* PBXTargetDependency */,
+			);
+			name = LISManagerTests;
+			productName = LISManagerTests;
+			productReference = EBAFE451253A114500BF8868 /* LISManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EBAFE45B253A114500BF8868 /* LISManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EBAFE46B253A114500BF8868 /* Build configuration list for PBXNativeTarget "LISManagerUITests" */;
+			buildPhases = (
+				E4B5C4DAE86CB47825B59EFE /* [CP] Check Pods Manifest.lock */,
+				EBAFE458253A114500BF8868 /* Sources */,
+				EBAFE459253A114500BF8868 /* Frameworks */,
+				EBAFE45A253A114500BF8868 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EBAFE45E253A114500BF8868 /* PBXTargetDependency */,
+			);
+			name = LISManagerUITests;
+			productName = LISManagerUITests;
+			productReference = EBAFE45C253A114500BF8868 /* LISManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EBAFE430253A114200BF8868 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					EBAFE437253A114200BF8868 = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+					EBAFE450253A114500BF8868 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = EBAFE437253A114200BF8868;
+					};
+					EBAFE45B253A114500BF8868 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = EBAFE437253A114200BF8868;
+					};
+				};
+			};
+			buildConfigurationList = EBAFE433253A114200BF8868 /* Build configuration list for PBXProject "LISManager" */;
+			compatibilityVersion = "Xcode 11.4";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EBAFE42F253A114200BF8868;
+			productRefGroup = EBAFE439253A114200BF8868 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EBAFE437253A114200BF8868 /* LISManager */,
+				EBAFE450253A114500BF8868 /* LISManagerTests */,
+				EBAFE45B253A114500BF8868 /* LISManagerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EBAFE436253A114200BF8868 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBAFE44B253A114500BF8868 /* LaunchScreen.storyboard in Resources */,
+				EBAFE448253A114500BF8868 /* Preview Assets.xcassets in Resources */,
+				EBAFE445253A114500BF8868 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBAFE44F253A114500BF8868 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBAFE45A253A114500BF8868 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6DE7DEF7C6078AD91BD2ABFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LISManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A87E561C3B0FBB41CBF7B074 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LISManagerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4B5C4DAE86CB47825B59EFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LISManager-LISManagerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EBAFE434253A114200BF8868 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBAFE495253A161200BF8868 /* FullscreenButton.swift in Sources */,
+				EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */,
+				EBAFE47E253A136700BF8868 /* PreferencesManager.swift in Sources */,
+				EBAFE4A7253A1B7900BF8868 /* LocationManager.swift in Sources */,
+				EBAFE48F253A158B00BF8868 /* InitialOnboardingView.swift in Sources */,
+				EBAFE43C253A114200BF8868 /* AppDelegate.swift in Sources */,
+				EBAFE43E253A114200BF8868 /* SceneDelegate.swift in Sources */,
+				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
+				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,
+				EBAFE49D253A166A00BF8868 /* ActivityIndicator.swift in Sources */,
+				EBAFE440253A114200BF8868 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBAFE44D253A114500BF8868 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBAFE456253A114500BF8868 /* LISManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EBAFE458253A114500BF8868 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EBAFE461253A114500BF8868 /* LISManagerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EBAFE453253A114500BF8868 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBAFE437253A114200BF8868 /* LISManager */;
+			targetProxy = EBAFE452253A114500BF8868 /* PBXContainerItemProxy */;
+		};
+		EBAFE45E253A114500BF8868 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBAFE437253A114200BF8868 /* LISManager */;
+			targetProxy = EBAFE45D253A114500BF8868 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EBAFE449253A114500BF8868 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EBAFE44A253A114500BF8868 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EBAFE463253A114500BF8868 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EBAFE464253A114500BF8868 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EBAFE466253A114500BF8868 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 263BB1C329B0808CB90E884B /* Pods-LISManager.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LISManager/LISManager.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"LISManager/Preview Content\"";
+				DEVELOPMENT_TEAM = LA5NXUEM2C;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = LISManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nickrobison.iot-lis.LISManager";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EBAFE467253A114500BF8868 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7EA41C2B2F0605AE37E2700 /* Pods-LISManager.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LISManager/LISManager.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"LISManager/Preview Content\"";
+				DEVELOPMENT_TEAM = LA5NXUEM2C;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = LISManager/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nickrobison.iot-lis.LISManager";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EBAFE469253A114500BF8868 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 002A53C572BFD85C93C02A91 /* Pods-LISManagerTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LISManagerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nickrobison.iot-lis.LISManagerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LISManager.app/LISManager";
+			};
+			name = Debug;
+		};
+		EBAFE46A253A114500BF8868 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B21CA0EA8A2CFD0CE185F9E5 /* Pods-LISManagerTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LISManagerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nickrobison.iot-lis.LISManagerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LISManager.app/LISManager";
+			};
+			name = Release;
+		};
+		EBAFE46C253A114500BF8868 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C45F0B72970D0B4C84DF7713 /* Pods-LISManager-LISManagerUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LA5NXUEM2C;
+				INFOPLIST_FILE = LISManagerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nickrobison.iot-lis.LISManagerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LISManager;
+			};
+			name = Debug;
+		};
+		EBAFE46D253A114500BF8868 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DCB6E7C37D51CF6F3E11068C /* Pods-LISManager-LISManagerUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LA5NXUEM2C;
+				INFOPLIST_FILE = LISManagerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.nickrobison.iot-lis.LISManagerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LISManager;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EBAFE433253A114200BF8868 /* Build configuration list for PBXProject "LISManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBAFE463253A114500BF8868 /* Debug */,
+				EBAFE464253A114500BF8868 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBAFE465253A114500BF8868 /* Build configuration list for PBXNativeTarget "LISManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBAFE466253A114500BF8868 /* Debug */,
+				EBAFE467253A114500BF8868 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBAFE468253A114500BF8868 /* Build configuration list for PBXNativeTarget "LISManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBAFE469253A114500BF8868 /* Debug */,
+				EBAFE46A253A114500BF8868 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EBAFE46B253A114500BF8868 /* Build configuration list for PBXNativeTarget "LISManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EBAFE46C253A114500BF8868 /* Debug */,
+				EBAFE46D253A114500BF8868 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EBAFE441253A114200BF8868 /* LISManager.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EBAFE442253A114200BF8868 /* LISManager.xcdatamodel */,
+			);
+			currentVersion = EBAFE442253A114200BF8868 /* LISManager.xcdatamodel */;
+			path = LISManager.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EBAFE430253A114200BF8868 /* Project object */;
+}

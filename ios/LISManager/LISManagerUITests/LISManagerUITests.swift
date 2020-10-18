@@ -1,13 +1,13 @@
 //
-//  iot_lis_clientUITests.swift
-//  iot-lis-clientUITests
+//  LISManagerUITests.swift
+//  LISManagerUITests
 //
-//  Created by Nicholas Robison on 10/13/20.
+//  Created by Nicholas Robison on 10/16/20.
 //
 
 import XCTest
 
-class iot_lis_clientUITests: XCTestCase {
+class LISManagerUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
