@@ -82,19 +82,25 @@ extension BluetoothManager : CBPeripheralDelegate {
         for characteristic in characteristics {
             print("Characteristic: \(characteristic)")
             if characteristic.properties.contains(.read) {
-              print("\(characteristic.uuid): properties contains .read")
+                print("\(characteristic.uuid): properties contains .read")
+//                peripheral.readValue(for: characteristic)
             }
             if characteristic.properties.contains(.notify) {
-              print("\(characteristic.uuid): properties contains .notify")
+                print("\(characteristic.uuid): properties contains .notify")
+                os_log("Subscribing to notify")
+                peripheral.setNotifyValue(true, for: characteristic)
+            
             }
             if characteristic.properties.contains(.write) {
-              print("\(characteristic.uuid): properties contains .write")
+                print("\(characteristic.uuid): properties contains .write")
+                os_log("Begin write", log: logger, type: .debug)
+                peripheral.writeValue("Hello Callie, love".data(using: .utf8)!, for: characteristic, type: .withResponse)
+                os_log("Finished write", log: logger, type: .debug)
             }
-            
-            os_log("Begin write", log: logger, type: .debug)
-            peripheral.writeValue("Hello Callie, love".data(using: .utf8)!, for: characteristic, type: .withResponse)
-            os_log("Finished write", log: logger, type: .debug)
         }
-        
+    }
+    
+    public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
+        os_log("Received value: `%s`", log: logger, type: .debug, String(decoding: characteristic.value!, as: UTF8.self))
     }
 }

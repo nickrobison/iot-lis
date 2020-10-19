@@ -19,7 +19,24 @@ func NewEchoCharacteristic() *ble.Characteristic {
 	c := ble.NewCharacteristic(EchoCharUUID)
 	c.HandleWrite(ble.WriteHandlerFunc(e.writeHandler))
 	c.HandleNotify(ble.NotifyHandlerFunc(e.echoHandler))
+	c.HandleRead(ble.ReadHandlerFunc(e.readHandler))
 	c.HandleIndicate(ble.NotifyHandlerFunc(e.echoHandler))
+
+	// Setup a timer to send test data every 10 seconds
+	ticker := time.NewTicker(5 * time.Second)
+	done := make(chan bool)
+
+	go func() {
+		for {
+			select {
+			case <-done:
+				return
+			case <-ticker.C:
+				log.Debug().Msg("Sending new data")
+				e.SendData("Hello from Go")
+			}
+		}
+	}()
 
 	return c
 }
@@ -30,16 +47,16 @@ type echoChar struct {
 }
 
 func (e *echoChar) writeHandler(req ble.Request, rsp ble.ResponseWriter) {
-	log.Info().Msgf("Writing %s", string(req.Data()))
-	e.Lock()
-	e.m[req.Conn().RemoteAddr().String()] <- req.Data()
-	e.Unlock()
+	log.Info().Msgf("Writing `%s` from: `%s`", string(req.Data()), req.Conn().RemoteAddr().String())
+	// e.Lock()
+	// e.m[req.Conn().RemoteAddr().String()] <- req.Data()
+	// e.Unlock()
 }
 
 func (e *echoChar) echoHandler(req ble.Request, n ble.Notifier) {
 	ch := make(chan []byte)
 	remoteAddr := req.Conn().RemoteAddr().String()
-	log.Info().Msgf("Subsribing device: %s", remoteAddr)
+	log.Info().Msgf("Subscribing device: %s", remoteAddr)
 	e.Lock()
 	e.m[remoteAddr] = ch
 	e.Unlock()
@@ -63,6 +80,29 @@ func (e *echoChar) echoHandler(req ble.Request, n ble.Notifier) {
 				return
 			}
 		}
+	}
+
+}
+
+func (e *echoChar) SendData(msg string) {
+	e.Lock()
+	defer e.Unlock()
+	for _, v := range e.m {
+		v <- []byte(msg)
+	}
+	log.Debug().Msg("Finished sending data")
+}
+
+func (e *echoChar) readHandler(req ble.Request, rsp ble.ResponseWriter) {
+	remoteAddr := req.Conn().RemoteAddr().String()
+	log.Debug().Msgf("Starting device read to %s", remoteAddr)
+
+	e.Lock()
+	b := <-e.m[remoteAddr]
+
+	if _, err := rsp.Write(b); err != nil {
+		log.Error().Err(err).Msgf("Cannot write %s", string(b))
+		return
 	}
 
 }

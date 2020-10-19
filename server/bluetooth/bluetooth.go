@@ -27,7 +27,8 @@ func MakeBLE() error {
 
 	testSrvc := ble.NewService(TestSvcUUID)
 	// Let's make a characteristic
-	testSrvc.AddCharacteristic(NewEchoCharacteristic())
+	e := NewEchoCharacteristic()
+	testSrvc.AddCharacteristic(e)
 
 	err = ble.AddService(testSrvc)
 	if err != nil {
@@ -46,9 +47,12 @@ func chkErr(err error) {
 	case nil:
 	case context.DeadlineExceeded:
 		fmt.Printf("done\n")
+		return
 	case context.Canceled:
 		fmt.Printf("canceled\n")
+		return
 	default:
 		log.Error().Err(err).Msg("")
+		return
 	}
 }
