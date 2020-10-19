@@ -7,17 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0095356EE6256D4D971956A6 /* Pods_LISManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D04AC6448C1E33DE10C191A /* Pods_LISManagerTests.framework */; };
-		24C99D6184BE532A0A42FA22 /* Pods_LISManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BCA2E0633D3C788345F9B8 /* Pods_LISManager.framework */; };
-		5F7F0DB4D353455339A386AC /* Pods_LISManager_LISManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0320F9B6BA5602B00305FAD /* Pods_LISManager_LISManagerUITests.framework */; };
+		69464CEF618A390A997068B8 /* Pods_LISKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6C57E8DD14B7732B893BEF /* Pods_LISKit.framework */; };
+		737DCD682A2697F51E3FAA1F /* Pods_LISManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01ED7C5E4182572B8B07026 /* Pods_LISManager.framework */; };
+		8752770672A02E6BC063C095 /* Pods_LISKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */; };
+		9102B0C714D651D3AF3C1F1C /* Pods_LISManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7B4A69E9FD40422B1B0422 /* Pods_LISManagerTests.framework */; };
+		EAEFC289ED31A640013A1032 /* Pods_LISManager_LISManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAB3A002BCFBAA31E444A77 /* Pods_LISManager_LISManagerUITests.framework */; };
+		EB5D3427253DEB990076E30B /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB700240253E27A1002AF053 /* DevicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70023F253E27A0002AF053 /* DevicesViewModel.swift */; };
+		EB9B788A253DF8C100FCAB10 /* LocationInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B7889253DF8C100FCAB10 /* LocationInformationViewModel.swift */; };
+		EB9B7890253DF95100FCAB10 /* FormValidationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B788F253DF95100FCAB10 /* FormValidationHelpers.swift */; };
+		EB9B7896253E026900FCAB10 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B7895253E026900FCAB10 /* MainView.swift */; };
+		EB9B78A6253E047600FCAB10 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B78A5253E047600FCAB10 /* DevicesView.swift */; };
+		EB9B78AB253E048400FCAB10 /* LISKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBA78C72253D0B100007B23C /* LISKit.framework */; };
+		EB9B78AC253E048400FCAB10 /* LISKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBA78C72253D0B100007B23C /* LISKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB9B78B7253E062C00FCAB10 /* BluetoothDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B78B6253E062C00FCAB10 /* BluetoothDevice.swift */; };
+		EB9B78BD253E06D000FCAB10 /* DeviceRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B78BC253E06D000FCAB10 /* DeviceRow.swift */; };
+		EB9B78C5253E0CE700FCAB10 /* DeviceAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B78C4253E0CE700FCAB10 /* DeviceAddView.swift */; };
 		EBA78C7B253D0B100007B23C /* LISKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBA78C72253D0B100007B23C /* LISKit.framework */; };
 		EBA78C80253D0B100007B23C /* LISKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA78C7F253D0B100007B23C /* LISKitTests.swift */; };
 		EBA78C82253D0B100007B23C /* LISKit.h in Headers */ = {isa = PBXBuildFile; fileRef = EBA78C74253D0B100007B23C /* LISKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EBA78C94253D0B380007B23C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA78C93253D0B380007B23C /* AppDelegate.swift */; };
-		EBA78C96253D0B3B0007B23C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBA78C95253D0B3B0007B23C /* Assets.xcassets */; };
-		EBA78C99253D0B3B0007B23C /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBA78C97253D0B3B0007B23C /* MainMenu.xib */; };
-		EBA78CA4253D0B420007B23C /* LISKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBA78C72253D0B100007B23C /* LISKit.framework */; };
-		EBA78CA5253D0B420007B23C /* LISKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EBA78C72253D0B100007B23C /* LISKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EBA78CB6253D0C240007B23C /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA78CB5253D0C240007B23C /* BluetoothManager.swift */; };
 		EBAFE43C253A114200BF8868 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE43B253A114200BF8868 /* AppDelegate.swift */; };
 		EBAFE43E253A114200BF8868 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE43D253A114200BF8868 /* SceneDelegate.swift */; };
@@ -38,14 +46,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EBA78C7C253D0B100007B23C /* PBXContainerItemProxy */ = {
+		EB9B78AD253E048400FCAB10 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EBAFE430253A114200BF8868 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EBA78C71253D0B100007B23C;
 			remoteInfo = LISKit;
 		};
-		EBA78CA6253D0B420007B23C /* PBXContainerItemProxy */ = {
+		EBA78C7C253D0B100007B23C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EBAFE430253A114200BF8868 /* Project object */;
 			proxyType = 1;
@@ -69,23 +77,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		EB1E3E90253CBC510097AC63 /* Embed Frameworks */ = {
+		EB41DC1B253DE70300248B1B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				EB5D3427253DEB990076E30B /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EBA78CA8253D0B420007B23C /* Embed Frameworks */ = {
+		EB9B78AF253E048400FCAB10 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EBA78CA5253D0B420007B23C /* LISKit.framework in Embed Frameworks */,
+				EB9B78AC253E048400FCAB10 /* LISKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,28 +102,39 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		002A53C572BFD85C93C02A91 /* Pods-LISManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		263BB1C329B0808CB90E884B /* Pods-LISManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.debug.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.debug.xcconfig"; sourceTree = "<group>"; };
-		41BCA2E0633D3C788345F9B8 /* Pods_LISManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D04AC6448C1E33DE10C191A /* Pods_LISManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B21CA0EA8A2CFD0CE185F9E5 /* Pods-LISManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.release.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.release.xcconfig"; sourceTree = "<group>"; };
-		C0320F9B6BA5602B00305FAD /* Pods_LISManager_LISManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISManager_LISManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C45F0B72970D0B4C84DF7713 /* Pods-LISManager-LISManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager-LISManagerUITests.debug.xcconfig"; path = "Target Support Files/Pods-LISManager-LISManagerUITests/Pods-LISManager-LISManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		DCB6E7C37D51CF6F3E11068C /* Pods-LISManager-LISManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager-LISManagerUITests.release.xcconfig"; path = "Target Support Files/Pods-LISManager-LISManagerUITests/Pods-LISManager-LISManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
-		E7EA41C2B2F0605AE37E2700 /* Pods-LISManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.release.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.release.xcconfig"; sourceTree = "<group>"; };
+		01C8FCA30DF5080D239F9865 /* Pods-LISManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.release.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.release.xcconfig"; sourceTree = "<group>"; };
+		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		149E75223CC0AAC8C3E16552 /* Pods-LISManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.release.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.release.xcconfig"; sourceTree = "<group>"; };
+		156FFA07B122F5A24DCF62EC /* Pods_LISTester.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISTester.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B6C57E8DD14B7732B893BEF /* Pods_LISKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82D0112A6E95CA7F7FDE5763 /* Pods-LISManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8C7B4A69E9FD40422B1B0422 /* Pods_LISManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		996FDC9A01E4C75CE4CF25B3 /* Pods-LISTester.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISTester.release.xcconfig"; path = "Target Support Files/Pods-LISTester/Pods-LISTester.release.xcconfig"; sourceTree = "<group>"; };
+		9DAB3A002BCFBAA31E444A77 /* Pods_LISManager_LISManagerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISManager_LISManagerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A01ED7C5E4182572B8B07026 /* Pods_LISManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFDAA4C09191C39746EFF8DD /* Pods-LISManager-LISManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager-LISManagerUITests.debug.xcconfig"; path = "Target Support Files/Pods-LISManager-LISManagerUITests/Pods-LISManager-LISManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C348A028A43B1C90FAC1F647 /* Pods-LISManager-LISManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager-LISManagerUITests.release.xcconfig"; path = "Target Support Files/Pods-LISManager-LISManagerUITests/Pods-LISManager-LISManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C7666B45919F25A4E95F3B45 /* Pods-LISTester.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISTester.debug.xcconfig"; path = "Target Support Files/Pods-LISTester/Pods-LISTester.debug.xcconfig"; sourceTree = "<group>"; };
+		CE50501CF59E9FE29565CB30 /* Pods-LISKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKit.release.xcconfig"; path = "Target Support Files/Pods-LISKit/Pods-LISKit.release.xcconfig"; sourceTree = "<group>"; };
+		D3302260487A145EC202852F /* Pods-LISKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.debug.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D35E4C8CB51A1399ED60467D /* Pods-LISKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKit.debug.xcconfig"; path = "Target Support Files/Pods-LISKit/Pods-LISKit.debug.xcconfig"; sourceTree = "<group>"; };
+		E871CE5A60AA96D670025006 /* Pods-LISManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.debug.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.debug.xcconfig"; sourceTree = "<group>"; };
 		EB1E3EA5253CBF4E0097AC63 /* LISManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LISManager.entitlements; sourceTree = "<group>"; };
+		EB70023F253E27A0002AF053 /* DevicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModel.swift; sourceTree = "<group>"; };
+		EB9B7889253DF8C100FCAB10 /* LocationInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInformationViewModel.swift; sourceTree = "<group>"; };
+		EB9B788F253DF95100FCAB10 /* FormValidationHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidationHelpers.swift; sourceTree = "<group>"; };
+		EB9B7895253E026900FCAB10 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		EB9B78A5253E047600FCAB10 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
+		EB9B78B6253E062C00FCAB10 /* BluetoothDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothDevice.swift; sourceTree = "<group>"; };
+		EB9B78BC253E06D000FCAB10 /* DeviceRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRow.swift; sourceTree = "<group>"; };
+		EB9B78C4253E0CE700FCAB10 /* DeviceAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceAddView.swift; sourceTree = "<group>"; };
 		EBA78C72253D0B100007B23C /* LISKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LISKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA78C74253D0B100007B23C /* LISKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LISKit.h; sourceTree = "<group>"; };
 		EBA78C75253D0B100007B23C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EBA78C7A253D0B100007B23C /* LISKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LISKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA78C7F253D0B100007B23C /* LISKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LISKitTests.swift; sourceTree = "<group>"; };
 		EBA78C81253D0B100007B23C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EBA78C91253D0B380007B23C /* LISTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LISTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EBA78C93253D0B380007B23C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EBA78C95253D0B3B0007B23C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EBA78C98253D0B3B0007B23C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		EBA78C9A253D0B3B0007B23C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EBA78C9B253D0B3B0007B23C /* LISTester.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LISTester.entitlements; sourceTree = "<group>"; };
 		EBA78CB5253D0C240007B23C /* BluetoothManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
 		EBAFE438253A114200BF8868 /* LISManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LISManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBAFE43B253A114200BF8868 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69464CEF618A390A997068B8 /* Pods_LISKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,14 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBA78C7B253D0B100007B23C /* LISKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EBA78C8E253D0B380007B23C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EBA78CA4253D0B420007B23C /* LISKit.framework in Frameworks */,
+				8752770672A02E6BC063C095 /* Pods_LISKitTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,7 +182,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24C99D6184BE532A0A42FA22 /* Pods_LISManager.framework in Frameworks */,
+				EB9B78AB253E048400FCAB10 /* LISKit.framework in Frameworks */,
+				737DCD682A2697F51E3FAA1F /* Pods_LISManager.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,7 +191,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0095356EE6256D4D971956A6 /* Pods_LISManagerTests.framework in Frameworks */,
+				9102B0C714D651D3AF3C1F1C /* Pods_LISManagerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,34 +199,54 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F7F0DB4D353455339A386AC /* Pods_LISManager_LISManagerUITests.framework in Frameworks */,
+				EAEFC289ED31A640013A1032 /* Pods_LISManager_LISManagerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		211F522C2ADDD7B43E60AFB6 /* Frameworks */ = {
+		C26A041B9ADCE0D3058C1DBD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				41BCA2E0633D3C788345F9B8 /* Pods_LISManager.framework */,
-				C0320F9B6BA5602B00305FAD /* Pods_LISManager_LISManagerUITests.framework */,
-				8D04AC6448C1E33DE10C191A /* Pods_LISManagerTests.framework */,
+				D35E4C8CB51A1399ED60467D /* Pods-LISKit.debug.xcconfig */,
+				CE50501CF59E9FE29565CB30 /* Pods-LISKit.release.xcconfig */,
+				D3302260487A145EC202852F /* Pods-LISKitTests.debug.xcconfig */,
+				0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */,
+				E871CE5A60AA96D670025006 /* Pods-LISManager.debug.xcconfig */,
+				01C8FCA30DF5080D239F9865 /* Pods-LISManager.release.xcconfig */,
+				AFDAA4C09191C39746EFF8DD /* Pods-LISManager-LISManagerUITests.debug.xcconfig */,
+				C348A028A43B1C90FAC1F647 /* Pods-LISManager-LISManagerUITests.release.xcconfig */,
+				82D0112A6E95CA7F7FDE5763 /* Pods-LISManagerTests.debug.xcconfig */,
+				149E75223CC0AAC8C3E16552 /* Pods-LISManagerTests.release.xcconfig */,
+				C7666B45919F25A4E95F3B45 /* Pods-LISTester.debug.xcconfig */,
+				996FDC9A01E4C75CE4CF25B3 /* Pods-LISTester.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EAFB2C60A72A50599EA5A751 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B6C57E8DD14B7732B893BEF /* Pods_LISKit.framework */,
+				0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */,
+				A01ED7C5E4182572B8B07026 /* Pods_LISManager.framework */,
+				9DAB3A002BCFBAA31E444A77 /* Pods_LISManager_LISManagerUITests.framework */,
+				8C7B4A69E9FD40422B1B0422 /* Pods_LISManagerTests.framework */,
+				156FFA07B122F5A24DCF62EC /* Pods_LISTester.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C26A041B9ADCE0D3058C1DBD /* Pods */ = {
+		EB9B78BB253E066200FCAB10 /* Devices */ = {
 			isa = PBXGroup;
 			children = (
-				263BB1C329B0808CB90E884B /* Pods-LISManager.debug.xcconfig */,
-				E7EA41C2B2F0605AE37E2700 /* Pods-LISManager.release.xcconfig */,
-				C45F0B72970D0B4C84DF7713 /* Pods-LISManager-LISManagerUITests.debug.xcconfig */,
-				DCB6E7C37D51CF6F3E11068C /* Pods-LISManager-LISManagerUITests.release.xcconfig */,
-				002A53C572BFD85C93C02A91 /* Pods-LISManagerTests.debug.xcconfig */,
-				B21CA0EA8A2CFD0CE185F9E5 /* Pods-LISManagerTests.release.xcconfig */,
+				EB9B78A5253E047600FCAB10 /* DevicesView.swift */,
+				EB9B78BC253E06D000FCAB10 /* DeviceRow.swift */,
+				EB9B78C4253E0CE700FCAB10 /* DeviceAddView.swift */,
+				EB70023F253E27A0002AF053 /* DevicesViewModel.swift */,
 			);
-			path = Pods;
+			path = Devices;
 			sourceTree = "<group>";
 		};
 		EBA78C73253D0B100007B23C /* LISKit */ = {
@@ -220,6 +255,7 @@
 				EBA78C74253D0B100007B23C /* LISKit.h */,
 				EBA78C75253D0B100007B23C /* Info.plist */,
 				EBA78CB5253D0C240007B23C /* BluetoothManager.swift */,
+				EB9B78B6253E062C00FCAB10 /* BluetoothDevice.swift */,
 			);
 			path = LISKit;
 			sourceTree = "<group>";
@@ -233,18 +269,6 @@
 			path = LISKitTests;
 			sourceTree = "<group>";
 		};
-		EBA78C92253D0B380007B23C /* LISTester */ = {
-			isa = PBXGroup;
-			children = (
-				EBA78C93253D0B380007B23C /* AppDelegate.swift */,
-				EBA78C95253D0B3B0007B23C /* Assets.xcassets */,
-				EBA78C97253D0B3B0007B23C /* MainMenu.xib */,
-				EBA78C9A253D0B3B0007B23C /* Info.plist */,
-				EBA78C9B253D0B3B0007B23C /* LISTester.entitlements */,
-			);
-			path = LISTester;
-			sourceTree = "<group>";
-		};
 		EBAFE42F253A114200BF8868 = {
 			isa = PBXGroup;
 			children = (
@@ -253,10 +277,9 @@
 				EBAFE45F253A114500BF8868 /* LISManagerUITests */,
 				EBA78C73253D0B100007B23C /* LISKit */,
 				EBA78C7E253D0B100007B23C /* LISKitTests */,
-				EBA78C92253D0B380007B23C /* LISTester */,
 				EBAFE439253A114200BF8868 /* Products */,
 				C26A041B9ADCE0D3058C1DBD /* Pods */,
-				211F522C2ADDD7B43E60AFB6 /* Frameworks */,
+				EAFB2C60A72A50599EA5A751 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -268,7 +291,6 @@
 				EBAFE45C253A114500BF8868 /* LISManagerUITests.xctest */,
 				EBA78C72253D0B100007B23C /* LISKit.framework */,
 				EBA78C7A253D0B100007B23C /* LISKitTests.xctest */,
-				EBA78C91253D0B380007B23C /* LISTester.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -276,6 +298,7 @@
 		EBAFE43A253A114200BF8868 /* LISManager */ = {
 			isa = PBXGroup;
 			children = (
+				EB9B78BB253E066200FCAB10 /* Devices */,
 				EB1E3EA5253CBF4E0097AC63 /* LISManager.entitlements */,
 				EBAFE493253A160000BF8868 /* Elements */,
 				EBAFE485253A151900BF8868 /* Onboarding */,
@@ -289,6 +312,8 @@
 				EBAFE446253A114500BF8868 /* Preview Content */,
 				EBAFE47D253A136700BF8868 /* PreferencesManager.swift */,
 				EBAFE4A6253A1B7900BF8868 /* LocationManager.swift */,
+				EB9B788F253DF95100FCAB10 /* FormValidationHelpers.swift */,
+				EB9B7895253E026900FCAB10 /* MainView.swift */,
 			);
 			path = LISManager;
 			sourceTree = "<group>";
@@ -325,6 +350,7 @@
 				EBAFE486253A152E00BF8868 /* MainOnboardingView.swift */,
 				EBAFE48E253A158B00BF8868 /* InitialOnboardingView.swift */,
 				EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */,
+				EB9B7889253DF8C100FCAB10 /* LocationInformationViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -356,10 +382,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBA78C83253D0B100007B23C /* Build configuration list for PBXNativeTarget "LISKit" */;
 			buildPhases = (
+				087FCE665C36495C74491BA8 /* [CP] Check Pods Manifest.lock */,
 				EBA78C6D253D0B100007B23C /* Headers */,
 				EBA78C6E253D0B100007B23C /* Sources */,
 				EBA78C6F253D0B100007B23C /* Frameworks */,
 				EBA78C70253D0B100007B23C /* Resources */,
+				EB41DC1B253DE70300248B1B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,6 +402,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBA78C86253D0B100007B23C /* Build configuration list for PBXNativeTarget "LISKitTests" */;
 			buildPhases = (
+				DA916AA86622CB31F5335C3D /* [CP] Check Pods Manifest.lock */,
 				EBA78C76253D0B100007B23C /* Sources */,
 				EBA78C77253D0B100007B23C /* Frameworks */,
 				EBA78C78253D0B100007B23C /* Resources */,
@@ -388,38 +417,21 @@
 			productReference = EBA78C7A253D0B100007B23C /* LISKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		EBA78C90253D0B380007B23C /* LISTester */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EBA78C9C253D0B3B0007B23C /* Build configuration list for PBXNativeTarget "LISTester" */;
-			buildPhases = (
-				EBA78C8D253D0B380007B23C /* Sources */,
-				EBA78C8E253D0B380007B23C /* Frameworks */,
-				EBA78C8F253D0B380007B23C /* Resources */,
-				EBA78CA8253D0B420007B23C /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EBA78CA7253D0B420007B23C /* PBXTargetDependency */,
-			);
-			name = LISTester;
-			productName = LISTester;
-			productReference = EBA78C91253D0B380007B23C /* LISTester.app */;
-			productType = "com.apple.product-type.application";
-		};
 		EBAFE437253A114200BF8868 /* LISManager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBAFE465253A114500BF8868 /* Build configuration list for PBXNativeTarget "LISManager" */;
 			buildPhases = (
-				6DE7DEF7C6078AD91BD2ABFE /* [CP] Check Pods Manifest.lock */,
+				949363BB95C36B57A0E5780C /* [CP] Check Pods Manifest.lock */,
 				EBAFE434253A114200BF8868 /* Sources */,
 				EBAFE435253A114200BF8868 /* Frameworks */,
 				EBAFE436253A114200BF8868 /* Resources */,
-				EB1E3E90253CBC510097AC63 /* Embed Frameworks */,
+				B31357D64C2570A40BE98224 /* [CP] Embed Pods Frameworks */,
+				EB9B78AF253E048400FCAB10 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EB9B78AE253E048400FCAB10 /* PBXTargetDependency */,
 			);
 			name = LISManager;
 			productName = LISManager;
@@ -430,7 +442,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBAFE468253A114500BF8868 /* Build configuration list for PBXNativeTarget "LISManagerTests" */;
 			buildPhases = (
-				A87E561C3B0FBB41CBF7B074 /* [CP] Check Pods Manifest.lock */,
+				B98AFB0D65E995D02C11E77B /* [CP] Check Pods Manifest.lock */,
 				EBAFE44D253A114500BF8868 /* Sources */,
 				EBAFE44E253A114500BF8868 /* Frameworks */,
 				EBAFE44F253A114500BF8868 /* Resources */,
@@ -449,7 +461,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBAFE46B253A114500BF8868 /* Build configuration list for PBXNativeTarget "LISManagerUITests" */;
 			buildPhases = (
-				E4B5C4DAE86CB47825B59EFE /* [CP] Check Pods Manifest.lock */,
+				4F8321D970651B0B980EFFA0 /* [CP] Check Pods Manifest.lock */,
 				EBAFE458253A114500BF8868 /* Sources */,
 				EBAFE459253A114500BF8868 /* Frameworks */,
 				EBAFE45A253A114500BF8868 /* Resources */,
@@ -478,9 +490,6 @@
 						LastSwiftMigration = 1200;
 					};
 					EBA78C79253D0B100007B23C = {
-						CreatedOnToolsVersion = 12.0.1;
-					};
-					EBA78C90253D0B380007B23C = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
 					EBAFE437253A114200BF8868 = {
@@ -514,7 +523,6 @@
 				EBAFE45B253A114500BF8868 /* LISManagerUITests */,
 				EBA78C71253D0B100007B23C /* LISKit */,
 				EBA78C79253D0B100007B23C /* LISKitTests */,
-				EBA78C90253D0B380007B23C /* LISTester */,
 			);
 		};
 /* End PBXProject section */
@@ -531,15 +539,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EBA78C8F253D0B380007B23C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EBA78C96253D0B3B0007B23C /* Assets.xcassets in Resources */,
-				EBA78C99253D0B3B0007B23C /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,7 +569,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6DE7DEF7C6078AD91BD2ABFE /* [CP] Check Pods Manifest.lock */ = {
+		087FCE665C36495C74491BA8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -585,36 +584,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LISManager-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-LISKit-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A87E561C3B0FBB41CBF7B074 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LISManagerTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E4B5C4DAE86CB47825B59EFE /* [CP] Check Pods Manifest.lock */ = {
+		4F8321D970651B0B980EFFA0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -636,6 +613,89 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		949363BB95C36B57A0E5780C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LISManager-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B31357D64C2570A40BE98224 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LISManager/Pods-LISManager-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LISManager/Pods-LISManager-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LISManager/Pods-LISManager-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B98AFB0D65E995D02C11E77B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LISManagerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA916AA86622CB31F5335C3D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LISKitTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -643,6 +703,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB9B78B7253E062C00FCAB10 /* BluetoothDevice.swift in Sources */,
 				EBA78CB6253D0C240007B23C /* BluetoothManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,28 +716,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EBA78C8D253D0B380007B23C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EBA78C94253D0B380007B23C /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		EBAFE434253A114200BF8868 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB9B788A253DF8C100FCAB10 /* LocationInformationViewModel.swift in Sources */,
+				EB9B7896253E026900FCAB10 /* MainView.swift in Sources */,
+				EB9B78BD253E06D000FCAB10 /* DeviceRow.swift in Sources */,
 				EBAFE495253A161200BF8868 /* FullscreenButton.swift in Sources */,
 				EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */,
 				EBAFE47E253A136700BF8868 /* PreferencesManager.swift in Sources */,
 				EBAFE4A7253A1B7900BF8868 /* LocationManager.swift in Sources */,
+				EB9B78A6253E047600FCAB10 /* DevicesView.swift in Sources */,
+				EB9B7890253DF95100FCAB10 /* FormValidationHelpers.swift in Sources */,
 				EBAFE48F253A158B00BF8868 /* InitialOnboardingView.swift in Sources */,
 				EBAFE43C253A114200BF8868 /* AppDelegate.swift in Sources */,
 				EBAFE43E253A114200BF8868 /* SceneDelegate.swift in Sources */,
+				EB9B78C5253E0CE700FCAB10 /* DeviceAddView.swift in Sources */,
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
 				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,
 				EBAFE49D253A166A00BF8868 /* ActivityIndicator.swift in Sources */,
+				EB700240253E27A1002AF053 /* DevicesViewModel.swift in Sources */,
 				EBAFE440253A114200BF8868 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -700,15 +760,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		EB9B78AE253E048400FCAB10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EBA78C71253D0B100007B23C /* LISKit */;
+			targetProxy = EB9B78AD253E048400FCAB10 /* PBXContainerItemProxy */;
+		};
 		EBA78C7D253D0B100007B23C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EBA78C71253D0B100007B23C /* LISKit */;
 			targetProxy = EBA78C7C253D0B100007B23C /* PBXContainerItemProxy */;
-		};
-		EBA78CA7253D0B420007B23C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EBA78C71253D0B100007B23C /* LISKit */;
-			targetProxy = EBA78CA6253D0B420007B23C /* PBXContainerItemProxy */;
 		};
 		EBAFE453253A114500BF8868 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -723,14 +783,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EBA78C97253D0B3B0007B23C /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EBA78C98253D0B3B0007B23C /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		EBAFE449253A114500BF8868 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -744,7 +796,9 @@
 /* Begin XCBuildConfiguration section */
 		EBA78C84253D0B100007B23C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D35E4C8CB51A1399ED60467D /* Pods-LISKit.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -755,8 +809,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LISKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -764,8 +817,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nickrobison.iot-lis.LISKit";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -776,7 +830,9 @@
 		};
 		EBA78C85253D0B100007B23C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE50501CF59E9FE29565CB30 /* Pods-LISKit.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -787,8 +843,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = LISKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -796,8 +851,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nickrobison.iot-lis.LISKit";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -807,8 +863,9 @@
 		};
 		EBA78C87253D0B100007B23C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3302260487A145EC202852F /* Pods-LISKitTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LA5NXUEM2C;
 				INFOPLIST_FILE = LISKitTests/Info.plist;
@@ -827,8 +884,9 @@
 		};
 		EBA78C88253D0B100007B23C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LA5NXUEM2C;
 				INFOPLIST_FILE = LISKitTests/Info.plist;
@@ -842,54 +900,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		EBA78C9D253D0B3B0007B23C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = LISTester/LISTester.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = LA5NXUEM2C;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = LISTester/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nickrobison.iot-lis.LISTester";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		EBA78C9E253D0B3B0007B23C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = LISTester/LISTester.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = LA5NXUEM2C;
-				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = LISTester/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nickrobison.iot-lis.LISTester";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -944,7 +954,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -999,7 +1010,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1011,7 +1023,7 @@
 		};
 		EBAFE466253A114500BF8868 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 263BB1C329B0808CB90E884B /* Pods-LISManager.debug.xcconfig */;
+			baseConfigurationReference = E871CE5A60AA96D670025006 /* Pods-LISManager.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1022,7 +1034,7 @@
 				DEVELOPMENT_TEAM = LA5NXUEM2C;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LISManager/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1037,7 +1049,7 @@
 		};
 		EBAFE467253A114500BF8868 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E7EA41C2B2F0605AE37E2700 /* Pods-LISManager.release.xcconfig */;
+			baseConfigurationReference = 01C8FCA30DF5080D239F9865 /* Pods-LISManager.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1047,7 +1059,7 @@
 				DEVELOPMENT_TEAM = LA5NXUEM2C;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LISManager/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1062,7 +1074,7 @@
 		};
 		EBAFE469253A114500BF8868 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 002A53C572BFD85C93C02A91 /* Pods-LISManagerTests.debug.xcconfig */;
+			baseConfigurationReference = 82D0112A6E95CA7F7FDE5763 /* Pods-LISManagerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1084,7 +1096,7 @@
 		};
 		EBAFE46A253A114500BF8868 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B21CA0EA8A2CFD0CE185F9E5 /* Pods-LISManagerTests.release.xcconfig */;
+			baseConfigurationReference = 149E75223CC0AAC8C3E16552 /* Pods-LISManagerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1106,7 +1118,7 @@
 		};
 		EBAFE46C253A114500BF8868 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C45F0B72970D0B4C84DF7713 /* Pods-LISManager-LISManagerUITests.debug.xcconfig */;
+			baseConfigurationReference = AFDAA4C09191C39746EFF8DD /* Pods-LISManager-LISManagerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -1128,7 +1140,7 @@
 		};
 		EBAFE46D253A114500BF8868 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DCB6E7C37D51CF6F3E11068C /* Pods-LISManager-LISManagerUITests.release.xcconfig */;
+			baseConfigurationReference = C348A028A43B1C90FAC1F647 /* Pods-LISManager-LISManagerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
@@ -1165,15 +1177,6 @@
 			buildConfigurations = (
 				EBA78C87253D0B100007B23C /* Debug */,
 				EBA78C88253D0B100007B23C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EBA78C9C253D0B3B0007B23C /* Build configuration list for PBXNativeTarget "LISTester" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EBA78C9D253D0B3B0007B23C /* Debug */,
-				EBA78C9E253D0B3B0007B23C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

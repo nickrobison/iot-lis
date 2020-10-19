@@ -1,3 +1,16 @@
-PODFILE CHECKSUM: 0bf265e56bf742cf863339e4e7b2d1ca22f4edf7
+PODS:
+  - FlatBuffers (0.8.0)
 
-COCOAPODS: 1.9.3
+DEPENDENCIES:
+  - FlatBuffers
+
+SPEC REPOS:
+  trunk:
+    - FlatBuffers
+
+SPEC CHECKSUMS:
+  FlatBuffers: cfae8f95023a5a03b1ce22b22f14436ada96a7a2
+
+PODFILE CHECKSUM: 3669261195bd13dd97cca6b543d7b75e3276ee59
+
+COCOAPODS: 1.10.0.rc.1

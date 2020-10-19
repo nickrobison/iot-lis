@@ -8,28 +8,58 @@
 import os
 import Foundation
 import CoreBluetooth
+import Combine
 
 private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.BluetoothManager", category: "bluetooth")
 
-public class BluetoothManager : NSObject, CBCentralManagerDelegate {
+public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableObject {
+    
+//    public static let sharedInstance = BluetoothManager()
+    
+    public var discoverDevices: AnyPublisher<BluetoothDevice, Never> {
+        discoverSubject
+            .handleEvents(receiveSubscription: { _ in
+                os_log("Starting subscription", log: logger, type: .debug)
+                self.connectionManager.scanForPeripherals(withServices: [self.iotListUUID])
+                
+            }, receiveCancel: { [weak self] in
+                os_log("Received cancel", log: logger, type: .debug)
+                self?.connectionManager.stopScan()
+            })
+            .eraseToAnyPublisher()
+    }
     
     private let connectionManager = CBCentralManager()
     private let iotListUUID = CBUUID(string: "00010000-0001-1000-8000-00805F9B34FB")
     private var lisDevice: CBPeripheral?
+    private let discoverSubject = PassthroughSubject<BluetoothDevice, Never>()
     
     
     public override init() {
         super.init()
+        os_log("Initializing Bluetooth Manager", log: logger, type: .debug)
         connectionManager.delegate = self
+    }
+    
+    public func connect(toPeripheral deviceID: String) {
+        os_log("Connecting to peripheral with ID: %s", log: logger, type: .debug, deviceID)
+        let periphs = connectionManager.retrievePeripherals(withIdentifiers: [UUID.init(uuidString: deviceID)!])
+        if periphs.isEmpty {
+            return
+        }
+        lisDevice = periphs[0]
+        lisDevice!.delegate = self
+        connectionManager.connect(lisDevice!)
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         os_log("Discovered. ", log: logger, type: .debug)
-        connectionManager.stopScan()
+//        connectionManager.stopScan()
+        discoverSubject.send(BluetoothDevice(id: peripheral.identifier.uuidString, name: peripheral.name ?? "(unnamed)"))
         print(peripheral)
-        lisDevice = peripheral
-        connectionManager.connect(lisDevice!)
-        lisDevice!.delegate = self
+//        lisDevice = peripheral
+//        connectionManager.connect(lisDevice!)
+//        lisDevice!.delegate = self
     }
     
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -47,7 +77,7 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate {
             os_log("Powered off", log: logger, type: .debug)
         case .poweredOn:
             os_log("Powered on", log: logger, type: .debug)
-            connectionManager.scanForPeripherals(withServices: [iotListUUID])
+//            connectionManager.scanForPeripherals(withServices: [iotListUUID])
         @unknown default:
             fatalError("Unknown state \(central.state)")
         }
@@ -83,13 +113,13 @@ extension BluetoothManager : CBPeripheralDelegate {
             print("Characteristic: \(characteristic)")
             if characteristic.properties.contains(.read) {
                 print("\(characteristic.uuid): properties contains .read")
-//                peripheral.readValue(for: characteristic)
+                //                peripheral.readValue(for: characteristic)
             }
             if characteristic.properties.contains(.notify) {
                 print("\(characteristic.uuid): properties contains .notify")
                 os_log("Subscribing to notify")
                 peripheral.setNotifyValue(true, for: characteristic)
-            
+                
             }
             if characteristic.properties.contains(.write) {
                 print("\(characteristic.uuid): properties contains .write")
@@ -101,6 +131,15 @@ extension BluetoothManager : CBPeripheralDelegate {
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        os_log("Received value: `%s`", log: logger, type: .debug, String(decoding: characteristic.value!, as: UTF8.self))
+//        guard let _ = error else {
+//            os_log("Error receiving from device: %s", log: logger, type: .error, error!.localizedDescription)
+//            return
+//        }
+        guard let value = characteristic.value else {
+            os_log("No value received from device", log: logger, type: .error)
+            return
+        }
+        os_log("Message size: %d", log: logger, type: .debug, value.count)
+        os_log("Received value: `%s`", log: logger, type: .debug, String(decoding: value, as: UTF8.self))
     }
 }

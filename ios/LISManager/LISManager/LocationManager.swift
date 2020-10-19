@@ -15,7 +15,7 @@ private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.Locat
 class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     private let locationManager = CLLocationManager()
     
-    @Published var county: String?
+    @Published var postalCode: String = ""
     
     override init() {
         super.init()
@@ -28,7 +28,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     }
     
     public func updateLocation(withCounty county: String) {
-        self.county = county
+        self.postalCode = county
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -39,7 +39,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
             geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
                 if error == nil {
                     let firstLocation = placemarks?[0]
-                    self.county = firstLocation?.postalCode
+                    self.postalCode = (firstLocation?.postalCode)!
                 } else {
                     os_log("Cannot reverse geocode location", log: logger, type: .error)
                 }

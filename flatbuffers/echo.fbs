@@ -1,0 +1,5 @@
+namespace protocols;
+
+table EchoSend {
+    value:string;
+}

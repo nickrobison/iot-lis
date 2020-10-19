@@ -5,6 +5,8 @@ import (
 	"time"
 
 	"github.com/go-ble/ble"
+	flatbuffers "github.com/google/flatbuffers/go"
+	"github.com/nickrobison/iot-lis/protocols"
 	"github.com/rs/zerolog/log"
 )
 
@@ -85,10 +87,19 @@ func (e *echoChar) echoHandler(req ble.Request, n ble.Notifier) {
 }
 
 func (e *echoChar) SendData(msg string) {
+
+	builder := flatbuffers.NewBuilder(1024)
+	builderMsg := builder.CreateString(msg)
+	protocols.EchoSendStart(builder)
+	protocols.EchoSendAddValue(builder, builderMsg)
+	echoMsg := protocols.EchoSendEnd(builder)
+	builder.Finish(echoMsg)
+	msgBytes := builder.FinishedBytes()
+
 	e.Lock()
 	defer e.Unlock()
 	for _, v := range e.m {
-		v <- []byte(msg)
+		v <- msgBytes
 	}
 	log.Debug().Msg("Finished sending data")
 }

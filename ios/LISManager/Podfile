@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '13.4'
+platform :ios, '13.3'
 
 target 'LISManager' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -13,6 +13,18 @@ target 'LISManager' do
   end
 
   target 'LISManagerUITests' do
+    # Pods for testing
+  end
+
+end
+
+target 'LISKit' do
+  use_frameworks!
+
+  pod 'FlatBuffers'
+
+  target 'LISKitTests' do
+    inherit! :search_paths
     # Pods for testing
   end
 

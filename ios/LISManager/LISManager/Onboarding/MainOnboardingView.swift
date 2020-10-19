@@ -14,6 +14,7 @@ enum OnboardingState : CaseIterable {
 
 struct MainOnboardingView: View {
     @State var onboardingState: OnboardingState = .initial
+    @State var buttonDisabled = false
     @State private var stateIdx = 0
     
     var body: some View {
@@ -29,12 +30,13 @@ struct MainOnboardingView: View {
             if (self.onboardingState == .initial) {
                 InitialOnboardingView()
             } else if (self.onboardingState == .location) {
-                LocationInformation()
+                LocationInformation(buttonDisabled: $buttonDisabled)
             }
             Spacer()
             FullscreenButton(text: "Next", isAnimating: .constant(false), handler: {
                 self.incrementState()
             })
+            .disabled(self.buttonDisabled)
         }
         .padding([.leading, .trailing, .bottom])
     }
