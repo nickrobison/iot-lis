@@ -8,6 +8,8 @@ import (
 	"strconv"
 	"syscall"
 
+	"github.com/nickrobison/iot-lis/bluetooth"
+
 	"github.com/nickrobison/iot-lis/parser"
 	"github.com/rs/zerolog/log"
 )
@@ -229,6 +231,14 @@ func main() {
 		log.Err(err).Msg("Error")
 		os.Exit(1)
 	}
+
+	go func() {
+		err := bluetooth.MakeBLE()
+		if err != nil {
+			log.Error().Err(err).Msg("BLE issue")
+			os.Exit(1)
+		}
+	}()
 
 	defer l.Close()
 	for {
