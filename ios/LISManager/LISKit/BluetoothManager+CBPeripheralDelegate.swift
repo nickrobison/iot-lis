@@ -10,9 +10,9 @@ import Foundation
 import CoreBluetooth
 import CoreData
 
-private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.LISDeviceEntity", category: "device")
+private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.BluetoothManager", category: "device")
 
-extension BluetoothDevice : CBPeripheralDelegate {
+extension BluetoothManager : CBPeripheralDelegate {
     
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         os_log("Discovered services", log: logger, type: .debug)

@@ -14,8 +14,6 @@ private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.Bluet
 
 public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableObject {
     
-//    public static let sharedInstance = BluetoothManager()
-    
     public var discoverDevices: AnyPublisher<BluetoothDevice, Never> {
         discoverSubject
             .handleEvents(receiveSubscription: { _ in
@@ -32,7 +30,7 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
     private let connectionManager = CBCentralManager()
     private let iotListUUID = CBUUID(string: "00010000-0001-1000-8000-00805F9B34FB")
     private let discoverSubject = PassthroughSubject<BluetoothDevice, Never>()
-    public var deviceRepository: DeviceRepository?
+    public var deviceRepository = MemoryDeviceRepository()
     
     
     public override init() {
@@ -48,8 +46,9 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
             return
         }
         let periph = periphs[0]
+        periph.delegate = self
         let device = BluetoothDevice(periph)
-        deviceRepository?.addDevice(device)
+        deviceRepository.addDevice(device)
 //        let device = LISDeviceEntity.create(fromPeripheral: periph)
 //        deviceMap[device.id!] = device
         connectionManager.connect(periph)
@@ -57,12 +56,8 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         os_log("Discovered. ", log: logger, type: .debug)
-//        connectionManager.stopScan()
         discoverSubject.send(BluetoothDevice(id: peripheral.identifier.uuidString, name: peripheral.name ?? "(unnamed)"))
         print(peripheral)
-//        lisDevice = peripheral
-//        connectionManager.connect(lisDevice!)
-//        lisDevice!.delegate = self
     }
     
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -88,7 +83,7 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         os_log("Connected to %s", log: logger, type: .debug, peripheral.name ?? "(unnamed)")
-        deviceRepository?.updateDeviceStatus(peripheral.identifier, status: .connected)
-//        lisDevice!.discoverServices(nil)
+        deviceRepository.updateDeviceStatus(peripheral.identifier, status: ConnectionStatus.connected)
+        peripheral.discoverServices(nil)
     }
 }

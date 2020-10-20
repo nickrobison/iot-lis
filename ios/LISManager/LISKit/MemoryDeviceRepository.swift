@@ -8,26 +8,26 @@
 import Foundation
 
 public class MemoryDeviceRepository: DeviceRepository {
-    
-    private var registeredDevices: Dictionary<UUID, BluetoothDevice>
+    @Published
+    public var devices: [BluetoothDevice]
     
     init() {
-        registeredDevices = [:]
-    }
-    
-    public func getDevices() -> [BluetoothDevice] {
-        return [BluetoothDevice](registeredDevices.values)
+        devices = []
     }
     
     public func getDevice(id: UUID) -> BluetoothDevice? {
-        return registeredDevices[id]
+        
+        return devices.first {
+            $0.id == id.uuidString
+        }
     }
     
     public func addDevice(_ device: BluetoothDevice) {
-        registeredDevices[UUID.init(uuidString: device.id)!] = device
+        devices.append(device)
     }
     
     public func updateDeviceStatus(_ id: UUID, status: ConnectionStatus) {
-        registeredDevices[id]?.connectionStatus = status
+        debugPrint("Setting status: \(status)")
+        getDevice(id: id)?.connectionStatus = status
     }
 }

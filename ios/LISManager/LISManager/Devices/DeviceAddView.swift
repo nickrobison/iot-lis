@@ -22,13 +22,17 @@ struct DeviceAddView: View {
                 .font(.title)
             Divider()
             ForEach(devices) {device in
-                DeviceRow(device: device)
-                    .onTapGesture {
-                        debugPrint("Selected by tap: \(device)")
-                        handler?(device.id)
-                    }
+                VStack {
+                    DeviceRow(device: device)
+                        .onTapGesture {
+                            debugPrint("Selected by tap: \(device)")
+                            handler?(device.id)
+                        }
+                    Divider()
+                }
+                
             }
-            Divider()
+            
             Spacer()
             HStack {
                 Text("Searching for devices...")
@@ -46,7 +50,7 @@ struct DeviceAddView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             DeviceAddView(discoveredDevices: Just(BluetoothDevice(id: "Gopher-id", name: "Gopher")).eraseToAnyPublisher())
-//            DeviceAddView(discoveredDevices: Empty().eraseToAnyPublisher())
+            //            DeviceAddView(discoveredDevices: Empty().eraseToAnyPublisher())
         }
         
     }

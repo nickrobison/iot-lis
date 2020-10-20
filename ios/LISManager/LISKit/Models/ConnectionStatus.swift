@@ -10,5 +10,6 @@ import Foundation
 public enum ConnectionStatus: Int16, CaseIterable {
     case connected
     case disconnected
+    case error
     case unknown
 }

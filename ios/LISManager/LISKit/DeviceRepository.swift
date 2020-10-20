@@ -7,8 +7,8 @@
 
 import Foundation
 
-public protocol DeviceRepository {
-    func getDevices() -> [BluetoothDevice]
+public protocol DeviceRepository : ObservableObject {
+    var devices: [BluetoothDevice]{ get }
     func getDevice(id: UUID) -> BluetoothDevice?
     func addDevice(_ device: BluetoothDevice)
     func updateDeviceStatus(_ id: UUID, status: ConnectionStatus)

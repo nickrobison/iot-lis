@@ -19,7 +19,8 @@
 		EB71A1DE253E76E30079F73A /* LISDeviceEntity+ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1DD253E76E30079F73A /* LISDeviceEntity+ConnectionStatus.swift */; };
 		EB7B8BE8253EEDF60040B56E /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BE7253EEDF60040B56E /* DeviceRepository.swift */; };
 		EB7B8BED253EEE660040B56E /* MemoryDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BEC253EEE660040B56E /* MemoryDeviceRepository.swift */; };
-		EB7B8BF2253EF03C0040B56E /* BluetoothDevice+CBPeripheralDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BF1253EF03C0040B56E /* BluetoothDevice+CBPeripheralDelegate.swift */; };
+		EB7B8BF2253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BF1253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift */; };
+		EB7B8BFA253EF6110040B56E /* DevicesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BF9253EF6110040B56E /* DevicesListView.swift */; };
 		EB9B788A253DF8C100FCAB10 /* LocationInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B7889253DF8C100FCAB10 /* LocationInformationViewModel.swift */; };
 		EB9B7890253DF95100FCAB10 /* FormValidationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B788F253DF95100FCAB10 /* FormValidationHelpers.swift */; };
 		EB9B7896253E026900FCAB10 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B7895253E026900FCAB10 /* MainView.swift */; };
@@ -133,7 +134,8 @@
 		EB71A1DD253E76E30079F73A /* LISDeviceEntity+ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LISDeviceEntity+ConnectionStatus.swift"; sourceTree = "<group>"; };
 		EB7B8BE7253EEDF60040B56E /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		EB7B8BEC253EEE660040B56E /* MemoryDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDeviceRepository.swift; sourceTree = "<group>"; };
-		EB7B8BF1253EF03C0040B56E /* BluetoothDevice+CBPeripheralDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothDevice+CBPeripheralDelegate.swift"; sourceTree = "<group>"; };
+		EB7B8BF1253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager+CBPeripheralDelegate.swift"; sourceTree = "<group>"; };
+		EB7B8BF9253EF6110040B56E /* DevicesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListView.swift; sourceTree = "<group>"; };
 		EB9B7889253DF8C100FCAB10 /* LocationInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInformationViewModel.swift; sourceTree = "<group>"; };
 		EB9B788F253DF95100FCAB10 /* FormValidationHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidationHelpers.swift; sourceTree = "<group>"; };
 		EB9B7895253E026900FCAB10 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				EB9B78BC253E06D000FCAB10 /* DeviceRow.swift */,
 				EB9B78C4253E0CE700FCAB10 /* DeviceAddView.swift */,
 				EB70023F253E27A0002AF053 /* DevicesViewModel.swift */,
+				EB7B8BF9253EF6110040B56E /* DevicesListView.swift */,
 			);
 			path = Devices;
 			sourceTree = "<group>";
@@ -281,7 +284,7 @@
 				EB71A1C6253E73CD0079F73A /* LISKit.xcdatamodeld */,
 				EB7B8BE7253EEDF60040B56E /* DeviceRepository.swift */,
 				EB7B8BEC253EEE660040B56E /* MemoryDeviceRepository.swift */,
-				EB7B8BF1253EF03C0040B56E /* BluetoothDevice+CBPeripheralDelegate.swift */,
+				EB7B8BF1253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift */,
 			);
 			path = LISKit;
 			sourceTree = "<group>";
@@ -732,7 +735,7 @@
 				EB7B8BED253EEE660040B56E /* MemoryDeviceRepository.swift in Sources */,
 				EB9B78B7253E062C00FCAB10 /* BluetoothDevice.swift in Sources */,
 				EB7B8BE8253EEDF60040B56E /* DeviceRepository.swift in Sources */,
-				EB7B8BF2253EF03C0040B56E /* BluetoothDevice+CBPeripheralDelegate.swift in Sources */,
+				EB7B8BF2253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift in Sources */,
 				EB71A1CE253E74E00079F73A /* ConnectionStatus.swift in Sources */,
 				EB71A1DE253E76E30079F73A /* LISDeviceEntity+ConnectionStatus.swift in Sources */,
 				EB71A1C8253E73CD0079F73A /* LISKit.xcdatamodeld in Sources */,
@@ -765,6 +768,7 @@
 				EBAFE43C253A114200BF8868 /* AppDelegate.swift in Sources */,
 				EBAFE43E253A114200BF8868 /* SceneDelegate.swift in Sources */,
 				EB9B78C5253E0CE700FCAB10 /* DeviceAddView.swift in Sources */,
+				EB7B8BFA253EF6110040B56E /* DevicesListView.swift in Sources */,
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
 				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,
 				EBAFE49D253A166A00BF8868 /* ActivityIndicator.swift in Sources */,
