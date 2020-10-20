@@ -1,0 +1,48 @@
+namespace LIS.Protocols;
+
+table Header {
+    delimeters:[string];
+    name:string;
+    serial_number:string;
+    processing_id:string;
+    fw_version:string;
+    timestamp:int64;
+}
+
+table Patient {
+    sequence_number:int;
+    patient_id:string;
+    location:string;
+}
+
+table Order {
+    sequence_number:int;
+    order_id:string;
+    test_type_name:string;
+    operator_id:string;
+    sample_type:string;
+}
+
+table Result {
+    sequence_number:int;
+    analyte_name:string;
+    test_value:string;
+    test_units:string;
+    reference_range:string;
+    test_flag:string;
+    test_result_type:string;
+    timestamp:int64;
+}
+
+table Comment {
+    sequence_number:int;
+    test_mode:string;
+}
+
+table TestResult {
+    header:Header;
+    patient:Patient;
+    orders:[Order];
+    results:[Result];
+    comments:[Comment];
+}

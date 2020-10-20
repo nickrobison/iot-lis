@@ -47,7 +47,7 @@ const (
 	ENQ HSTIMDelim = "\005"
 )
 
-func handleRequest(conn net.Conn) {
+func handleRequest(resultChan chan parser.HSTIMPayload, conn net.Conn) {
 	defer conn.Close()
 	// Since it's possible
 	for {
@@ -220,6 +220,8 @@ func handleRequest(conn net.Conn) {
 		if err := scanner.Err(); err != nil {
 			log.Error().Err(err).Msg("Cannot scan input")
 		}
+
+		resultChan <- payload
 	}
 }
 
@@ -240,6 +242,20 @@ func main() {
 		}
 	}()
 
+	resultChan := make(chan parser.HSTIMPayload)
+
+	go func() {
+		for {
+			res := <-resultChan
+			log.Debug().Msg("Have result")
+			msgBytes, err := SerializeToFlatBuffers(&res)
+			if err != nil {
+				log.Error().Err(err).Msg("")
+			}
+			log.Debug().Msgf("Message size: %d", len(*msgBytes))
+		}
+	}()
+
 	defer l.Close()
 	for {
 		conn, err := l.Accept()
@@ -247,6 +263,6 @@ func main() {
 			log.Err(err).Msg("Error")
 		}
 		log.Info().Msg("New request")
-		go handleRequest(conn)
+		go handleRequest(resultChan, conn)
 	}
 }
