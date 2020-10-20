@@ -52,24 +52,17 @@ func (rcv *TestResult) Patient(obj *Patient) *Patient {
 	return nil
 }
 
-func (rcv *TestResult) Orders(obj *Order, j int) bool {
+func (rcv *TestResult) Order(obj *Order) *Order {
 	o := flatbuffers.UOffsetT(rcv._tab.Offset(8))
 	if o != 0 {
-		x := rcv._tab.Vector(o)
-		x += flatbuffers.UOffsetT(j) * 4
-		x = rcv._tab.Indirect(x)
+		x := rcv._tab.Indirect(o + rcv._tab.Pos)
+		if obj == nil {
+			obj = new(Order)
+		}
 		obj.Init(rcv._tab.Bytes, x)
-		return true
+		return obj
 	}
-	return false
-}
-
-func (rcv *TestResult) OrdersLength() int {
-	o := flatbuffers.UOffsetT(rcv._tab.Offset(8))
-	if o != 0 {
-		return rcv._tab.VectorLen(o)
-	}
-	return 0
+	return nil
 }
 
 func (rcv *TestResult) Results(obj *Result, j int) bool {
@@ -121,11 +114,8 @@ func TestResultAddHeader(builder *flatbuffers.Builder, header flatbuffers.UOffse
 func TestResultAddPatient(builder *flatbuffers.Builder, patient flatbuffers.UOffsetT) {
 	builder.PrependUOffsetTSlot(1, flatbuffers.UOffsetT(patient), 0)
 }
-func TestResultAddOrders(builder *flatbuffers.Builder, orders flatbuffers.UOffsetT) {
-	builder.PrependUOffsetTSlot(2, flatbuffers.UOffsetT(orders), 0)
-}
-func TestResultStartOrdersVector(builder *flatbuffers.Builder, numElems int) flatbuffers.UOffsetT {
-	return builder.StartVector(4, numElems, 4)
+func TestResultAddOrder(builder *flatbuffers.Builder, order flatbuffers.UOffsetT) {
+	builder.PrependUOffsetTSlot(2, flatbuffers.UOffsetT(order), 0)
 }
 func TestResultAddResults(builder *flatbuffers.Builder, results flatbuffers.UOffsetT) {
 	builder.PrependUOffsetTSlot(3, flatbuffers.UOffsetT(results), 0)

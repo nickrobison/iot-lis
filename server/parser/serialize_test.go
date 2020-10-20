@@ -1,11 +1,10 @@
-package main
+package parser
 
 import (
 	"testing"
 	"time"
 
 	protocols "github.com/nickrobison/iot-lis/LIS/Protocols"
-	"github.com/nickrobison/iot-lis/parser"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -16,8 +15,8 @@ func TestSimpleSerialization(t *testing.T) {
 		t.Error("Cannot create timestamp")
 	}
 
-	p := parser.HSTIMPayload{}
-	p.Header = parser.HSTIMHeader{
+	p := HSTIMPayload{}
+	p.Header = HSTIMHeader{
 		[]string{"\\", "!", "-"},
 		"test-header",
 		"SN12345",
@@ -26,10 +25,31 @@ func TestSimpleSerialization(t *testing.T) {
 		tstamp,
 	}
 
-	p.Patient = parser.HSTIMPatient{
+	p.Patient = HSTIMPatient{
 		1,
 		"test-patient-1",
 		"test-location",
+	}
+
+	p.Order = HSTIMOrder{
+		1,
+		"test-order-1",
+		"test-name-test",
+		"test-operator",
+		'S',
+	}
+
+	p.Results = []HSTIMResult{
+		HSTIMResult{
+			1,
+			"Covid",
+			"mg/dl",
+			"nothing",
+			"",
+			"",
+			"",
+			tstamp,
+		},
 	}
 
 	b, err := SerializeToFlatBuffers(&p)
@@ -43,5 +63,6 @@ func TestSimpleSerialization(t *testing.T) {
 	// Try to parse out the timestamp
 	nTime := time.Unix(result.Header(nil).Timestamp(), 0)
 	assert.Equal(t, tstamp.Unix(), nTime.Unix(), "Timestamp should be equal")
-	assert.Equal(t, 0, result.OrdersLength(), "Should not have orders")
+	assert.Equal(t, 1, result.ResultsLength(), "Should have a single result")
+	assert.Equal(t, "test-operator", string(result.Order(nil).OperatorId()), "Should have operator")
 }

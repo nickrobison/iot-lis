@@ -1,13 +1,17 @@
-package main
+package parser
 
 import (
 	flatbuffers "github.com/google/flatbuffers/go"
 	protocols "github.com/nickrobison/iot-lis/LIS/Protocols"
-	"github.com/nickrobison/iot-lis/parser"
+	"github.com/rs/zerolog/log"
 )
 
 // SerializeToFlatBuffers serializes a payload to a flatbuffers byte array
-func SerializeToFlatBuffers(res *parser.HSTIMPayload) (*[]byte, error) {
+func SerializeToFlatBuffers(res *HSTIMPayload) (*[]byte, error) {
+	log.Debug().
+		Int("Orders", res.Order.SequenceNumber).
+		Int("Results", len(res.Results)).
+		Msg("Order information")
 	// Convert to flatbuffers
 	builder := flatbuffers.NewBuilder(1024)
 
@@ -20,6 +24,37 @@ func SerializeToFlatBuffers(res *parser.HSTIMPayload) (*[]byte, error) {
 	protocols.PatientAddPatientId(builder, patientID)
 	protocols.PatientAddLocation(builder, patientLoc)
 	patient := protocols.PatientEnd(builder)
+
+	// Build order
+	orderID := builder.CreateString(res.Order.OrderID)
+	typeName := builder.CreateString(res.Order.TestTypeName)
+	operatorID := builder.CreateString(res.Order.OperatorID)
+	sampleType := builder.CreateString(string(res.Order.SampleType))
+
+	protocols.OrderStart(builder)
+	protocols.OrderAddSequenceNumber(builder, int32(res.Order.SequenceNumber))
+	protocols.OrderAddOrderId(builder, orderID)
+	protocols.OrderAddTestTypeName(builder, typeName)
+	protocols.OrderAddOperatorId(builder, operatorID)
+	protocols.OrderAddSampleType(builder, sampleType)
+	order := protocols.OrderEnd(builder)
+
+	// Build results
+	results := make([]flatbuffers.UOffsetT, len(res.Results))
+	for idx, result := range res.Results {
+		aName := builder.CreateString(result.AnalyteName)
+		tValue := builder.CreateString(result.TestValue)
+		tUnits := builder.CreateString(result.TestUnits)
+		tRType := builder.CreateString(result.TestResultType)
+		protocols.ResultStart(builder)
+		protocols.ResultAddSequenceNumber(builder, int32(result.SequenceNumber))
+		protocols.ResultAddAnalyteName(builder, aName)
+		protocols.ResultAddTestValue(builder, tValue)
+		protocols.ResultAddTestUnits(builder, tUnits)
+		protocols.ResultAddTestResultType(builder, tRType)
+		protocols.ResultAddTimestamp(builder, result.Timestamp.Unix())
+		results[idx] = protocols.ResultEnd(builder)
+	}
 
 	// Build header
 	// TODO: We probably don't need to send the header on each test result.
@@ -46,9 +81,17 @@ func SerializeToFlatBuffers(res *parser.HSTIMPayload) (*[]byte, error) {
 	header := protocols.HeaderEnd(builder)
 
 	// Build the payload (add everything we've built so far)
+	protocols.TestResultStartResultsVector(builder, len(results))
+	for _, r := range results {
+		builder.PrependUOffsetT(r)
+	}
+	rOffset := builder.EndVector(len(results))
 	protocols.TestResultStart(builder)
 	protocols.TestResultAddHeader(builder, header)
 	protocols.TestResultAddPatient(builder, patient)
+	protocols.TestResultAddOrder(builder, order)
+	protocols.TestResultAddResults(builder, rOffset)
+
 	tResult := protocols.TestResultEnd(builder)
 	builder.Finish(tResult)
 	msgBytes := builder.FinishedBytes()

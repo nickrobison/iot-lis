@@ -1,16 +1,28 @@
 PODS:
+  - CombineExt (1.2.0)
   - FlatBuffers (0.8.0)
 
 DEPENDENCIES:
-  - FlatBuffers
+  - CombineExt
+  - FlatBuffers (from `https://github.com/mustiikhalil/flatbuffers.git`)
 
 SPEC REPOS:
   trunk:
-    - FlatBuffers
+    - CombineExt
+
+EXTERNAL SOURCES:
+  FlatBuffers:
+    :git: https://github.com/mustiikhalil/flatbuffers.git
+
+CHECKOUT OPTIONS:
+  FlatBuffers:
+    :commit: 988d19939213a07fc23ccc6060e17734d365f34f
+    :git: https://github.com/mustiikhalil/flatbuffers.git
 
 SPEC CHECKSUMS:
+  CombineExt: f6ad3c8e9a0c85f06e5c66ddd85eb32875d906d2
   FlatBuffers: cfae8f95023a5a03b1ce22b22f14436ada96a7a2
 
-PODFILE CHECKSUM: 3669261195bd13dd97cca6b543d7b75e3276ee59
+PODFILE CHECKSUM: 0473e3bb6fa21495d53a747a037180ef59fe4f95
 
 COCOAPODS: 1.10.0.rc.1

@@ -16,8 +16,8 @@ var (
 	TestSvcUUID = ble.MustParse("00010000-0001-1000-8000-00805F9B34FB")
 )
 
-// MakeBLE ...
-func MakeBLE() error {
+// MakeBLEService ...
+func MakeBLEService(resultChan chan []byte) error {
 	d, err := dev.NewDevice("default")
 	if err != nil {
 		return err
@@ -27,7 +27,7 @@ func MakeBLE() error {
 
 	testSrvc := ble.NewService(TestSvcUUID)
 	// Let's make a characteristic
-	e := NewEchoCharacteristic()
+	e := NewEchoCharacteristic(resultChan)
 	testSrvc.AddCharacteristic(e)
 
 	err = ble.AddService(testSrvc)

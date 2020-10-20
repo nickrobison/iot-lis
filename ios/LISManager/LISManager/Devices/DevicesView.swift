@@ -12,17 +12,21 @@ import SwiftUI
 
 
 struct DevicesView: View {
-    static let bm = BluetoothManager()
-    @ObservedObject private var repository = bm.deviceRepository
+    @EnvironmentObject var bm: BluetoothManager
+//    @ObservedObject private var repository: DeviceRepository
+    
+//    init() {
+//        self.repository = bm.deviceRepository
+//    }
     
     @State private var showAdd = false
     var body: some View {
         NavigationView {
             Group {
-                if repository.devices.isEmpty {
+                if bm.deviceRepository.devices.isEmpty {
                     Text("No registered devices")
                 } else {
-                    DevicesListView(devices: repository.devices)
+                    DevicesListView(devices: bm.deviceRepository.devices)
                 }
             }
             .navigationBarItems(trailing:
@@ -30,7 +34,7 @@ struct DevicesView: View {
                                         showAdd = true
                                     }, label: { Image(systemName: "plus")}))
             .sheet(isPresented: $showAdd, content: {
-                DeviceAddView(discoveredDevices: DevicesView.bm.discoverDevices, handler: self.handleSelection)
+                DeviceAddView(discoveredDevices: bm.discoverDevices, handler: self.handleSelection)
             })
             
         }
@@ -38,7 +42,7 @@ struct DevicesView: View {
     
     private func handleSelection(_ deviceID: String) {
         self.showAdd = false
-        DevicesView.bm.connect(toPeripheral: deviceID)
+        self.bm.connect(toPeripheral: deviceID)
         
     }
 }

@@ -42,7 +42,9 @@ table Comment {
 table TestResult {
     header:Header;
     patient:Patient;
-    orders:[Order];
+    order:Order;
     results:[Result];
     comments:[Comment];
 }
+
+root_type TestResult;

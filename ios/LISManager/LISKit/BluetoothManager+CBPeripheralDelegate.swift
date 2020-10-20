@@ -66,9 +66,14 @@ extension BluetoothManager : CBPeripheralDelegate {
         }
         
         // Try to read out the Flatbuffers value
-        let echo = LIS_Protocols_EchoSend.getRootAsEchoSend(bb: ByteBuffer(data: value))
+        let echo = LIS_Protocols_TestResult.getRootAsTestResult(bb: ByteBuffer(data: value))
         os_log("Message size: %d", log: logger, type: .debug, value.count)
-        os_log("Received value: `%s`", log: logger, type: .debug, echo.value!)
+        let hdr = echo.header
+        let ord = echo.order
+        let cnt = echo.resultsCount
+//        let nm = echo.results(at: 0)?.analyteName
+        os_log("Received value: `%s`", log: logger, type: .debug, ord?.orderId ?? "(nothing)")
+        self.resultsSubject.send(echo)
     }
 }
 

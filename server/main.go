@@ -234,25 +234,27 @@ func main() {
 		os.Exit(1)
 	}
 
+	resultChan := make(chan parser.HSTIMPayload)
+	msgChan := make(chan []byte)
+
 	go func() {
-		err := bluetooth.MakeBLE()
+		err := bluetooth.MakeBLEService(msgChan)
 		if err != nil {
 			log.Error().Err(err).Msg("BLE issue")
 			os.Exit(1)
 		}
 	}()
 
-	resultChan := make(chan parser.HSTIMPayload)
-
 	go func() {
 		for {
 			res := <-resultChan
 			log.Debug().Msg("Have result")
-			msgBytes, err := SerializeToFlatBuffers(&res)
+			msgBytes, err := parser.SerializeToFlatBuffers(&res)
 			if err != nil {
 				log.Error().Err(err).Msg("")
 			}
 			log.Debug().Msgf("Message size: %d", len(*msgBytes))
+			msgChan <- *msgBytes
 		}
 	}()
 

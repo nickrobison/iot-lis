@@ -12,6 +12,12 @@
 		8752770672A02E6BC063C095 /* Pods_LISKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */; };
 		9102B0C714D651D3AF3C1F1C /* Pods_LISManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7B4A69E9FD40422B1B0422 /* Pods_LISManagerTests.framework */; };
 		EAEFC289ED31A640013A1032 /* Pods_LISManager_LISManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAB3A002BCFBAA31E444A77 /* Pods_LISManager_LISManagerUITests.framework */; };
+		EB3D32F4253F51CD000F5A84 /* ResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D32F3253F51CD000F5A84 /* ResultsViewModel.swift */; };
+		EB3D3302253F68AF000F5A84 /* test_result_generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D3301253F68AF000F5A84 /* test_result_generated.swift */; };
+		EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D3306253F7D97000F5A84 /* Protocols+Extensions.swift */; };
+		EB3D330C253F7E45000F5A84 /* ResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D330B253F7E45000F5A84 /* ResultRow.swift */; };
+		EB3D3319253F86E1000F5A84 /* ResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D3318253F86E1000F5A84 /* ResultDetailView.swift */; };
+		EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB45ACBC253F2E9D00EC2D64 /* ResultsView.swift */; };
 		EB5D3427253DEB990076E30B /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EB700240253E27A1002AF053 /* DevicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70023F253E27A0002AF053 /* DevicesViewModel.swift */; };
 		EB71A1C8253E73CD0079F73A /* LISKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1C6253E73CD0079F73A /* LISKit.xcdatamodeld */; };
@@ -129,6 +135,12 @@
 		D35E4C8CB51A1399ED60467D /* Pods-LISKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKit.debug.xcconfig"; path = "Target Support Files/Pods-LISKit/Pods-LISKit.debug.xcconfig"; sourceTree = "<group>"; };
 		E871CE5A60AA96D670025006 /* Pods-LISManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.debug.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.debug.xcconfig"; sourceTree = "<group>"; };
 		EB1E3EA5253CBF4E0097AC63 /* LISManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LISManager.entitlements; sourceTree = "<group>"; };
+		EB3D32F3253F51CD000F5A84 /* ResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewModel.swift; sourceTree = "<group>"; };
+		EB3D3301253F68AF000F5A84 /* test_result_generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = test_result_generated.swift; path = LISKit/test_result_generated.swift; sourceTree = "<group>"; };
+		EB3D3306253F7D97000F5A84 /* Protocols+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocols+Extensions.swift"; sourceTree = "<group>"; };
+		EB3D330B253F7E45000F5A84 /* ResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRow.swift; sourceTree = "<group>"; };
+		EB3D3318253F86E1000F5A84 /* ResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailView.swift; sourceTree = "<group>"; };
+		EB45ACBC253F2E9D00EC2D64 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		EB70023F253E27A0002AF053 /* DevicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModel.swift; sourceTree = "<group>"; };
 		EB71A1C7253E73CD0079F73A /* LISKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LISKit.xcdatamodel; sourceTree = "<group>"; };
 		EB71A1CD253E74E00079F73A /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
@@ -254,6 +266,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EB45ACBB253F2E8800EC2D64 /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				EB45ACBC253F2E9D00EC2D64 /* ResultsView.swift */,
+				EB3D32F3253F51CD000F5A84 /* ResultsViewModel.swift */,
+				EB3D3306253F7D97000F5A84 /* Protocols+Extensions.swift */,
+				EB3D330B253F7E45000F5A84 /* ResultRow.swift */,
+				EB3D3318253F86E1000F5A84 /* ResultDetailView.swift */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
 		EB71A1CC253E748C0079F73A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,6 +327,7 @@
 		EBAFE42F253A114200BF8868 = {
 			isa = PBXGroup;
 			children = (
+				EB3D3301253F68AF000F5A84 /* test_result_generated.swift */,
 				EBB5D8A6253F24F800F87A04 /* echo_generated.swift */,
 				EBAFE43A253A114200BF8868 /* LISManager */,
 				EBAFE454253A114500BF8868 /* LISManagerTests */,
@@ -330,6 +355,7 @@
 		EBAFE43A253A114200BF8868 /* LISManager */ = {
 			isa = PBXGroup;
 			children = (
+				EB45ACBB253F2E8800EC2D64 /* Results */,
 				EB9B78BB253E066200FCAB10 /* Devices */,
 				EB1E3EA5253CBF4E0097AC63 /* LISManager.entitlements */,
 				EBAFE493253A160000BF8868 /* Elements */,
@@ -415,7 +441,7 @@
 			buildConfigurationList = EBA78C83253D0B100007B23C /* Build configuration list for PBXNativeTarget "LISKit" */;
 			buildPhases = (
 				087FCE665C36495C74491BA8 /* [CP] Check Pods Manifest.lock */,
-				EBB5D871253F1FB600F87A04 /* Run Script */,
+				EBB5D871253F1FB600F87A04 /* Compile Flatbuffers */,
 				EBA78C6D253D0B100007B23C /* Headers */,
 				EBA78C6E253D0B100007B23C /* Sources */,
 				EBA78C6F253D0B100007B23C /* Frameworks */,
@@ -729,7 +755,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EBB5D871253F1FB600F87A04 /* Run Script */ = {
+		EBB5D871253F1FB600F87A04 /* Compile Flatbuffers */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -738,16 +764,18 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/../../flatbuffers/echo.fbs",
+				"$(SRCROOT)/../../flatbuffers/test_result.fbs",
 			);
-			name = "Run Script";
+			name = "Compile Flatbuffers";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"$(SRCROOT)/LISKit/echo_generated.swift",
+				"$(SRCROOT)/LISKit/test_result_generated.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo $SCRIPT_INPUT_FILE_0\necho $SRCROOT\necho $DERIVED_FILE_DIR\nflatc --swift -o $SRCROOT/LISKit/ $SCRIPT_INPUT_FILE_0\n";
+			shellScript = "echo $SCRIPT_INPUT_FILE_0\necho $SRCROOT\necho $DERIVED_FILE_DIR\nflatc --swift -o $SRCROOT/LISKit/ $SCRIPT_INPUT_FILE_0\nflatc --swift -o $SRCROOT/LISKit/ $SCRIPT_INPUT_FILE_1\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -756,6 +784,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB3D3302253F68AF000F5A84 /* test_result_generated.swift in Sources */,
 				EBB5D8A7253F24F800F87A04 /* echo_generated.swift in Sources */,
 				EB7B8BED253EEE660040B56E /* MemoryDeviceRepository.swift in Sources */,
 				EB9B78B7253E062C00FCAB10 /* BluetoothDevice.swift in Sources */,
@@ -793,11 +822,16 @@
 				EBAFE43C253A114200BF8868 /* AppDelegate.swift in Sources */,
 				EBAFE43E253A114200BF8868 /* SceneDelegate.swift in Sources */,
 				EB9B78C5253E0CE700FCAB10 /* DeviceAddView.swift in Sources */,
+				EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */,
+				EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */,
 				EB7B8BFA253EF6110040B56E /* DevicesListView.swift in Sources */,
+				EB3D32F4253F51CD000F5A84 /* ResultsViewModel.swift in Sources */,
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
 				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,
 				EBAFE49D253A166A00BF8868 /* ActivityIndicator.swift in Sources */,
 				EB700240253E27A1002AF053 /* DevicesViewModel.swift in Sources */,
+				EB3D330C253F7E45000F5A84 /* ResultRow.swift in Sources */,
+				EB3D3319253F86E1000F5A84 /* ResultDetailView.swift in Sources */,
 				EBAFE440253A114200BF8868 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

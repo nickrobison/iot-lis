@@ -4,10 +4,7 @@ import (
 	"sync"
 	"time"
 
-	protocols "github.com/nickrobison/iot-lis/LIS/Protocols"
-
 	"github.com/go-ble/ble"
-	flatbuffers "github.com/google/flatbuffers/go"
 	"github.com/rs/zerolog/log"
 )
 
@@ -17,7 +14,7 @@ var (
 )
 
 // NewEchoCharacteristic ...
-func NewEchoCharacteristic() *ble.Characteristic {
+func NewEchoCharacteristic(resultChan chan []byte) *ble.Characteristic {
 	e := &echoChar{m: make(map[string]chan []byte)}
 	c := ble.NewCharacteristic(EchoCharUUID)
 	c.HandleWrite(ble.WriteHandlerFunc(e.writeHandler))
@@ -26,18 +23,44 @@ func NewEchoCharacteristic() *ble.Characteristic {
 	c.HandleIndicate(ble.NotifyHandlerFunc(e.echoHandler))
 
 	// Setup a timer to send test data every 10 seconds
-	ticker := time.NewTicker(5 * time.Second)
-	done := make(chan bool)
+	// ticker := time.NewTicker(5 * time.Second)
+	// done := make(chan bool)
+
+	// // Create a test timestamp
+	// tstamp, err := time.Parse(time.RFC3339, "2012-11-01T22:08:41+00:00")
+	// if err != nil {
+	// 	panic(err)
+	// }
+
+	// p := parser.HSTIMPayload{}
+	// p.Header = parser.HSTIMHeader{
+	// 	[]string{"\\", "!", "-"},
+	// 	"test-header",
+	// 	"SN12345",
+	// 	'P',
+	// 	"v1.2.34",
+	// 	tstamp,
+	// }
+
+	// p.Patient = parser.HSTIMPatient{
+	// 	1,
+	// 	"test-patient-1",
+	// 	"test-location",
+	// }
+
+	// b, _ := parser.SerializeToFlatBuffers(&p)
 
 	go func() {
 		for {
-			select {
-			case <-done:
-				return
-			case <-ticker.C:
-				log.Debug().Msg("Sending new data")
-				e.SendData("Hello from Go")
-			}
+			e.SendData(<-resultChan)
+			// select {
+			// case <-done:
+			// 	return
+			// case <-ticker.C:
+			// 	log.Debug().Msg("Sending new data")
+
+			// 	e.SendData(*b)
+			// }
 		}
 	}()
 
@@ -87,20 +110,11 @@ func (e *echoChar) echoHandler(req ble.Request, n ble.Notifier) {
 
 }
 
-func (e *echoChar) SendData(msg string) {
-
-	builder := flatbuffers.NewBuilder(1024)
-	builderMsg := builder.CreateString(msg)
-	protocols.EchoSendStart(builder)
-	protocols.EchoSendAddValue(builder, builderMsg)
-	echoMsg := protocols.EchoSendEnd(builder)
-	builder.Finish(echoMsg)
-	msgBytes := builder.FinishedBytes()
-
+func (e *echoChar) SendData(msg []byte) {
 	e.Lock()
 	defer e.Unlock()
 	for _, v := range e.m {
-		v <- msgBytes
+		v <- msg
 	}
 	log.Debug().Msg("Finished sending data")
 }
