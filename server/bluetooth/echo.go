@@ -4,9 +4,10 @@ import (
 	"sync"
 	"time"
 
+	protocols "github.com/nickrobison/iot-lis/LIS/Protocols"
+
 	"github.com/go-ble/ble"
 	flatbuffers "github.com/google/flatbuffers/go"
-	"github.com/nickrobison/iot-lis/protocols"
 	"github.com/rs/zerolog/log"
 )
 

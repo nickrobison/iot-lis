@@ -1,4 +1,4 @@
-namespace protocols;
+namespace LIS.Protocols;
 
 table EchoSend {
     value:string;

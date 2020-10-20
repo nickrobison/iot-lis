@@ -3,7 +3,8 @@
 ## Dev Dependencies
 
 ```bash
-brew install rbenv flatbuffers
+brew install rbenv
+brew install flatbuffers --HEAD # We need head until the Swift code settles down
 rbenv install
 gem install bundler
 bundler install

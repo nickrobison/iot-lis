@@ -71,3 +71,4 @@ iOSInjectionProject/
 
 .vscode/
 server/__*
+*_generated.swift

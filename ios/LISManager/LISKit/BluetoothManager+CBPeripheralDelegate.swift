@@ -9,6 +9,7 @@ import os
 import Foundation
 import CoreBluetooth
 import CoreData
+import FlatBuffers
 
 private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.BluetoothManager", category: "device")
 
@@ -63,8 +64,11 @@ extension BluetoothManager : CBPeripheralDelegate {
             os_log("No value received from device", log: logger, type: .error)
             return
         }
+        
+        // Try to read out the Flatbuffers value
+        let echo = LIS_Protocols_EchoSend.getRootAsEchoSend(bb: ByteBuffer(data: value))
         os_log("Message size: %d", log: logger, type: .debug, value.count)
-        os_log("Received value: `%s`", log: logger, type: .debug, String(decoding: value, as: UTF8.self))
+        os_log("Received value: `%s`", log: logger, type: .debug, echo.value!)
     }
 }
 
