@@ -31,8 +31,8 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
     
     private let connectionManager = CBCentralManager()
     private let iotListUUID = CBUUID(string: "00010000-0001-1000-8000-00805F9B34FB")
-    private var lisDevice: CBPeripheral?
     private let discoverSubject = PassthroughSubject<BluetoothDevice, Never>()
+    public var deviceRepository: DeviceRepository?
     
     
     public override init() {
@@ -47,9 +47,12 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
         if periphs.isEmpty {
             return
         }
-        lisDevice = periphs[0]
-        lisDevice!.delegate = self
-        connectionManager.connect(lisDevice!)
+        let periph = periphs[0]
+        let device = BluetoothDevice(periph)
+        deviceRepository?.addDevice(device)
+//        let device = LISDeviceEntity.create(fromPeripheral: periph)
+//        deviceMap[device.id!] = device
+        connectionManager.connect(periph)
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
@@ -85,61 +88,7 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
     
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         os_log("Connected to %s", log: logger, type: .debug, peripheral.name ?? "(unnamed)")
-        lisDevice!.discoverServices(nil)
-    }
-}
-
-extension BluetoothManager : CBPeripheralDelegate {
-    public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        os_log("Discovered services", log: logger, type: .debug)
-        guard let services = peripheral.services else {
-            return
-        }
-        
-        for service in services {
-            print("Service: \(service)")
-            peripheral.discoverCharacteristics(nil, for: service)
-        }
-    }
-    
-    public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        os_log("Discovered characteristics for %s", log: logger, type: .debug, service.description)
-        
-        guard let characteristics = service.characteristics else {
-            return
-        }
-        
-        for characteristic in characteristics {
-            print("Characteristic: \(characteristic)")
-            if characteristic.properties.contains(.read) {
-                print("\(characteristic.uuid): properties contains .read")
-                //                peripheral.readValue(for: characteristic)
-            }
-            if characteristic.properties.contains(.notify) {
-                print("\(characteristic.uuid): properties contains .notify")
-                os_log("Subscribing to notify")
-                peripheral.setNotifyValue(true, for: characteristic)
-                
-            }
-            if characteristic.properties.contains(.write) {
-                print("\(characteristic.uuid): properties contains .write")
-                os_log("Begin write", log: logger, type: .debug)
-                peripheral.writeValue("Hello Callie, love".data(using: .utf8)!, for: characteristic, type: .withResponse)
-                os_log("Finished write", log: logger, type: .debug)
-            }
-        }
-    }
-    
-    public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-//        guard let _ = error else {
-//            os_log("Error receiving from device: %s", log: logger, type: .error, error!.localizedDescription)
-//            return
-//        }
-        guard let value = characteristic.value else {
-            os_log("No value received from device", log: logger, type: .error)
-            return
-        }
-        os_log("Message size: %d", log: logger, type: .debug, value.count)
-        os_log("Received value: `%s`", log: logger, type: .debug, String(decoding: value, as: UTF8.self))
+        deviceRepository?.updateDeviceStatus(peripheral.identifier, status: .connected)
+//        lisDevice!.discoverServices(nil)
     }
 }

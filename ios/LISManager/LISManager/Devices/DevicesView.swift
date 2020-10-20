@@ -8,17 +8,12 @@
 import os
 import LISKit
 import SwiftUI
-import Combine
+
+
 
 struct DevicesView: View {
-    private var bm = BluetoothManager()
-    private var cancel: AnyCancellable?
-    var devices: [BluetoothDevice]
-    
-    init(devices: [BluetoothDevice]) {
-        self.devices = devices
-    }
-    
+    static let bm = BluetoothManager()
+    private let devices = bm.deviceRepository?.getDevices() ?? []
     
     @State private var showAdd = false
     var body: some View {
@@ -27,8 +22,10 @@ struct DevicesView: View {
                 if devices.isEmpty {
                     Text("No registered devices")
                 } else {
-                    ForEach(devices) { device in
-                        DeviceRow(device: device)
+                    ForEach(devices, id: \.id) { device in
+                        Text(device.name)
+                        //
+                        //                        DeviceRow(device: BluetoothDevice(id: device.id, name: device.name))
                     }
                 }
             }
@@ -39,7 +36,7 @@ struct DevicesView: View {
                                         showAdd = true
                                     }, label: { Image(systemName: "plus")}))
             .sheet(isPresented: $showAdd, content: {
-                DeviceAddView(discoveredDevices: bm.discoverDevices, handler: self.handleSelection)
+                DeviceAddView(discoveredDevices: DevicesView.bm.discoverDevices, handler: self.handleSelection)
             })
             
         }
@@ -49,7 +46,7 @@ struct DevicesView: View {
     
     private func handleSelection(_ deviceID: String) {
         self.showAdd = false
-        bm.connect(toPeripheral: deviceID)
+        DevicesView.bm.connect(toPeripheral: deviceID)
         
     }
 }
@@ -57,8 +54,8 @@ struct DevicesView: View {
 struct DevicesView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            DevicesView(devices: [])
-            DevicesView(devices: [BluetoothDevice(id: "111-2222-44545", name: "Test Device")])
+            //            DevicesView(devices: [])
+            //            DevicesView(devices: [BluetoothDevice(id: "111-2222-44545", name: "Test Device")])
         }
         
     }

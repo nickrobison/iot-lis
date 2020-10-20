@@ -14,7 +14,7 @@ struct MainView: View {
         TabView(selection: $selection) {
             Text("Tab Content 1")
                 .tabItem { Text("Home") }.tag(0)
-            DevicesView(devices: [])
+            DevicesView()
                 .tabItem { Text("Devices") }.tag(1)
         }
     }
