@@ -56,24 +56,31 @@ extension BluetoothManager : CBPeripheralDelegate {
     }
     
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        //        guard let _ = error else {
-        //            os_log("Error receiving from device: %s", log: logger, type: .error, error!.localizedDescription)
-        //            return
-        //        }
+        guard error == nil else {
+            os_log("Error receiving from device: %s", log: logger, type: .error, error!.localizedDescription)
+            return
+        }
         guard let value = characteristic.value else {
             os_log("No value received from device", log: logger, type: .error)
             return
         }
+        os_log("Received %d bytes of data", log: logger, type: .error, value.count)
+        
+        let decompressed = try? (value as NSData).decompressed(using: .lzma)
+        
+        guard let d2 = decompressed else {
+            os_log("Unable to decompress input stream", log: logger, type: .error)
+            return
+        }
         
         // Try to read out the Flatbuffers value
-        let echo = LIS_Protocols_TestResult.getRootAsTestResult(bb: ByteBuffer(data: value))
+        let echo = LIS_Protocols_TestResult.getRootAsTestResult(bb: ByteBuffer(data: d2 as Data))
         os_log("Message size: %d", log: logger, type: .debug, value.count)
-        let hdr = echo.header
         let ord = echo.order
-        let cnt = echo.resultsCount
-//        let nm = echo.results(at: 0)?.analyteName
-        os_log("Received value: `%s`", log: logger, type: .debug, ord?.orderId ?? "(nothing)")
+        os_log("Received value: `%s`", log: logger, type: .debug, ord!.testTypeName!)
         self.resultsSubject.send(echo)
     }
 }
+
+
 

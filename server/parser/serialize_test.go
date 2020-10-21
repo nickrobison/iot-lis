@@ -10,6 +10,7 @@ import (
 
 func TestSimpleSerialization(t *testing.T) {
 	// Create a test timestamp
+	
 	tstamp, err := time.Parse(time.RFC3339, "2012-11-01T22:08:41+00:00")
 	if err != nil {
 		t.Error("Cannot create timestamp")
@@ -65,4 +66,9 @@ func TestSimpleSerialization(t *testing.T) {
 	assert.Equal(t, tstamp.Unix(), nTime.Unix(), "Timestamp should be equal")
 	assert.Equal(t, 1, result.ResultsLength(), "Should have a single result")
 	assert.Equal(t, "test-operator", string(result.Order(nil).OperatorId()), "Should have operator")
+
+	// Try to read one of the results
+	singleResult := new(protocols.Result)
+	assert.True(t, result.Results(singleResult, 0), "Should have single result")
+	assert.Equal(t, "Covid", string(singleResult.AnalyteName()), "Should have correct name")
 }

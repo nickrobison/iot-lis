@@ -1,11 +1,13 @@
 package bluetooth
 
 import (
+	"bytes"
 	"sync"
 	"time"
 
 	"github.com/go-ble/ble"
 	"github.com/rs/zerolog/log"
+	"github.com/ulikunitz/xz/lzma"
 )
 
 var (
@@ -52,7 +54,26 @@ func NewEchoCharacteristic(resultChan chan []byte) *ble.Characteristic {
 
 	go func() {
 		for {
-			e.SendData(<-resultChan)
+			// Compress before sending
+			// Ideally, we'd use zlib, but Swift's decoder throws an error
+			// Apparently they compress using a different RFC
+			msg := <-resultChan
+			var b bytes.Buffer
+			z, err := lzma.NewWriter(&b)
+			if err != nil {
+				log.Error().Err(err).Msg("Cannot create lzma writer")
+				break
+			}
+			// z := zlib.NewWriter(&b)
+			z.Write(msg)
+			z.Close()
+
+			log.Debug().
+				Int("Original", len(msg)).
+				Int("compressed", len(b.Bytes())).
+				Msg("Compression completed")
+
+			e.SendData(b.Bytes())
 			// select {
 			// case <-done:
 			// 	return
