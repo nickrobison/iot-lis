@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import UIKit
 @testable import LISManager
 
 class LISManagerTests: XCTestCase {
@@ -22,11 +23,22 @@ class LISManagerTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
+    
+    func testImageDetection() throws {
+        guard let img = UIImage(named: "SampleUSDSForm") else {
+            fatalError("Cannot find image")
+        }
+        let reader = FormReader()
+        
         self.measure {
-            // Put the code you want to measure the time of here.
+            let expectation = self.expectation(description: #function)
+            var result: String?
+            reader.extractText(img) { value in
+                result = value
+                expectation.fulfill()
+            }
+            waitForExpectations(timeout: 10)
+            XCTAssertEqual(result?.count, 364)
         }
     }
 
