@@ -57,6 +57,9 @@
 		EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */; };
 		EBAFE4A7253A1B7900BF8868 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE4A6253A1B7900BF8868 /* LocationManager.swift */; };
 		EBB5D8A7253F24F800F87A04 /* echo_generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5D8A6253F24F800F87A04 /* echo_generated.swift */; };
+		EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDC8C2025409E5A00D69DAD /* PatientListView.swift */; };
+		EBDC8C2725409E8300D69DAD /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDC8C2625409E8300D69DAD /* BarcodeScanner.swift */; };
+		EBDC8C2F25409F7800D69DAD /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDC8C2E25409F7800D69DAD /* CameraViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +189,9 @@
 		EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInformation.swift; sourceTree = "<group>"; };
 		EBAFE4A6253A1B7900BF8868 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		EBB5D8A6253F24F800F87A04 /* echo_generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = echo_generated.swift; path = LISKit/echo_generated.swift; sourceTree = "<group>"; };
+		EBDC8C2025409E5A00D69DAD /* PatientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListView.swift; sourceTree = "<group>"; };
+		EBDC8C2625409E8300D69DAD /* BarcodeScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
+		EBDC8C2E25409F7800D69DAD /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +361,8 @@
 		EBAFE43A253A114200BF8868 /* LISManager */ = {
 			isa = PBXGroup;
 			children = (
+				EBDC8C2525409E7A00D69DAD /* Camera */,
+				EBDC8C1F25409E2F00D69DAD /* Patients */,
 				EB45ACBB253F2E8800EC2D64 /* Results */,
 				EB9B78BB253E066200FCAB10 /* Devices */,
 				EB1E3EA5253CBF4E0097AC63 /* LISManager.entitlements */,
@@ -420,6 +428,23 @@
 				EBAFE49C253A166A00BF8868 /* ActivityIndicator.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		EBDC8C1F25409E2F00D69DAD /* Patients */ = {
+			isa = PBXGroup;
+			children = (
+				EBDC8C2025409E5A00D69DAD /* PatientListView.swift */,
+			);
+			path = Patients;
+			sourceTree = "<group>";
+		};
+		EBDC8C2525409E7A00D69DAD /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				EBDC8C2625409E8300D69DAD /* BarcodeScanner.swift */,
+				EBDC8C2E25409F7800D69DAD /* CameraViewController.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -816,6 +841,7 @@
 				EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */,
 				EBAFE47E253A136700BF8868 /* PreferencesManager.swift in Sources */,
 				EBAFE4A7253A1B7900BF8868 /* LocationManager.swift in Sources */,
+				EBDC8C2725409E8300D69DAD /* BarcodeScanner.swift in Sources */,
 				EB9B78A6253E047600FCAB10 /* DevicesView.swift in Sources */,
 				EB9B7890253DF95100FCAB10 /* FormValidationHelpers.swift in Sources */,
 				EBAFE48F253A158B00BF8868 /* InitialOnboardingView.swift in Sources */,
@@ -825,6 +851,8 @@
 				EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */,
 				EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */,
 				EB7B8BFA253EF6110040B56E /* DevicesListView.swift in Sources */,
+				EBDC8C2F25409F7800D69DAD /* CameraViewController.swift in Sources */,
+				EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */,
 				EB3D32F4253F51CD000F5A84 /* ResultsViewModel.swift in Sources */,
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
 				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,

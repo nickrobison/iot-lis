@@ -24,14 +24,13 @@ struct MainView: View {
                     }
                 }.tag(0)
             
-            Text("Patients")
+            PatientListView()
                 .tabItem {
                     VStack {
                         Image(systemName: "rectangle.stack.person.crop.fill")
                         Text("Patients")
                     }
                 }.tag(1)
-            
             ResultsView(model: ResultsViewModel(publisher: bm.resultsSubject.eraseToAnyPublisher()))
                 .tabItem {
                     VStack {
