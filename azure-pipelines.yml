@@ -1,0 +1,29 @@
+pool:
+    vmImage: 'ubuntu-latest'
+
+stages:
+    - stage: Build
+      displayName: Build Source Code
+      jobs:
+        - job: Compile_Go
+          displayName: Compile Go Projects
+          steps:
+            - checkout: self
+              submodules: true
+              - task: GoTool@0
+              inputs:
+                version: '1.15.3'
+            - task: Go@0
+              inputs:
+                command: 'get'
+                arguments: '-d'
+                workingDirectory: '$(System.DefaultWorkingDirectory)/server'
+            - task: Go@0
+              inputs:
+                command: 'build'
+                workingDirectory: '$(System.DefaultWorkingDirectory)/server'
+            - task: Go@0
+              inputs:
+                command: 'test'
+                arguments: '-v'
+                workingDirectory: '$(System.DefaultWorkingDirectory)/server'
