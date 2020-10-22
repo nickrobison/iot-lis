@@ -59,11 +59,19 @@ class PatientAddModel: ObservableObject {
     private var cancellableSet: Set<AnyCancellable> = []
     
     private var isFormValidPublisher: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest4(stringNotEmpty(self.$firstName), stringNotEmpty(self.$lastName), isDemographicsValidPublisher, isAddressValidPublisher)
+        Publishers.CombineLatest3(isNameValid, isDemographicsValidPublisher, isAddressValidPublisher)
             .map{
-                $0 && $1 && $2 && $3
+                $0 && $1 && $2
         }
         .eraseToAnyPublisher()
+    }
+    
+    private var isNameValid: AnyPublisher<Bool, Never> {
+        Publishers.CombineLatest(stringNotEmpty(self.$firstName), stringNotEmpty(self.$lastName))
+            .map {
+                $0 && $1
+            }
+            .eraseToAnyPublisher()
     }
     
     private var isDemographicsValidPublisher: AnyPublisher<Bool, Never> {

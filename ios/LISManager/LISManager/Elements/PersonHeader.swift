@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PersonHeader: View {
     let name: PersonNameComponents
+    let id: String
     var body: some View {
         VStack(alignment: .leading){
             HStack {
@@ -18,9 +19,17 @@ struct PersonHeader: View {
                     Text(getFirstName()).font(.callout)
                 }
                 Spacer()
+                VStack {
+                    QRCodeView(msg: id)
+                        .frame(width: 100, height: 100)
+                    Text(id)
+                        .font(.caption)
+                        .fontWeight(.light)
+                        .italic()
+                }
             }
         }
-        .padding([.leading])
+        .padding([.leading, .trailing])
     }
     
     private func getLastName() -> String {
@@ -34,6 +43,6 @@ struct PersonHeader: View {
 
 struct PersonHeader_Previews: PreviewProvider {
     static var previews: some View {
-        PersonHeader(name: PersonNameComponentsFormatter().personNameComponents(from: "Nicholas Robison")!)
+        PersonHeader(name: PersonNameComponentsFormatter().personNameComponents(from: "Nicholas Robison")!, id: "8e5ef8c4")
     }
 }

@@ -23,6 +23,7 @@
 		EB6332082541E7C7002FFA25 /* InitialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6332072541E7C7002FFA25 /* InitialsView.swift */; };
 		EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB63320F2541EA00002FFA25 /* PersonHeader.swift */; };
 		EB6332152541EB68002FFA25 /* PatientEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */; };
+		EB6332252541EFBF002FFA25 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6332242541EFBE002FFA25 /* QRCodeView.swift */; };
 		EB700240253E27A1002AF053 /* DevicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70023F253E27A0002AF053 /* DevicesViewModel.swift */; };
 		EB71A1C8253E73CD0079F73A /* LISKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1C6253E73CD0079F73A /* LISKit.xcdatamodeld */; };
 		EB71A1CE253E74E00079F73A /* ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1CD253E74E00079F73A /* ConnectionStatus.swift */; };
@@ -157,6 +158,7 @@
 		EB6332072541E7C7002FFA25 /* InitialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialsView.swift; sourceTree = "<group>"; };
 		EB63320F2541EA00002FFA25 /* PersonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHeader.swift; sourceTree = "<group>"; };
 		EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientEntity+Extensions.swift"; sourceTree = "<group>"; };
+		EB6332242541EFBE002FFA25 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		EB70023F253E27A0002AF053 /* DevicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModel.swift; sourceTree = "<group>"; };
 		EB71A1C7253E73CD0079F73A /* LISKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LISKit.xcdatamodel; sourceTree = "<group>"; };
 		EB71A1CD253E74E00079F73A /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 				EBAFE49C253A166A00BF8868 /* ActivityIndicator.swift */,
 				EB6332072541E7C7002FFA25 /* InitialsView.swift */,
 				EB63320F2541EA00002FFA25 /* PersonHeader.swift */,
+				EB6332242541EFBE002FFA25 /* QRCodeView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -905,6 +908,7 @@
 				EB9B78C5253E0CE700FCAB10 /* DeviceAddView.swift in Sources */,
 				EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */,
 				EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */,
+				EB6332252541EFBF002FFA25 /* QRCodeView.swift in Sources */,
 				EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */,
 				EB7B8BFA253EF6110040B56E /* DevicesListView.swift in Sources */,
 				EBDC8C2F25409F7800D69DAD /* CameraViewController.swift in Sources */,

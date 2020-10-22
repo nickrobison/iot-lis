@@ -26,6 +26,7 @@ struct PatientListView: View {
                     Text("\(p.firstName!)-\(p.lastName!)")
 //                    PersonCellView(person: patient)
                 }
+                .isDetailLink(true)
             }
             .navigationBarTitle("Patients")
             .navigationBarItems(trailing:

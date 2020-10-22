@@ -21,14 +21,15 @@ enum CameraControllerError: Swift.Error {
     case unknown
 }
 
-class BarcodeScanner : NSObject, AVCaptureMetadataOutputObjectsDelegate {
+class BarcodeScanner : NSObject, AVCaptureMetadataOutputObjectsDelegate, ObservableObject {
+    @Published var barcode: String?
     var captureSession: AVCaptureSession?
     var camera: AVCaptureDevice?
     var cameraInput: AVCaptureDeviceInput?
     var previewLayer: AVCaptureVideoPreviewLayer?
-    var completionHandler: (String) -> Void
+    var completionHandler: ((String) -> Void)?
     
-    init(_ completionHandler: @escaping (String) -> Void) {
+    init(_ completionHandler: ((String) -> Void)?) {
         self.completionHandler = completionHandler
     }
     
@@ -117,7 +118,7 @@ class BarcodeScanner : NSObject, AVCaptureMetadataOutputObjectsDelegate {
             os_log("Received barcode value: %s", log: logger, type: .debug, stringValue)
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             self.captureSession?.stopRunning()
-            completionHandler(stringValue)
+            self.completionHandler?(stringValue)
         }
     }
 }
