@@ -1,6 +1,11 @@
 pool:
     vmImage: 'ubuntu-latest'
 
+variables:
+  scheme: ''
+  sdk: 'iphoneos'
+  configuration: 'Release'
+
 stages:
     - stage: Build
       displayName: Build Source Code
@@ -26,4 +31,15 @@ stages:
               inputs:
                 command: 'test'
                 arguments: '-v'
-                workingDirectory: '$(System.DefaultWorkingDirectory)/server'
+                workingDirectory: '$(modulePath)'
+        - job: Compile_iOS
+          displayName: Compile iOS Projects
+          steps:
+          - task: Xcode@5
+            inputs:
+              sdk: '$(sdk)'
+              scheme: '$(scheme)'
+              configuration: '$(configuration)'
+              xcodeVersion: '11' # Options: default, 10, 9, 8, specifyPath
+              exportPath: '$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
+              xcWorkspacePath: ios/LISManager/LISManager.xcworkspace
