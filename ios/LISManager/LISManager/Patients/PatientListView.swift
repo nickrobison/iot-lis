@@ -6,17 +6,46 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct PatientListView: View {
+    
+    @FetchRequest(
+        entity: PatientEntity.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \PatientEntity.lastName, ascending: true)]
+    )
+    var patients: FetchedResults<PatientEntity>
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @State private var showAdd = false
+    
     var body: some View {
-        CameraViewController()
-            .edgesIgnoringSafeArea(.top)
-        //        VStack{
-        //            Text("Hello patients")
-        //            Button("Scan something") {
-        //
-        //            }
-        //        }
+        NavigationView {
+            List(patients) { p in
+                Text("\(p.firstName!)-\(p.lastName!)")
+                //                Text(p.firstName)
+            }
+            .navigationBarTitle("Patients")
+            .navigationBarItems(trailing:
+                                    Button(action: {
+                                        debugPrint("clicked")
+                                        self.showAdd = true
+                                    }, label: { Image(systemName: "plus")}))
+        }
+        .sheet(isPresented: $showAdd, content: {
+            PatientAddView(completionHandler: self.addPatient)
+        })
+    }
+    
+    private func addPatient(patient: PatientModel) {
+        debugPrint("Patient")
+        do {
+            let e = patient.toEntity(self.managedObjectContext)
+            try self.managedObjectContext.save()
+        } catch {
+            debugPrint(error)
+        }
+        
     }
 }
 
