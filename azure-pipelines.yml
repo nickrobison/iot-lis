@@ -41,6 +41,9 @@ stages:
           pool:
             vmImage: 'macOS-10.15'
           steps:
+          - bash: |
+              brew install flatbuffers --HEAD
+            displayName: Install system dependencies
           - task: CocoaPods@0
             inputs:
               workingDirectory: 'ios/LISManager'
