@@ -10,7 +10,7 @@ stages:
           steps:
             - checkout: self
               submodules: true
-              - task: GoTool@0
+            - task: GoTool@0
               inputs:
                 version: '1.15.3'
             - task: Go@0
