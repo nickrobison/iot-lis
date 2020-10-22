@@ -41,6 +41,10 @@ stages:
           pool:
             vmImage: 'macOS-10.15'
           steps:
+          - task: CocoaPods@0
+            inputs:
+              workingDirectory: 'ios/LISManager'
+              forceRepoUpdate: false
           - task: Xcode@5
             inputs:
               sdk: '$(sdk)'
