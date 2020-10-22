@@ -2,7 +2,7 @@ pool:
     vmImage: 'ubuntu-latest'
 
 variables:
-  scheme: ''
+  scheme: 'LISManager'
   sdk: 'iphoneos'
   configuration: 'Release'
 
