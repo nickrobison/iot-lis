@@ -22,8 +22,10 @@ struct PatientListView: View {
     var body: some View {
         NavigationView {
             List(patients) { p in
-                Text("\(p.firstName!)-\(p.lastName!)")
-                //                Text(p.firstName)
+                NavigationLink(destination: PatientDetailView(patient: p)) {
+                    Text("\(p.firstName!)-\(p.lastName!)")
+//                    PersonCellView(person: patient)
+                }
             }
             .navigationBarTitle("Patients")
             .navigationBarItems(trailing:
@@ -40,7 +42,7 @@ struct PatientListView: View {
     private func addPatient(patient: PatientModel) {
         debugPrint("Patient")
         do {
-            let e = patient.toEntity(self.managedObjectContext)
+            _ = patient.toEntity(self.managedObjectContext)
             try self.managedObjectContext.save()
         } catch {
             debugPrint(error)

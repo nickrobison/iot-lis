@@ -7,13 +7,13 @@
         <attribute name="city" optional="YES" attributeType="String"/>
         <attribute name="firstName" optional="YES" attributeType="String"/>
         <attribute name="gender" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="String"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="sex" optional="YES" attributeType="String"/>
         <attribute name="state" optional="YES" attributeType="String"/>
         <attribute name="zip" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="28"/>
+        <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="208"/>
     </elements>
 </model>

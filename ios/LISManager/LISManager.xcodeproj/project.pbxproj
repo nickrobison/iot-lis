@@ -19,6 +19,10 @@
 		EB3D3319253F86E1000F5A84 /* ResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D3318253F86E1000F5A84 /* ResultDetailView.swift */; };
 		EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB45ACBC253F2E9D00EC2D64 /* ResultsView.swift */; };
 		EB5D3427253DEB990076E30B /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6331FD2541E770002FFA25 /* PatientDetailView.swift */; };
+		EB6332082541E7C7002FFA25 /* InitialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6332072541E7C7002FFA25 /* InitialsView.swift */; };
+		EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB63320F2541EA00002FFA25 /* PersonHeader.swift */; };
+		EB6332152541EB68002FFA25 /* PatientEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */; };
 		EB700240253E27A1002AF053 /* DevicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70023F253E27A0002AF053 /* DevicesViewModel.swift */; };
 		EB71A1C8253E73CD0079F73A /* LISKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1C6253E73CD0079F73A /* LISKit.xcdatamodeld */; };
 		EB71A1CE253E74E00079F73A /* ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1CD253E74E00079F73A /* ConnectionStatus.swift */; };
@@ -149,6 +153,10 @@
 		EB3D330B253F7E45000F5A84 /* ResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRow.swift; sourceTree = "<group>"; };
 		EB3D3318253F86E1000F5A84 /* ResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailView.swift; sourceTree = "<group>"; };
 		EB45ACBC253F2E9D00EC2D64 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		EB6331FD2541E770002FFA25 /* PatientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailView.swift; sourceTree = "<group>"; };
+		EB6332072541E7C7002FFA25 /* InitialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialsView.swift; sourceTree = "<group>"; };
+		EB63320F2541EA00002FFA25 /* PersonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHeader.swift; sourceTree = "<group>"; };
+		EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientEntity+Extensions.swift"; sourceTree = "<group>"; };
 		EB70023F253E27A0002AF053 /* DevicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModel.swift; sourceTree = "<group>"; };
 		EB71A1C7253E73CD0079F73A /* LISKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LISKit.xcdatamodel; sourceTree = "<group>"; };
 		EB71A1CD253E74E00079F73A /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
@@ -438,6 +446,8 @@
 			children = (
 				EBAFE494253A161200BF8868 /* FullscreenButton.swift */,
 				EBAFE49C253A166A00BF8868 /* ActivityIndicator.swift */,
+				EB6332072541E7C7002FFA25 /* InitialsView.swift */,
+				EB63320F2541EA00002FFA25 /* PersonHeader.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -456,6 +466,8 @@
 				EBDC8C2025409E5A00D69DAD /* PatientListView.swift */,
 				EB856FD62541B9D2008996F6 /* PatientAddView.swift */,
 				EB856FDE2541B9F8008996F6 /* PatientAddModel.swift */,
+				EB6331FD2541E770002FFA25 /* PatientDetailView.swift */,
+				EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */,
 			);
 			path = Patients;
 			sourceTree = "<group>";
@@ -572,6 +584,7 @@
 				EBAFE458253A114500BF8868 /* Sources */,
 				EBAFE459253A114500BF8868 /* Frameworks */,
 				EBAFE45A253A114500BF8868 /* Resources */,
+				48566301C3FA9D3B878F6EDD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -697,6 +710,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48566301C3FA9D3B878F6EDD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LISManager-LISManagerUITests/Pods-LISManager-LISManagerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LISManager-LISManagerUITests/Pods-LISManager-LISManagerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LISManager-LISManagerUITests/Pods-LISManager-LISManagerUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4F8321D970651B0B980EFFA0 /* [CP] Check Pods Manifest.lock */ = {
@@ -860,6 +890,7 @@
 			files = (
 				EB9B788A253DF8C100FCAB10 /* LocationInformationViewModel.swift in Sources */,
 				EB9B7896253E026900FCAB10 /* MainView.swift in Sources */,
+				EB6332152541EB68002FFA25 /* PatientEntity+Extensions.swift in Sources */,
 				EB9B78BD253E06D000FCAB10 /* DeviceRow.swift in Sources */,
 				EBAFE495253A161200BF8868 /* FullscreenButton.swift in Sources */,
 				EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */,
@@ -872,6 +903,7 @@
 				EBAFE43C253A114200BF8868 /* AppDelegate.swift in Sources */,
 				EBAFE43E253A114200BF8868 /* SceneDelegate.swift in Sources */,
 				EB9B78C5253E0CE700FCAB10 /* DeviceAddView.swift in Sources */,
+				EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */,
 				EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */,
 				EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */,
 				EB7B8BFA253EF6110040B56E /* DevicesListView.swift in Sources */,
@@ -884,10 +916,12 @@
 				EBD24E112540CC42002A3E15 /* FormReader.swift in Sources */,
 				EBAFE49D253A166A00BF8868 /* ActivityIndicator.swift in Sources */,
 				EB856FDF2541B9F8008996F6 /* PatientAddModel.swift in Sources */,
+				EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */,
 				EB700240253E27A1002AF053 /* DevicesViewModel.swift in Sources */,
 				EB3D330C253F7E45000F5A84 /* ResultRow.swift in Sources */,
 				EB3D3319253F86E1000F5A84 /* ResultDetailView.swift in Sources */,
 				EBAFE440253A114200BF8868 /* ContentView.swift in Sources */,
+				EB6332082541E7C7002FFA25 /* InitialsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
