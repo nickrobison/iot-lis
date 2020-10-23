@@ -11,18 +11,15 @@ import LISKit
 struct ResultRow: View {
     
     let order: OrderEntity
-//    let result: ResultEntity
     
     var formatter: DateFormatter {
         let d = DateFormatter()
         d.dateFormat = "E, d MMM - y h:mm a"
-//        d.dateStyle = .long
         return d
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-//            Text("I'm a result").font(.title)
             HStack {
                 Text(order.sampleType!)
                 buildImage().font(.subheadline)
@@ -49,8 +46,19 @@ struct ResultRow: View {
     }
 }
 
-//struct ResultRow_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ResultRow(order: OrderInformation(orderID: "123-424", testType: "Covid2"), result: ResultInformation(resultType: "F", value: "positive", resultDate: Date()))
-//    }
-//}
+struct ResultRow_Previews: PreviewProvider {
+    static var previews: some View {
+        ResultRow(order: buildOrder())
+    }
+    
+    private static func buildOrder() -> OrderEntity {
+        let r = ResultEntity()
+        r.result = "positive"
+        r.resultDate = Date()
+        let o = OrderEntity()
+        o.addToResults(r)
+        o.orderID = "O123A"
+        o.sampleType = "SARS"
+        return o
+    }
+}
