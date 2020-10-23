@@ -31,20 +31,27 @@ struct MainView: View {
                         Text("Patients")
                     }
                 }.tag(1)
-            ResultsView(model: ResultsViewModel(publisher: bm.resultsSubject.eraseToAnyPublisher()))
+            SampleView()
+                .tabItem {
+                    VStack {
+                        Image(systemName: "doc.text")
+                        Text("Samples")
+                    }
+                }.tag(2)
+            ResultsView()
                 .tabItem {
                     VStack {
                         Image(systemName: "text.badge.checkmark")
                         Text("Results")
                     }
-                }.tag(2)
+                }.tag(3)
             DevicesView()
                 .tabItem {
                     VStack {
                         Image(systemName: "gear")
                         Text("Devices")
                     }
-                }.tag(3)
+                }.tag(4)
         }
     }
 }

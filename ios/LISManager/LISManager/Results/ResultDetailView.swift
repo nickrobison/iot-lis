@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ResultDetailView: View {
+    
     var body: some View {
-        Text("here are some detail")
+        Text("here are some details")
     }
 }
 

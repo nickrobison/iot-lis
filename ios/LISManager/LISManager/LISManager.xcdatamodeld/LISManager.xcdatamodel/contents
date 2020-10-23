@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="OrderEntity" representedClassName="OrderEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="operatorID" optional="YES" attributeType="String"/>
+        <attribute name="orderID" optional="YES" attributeType="String"/>
+        <attribute name="sampleType" optional="YES" attributeType="String"/>
+        <attribute name="testTypeName" optional="YES" attributeType="String"/>
+        <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="order" inverseEntity="ResultEntity"/>
+    </entity>
     <entity name="PatientEntity" representedClassName="PatientEntity" syncable="YES" codeGenerationType="class">
         <attribute name="address1" optional="YES" attributeType="String"/>
         <attribute name="address2" optional="YES" attributeType="String"/>
@@ -12,15 +19,39 @@
         <attribute name="sex" optional="YES" attributeType="String"/>
         <attribute name="state" optional="YES" attributeType="String"/>
         <attribute name="zip" optional="YES" attributeType="String"/>
+        <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="patient" inverseEntity="ResultEntity"/>
         <relationship name="samples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="patient" inverseEntity="SampleEntity"/>
+    </entity>
+    <entity name="ResultEntity" representedClassName="ResultEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="range" optional="YES" attributeType="String"/>
+        <attribute name="result" optional="YES" attributeType="String"/>
+        <attribute name="resultDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="resultType" optional="YES" attributeType="String"/>
+        <attribute name="testType" optional="YES" attributeType="String"/>
+        <attribute name="units" optional="YES" attributeType="String"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderEntity" inverseName="results" inverseEntity="OrderEntity"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientEntity" inverseName="results" inverseEntity="PatientEntity"/>
+        <relationship name="sample" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="result" inverseEntity="SampleEntity"/>
     </entity>
     <entity name="SampleEntity" representedClassName="SampleEntity" syncable="YES" codeGenerationType="class">
         <attribute name="cartridgeID" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientEntity" inverseName="samples" inverseEntity="PatientEntity"/>
+        <relationship name="result" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="sample" inverseEntity="ResultEntity"/>
+        <relationship name="timer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimerEntity" inverseName="sample" inverseEntity="TimerEntity"/>
+    </entity>
+    <entity name="TimerEntity" representedClassName="TimerEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="duration" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="running" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="started" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="sample" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="timer" inverseEntity="SampleEntity"/>
     </entity>
     <elements>
-        <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="223"/>
-        <element name="SampleEntity" positionX="-63" positionY="63" width="128" height="88"/>
+        <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="28"/>
+        <element name="ResultEntity" positionX="-54" positionY="81" width="128" height="193"/>
+        <element name="SampleEntity" positionX="-63" positionY="63" width="128" height="118"/>
+        <element name="TimerEntity" positionX="-45" positionY="99" width="128" height="103"/>
+        <element name="OrderEntity" positionX="-54" positionY="117" width="128" height="28"/>
     </elements>
 </model>

@@ -15,6 +15,8 @@ private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.Bluet
 
 public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableObject {
     
+    public static let resultNotification = Notification.Name("ResultNotification")
+    
     public var discoverDevices: AnyPublisher<BluetoothDevice, Never> {
         discoverSubject
             .handleEvents(receiveSubscription: { _ in
