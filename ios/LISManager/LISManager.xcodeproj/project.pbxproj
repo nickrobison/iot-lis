@@ -12,7 +12,9 @@
 		8752770672A02E6BC063C095 /* Pods_LISKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */; };
 		9102B0C714D651D3AF3C1F1C /* Pods_LISManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7B4A69E9FD40422B1B0422 /* Pods_LISManagerTests.framework */; };
 		EAEFC289ED31A640013A1032 /* Pods_LISManager_LISManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAB3A002BCFBAA31E444A77 /* Pods_LISManager_LISManagerUITests.framework */; };
-		EB3D32F4253F51CD000F5A84 /* ResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D32F3253F51CD000F5A84 /* ResultsViewModel.swift */; };
+		EB2297B72542279D002332AB /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297B62542279D002332AB /* SampleView.swift */; };
+		EB2297C025422998002332AB /* SampleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297BF25422998002332AB /* SampleCellView.swift */; };
+		EB2297D82543156C002332AB /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297D72543156C002332AB /* TimerView.swift */; };
 		EB3D3302253F68AF000F5A84 /* test_result_generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D3301253F68AF000F5A84 /* test_result_generated.swift */; };
 		EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D3306253F7D97000F5A84 /* Protocols+Extensions.swift */; };
 		EB3D330C253F7E45000F5A84 /* ResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D330B253F7E45000F5A84 /* ResultRow.swift */; };
@@ -65,6 +67,7 @@
 		EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */; };
 		EBAFE4A7253A1B7900BF8868 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE4A6253A1B7900BF8868 /* LocationManager.swift */; };
 		EBB5D8A7253F24F800F87A04 /* echo_generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5D8A6253F24F800F87A04 /* echo_generated.swift */; };
+		EBC5DD10254350E800637D42 /* ResultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC5DD0F254350E800637D42 /* ResultsManager.swift */; };
 		EBD24E112540CC42002A3E15 /* FormReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD24E102540CC42002A3E15 /* FormReader.swift */; };
 		EBD24E162540CD8C002A3E15 /* TestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBD24E152540CD8C002A3E15 /* TestAssets.xcassets */; };
 		EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDC8C2025409E5A00D69DAD /* PatientListView.swift */; };
@@ -148,7 +151,9 @@
 		D35E4C8CB51A1399ED60467D /* Pods-LISKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKit.debug.xcconfig"; path = "Target Support Files/Pods-LISKit/Pods-LISKit.debug.xcconfig"; sourceTree = "<group>"; };
 		E871CE5A60AA96D670025006 /* Pods-LISManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.debug.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.debug.xcconfig"; sourceTree = "<group>"; };
 		EB1E3EA5253CBF4E0097AC63 /* LISManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LISManager.entitlements; sourceTree = "<group>"; };
-		EB3D32F3253F51CD000F5A84 /* ResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewModel.swift; sourceTree = "<group>"; };
+		EB2297B62542279D002332AB /* SampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
+		EB2297BF25422998002332AB /* SampleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCellView.swift; sourceTree = "<group>"; };
+		EB2297D72543156C002332AB /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		EB3D3301253F68AF000F5A84 /* test_result_generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = test_result_generated.swift; path = LISKit/test_result_generated.swift; sourceTree = "<group>"; };
 		EB3D3306253F7D97000F5A84 /* Protocols+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocols+Extensions.swift"; sourceTree = "<group>"; };
 		EB3D330B253F7E45000F5A84 /* ResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRow.swift; sourceTree = "<group>"; };
@@ -207,6 +212,7 @@
 		EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInformation.swift; sourceTree = "<group>"; };
 		EBAFE4A6253A1B7900BF8868 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		EBB5D8A6253F24F800F87A04 /* echo_generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = echo_generated.swift; path = LISKit/echo_generated.swift; sourceTree = "<group>"; };
+		EBC5DD0F254350E800637D42 /* ResultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsManager.swift; sourceTree = "<group>"; };
 		EBD24E102540CC42002A3E15 /* FormReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormReader.swift; sourceTree = "<group>"; };
 		EBD24E152540CD8C002A3E15 /* TestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestAssets.xcassets; sourceTree = "<group>"; };
 		EBDC8C2025409E5A00D69DAD /* PatientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListView.swift; sourceTree = "<group>"; };
@@ -292,11 +298,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EB2297BB254228A8002332AB /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				EB2297B62542279D002332AB /* SampleView.swift */,
+				EB2297BF25422998002332AB /* SampleCellView.swift */,
+				EB2297D72543156C002332AB /* TimerView.swift */,
+			);
+			path = Samples;
+			sourceTree = "<group>";
+		};
 		EB45ACBB253F2E8800EC2D64 /* Results */ = {
 			isa = PBXGroup;
 			children = (
 				EB45ACBC253F2E9D00EC2D64 /* ResultsView.swift */,
-				EB3D32F3253F51CD000F5A84 /* ResultsViewModel.swift */,
 				EB3D3306253F7D97000F5A84 /* Protocols+Extensions.swift */,
 				EB3D330B253F7E45000F5A84 /* ResultRow.swift */,
 				EB3D3318253F86E1000F5A84 /* ResultDetailView.swift */,
@@ -381,6 +396,7 @@
 		EBAFE43A253A114200BF8868 /* LISManager */ = {
 			isa = PBXGroup;
 			children = (
+				EB2297BB254228A8002332AB /* Samples */,
 				EBD24E1B2540CDA5002A3E15 /* Testing */,
 				EBDC8C2525409E7A00D69DAD /* Camera */,
 				EBDC8C1F25409E2F00D69DAD /* Patients */,
@@ -401,6 +417,7 @@
 				EBAFE4A6253A1B7900BF8868 /* LocationManager.swift */,
 				EB9B788F253DF95100FCAB10 /* FormValidationHelpers.swift */,
 				EB9B7895253E026900FCAB10 /* MainView.swift */,
+				EBC5DD0F254350E800637D42 /* ResultsManager.swift */,
 			);
 			path = LISManager;
 			sourceTree = "<group>";
@@ -895,11 +912,13 @@
 				EB9B7896253E026900FCAB10 /* MainView.swift in Sources */,
 				EB6332152541EB68002FFA25 /* PatientEntity+Extensions.swift in Sources */,
 				EB9B78BD253E06D000FCAB10 /* DeviceRow.swift in Sources */,
+				EB2297B72542279D002332AB /* SampleView.swift in Sources */,
 				EBAFE495253A161200BF8868 /* FullscreenButton.swift in Sources */,
 				EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */,
 				EBAFE47E253A136700BF8868 /* PreferencesManager.swift in Sources */,
 				EBAFE4A7253A1B7900BF8868 /* LocationManager.swift in Sources */,
 				EBDC8C2725409E8300D69DAD /* BarcodeScanner.swift in Sources */,
+				EB2297D82543156C002332AB /* TimerView.swift in Sources */,
 				EB9B78A6253E047600FCAB10 /* DevicesView.swift in Sources */,
 				EB9B7890253DF95100FCAB10 /* FormValidationHelpers.swift in Sources */,
 				EBAFE48F253A158B00BF8868 /* InitialOnboardingView.swift in Sources */,
@@ -912,8 +931,8 @@
 				EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */,
 				EB7B8BFA253EF6110040B56E /* DevicesListView.swift in Sources */,
 				EBDC8C2F25409F7800D69DAD /* CameraViewController.swift in Sources */,
+				EBC5DD10254350E800637D42 /* ResultsManager.swift in Sources */,
 				EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */,
-				EB3D32F4253F51CD000F5A84 /* ResultsViewModel.swift in Sources */,
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
 				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,
 				EB856FD72541B9D2008996F6 /* PatientAddView.swift in Sources */,
@@ -926,6 +945,7 @@
 				EB3D3319253F86E1000F5A84 /* ResultDetailView.swift in Sources */,
 				EBAFE440253A114200BF8868 /* ContentView.swift in Sources */,
 				EB6332082541E7C7002FFA25 /* InitialsView.swift in Sources */,
+				EB2297C025422998002332AB /* SampleCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

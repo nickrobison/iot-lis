@@ -30,8 +30,6 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
             .eraseToAnyPublisher()
     }
     
-    public let resultsSubject = ReplaySubject<LIS_Protocols_TestResult, Never>(bufferSize: 50)
-    
     private let connectionManager = CBCentralManager()
     private let iotListUUID = CBUUID(string: "00010000-0001-1000-8000-00805F9B34FB")
     private let discoverSubject = PassthroughSubject<BluetoothDevice, Never>()
