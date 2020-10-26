@@ -14,7 +14,7 @@ struct DevicesListView: View {
     public var showStatus = true
     var body: some View {
         List(devices) {device in
-            DeviceRow(device: device, showStatus: showStatus)
+            DeviceRow(device: device, showStatus: self.showStatus)
         }
     }
 }

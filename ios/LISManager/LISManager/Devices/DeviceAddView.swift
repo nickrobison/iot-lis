@@ -26,7 +26,7 @@ struct DeviceAddView: View {
                     DeviceRow(device: device)
                         .onTapGesture {
                             debugPrint("Selected by tap: \(device)")
-                            handler?(device.id)
+                            self.handler?(device.id)
                         }
                     Divider()
                 }
