@@ -31,10 +31,10 @@ struct DevicesView: View {
             }
             .navigationBarItems(trailing:
                                     Button(action: {
-                                        showAdd = true
+                                        self.showAdd = true
                                     }, label: { Image(systemName: "plus")}))
             .sheet(isPresented: $showAdd, content: {
-                DeviceAddView(discoveredDevices: bm.discoverDevices, handler: self.handleSelection)
+                DeviceAddView(discoveredDevices: self.bm.discoverDevices, handler: self.handleSelection)
             })
             
         }
@@ -47,12 +47,12 @@ struct DevicesView: View {
     }
 }
 
-struct DevicesView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            //            DevicesView(devices: [])
-            //            DevicesView(devices: [BluetoothDevice(id: "111-2222-44545", name: "Test Device")])
-        }
-        
-    }
-}
+//struct DevicesView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            //            DevicesView(devices: [])
+//            //            DevicesView(devices: [BluetoothDevice(id: "111-2222-44545", name: "Test Device")])
+//        }
+//
+//    }
+//}

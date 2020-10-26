@@ -24,7 +24,7 @@ struct PatientDetailView: View {
             PersonHeader(name: patient.nameComponent, id: patient.id!)
             Divider()
             Text("Samples")
-            List(samples) { _ in
+            List(samples, id: \.self) { _ in
                 Text("Sample")
             }
             Divider()
