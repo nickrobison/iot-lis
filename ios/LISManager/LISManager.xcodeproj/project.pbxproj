@@ -1309,7 +1309,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = AFDAA4C09191C39746EFF8DD /* Pods-LISManager-LISManagerUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LA5NXUEM2C;
@@ -1331,7 +1331,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C348A028A43B1C90FAC1F647 /* Pods-LISManager-LISManagerUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LA5NXUEM2C;
