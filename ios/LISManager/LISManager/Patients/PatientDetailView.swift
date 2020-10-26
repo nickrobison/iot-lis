@@ -34,7 +34,7 @@ struct PatientDetailView: View {
             Spacer()
         }
         .sheet(isPresented: $showAdd, content: {
-            makeCamera()
+            self.makeCamera()
         })
     }
     
