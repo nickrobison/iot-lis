@@ -6,16 +6,21 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct PatientDetailView: View {
     let patient: PatientEntity
     
-    @FetchRequest(
-        entity: SampleEntity.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \SampleEntity.cartridgeID, ascending: true)]
-    )
-    var samples: FetchedResults<SampleEntity>
+    var samples: FetchRequest<SampleEntity>
+    
+    init(patient: PatientEntity) {
+        self.patient = patient
+        self.samples = FetchRequest<SampleEntity>(
+            entity: SampleEntity.entity(),
+            sortDescriptors: [
+                NSSortDescriptor(keyPath: \SampleEntity.cartridgeID, ascending: true)],
+            predicate: NSPredicate(format: "ANY patient = %@", patient))
+    }
     
     @Environment(\.managedObjectContext) var managedObjectContext
     @State private var showAdd = false
@@ -23,18 +28,24 @@ struct PatientDetailView: View {
         VStack {
             PersonHeader(name: patient.nameComponent, id: patient.id!)
             Divider()
-            Text("Samples")
-            List(samples) { _ in
-                Text("Sample")
+            if (samples.wrappedValue.isEmpty) {
+                Text("No tests yet")
+                Spacer()
+            } else {
+                List(samples.wrappedValue) { _ in
+                    Text("Test")
+                }
             }
+            
             Divider()
-            Button("Add sample") {
+            Button("Add test") {
                 self.showAdd = true
             }
-            Spacer()
         }
+        .padding([.bottom])
         .sheet(isPresented: $showAdd, content: {
-            makeCamera()
+            TestFlowView()
+//            makeCamera()
         })
     }
     

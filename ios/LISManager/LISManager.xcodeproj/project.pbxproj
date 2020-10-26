@@ -12,6 +12,12 @@
 		8752770672A02E6BC063C095 /* Pods_LISKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */; };
 		9102B0C714D651D3AF3C1F1C /* Pods_LISManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C7B4A69E9FD40422B1B0422 /* Pods_LISManagerTests.framework */; };
 		EAEFC289ED31A640013A1032 /* Pods_LISManager_LISManagerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DAB3A002BCFBAA31E444A77 /* Pods_LISManager_LISManagerUITests.framework */; };
+		EB18F8D02547391A00745A59 /* TestFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F8CF2547391A00745A59 /* TestFlowView.swift */; };
+		EB18F8D52547472700745A59 /* InitialTestFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F8D42547472700745A59 /* InitialTestFlowView.swift */; };
+		EB18F8DD2547473700745A59 /* SampleScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F8DC2547473700745A59 /* SampleScanView.swift */; };
+		EB18F8EA2547476800745A59 /* PatientBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F8E92547476800745A59 /* PatientBarcodeView.swift */; };
+		EB18F8F72547477D00745A59 /* SampleBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F8F62547477D00745A59 /* SampleBarcodeView.swift */; };
+		EB18F8FC2547479500745A59 /* FinishTestFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F8FB2547479500745A59 /* FinishTestFlowView.swift */; };
 		EB2297B72542279D002332AB /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297B62542279D002332AB /* SampleView.swift */; };
 		EB2297C025422998002332AB /* SampleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297BF25422998002332AB /* SampleCellView.swift */; };
 		EB2297D82543156C002332AB /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297D72543156C002332AB /* TimerView.swift */; };
@@ -150,6 +156,12 @@
 		D3302260487A145EC202852F /* Pods-LISKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.debug.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D35E4C8CB51A1399ED60467D /* Pods-LISKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKit.debug.xcconfig"; path = "Target Support Files/Pods-LISKit/Pods-LISKit.debug.xcconfig"; sourceTree = "<group>"; };
 		E871CE5A60AA96D670025006 /* Pods-LISManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.debug.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.debug.xcconfig"; sourceTree = "<group>"; };
+		EB18F8CF2547391A00745A59 /* TestFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFlowView.swift; sourceTree = "<group>"; };
+		EB18F8D42547472700745A59 /* InitialTestFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialTestFlowView.swift; sourceTree = "<group>"; };
+		EB18F8DC2547473700745A59 /* SampleScanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleScanView.swift; sourceTree = "<group>"; };
+		EB18F8E92547476800745A59 /* PatientBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientBarcodeView.swift; sourceTree = "<group>"; };
+		EB18F8F62547477D00745A59 /* SampleBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBarcodeView.swift; sourceTree = "<group>"; };
+		EB18F8FB2547479500745A59 /* FinishTestFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishTestFlowView.swift; sourceTree = "<group>"; };
 		EB1E3EA5253CBF4E0097AC63 /* LISManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LISManager.entitlements; sourceTree = "<group>"; };
 		EB2297B62542279D002332AB /* SampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
 		EB2297BF25422998002332AB /* SampleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCellView.swift; sourceTree = "<group>"; };
@@ -298,6 +310,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EB18F8CE2547390200745A59 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				EB18F8CF2547391A00745A59 /* TestFlowView.swift */,
+				EB18F8D42547472700745A59 /* InitialTestFlowView.swift */,
+				EB18F8DC2547473700745A59 /* SampleScanView.swift */,
+				EB18F8E92547476800745A59 /* PatientBarcodeView.swift */,
+				EB18F8F62547477D00745A59 /* SampleBarcodeView.swift */,
+				EB18F8FB2547479500745A59 /* FinishTestFlowView.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		EB2297BB254228A8002332AB /* Samples */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,6 +421,7 @@
 		EBAFE43A253A114200BF8868 /* LISManager */ = {
 			isa = PBXGroup;
 			children = (
+				EB18F8CE2547390200745A59 /* Tests */,
 				EB2297BB254228A8002332AB /* Samples */,
 				EBD24E1B2540CDA5002A3E15 /* Testing */,
 				EBDC8C2525409E7A00D69DAD /* Camera */,
@@ -909,6 +935,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB9B788A253DF8C100FCAB10 /* LocationInformationViewModel.swift in Sources */,
+				EB18F8D52547472700745A59 /* InitialTestFlowView.swift in Sources */,
+				EB18F8F72547477D00745A59 /* SampleBarcodeView.swift in Sources */,
 				EB9B7896253E026900FCAB10 /* MainView.swift in Sources */,
 				EB6332152541EB68002FFA25 /* PatientEntity+Extensions.swift in Sources */,
 				EB9B78BD253E06D000FCAB10 /* DeviceRow.swift in Sources */,
@@ -927,6 +955,7 @@
 				EB9B78C5253E0CE700FCAB10 /* DeviceAddView.swift in Sources */,
 				EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */,
 				EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */,
+				EB18F8D02547391A00745A59 /* TestFlowView.swift in Sources */,
 				EB6332252541EFBF002FFA25 /* QRCodeView.swift in Sources */,
 				EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */,
 				EB7B8BFA253EF6110040B56E /* DevicesListView.swift in Sources */,
@@ -936,13 +965,16 @@
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
 				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,
 				EB856FD72541B9D2008996F6 /* PatientAddView.swift in Sources */,
+				EB18F8FC2547479500745A59 /* FinishTestFlowView.swift in Sources */,
 				EBD24E112540CC42002A3E15 /* FormReader.swift in Sources */,
 				EBAFE49D253A166A00BF8868 /* ActivityIndicator.swift in Sources */,
 				EB856FDF2541B9F8008996F6 /* PatientAddModel.swift in Sources */,
 				EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */,
 				EB700240253E27A1002AF053 /* DevicesViewModel.swift in Sources */,
+				EB18F8EA2547476800745A59 /* PatientBarcodeView.swift in Sources */,
 				EB3D330C253F7E45000F5A84 /* ResultRow.swift in Sources */,
 				EB3D3319253F86E1000F5A84 /* ResultDetailView.swift in Sources */,
+				EB18F8DD2547473700745A59 /* SampleScanView.swift in Sources */,
 				EBAFE440253A114200BF8868 /* ContentView.swift in Sources */,
 				EB6332082541E7C7002FFA25 /* InitialsView.swift in Sources */,
 				EB2297C025422998002332AB /* SampleCellView.swift in Sources */,
