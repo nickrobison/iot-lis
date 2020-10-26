@@ -31,7 +31,7 @@ struct MainView: View {
                         Text("Patients")
                     }
                 }.tag(1)
-            SampleView()
+            SampleListView()
                 .tabItem {
                     VStack {
                         Image(systemName: "doc.text")

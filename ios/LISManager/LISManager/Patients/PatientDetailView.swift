@@ -32,7 +32,7 @@ struct PatientDetailView: View {
                 Text("No tests yet")
                 Spacer()
             } else {
-                List(samples.wrappedValue) { _ in
+                List(samples.wrappedValue, id: \.self) { _ in
                     Text("Test")
                 }
             }
