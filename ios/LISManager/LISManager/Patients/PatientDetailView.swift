@@ -19,7 +19,7 @@ struct PatientDetailView: View {
             entity: SampleEntity.entity(),
             sortDescriptors: [
                 NSSortDescriptor(keyPath: \SampleEntity.cartridgeID, ascending: true)],
-            predicate: NSPredicate(format: "ANY patient = %@", patient))
+            predicate: NSPredicate(format: "patient = %@", patient))
     }
     
     @Environment(\.managedObjectContext) var managedObjectContext
@@ -44,8 +44,7 @@ struct PatientDetailView: View {
         }
         .padding([.bottom])
         .sheet(isPresented: $showAdd, content: {
-            TestFlowView()
-//            makeCamera()
+            TestFlowView(patient: patient, completionHandler: self.handleScan)
         })
     }
     

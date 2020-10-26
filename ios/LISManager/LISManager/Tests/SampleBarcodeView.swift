@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct SampleBarcodeView: View {
+    
+    let sampleID: String
+    
     var body: some View {
-        Text("Sample barcode")
+        VStack {
+            Text("Scan the sample ID")
+            QRCodeView(msg: sampleID)
+        }
     }
 }
 
 struct SampleBarcodeView_Previews: PreviewProvider {
     static var previews: some View {
-        SampleBarcodeView()
+        SampleBarcodeView(sampleID: "This is a sample ID, really cool, isn't it")
     }
 }

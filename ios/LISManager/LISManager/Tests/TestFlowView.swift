@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 enum TestFlowState: CaseIterable {
     case initial
@@ -16,29 +17,61 @@ enum TestFlowState: CaseIterable {
 }
 
 struct TestFlowView: View {
+    let patient: PatientEntity
     
     @State var testFlowState: TestFlowState = .initial
     @State private var stateIdx = 0
+    @State private var screenBrightness = CGFloat(0.0)
+    @State private var sampleID = ""
+    
+    var completionHandler: ((String) -> Void)?
     
     
     var body: some View {
+        VStack {
+            buildView().padding([.top])
+        }
+    }
+    
+    private func buildView() -> some View {
         VStack {
             Spacer()
             if (self.testFlowState == .initial) {
                 InitialTestFlowView()
             } else if (self.testFlowState == .sampleScan) {
-                SampleScanView()
+                SampleScanView(sampleID: $sampleID, testFlowState: $testFlowState)
             } else if (self.testFlowState == .patientID) {
-                PatientBarcodeView()
+                PatientBarcodeView(patientID: "123345")
             } else if (self.testFlowState == .sampleID) {
-                SampleBarcodeView()
+                SampleBarcodeView(sampleID: sampleID)
             } else if (self.testFlowState == .finish) {
                 FinishTestFlowView()
             }
             Spacer()
-            Button("Click me:") {
-                self.incrementState()
-            }
+            Button(self.buttonText(), action: self.handleClick)
+        }
+                .onAppear {
+                    // Stash the current brightness value
+                    self.screenBrightness = UIScreen.main.brightness
+                    UIScreen.main.brightness = CGFloat(1.0)
+                }
+                .onDisappear {
+                    UIScreen.main.brightness = self.screenBrightness
+                }
+    }
+    
+    private func buttonText() -> String {
+        guard self.testFlowState == .finish else {
+            return "Next"
+        }
+        return "Finish"
+    }
+    
+    private func handleClick() {
+        if (self.testFlowState == .finish) {
+            self.completionHandler?(self.sampleID)
+        } else {
+            self.incrementState()
         }
     }
     
@@ -50,6 +83,12 @@ struct TestFlowView: View {
 
 struct TestFlowView_Previews: PreviewProvider {
     static var previews: some View {
-        TestFlowView()
+        TestFlowView(patient: buildPatient())
+    }
+    
+    static func buildPatient() -> PatientEntity {
+        let e = PatientEntity()
+        e.id = "12345"
+        return e
     }
 }

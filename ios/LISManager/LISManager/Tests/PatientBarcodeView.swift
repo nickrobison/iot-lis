@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct PatientBarcodeView: View {
+    let patientID: String
     var body: some View {
-        Text("Patient barcode")
+        VStack {
+            Text("Scan the patient ID")
+            QRCodeView(msg: patientID)
+        }
     }
 }
 
 struct PatientBarcodeView_Previews: PreviewProvider {
     static var previews: some View {
-        PatientBarcodeView()
+        PatientBarcodeView(patientID: "8e5ef8c4")
     }
 }

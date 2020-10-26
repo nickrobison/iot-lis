@@ -8,13 +8,37 @@
 import SwiftUI
 
 struct SampleCellView: View {
+    let sample: SampleEntity
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack {
+                QRCodeView(msg: sample.cartridgeID!)
+                Text("I'm a sample")
+            }
+            Divider()
+            if (sample.timer != nil) {
+                TimerView(timer: sample.timer!)
+            } else {
+                EmptyView()
+            }
+        }
+        .border(Color.black)
     }
 }
 
 struct SampleCellView_Previews: PreviewProvider {
     static var previews: some View {
-        SampleCellView()
+        SampleCellView(sample: sampleSample(isRunning: false))
+    }
+    
+    static func sampleSample(isRunning: Bool) -> SampleEntity {
+        let e = SampleEntity()
+        
+        let t = TimerEntity()
+        t.running = isRunning
+        t.duration = 15
+        
+        e.timer = t
+        return e
     }
 }
