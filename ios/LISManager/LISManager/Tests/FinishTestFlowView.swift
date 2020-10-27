@@ -8,13 +8,38 @@
 import SwiftUI
 
 struct FinishTestFlowView: View {
+    
+    @Binding var readNow: Bool
+    @State private var wakeUp = Date()
+    
     var body: some View {
-        Text("I'm done")
+        VStack {
+            Text("Select test mode:")
+            Toggle(isOn: $readNow, label: {
+                Text("Read now?")
+            }).padding()
+            if readNow {
+                buildTimerSetup()
+            } else {
+                EmptyView()
+            }
+            
+        }
+    }
+    
+    private func buildTimerSetup() -> some View {
+        VStack {
+            Text("Start timer")
+            TimePicker(date: $wakeUp)
+        }
     }
 }
 
 struct FinishTestFlowView_Previews: PreviewProvider {
     static var previews: some View {
-        FinishTestFlowView()
+        Group {
+            FinishTestFlowView(readNow: .constant(true))
+            FinishTestFlowView(readNow: .constant(false))
+        }
     }
 }

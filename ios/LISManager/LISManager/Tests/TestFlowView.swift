@@ -17,14 +17,10 @@ enum TestFlowState: CaseIterable {
 }
 
 struct TestFlowView: View {
-    let patient: PatientEntity
-    
-    @State var testFlowState: TestFlowState = .initial
-    @State private var stateIdx = 0
+    @ObservedObject var model: TestFlowModel
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var screenBrightness = CGFloat(0.0)
-    @State private var sampleID = ""
-    
-    var completionHandler: ((String) -> Void)?
     
     
     var body: some View {
@@ -36,59 +32,60 @@ struct TestFlowView: View {
     private func buildView() -> some View {
         VStack {
             Spacer()
-            if (self.testFlowState == .initial) {
+            if (self.model.testFlowState == .initial) {
                 InitialTestFlowView()
-            } else if (self.testFlowState == .sampleScan) {
-                SampleScanView(sampleID: $sampleID, testFlowState: $testFlowState)
-            } else if (self.testFlowState == .patientID) {
-                PatientBarcodeView(patientID: "123345")
-            } else if (self.testFlowState == .sampleID) {
-                SampleBarcodeView(sampleID: sampleID)
-            } else if (self.testFlowState == .finish) {
-                FinishTestFlowView()
+            } else if (self.model.testFlowState == .sampleScan) {
+                SampleScanView(sampleID: self.$model.sampleID, testFlowState: self.$model.testFlowState, stateIdx: self.$model.stateIdx)
+            } else if (self.model.testFlowState == .patientID) {
+                PatientBarcodeView(patientID: self.model.patient.id!)
+            } else if (self.model.testFlowState == .sampleID) {
+                SampleBarcodeView(sampleID: self.model.sampleID)
+            } else if (self.model.testFlowState == .finish) {
+                FinishTestFlowView(readNow: self.$model.readNow)
             }
             Spacer()
             Button(self.buttonText(), action: self.handleClick)
         }
-                .onAppear {
-                    // Stash the current brightness value
-                    self.screenBrightness = UIScreen.main.brightness
-                    UIScreen.main.brightness = CGFloat(1.0)
-                }
-                .onDisappear {
-                    UIScreen.main.brightness = self.screenBrightness
-                }
+        .onAppear {
+            // Stash the current brightness value
+            self.screenBrightness = UIScreen.main.brightness
+            UIScreen.main.brightness = CGFloat(1.0)
+        }
+        .onDisappear {
+            UIScreen.main.brightness = self.screenBrightness
+        }
     }
     
     private func buttonText() -> String {
-        guard self.testFlowState == .finish else {
+        guard self.model.testFlowState == .finish else {
             return "Next"
         }
         return "Finish"
     }
     
     private func handleClick() {
-        if (self.testFlowState == .finish) {
-            self.completionHandler?(self.sampleID)
+        if (self.model.testFlowState == .finish) {
+            self.model.addSample()
+            self.presentationMode.wrappedValue.dismiss()
         } else {
             self.incrementState()
         }
     }
     
     private func incrementState() {
-        self.stateIdx += 1
-        self.testFlowState = TestFlowState.allCases[self.stateIdx]
+        self.model.stateIdx += 1
+        self.model.testFlowState = TestFlowModel.TestFlowState.allCases[self.model.stateIdx]
     }
 }
 
-struct TestFlowView_Previews: PreviewProvider {
-    static var previews: some View {
-        TestFlowView(patient: buildPatient())
-    }
-    
-    static func buildPatient() -> PatientEntity {
-        let e = PatientEntity()
-        e.id = "12345"
-        return e
-    }
-}
+//struct TestFlowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TestFlowView(model: TestFlowModel(), patient: buildPatient())
+//    }
+//
+//    static func buildPatient() -> PatientEntity {
+//        let e = PatientEntity()
+//        e.id = "12345"
+//        return e
+//    }
+//}

@@ -74,6 +74,8 @@
 		EBB5D8A7253F24F800F87A04 /* echo_generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5D8A6253F24F800F87A04 /* echo_generated.swift */; };
 		EBC5DD10254350E800637D42 /* ResultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC5DD0F254350E800637D42 /* ResultsManager.swift */; };
 		EBC76EA4254857B000D0B4B8 /* DeviceEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76EA3254857B000D0B4B8 /* DeviceEntity+Extensions.swift */; };
+		EBC76EC425489F0700D0B4B8 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76EC325489F0700D0B4B8 /* TimePicker.swift */; };
+		EBC76EC92548A12800D0B4B8 /* TestFlowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76EC82548A12800D0B4B8 /* TestFlowModel.swift */; };
 		EBD24E112540CC42002A3E15 /* FormReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD24E102540CC42002A3E15 /* FormReader.swift */; };
 		EBD24E162540CD8C002A3E15 /* TestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBD24E152540CD8C002A3E15 /* TestAssets.xcassets */; };
 		EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDC8C2025409E5A00D69DAD /* PatientListView.swift */; };
@@ -225,6 +227,8 @@
 		EBB5D8A6253F24F800F87A04 /* echo_generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = echo_generated.swift; sourceTree = "<group>"; };
 		EBC5DD0F254350E800637D42 /* ResultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsManager.swift; sourceTree = "<group>"; };
 		EBC76EA3254857B000D0B4B8 /* DeviceEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceEntity+Extensions.swift"; sourceTree = "<group>"; };
+		EBC76EC325489F0700D0B4B8 /* TimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		EBC76EC82548A12800D0B4B8 /* TestFlowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFlowModel.swift; sourceTree = "<group>"; };
 		EBD24E102540CC42002A3E15 /* FormReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormReader.swift; sourceTree = "<group>"; };
 		EBD24E152540CD8C002A3E15 /* TestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestAssets.xcassets; sourceTree = "<group>"; };
 		EBDC8C2025409E5A00D69DAD /* PatientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListView.swift; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 				EB18F8E92547476800745A59 /* PatientBarcodeView.swift */,
 				EB18F8F62547477D00745A59 /* SampleBarcodeView.swift */,
 				EB18F8FB2547479500745A59 /* FinishTestFlowView.swift */,
+				EBC76EC82548A12800D0B4B8 /* TestFlowModel.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 				EB6332072541E7C7002FFA25 /* InitialsView.swift */,
 				EB63320F2541EA00002FFA25 /* PersonHeader.swift */,
 				EB6332242541EFBE002FFA25 /* QRCodeView.swift */,
+				EBC76EC325489F0700D0B4B8 /* TimePicker.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -501,6 +507,7 @@
 		EBC76EA2254857A200D0B4B8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */,
 				EBC76EA3254857B000D0B4B8 /* DeviceEntity+Extensions.swift */,
 			);
 			path = Models;
@@ -521,7 +528,6 @@
 				EB856FD62541B9D2008996F6 /* PatientAddView.swift */,
 				EB856FDE2541B9F8008996F6 /* PatientAddModel.swift */,
 				EB6331FD2541E770002FFA25 /* PatientDetailView.swift */,
-				EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */,
 			);
 			path = Patients;
 			sourceTree = "<group>";
@@ -966,6 +972,7 @@
 				EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */,
 				EBC76EA4254857B000D0B4B8 /* DeviceEntity+Extensions.swift in Sources */,
 				EB18F8D02547391A00745A59 /* TestFlowView.swift in Sources */,
+				EBC76EC425489F0700D0B4B8 /* TimePicker.swift in Sources */,
 				EB6332252541EFBF002FFA25 /* QRCodeView.swift in Sources */,
 				EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */,
 				EBDC8C2F25409F7800D69DAD /* CameraViewController.swift in Sources */,
@@ -980,6 +987,7 @@
 				EB856FDF2541B9F8008996F6 /* PatientAddModel.swift in Sources */,
 				EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */,
 				EB18F8EA2547476800745A59 /* PatientBarcodeView.swift in Sources */,
+				EBC76EC92548A12800D0B4B8 /* TestFlowModel.swift in Sources */,
 				EB3D330C253F7E45000F5A84 /* ResultRow.swift in Sources */,
 				EB3D3319253F86E1000F5A84 /* ResultDetailView.swift in Sources */,
 				EB18F8DD2547473700745A59 /* SampleScanView.swift in Sources */,
