@@ -44,7 +44,7 @@ struct PatientDetailView: View {
         }
         .padding([.bottom])
         .sheet(isPresented: $showAdd, content: {
-            TestFlowView(patient: patient, completionHandler: self.handleScan)
+            TestFlowView(patient: self.patient, completionHandler: self.handleScan)
         })
     }
     
