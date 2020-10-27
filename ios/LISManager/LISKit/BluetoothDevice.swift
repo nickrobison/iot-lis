@@ -24,6 +24,6 @@ public class BluetoothDevice : NSObject, Identifiable {
         self.id = device.identifier.uuidString
         self.name = device.name ?? "(unnamed)"
         self.device = device
-        self.connectionStatus = .connected
+        self.connectionStatus = .disconnected
     }
 }
