@@ -19,7 +19,7 @@ struct SampleView: View {
     
     var body: some View {
         NavigationView {
-            ForEach(samples) { sample in
+            List(samples, id: \.cartridgeID) { sample in
                 SampleCellView(sample: sample)
             }
         }

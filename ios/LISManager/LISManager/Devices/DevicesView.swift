@@ -28,7 +28,7 @@ struct DevicesView: View {
                 if devices.isEmpty {
                     Text("No registered devices")
                 } else {
-                    List(devices) { device in
+                    List(devices, id: \.deviceID) { device in
                         DeviceRow(device: device.toDevice(), showStatus: true)
                     }
                 }
