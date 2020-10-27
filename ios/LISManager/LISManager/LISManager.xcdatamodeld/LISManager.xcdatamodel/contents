@@ -6,6 +6,11 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="device" inverseEntity="ResultEntity"/>
         <relationship name="samples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="device" inverseEntity="SampleEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="deviceID"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="OrderEntity" representedClassName="OrderEntity" syncable="YES" codeGenerationType="class">
         <attribute name="operatorID" optional="YES" attributeType="String"/>
