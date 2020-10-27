@@ -16,4 +16,9 @@ extension PatientEntity {
             return nc
         }
     }
+    
+    func unwrapSamples() -> SampleEntity {
+        let samples = self.samples?.allObjects as! [SampleEntity]
+        return samples.first!
+    }
 }

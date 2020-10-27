@@ -78,7 +78,7 @@ extension BluetoothManager : CBPeripheralDelegate {
         os_log("Message size: %d", log: logger, type: .debug, value.count)
         let ord = echo.order
         os_log("Received value: `%s`", log: logger, type: .debug, ord!.testTypeName!)
-        self.resultsSubject.send(echo)
+        NotificationCenter.default.post(name: BluetoothManager.resultNotification, object: echo)
     }
 }
 
