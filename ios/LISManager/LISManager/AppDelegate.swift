@@ -7,9 +7,19 @@
 
 import UIKit
 import CoreData
+import LISKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    lazy var bm: BluetoothManager = {
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let context = persistentContainer.viewContext
+        // Add the Bluetooth Manager
+        let bm = BluetoothManager()
+        bm.deviceRepository = CoreDataDeviceRepository(ctx: context)
+        return bm
+    }()
 
 
 
@@ -64,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            }
 //        })
         let container = NSPersistentContainer(name: "LISManager")
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

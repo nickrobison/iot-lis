@@ -21,12 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Get the managed object context from the shared persistent container.
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let bm = (UIApplication.shared.delegate as! AppDelegate).bm
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         // Add the Bluetooth Manager
         let rm = ResultsManager(ctx: context)
-        let bm = BluetoothManager()
         let contentView = ContentView().environment(\.managedObjectContext, context)
             .environmentObject(bm)
             .environmentObject(rm)
@@ -60,6 +60,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        (UIApplication.shared.delegate as? AppDelegate)?.bm.reconnect()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -68,6 +69,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
+        (UIApplication.shared.delegate as? AppDelegate)?.bm.shutdown()
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 

@@ -31,7 +31,7 @@ struct MainView: View {
                         Text("Patients")
                     }
                 }.tag(1)
-            SampleListView()
+            SampleView()
                 .tabItem {
                     VStack {
                         Image(systemName: "doc.text")
@@ -48,7 +48,7 @@ struct MainView: View {
             DevicesView()
                 .tabItem {
                     VStack {
-                        Image(systemName: "gear")
+                        Image(systemName: "lightbulb")
                         Text("Devices")
                     }
                 }.tag(4)

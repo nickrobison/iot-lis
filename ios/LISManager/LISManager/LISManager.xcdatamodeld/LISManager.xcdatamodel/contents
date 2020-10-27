@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DeviceEntity" representedClassName="DeviceEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="connectionStatusValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="deviceID" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="device" inverseEntity="ResultEntity"/>
+        <relationship name="samples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="device" inverseEntity="SampleEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="deviceID"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="OrderEntity" representedClassName="OrderEntity" syncable="YES" codeGenerationType="class">
         <attribute name="operatorID" optional="YES" attributeType="String"/>
         <attribute name="orderID" optional="YES" attributeType="String"/>
@@ -30,6 +42,7 @@
         <attribute name="resultType" optional="YES" attributeType="String"/>
         <attribute name="testType" optional="YES" attributeType="String"/>
         <attribute name="units" optional="YES" attributeType="String"/>
+        <relationship name="device" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DeviceEntity" inverseName="results" inverseEntity="DeviceEntity"/>
         <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderEntity" inverseName="results" inverseEntity="OrderEntity"/>
         <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientEntity" inverseName="results" inverseEntity="PatientEntity"/>
         <relationship name="sample" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="result" inverseEntity="SampleEntity"/>
@@ -37,6 +50,7 @@
     <entity name="SampleEntity" representedClassName="SampleEntity" syncable="YES" codeGenerationType="class">
         <attribute name="cartridgeID" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="device" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DeviceEntity" inverseName="samples" inverseEntity="DeviceEntity"/>
         <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientEntity" inverseName="samples" inverseEntity="PatientEntity"/>
         <relationship name="result" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="sample" inverseEntity="ResultEntity"/>
         <relationship name="timer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimerEntity" inverseName="sample" inverseEntity="TimerEntity"/>
@@ -48,10 +62,11 @@
         <relationship name="sample" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="timer" inverseEntity="SampleEntity"/>
     </entity>
     <elements>
-        <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="28"/>
-        <element name="ResultEntity" positionX="-54" positionY="81" width="128" height="193"/>
-        <element name="SampleEntity" positionX="-63" positionY="63" width="128" height="118"/>
-        <element name="TimerEntity" positionX="-45" positionY="99" width="128" height="103"/>
+        <element name="DeviceEntity" positionX="-54" positionY="117" width="128" height="118"/>
         <element name="OrderEntity" positionX="-54" positionY="117" width="128" height="28"/>
+        <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="28"/>
+        <element name="ResultEntity" positionX="-54" positionY="81" width="128" height="208"/>
+        <element name="SampleEntity" positionX="-63" positionY="63" width="128" height="133"/>
+        <element name="TimerEntity" positionX="-45" positionY="99" width="128" height="103"/>
     </elements>
 </model>

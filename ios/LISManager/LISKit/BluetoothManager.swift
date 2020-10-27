@@ -34,7 +34,7 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
     private let iotListUUID = CBUUID(string: "00010000-0001-1000-8000-00805F9B34FB")
     private let discoverSubject = PassthroughSubject<BluetoothDevice, Never>()
     
-    public var deviceRepository = MemoryDeviceRepository()
+    public var deviceRepository: DeviceRepository = MemoryDeviceRepository()
     
     
     public override init() {
@@ -89,5 +89,18 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
         os_log("Connected to %s", log: logger, type: .debug, peripheral.name ?? "(unnamed)")
         deviceRepository.updateDeviceStatus(peripheral.identifier, status: ConnectionStatus.connected)
         peripheral.discoverServices(nil)
+    }
+    
+    public func shutdown() {
+        os_log("Performing shutdown actions", log: logger, type: .debug)
+        self.deviceRepository.disconnectDevices()
+    }
+    
+    public func reconnect() {
+        os_log("Reconnecting devices", log: logger, type: .debug)
+        self.deviceRepository.getDevices().forEach { device in
+            os_log("Reconnecting to device: %s", log: logger, type: .debug, device.id)
+            self.connect(toPeripheral: device.id)
+        }
     }
 }
