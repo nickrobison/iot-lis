@@ -7,22 +7,28 @@
 
 import Foundation
 
-public class MemoryDeviceRepository: DeviceRepository {
+public class MemoryDeviceRepository: DeviceRepository, ObservableObject {
+    public typealias Device = BluetoothDevice
+    
+    public func getDevices() -> [Device] {
+        return devices
+    }
+    
     @Published
-    public var devices: [BluetoothDevice]
+    public var devices: [Device]
     
     init() {
         devices = []
     }
     
-    public func getDevice(id: UUID) -> BluetoothDevice? {
+    public func getDevice(id: UUID) -> Device? {
         
         return devices.first {
             $0.id == id.uuidString
         }
     }
     
-    public func addDevice(_ device: BluetoothDevice) {
+    public func addDevice(_ device: Device) {
         devices.append(device)
     }
     

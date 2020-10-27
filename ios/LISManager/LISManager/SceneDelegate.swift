@@ -27,6 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Add the Bluetooth Manager
         let rm = ResultsManager(ctx: context)
         let bm = BluetoothManager()
+        bm.deviceRepository = CoreDataDeviceRepository(ctx: context)
         let contentView = ContentView().environment(\.managedObjectContext, context)
             .environmentObject(bm)
             .environmentObject(rm)

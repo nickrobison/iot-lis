@@ -7,14 +7,29 @@
 
 import SwiftUI
 
-struct SampleListView: View {
+struct SampleView: View {
+    
+    @FetchRequest(
+        entity: SampleEntity.entity(),
+        sortDescriptors: []
+//        sortDescriptors: [
+//            NSSortDescriptor(keyPath: \SampleEntity.cartridgeID, ascending: true)]
+    )
+    var samples: FetchedResults<SampleEntity>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ForEach(samples) { sample in
+                SampleCellView(sample: sample)
+            }
+        }
     }
 }
 
-struct SampleListView_Previews: PreviewProvider {
+struct SampleView_Previews: PreviewProvider {
     static var previews: some View {
-        SampleListView()
+        SampleView()
     }
+    
+    
 }

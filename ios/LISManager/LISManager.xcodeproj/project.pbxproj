@@ -18,6 +18,7 @@
 		EB18F8EA2547476800745A59 /* PatientBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F8E92547476800745A59 /* PatientBarcodeView.swift */; };
 		EB18F8F72547477D00745A59 /* SampleBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F8F62547477D00745A59 /* SampleBarcodeView.swift */; };
 		EB18F8FC2547479500745A59 /* FinishTestFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F8FB2547479500745A59 /* FinishTestFlowView.swift */; };
+		EB18F9012547624800745A59 /* CoreDataDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F9002547624800745A59 /* CoreDataDeviceRepository.swift */; };
 		EB2297B72542279D002332AB /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297B62542279D002332AB /* SampleView.swift */; };
 		EB2297C025422998002332AB /* SampleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297BF25422998002332AB /* SampleCellView.swift */; };
 		EB2297D82543156C002332AB /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297D72543156C002332AB /* TimerView.swift */; };
@@ -32,14 +33,12 @@
 		EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB63320F2541EA00002FFA25 /* PersonHeader.swift */; };
 		EB6332152541EB68002FFA25 /* PatientEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */; };
 		EB6332252541EFBF002FFA25 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6332242541EFBE002FFA25 /* QRCodeView.swift */; };
-		EB700240253E27A1002AF053 /* DevicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB70023F253E27A0002AF053 /* DevicesViewModel.swift */; };
 		EB71A1C8253E73CD0079F73A /* LISKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1C6253E73CD0079F73A /* LISKit.xcdatamodeld */; };
 		EB71A1CE253E74E00079F73A /* ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1CD253E74E00079F73A /* ConnectionStatus.swift */; };
 		EB71A1DE253E76E30079F73A /* LISDeviceEntity+ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1DD253E76E30079F73A /* LISDeviceEntity+ConnectionStatus.swift */; };
 		EB7B8BE8253EEDF60040B56E /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BE7253EEDF60040B56E /* DeviceRepository.swift */; };
 		EB7B8BED253EEE660040B56E /* MemoryDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BEC253EEE660040B56E /* MemoryDeviceRepository.swift */; };
 		EB7B8BF2253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BF1253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift */; };
-		EB7B8BFA253EF6110040B56E /* DevicesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BF9253EF6110040B56E /* DevicesListView.swift */; };
 		EB856FD72541B9D2008996F6 /* PatientAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB856FD62541B9D2008996F6 /* PatientAddView.swift */; };
 		EB856FDF2541B9F8008996F6 /* PatientAddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB856FDE2541B9F8008996F6 /* PatientAddModel.swift */; };
 		EB856FEF2541C4BA008996F6 /* PatientAddTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB856FEE2541C4BA008996F6 /* PatientAddTests.swift */; };
@@ -74,6 +73,7 @@
 		EBAFE4A7253A1B7900BF8868 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAFE4A6253A1B7900BF8868 /* LocationManager.swift */; };
 		EBB5D8A7253F24F800F87A04 /* echo_generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBB5D8A6253F24F800F87A04 /* echo_generated.swift */; };
 		EBC5DD10254350E800637D42 /* ResultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC5DD0F254350E800637D42 /* ResultsManager.swift */; };
+		EBC76EA4254857B000D0B4B8 /* DeviceEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC76EA3254857B000D0B4B8 /* DeviceEntity+Extensions.swift */; };
 		EBD24E112540CC42002A3E15 /* FormReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD24E102540CC42002A3E15 /* FormReader.swift */; };
 		EBD24E162540CD8C002A3E15 /* TestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBD24E152540CD8C002A3E15 /* TestAssets.xcassets */; };
 		EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDC8C2025409E5A00D69DAD /* PatientListView.swift */; };
@@ -162,11 +162,12 @@
 		EB18F8E92547476800745A59 /* PatientBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientBarcodeView.swift; sourceTree = "<group>"; };
 		EB18F8F62547477D00745A59 /* SampleBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBarcodeView.swift; sourceTree = "<group>"; };
 		EB18F8FB2547479500745A59 /* FinishTestFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishTestFlowView.swift; sourceTree = "<group>"; };
+		EB18F9002547624800745A59 /* CoreDataDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDeviceRepository.swift; sourceTree = "<group>"; };
 		EB1E3EA5253CBF4E0097AC63 /* LISManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LISManager.entitlements; sourceTree = "<group>"; };
 		EB2297B62542279D002332AB /* SampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
 		EB2297BF25422998002332AB /* SampleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCellView.swift; sourceTree = "<group>"; };
 		EB2297D72543156C002332AB /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		EB3D3301253F68AF000F5A84 /* test_result_generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = test_result_generated.swift; path = LISKit/test_result_generated.swift; sourceTree = "<group>"; };
+		EB3D3301253F68AF000F5A84 /* test_result_generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_result_generated.swift; sourceTree = "<group>"; };
 		EB3D3306253F7D97000F5A84 /* Protocols+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocols+Extensions.swift"; sourceTree = "<group>"; };
 		EB3D330B253F7E45000F5A84 /* ResultRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultRow.swift; sourceTree = "<group>"; };
 		EB3D3318253F86E1000F5A84 /* ResultDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailView.swift; sourceTree = "<group>"; };
@@ -176,14 +177,12 @@
 		EB63320F2541EA00002FFA25 /* PersonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHeader.swift; sourceTree = "<group>"; };
 		EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientEntity+Extensions.swift"; sourceTree = "<group>"; };
 		EB6332242541EFBE002FFA25 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
-		EB70023F253E27A0002AF053 /* DevicesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewModel.swift; sourceTree = "<group>"; };
 		EB71A1C7253E73CD0079F73A /* LISKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LISKit.xcdatamodel; sourceTree = "<group>"; };
 		EB71A1CD253E74E00079F73A /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
 		EB71A1DD253E76E30079F73A /* LISDeviceEntity+ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LISDeviceEntity+ConnectionStatus.swift"; sourceTree = "<group>"; };
 		EB7B8BE7253EEDF60040B56E /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		EB7B8BEC253EEE660040B56E /* MemoryDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDeviceRepository.swift; sourceTree = "<group>"; };
 		EB7B8BF1253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager+CBPeripheralDelegate.swift"; sourceTree = "<group>"; };
-		EB7B8BF9253EF6110040B56E /* DevicesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesListView.swift; sourceTree = "<group>"; };
 		EB856FD62541B9D2008996F6 /* PatientAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAddView.swift; sourceTree = "<group>"; };
 		EB856FDE2541B9F8008996F6 /* PatientAddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAddModel.swift; sourceTree = "<group>"; };
 		EB856FEE2541C4BA008996F6 /* PatientAddTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAddTests.swift; sourceTree = "<group>"; };
@@ -223,8 +222,9 @@
 		EBAFE49C253A166A00BF8868 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInformation.swift; sourceTree = "<group>"; };
 		EBAFE4A6253A1B7900BF8868 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		EBB5D8A6253F24F800F87A04 /* echo_generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = echo_generated.swift; path = LISKit/echo_generated.swift; sourceTree = "<group>"; };
+		EBB5D8A6253F24F800F87A04 /* echo_generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = echo_generated.swift; sourceTree = "<group>"; };
 		EBC5DD0F254350E800637D42 /* ResultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsManager.swift; sourceTree = "<group>"; };
+		EBC76EA3254857B000D0B4B8 /* DeviceEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DeviceEntity+Extensions.swift"; sourceTree = "<group>"; };
 		EBD24E102540CC42002A3E15 /* FormReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormReader.swift; sourceTree = "<group>"; };
 		EBD24E152540CD8C002A3E15 /* TestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestAssets.xcassets; sourceTree = "<group>"; };
 		EBDC8C2025409E5A00D69DAD /* PatientListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientListView.swift; sourceTree = "<group>"; };
@@ -359,8 +359,7 @@
 				EB9B78A5253E047600FCAB10 /* DevicesView.swift */,
 				EB9B78BC253E06D000FCAB10 /* DeviceRow.swift */,
 				EB9B78C4253E0CE700FCAB10 /* DeviceAddView.swift */,
-				EB70023F253E27A0002AF053 /* DevicesViewModel.swift */,
-				EB7B8BF9253EF6110040B56E /* DevicesListView.swift */,
+				EB18F9002547624800745A59 /* CoreDataDeviceRepository.swift */,
 			);
 			path = Devices;
 			sourceTree = "<group>";
@@ -368,6 +367,8 @@
 		EBA78C73253D0B100007B23C /* LISKit */ = {
 			isa = PBXGroup;
 			children = (
+				EB3D3301253F68AF000F5A84 /* test_result_generated.swift */,
+				EBB5D8A6253F24F800F87A04 /* echo_generated.swift */,
 				EB71A1CC253E748C0079F73A /* Models */,
 				EBA78C74253D0B100007B23C /* LISKit.h */,
 				EBA78C75253D0B100007B23C /* Info.plist */,
@@ -393,8 +394,6 @@
 		EBAFE42F253A114200BF8868 = {
 			isa = PBXGroup;
 			children = (
-				EB3D3301253F68AF000F5A84 /* test_result_generated.swift */,
-				EBB5D8A6253F24F800F87A04 /* echo_generated.swift */,
 				EBAFE43A253A114200BF8868 /* LISManager */,
 				EBAFE454253A114500BF8868 /* LISManagerTests */,
 				EBAFE45F253A114500BF8868 /* LISManagerUITests */,
@@ -421,6 +420,7 @@
 		EBAFE43A253A114200BF8868 /* LISManager */ = {
 			isa = PBXGroup;
 			children = (
+				EBC76EA2254857A200D0B4B8 /* Models */,
 				EB18F8CE2547390200745A59 /* Tests */,
 				EB2297BB254228A8002332AB /* Samples */,
 				EBD24E1B2540CDA5002A3E15 /* Testing */,
@@ -496,6 +496,14 @@
 				EB6332242541EFBE002FFA25 /* QRCodeView.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		EBC76EA2254857A200D0B4B8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EBC76EA3254857B000D0B4B8 /* DeviceEntity+Extensions.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		EBD24E1B2540CDA5002A3E15 /* Testing */ = {
@@ -941,6 +949,7 @@
 				EB6332152541EB68002FFA25 /* PatientEntity+Extensions.swift in Sources */,
 				EB9B78BD253E06D000FCAB10 /* DeviceRow.swift in Sources */,
 				EB2297B72542279D002332AB /* SampleView.swift in Sources */,
+				EB18F9012547624800745A59 /* CoreDataDeviceRepository.swift in Sources */,
 				EBAFE495253A161200BF8868 /* FullscreenButton.swift in Sources */,
 				EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */,
 				EBAFE47E253A136700BF8868 /* PreferencesManager.swift in Sources */,
@@ -955,10 +964,10 @@
 				EB9B78C5253E0CE700FCAB10 /* DeviceAddView.swift in Sources */,
 				EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */,
 				EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */,
+				EBC76EA4254857B000D0B4B8 /* DeviceEntity+Extensions.swift in Sources */,
 				EB18F8D02547391A00745A59 /* TestFlowView.swift in Sources */,
 				EB6332252541EFBF002FFA25 /* QRCodeView.swift in Sources */,
 				EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */,
-				EB7B8BFA253EF6110040B56E /* DevicesListView.swift in Sources */,
 				EBDC8C2F25409F7800D69DAD /* CameraViewController.swift in Sources */,
 				EBC5DD10254350E800637D42 /* ResultsManager.swift in Sources */,
 				EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */,
@@ -970,7 +979,6 @@
 				EBAFE49D253A166A00BF8868 /* ActivityIndicator.swift in Sources */,
 				EB856FDF2541B9F8008996F6 /* PatientAddModel.swift in Sources */,
 				EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */,
-				EB700240253E27A1002AF053 /* DevicesViewModel.swift in Sources */,
 				EB18F8EA2547476800745A59 /* PatientBarcodeView.swift in Sources */,
 				EB3D330C253F7E45000F5A84 /* ResultRow.swift in Sources */,
 				EB3D3319253F86E1000F5A84 /* ResultDetailView.swift in Sources */,

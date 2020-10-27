@@ -13,20 +13,24 @@ import SwiftUI
 
 struct DevicesView: View {
     @EnvironmentObject var bm: BluetoothManager
-//    @ObservedObject private var repository: DeviceRepository
     
-//    init() {
-//        self.repository = bm.deviceRepository
-//    }
+    @FetchRequest(
+        entity: DeviceEntity.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \DeviceEntity.name, ascending: true)]
+    )
+    var devices: FetchedResults<DeviceEntity>
     
     @State private var showAdd = false
     var body: some View {
         NavigationView {
             Group {
-                if bm.deviceRepository.devices.isEmpty {
+                if devices.isEmpty {
                     Text("No registered devices")
                 } else {
-                    DevicesListView(devices: bm.deviceRepository.devices)
+                    List(devices) { device in
+                        DeviceRow(device: device.toDevice(), showStatus: true)
+                    }
                 }
             }
             .navigationBarItems(trailing:
