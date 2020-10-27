@@ -90,4 +90,17 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
         deviceRepository.updateDeviceStatus(peripheral.identifier, status: ConnectionStatus.connected)
         peripheral.discoverServices(nil)
     }
+    
+    public func shutdown() {
+        os_log("Performing shutdown actions", log: logger, type: .debug)
+        self.deviceRepository.disconnectDevices()
+    }
+    
+    public func reconnect() {
+        os_log("Reconnecting devices", log: logger, type: .debug)
+        self.deviceRepository.getDevices().forEach { device in
+            os_log("Reconnecting to device: %s", log: logger, type: .debug, device.id)
+            self.connect(toPeripheral: device.id)
+        }
+    }
 }

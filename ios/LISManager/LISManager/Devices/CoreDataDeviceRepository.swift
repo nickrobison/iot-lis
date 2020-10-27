@@ -23,11 +23,6 @@ class CoreDataDeviceRepository: DeviceRepository {
         self.devices = []
     }
     
-    deinit {
-        os_log("Disconnecting devices", log: logger, type: .debug)
-        self.disconnectDevices()
-    }
-    
     func getDevice(id: UUID) -> BluetoothDevice? {
         let req = NSFetchRequest<DeviceEntity>(entityName: "DeviceEntity")
         req.predicate = NSPredicate(format: "deviceID = %@", id.uuidString)
@@ -80,6 +75,13 @@ class CoreDataDeviceRepository: DeviceRepository {
         }
     }
     
+    func disconnectDevices() {
+        self.getDevices().forEach{ device in
+            os_log("Disconnecting: %s", log: logger, type: .debug, device.id)
+            self.updateDeviceStatus(UUID.init(uuidString: device.id)!, status: .disconnected)
+        }
+    }
+    
     private func loadDevices() {
         let req = NSFetchRequest<DeviceEntity>(entityName: "DeviceEntity")
         self.ctx.perform {
@@ -91,13 +93,6 @@ class CoreDataDeviceRepository: DeviceRepository {
             } catch {
                 os_log("Cannot fetch devices", log: logger, type: .error)
             }
-        }
-    }
-    
-    private func disconnectDevices() {
-        self.devices.forEach{ device in
-            // Disconnect here
-            self.updateDeviceStatus(UUID.init(uuidString: device.id)!, status: .disconnected)
         }
     }
 }

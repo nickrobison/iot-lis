@@ -36,4 +36,8 @@ public class MemoryDeviceRepository: DeviceRepository, ObservableObject {
         debugPrint("Setting status: \(status)")
         getDevice(id: id)?.connectionStatus = status
     }
+    
+    public func disconnectDevices() {
+        // Ignore for now
+    }
 }

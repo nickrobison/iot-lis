@@ -7,9 +7,19 @@
 
 import UIKit
 import CoreData
+import LISKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    lazy var bm: BluetoothManager = {
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let context = persistentContainer.viewContext
+        // Add the Bluetooth Manager
+        let bm = BluetoothManager()
+        bm.deviceRepository = CoreDataDeviceRepository(ctx: context)
+        return bm
+    }()
 
 
 
