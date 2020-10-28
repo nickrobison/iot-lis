@@ -49,8 +49,8 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
             return
         }
         let periph = periphs[0]
-        periph.delegate = self
         let device = BluetoothDevice(periph)
+        periph.delegate = device
         deviceRepository.addDevice(device)
 //        let device = LISDeviceEntity.create(fromPeripheral: periph)
 //        deviceMap[device.id!] = device

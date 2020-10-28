@@ -54,7 +54,7 @@ func (rcv *Order) TestTypeName() []byte {
 	return nil
 }
 
-func (rcv *Order) SampleType() []byte {
+func (rcv *Order) OperatorId() []byte {
 	o := flatbuffers.UOffsetT(rcv._tab.Offset(10))
 	if o != 0 {
 		return rcv._tab.ByteVector(o + rcv._tab.Pos)
@@ -62,8 +62,16 @@ func (rcv *Order) SampleType() []byte {
 	return nil
 }
 
+func (rcv *Order) SampleType() []byte {
+	o := flatbuffers.UOffsetT(rcv._tab.Offset(12))
+	if o != 0 {
+		return rcv._tab.ByteVector(o + rcv._tab.Pos)
+	}
+	return nil
+}
+
 func OrderStart(builder *flatbuffers.Builder) {
-	builder.StartObject(4)
+	builder.StartObject(5)
 }
 func OrderAddSequenceNumber(builder *flatbuffers.Builder, sequenceNumber int32) {
 	builder.PrependInt32Slot(0, sequenceNumber, 1)
@@ -74,8 +82,11 @@ func OrderAddOrderId(builder *flatbuffers.Builder, orderId flatbuffers.UOffsetT)
 func OrderAddTestTypeName(builder *flatbuffers.Builder, testTypeName flatbuffers.UOffsetT) {
 	builder.PrependUOffsetTSlot(2, flatbuffers.UOffsetT(testTypeName), 0)
 }
+func OrderAddOperatorId(builder *flatbuffers.Builder, operatorId flatbuffers.UOffsetT) {
+	builder.PrependUOffsetTSlot(3, flatbuffers.UOffsetT(operatorId), 0)
+}
 func OrderAddSampleType(builder *flatbuffers.Builder, sampleType flatbuffers.UOffsetT) {
-	builder.PrependUOffsetTSlot(3, flatbuffers.UOffsetT(sampleType), 0)
+	builder.PrependUOffsetTSlot(4, flatbuffers.UOffsetT(sampleType), 0)
 }
 func OrderEnd(builder *flatbuffers.Builder) flatbuffers.UOffsetT {
 	return builder.EndObject()
