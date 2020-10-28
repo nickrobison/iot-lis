@@ -428,7 +428,6 @@
 				EBC76EA2254857A200D0B4B8 /* Models */,
 				EB18F8CE2547390200745A59 /* Tests */,
 				EB2297BB254228A8002332AB /* Samples */,
-				EBD24E1B2540CDA5002A3E15 /* Testing */,
 				EBDC8C2525409E7A00D69DAD /* Camera */,
 				EBDC8C1F25409E2F00D69DAD /* Patients */,
 				EB45ACBB253F2E8800EC2D64 /* Results */,
@@ -464,6 +463,7 @@
 		EBAFE454253A114500BF8868 /* LISManagerTests */ = {
 			isa = PBXGroup;
 			children = (
+				EBD24E152540CD8C002A3E15 /* TestAssets.xcassets */,
 				EBAFE455253A114500BF8868 /* LISManagerTests.swift */,
 				EBAFE457253A114500BF8868 /* Info.plist */,
 				EB856FEE2541C4BA008996F6 /* PatientAddTests.swift */,
@@ -511,14 +511,6 @@
 				EBC76EA3254857B000D0B4B8 /* DeviceEntity+Extensions.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		EBD24E1B2540CDA5002A3E15 /* Testing */ = {
-			isa = PBXGroup;
-			children = (
-				EBD24E152540CD8C002A3E15 /* TestAssets.xcassets */,
-			);
-			path = Testing;
 			sourceTree = "<group>";
 		};
 		EBDC8C1F25409E2F00D69DAD /* Patients */ = {
@@ -1287,7 +1279,7 @@
 				CODE_SIGN_ENTITLEMENTS = LISManager/LISManager.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "LISManager/Testing LISManager/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "LISManager/Preview\\ Content";
 				DEVELOPMENT_TEAM = LA5NXUEM2C;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LISManager/Info.plist;
@@ -1312,7 +1304,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LISManager/LISManager.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "LISManager/Testing LISManager/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "LISManager/Preview\\ Content";
 				DEVELOPMENT_TEAM = LA5NXUEM2C;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = LISManager/Info.plist;

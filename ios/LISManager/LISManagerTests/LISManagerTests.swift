@@ -37,8 +37,8 @@ class LISManagerTests: XCTestCase {
                 result = value
                 expectation.fulfill()
             }
-            waitForExpectations(timeout: 10)
-            XCTAssertEqual(result?.count, 364)
+            waitForExpectations(timeout: 20)
+            XCTAssertNotNil(result)
         }
     }
 
