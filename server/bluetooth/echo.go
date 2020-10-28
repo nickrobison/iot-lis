@@ -2,6 +2,7 @@ package bluetooth
 
 import (
 	"bytes"
+	"io"
 	"sync"
 	"time"
 
@@ -24,34 +25,6 @@ func NewEchoCharacteristic(resultChan chan []byte) *ble.Characteristic {
 	c.HandleRead(ble.ReadHandlerFunc(e.readHandler))
 	c.HandleIndicate(ble.NotifyHandlerFunc(e.echoHandler))
 
-	// Setup a timer to send test data every 10 seconds
-	// ticker := time.NewTicker(5 * time.Second)
-	// done := make(chan bool)
-
-	// // Create a test timestamp
-	// tstamp, err := time.Parse(time.RFC3339, "2012-11-01T22:08:41+00:00")
-	// if err != nil {
-	// 	panic(err)
-	// }
-
-	// p := parser.HSTIMPayload{}
-	// p.Header = parser.HSTIMHeader{
-	// 	[]string{"\\", "!", "-"},
-	// 	"test-header",
-	// 	"SN12345",
-	// 	'P',
-	// 	"v1.2.34",
-	// 	tstamp,
-	// }
-
-	// p.Patient = parser.HSTIMPatient{
-	// 	1,
-	// 	"test-patient-1",
-	// 	"test-location",
-	// }
-
-	// b, _ := parser.SerializeToFlatBuffers(&p)
-
 	go func() {
 		for {
 			// Compress before sending
@@ -64,7 +37,6 @@ func NewEchoCharacteristic(resultChan chan []byte) *ble.Characteristic {
 				log.Error().Err(err).Msg("Cannot create lzma writer")
 				break
 			}
-			// z := zlib.NewWriter(&b)
 			z.Write(msg)
 			z.Close()
 
@@ -74,14 +46,6 @@ func NewEchoCharacteristic(resultChan chan []byte) *ble.Characteristic {
 				Msg("Compression completed")
 
 			e.SendData(b.Bytes())
-			// select {
-			// case <-done:
-			// 	return
-			// case <-ticker.C:
-			// 	log.Debug().Msg("Sending new data")
-
-			// 	e.SendData(*b)
-			// }
 		}
 	}()
 
@@ -122,13 +86,44 @@ func (e *echoChar) echoHandler(req ble.Request, n ble.Notifier) {
 		case <-time.After(time.Second * 20):
 			log.Info().Msg("timeout")
 		case msg := <-ch:
-			if _, err := n.Write(msg); err != nil {
+			err := e.transmitBytes(msg, n)
+			if err != nil {
 				log.Error().Err(err).Msgf("Cannot write %s", string(msg))
 				return
 			}
 		}
 	}
+}
 
+func (e *echoChar) transmitBytes(msg []byte, n ble.Notifier) error {
+
+	log.Debug().Msg("Transmitting bytes")
+	// 182 Bytes is the maximum we can send along the wire
+	transmitBuffer := make([]byte, 180)
+	bb := bytes.NewBuffer(msg)
+
+	for {
+		// Read into the transmit buffer, if you can
+		nBytes, err := bb.Read(transmitBuffer)
+		if err != nil {
+			// If we have EOF, then we're done.
+			if err == io.EOF {
+				break
+			}
+			return err
+		}
+		log.Debug().Int("bytes read:", nBytes).Msg("")
+		if _, err := n.Write(transmitBuffer[:nBytes]); err != nil {
+			return err
+		}
+	}
+
+	// Write EOT to signal no more packets
+	log.Debug().Msg("Writing EOT packet")
+	if _, err := n.Write([]byte("\004")); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (e *echoChar) SendData(msg []byte) {

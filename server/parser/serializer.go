@@ -66,16 +66,16 @@ func SerializeToFlatBuffers(res *HSTIMPayload) (*[]byte, error) {
 	// }
 	// delims := builder.EndVector(len(res.Header.Delimeters))
 
-	// headerName := builder.CreateString(res.Header.Name)
+	headerName := builder.CreateString(res.Header.Name)
 	headerSerialNumber := builder.CreateString(res.Header.SerialNumber)
-	// headerProcessingID := builder.CreateString(string(res.Header.ProcessingID))
-	// headerFWVersion := builder.CreateString(res.Header.FWVersion)
+	headerProcessingID := builder.CreateString(string(res.Header.ProcessingID))
+	headerFWVersion := builder.CreateString(res.Header.FWVersion)
 	protocols.HeaderStart(builder)
-	// protocols.HeaderAddName(builder, headerName)
+	protocols.HeaderAddName(builder, headerName)
 	protocols.HeaderAddSerialNumber(builder, headerSerialNumber)
 	// TODO: This should actually be a single byte
-	// protocols.HeaderAddProcessingId(builder, headerProcessingID)
-	// protocols.HeaderAddFwVersion(builder, headerFWVersion)
+	protocols.HeaderAddProcessingId(builder, headerProcessingID)
+	protocols.HeaderAddFwVersion(builder, headerFWVersion)
 	protocols.HeaderAddTimestamp(builder, res.Header.Timestamp.Unix())
 	// protocols.HeaderAddDelimeters(builder, delims)
 	header := protocols.HeaderEnd(builder)

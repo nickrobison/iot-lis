@@ -2,24 +2,24 @@ namespace LIS.Protocols;
 
 table Header {
     delimeters:[string];
-    // name:string;
+    name:string;
     serial_number:string;
-    // processing_id:string;
-    // fw_version:string;
+    processing_id:string;
+    fw_version:string;
     timestamp:int64;
 }
 
 table Patient {
     sequence_number:int = 1;
     patient_id:string;
-    // location:string;
+    location:string;
 }
 
 table Order {
     sequence_number:int = 1;
     order_id:string;
     test_type_name:string;
-    // operator_id:string;
+    operator_id:string;
     sample_type:string;
 }
 
@@ -44,7 +44,7 @@ table TestResult {
     patient:Patient;
     order:Order;
     results:[Result];
-    // comments:[Comment];
+    comments:[Comment];
 }
 
 root_type TestResult;
