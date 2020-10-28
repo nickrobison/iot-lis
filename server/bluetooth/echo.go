@@ -99,7 +99,7 @@ func (e *echoChar) transmitBytes(msg []byte, n ble.Notifier) error {
 
 	log.Debug().Msg("Transmitting bytes")
 	// 182 Bytes is the maximum we can send along the wire
-	transmitBuffer := make([]byte, 175)
+	transmitBuffer := make([]byte, 180)
 	bb := bytes.NewBuffer(msg)
 
 	for {

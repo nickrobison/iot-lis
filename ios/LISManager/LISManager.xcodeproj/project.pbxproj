@@ -38,7 +38,6 @@
 		EB71A1DE253E76E30079F73A /* LISDeviceEntity+ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1DD253E76E30079F73A /* LISDeviceEntity+ConnectionStatus.swift */; };
 		EB7B8BE8253EEDF60040B56E /* DeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BE7253EEDF60040B56E /* DeviceRepository.swift */; };
 		EB7B8BED253EEE660040B56E /* MemoryDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BEC253EEE660040B56E /* MemoryDeviceRepository.swift */; };
-		EB7B8BF2253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB7B8BF1253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift */; };
 		EB856FD72541B9D2008996F6 /* PatientAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB856FD62541B9D2008996F6 /* PatientAddView.swift */; };
 		EB856FDF2541B9F8008996F6 /* PatientAddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB856FDE2541B9F8008996F6 /* PatientAddModel.swift */; };
 		EB856FEF2541C4BA008996F6 /* PatientAddTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB856FEE2541C4BA008996F6 /* PatientAddTests.swift */; };
@@ -184,7 +183,6 @@
 		EB71A1DD253E76E30079F73A /* LISDeviceEntity+ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LISDeviceEntity+ConnectionStatus.swift"; sourceTree = "<group>"; };
 		EB7B8BE7253EEDF60040B56E /* DeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceRepository.swift; sourceTree = "<group>"; };
 		EB7B8BEC253EEE660040B56E /* MemoryDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryDeviceRepository.swift; sourceTree = "<group>"; };
-		EB7B8BF1253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BluetoothManager+CBPeripheralDelegate.swift"; sourceTree = "<group>"; };
 		EB856FD62541B9D2008996F6 /* PatientAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAddView.swift; sourceTree = "<group>"; };
 		EB856FDE2541B9F8008996F6 /* PatientAddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAddModel.swift; sourceTree = "<group>"; };
 		EB856FEE2541C4BA008996F6 /* PatientAddTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAddTests.swift; sourceTree = "<group>"; };
@@ -382,7 +380,6 @@
 				EB71A1C6253E73CD0079F73A /* LISKit.xcdatamodeld */,
 				EB7B8BE7253EEDF60040B56E /* DeviceRepository.swift */,
 				EB7B8BEC253EEE660040B56E /* MemoryDeviceRepository.swift */,
-				EB7B8BF1253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift */,
 			);
 			path = LISKit;
 			sourceTree = "<group>";
@@ -928,7 +925,6 @@
 				EB7B8BED253EEE660040B56E /* MemoryDeviceRepository.swift in Sources */,
 				EB9B78B7253E062C00FCAB10 /* BluetoothDevice.swift in Sources */,
 				EB7B8BE8253EEDF60040B56E /* DeviceRepository.swift in Sources */,
-				EB7B8BF2253EF03C0040B56E /* BluetoothManager+CBPeripheralDelegate.swift in Sources */,
 				EB71A1CE253E74E00079F73A /* ConnectionStatus.swift in Sources */,
 				EB71A1DE253E76E30079F73A /* LISDeviceEntity+ConnectionStatus.swift in Sources */,
 				EB71A1C8253E73CD0079F73A /* LISKit.xcdatamodeld in Sources */,
