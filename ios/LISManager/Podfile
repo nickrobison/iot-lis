@@ -23,7 +23,6 @@ target 'LISKit' do
   use_frameworks!
 
   pod 'FlatBuffers', :git => 'https://github.com/mustiikhalil/flatbuffers.git'
-  pod 'CombineExt'
 
   target 'LISKitTests' do
     inherit! :search_paths

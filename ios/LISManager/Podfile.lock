@@ -1,16 +1,13 @@
 PODS:
-  - CombineExt (1.2.0)
   - FlatBuffers (0.8.0)
   - xxHash-Swift (1.1.0)
 
 DEPENDENCIES:
-  - CombineExt
   - FlatBuffers (from `https://github.com/mustiikhalil/flatbuffers.git`)
   - xxHash-Swift
 
 SPEC REPOS:
   trunk:
-    - CombineExt
     - xxHash-Swift
 
 EXTERNAL SOURCES:
@@ -23,10 +20,9 @@ CHECKOUT OPTIONS:
     :git: https://github.com/mustiikhalil/flatbuffers.git
 
 SPEC CHECKSUMS:
-  CombineExt: f6ad3c8e9a0c85f06e5c66ddd85eb32875d906d2
   FlatBuffers: cfae8f95023a5a03b1ce22b22f14436ada96a7a2
   xxHash-Swift: 38fa4218ebae48ccbaaa4240c0cceec7ee2c7f87
 
-PODFILE CHECKSUM: c45a7c3fe9131232254c8b79db4db4ca6d9248fa
+PODFILE CHECKSUM: 571104dc551b08066d1aaa2b62807b6382eb527f
 
 COCOAPODS: 1.10.0.rc.1
