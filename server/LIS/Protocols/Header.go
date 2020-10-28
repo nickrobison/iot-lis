@@ -43,7 +43,7 @@ func (rcv *Header) DelimetersLength() int {
 	return 0
 }
 
-func (rcv *Header) Name() []byte {
+func (rcv *Header) SerialNumber() []byte {
 	o := flatbuffers.UOffsetT(rcv._tab.Offset(6))
 	if o != 0 {
 		return rcv._tab.ByteVector(o + rcv._tab.Pos)
@@ -51,32 +51,8 @@ func (rcv *Header) Name() []byte {
 	return nil
 }
 
-func (rcv *Header) SerialNumber() []byte {
-	o := flatbuffers.UOffsetT(rcv._tab.Offset(8))
-	if o != 0 {
-		return rcv._tab.ByteVector(o + rcv._tab.Pos)
-	}
-	return nil
-}
-
-func (rcv *Header) ProcessingId() []byte {
-	o := flatbuffers.UOffsetT(rcv._tab.Offset(10))
-	if o != 0 {
-		return rcv._tab.ByteVector(o + rcv._tab.Pos)
-	}
-	return nil
-}
-
-func (rcv *Header) FwVersion() []byte {
-	o := flatbuffers.UOffsetT(rcv._tab.Offset(12))
-	if o != 0 {
-		return rcv._tab.ByteVector(o + rcv._tab.Pos)
-	}
-	return nil
-}
-
 func (rcv *Header) Timestamp() int64 {
-	o := flatbuffers.UOffsetT(rcv._tab.Offset(14))
+	o := flatbuffers.UOffsetT(rcv._tab.Offset(8))
 	if o != 0 {
 		return rcv._tab.GetInt64(o + rcv._tab.Pos)
 	}
@@ -84,11 +60,11 @@ func (rcv *Header) Timestamp() int64 {
 }
 
 func (rcv *Header) MutateTimestamp(n int64) bool {
-	return rcv._tab.MutateInt64Slot(14, n)
+	return rcv._tab.MutateInt64Slot(8, n)
 }
 
 func HeaderStart(builder *flatbuffers.Builder) {
-	builder.StartObject(6)
+	builder.StartObject(3)
 }
 func HeaderAddDelimeters(builder *flatbuffers.Builder, delimeters flatbuffers.UOffsetT) {
 	builder.PrependUOffsetTSlot(0, flatbuffers.UOffsetT(delimeters), 0)
@@ -96,20 +72,11 @@ func HeaderAddDelimeters(builder *flatbuffers.Builder, delimeters flatbuffers.UO
 func HeaderStartDelimetersVector(builder *flatbuffers.Builder, numElems int) flatbuffers.UOffsetT {
 	return builder.StartVector(4, numElems, 4)
 }
-func HeaderAddName(builder *flatbuffers.Builder, name flatbuffers.UOffsetT) {
-	builder.PrependUOffsetTSlot(1, flatbuffers.UOffsetT(name), 0)
-}
 func HeaderAddSerialNumber(builder *flatbuffers.Builder, serialNumber flatbuffers.UOffsetT) {
-	builder.PrependUOffsetTSlot(2, flatbuffers.UOffsetT(serialNumber), 0)
-}
-func HeaderAddProcessingId(builder *flatbuffers.Builder, processingId flatbuffers.UOffsetT) {
-	builder.PrependUOffsetTSlot(3, flatbuffers.UOffsetT(processingId), 0)
-}
-func HeaderAddFwVersion(builder *flatbuffers.Builder, fwVersion flatbuffers.UOffsetT) {
-	builder.PrependUOffsetTSlot(4, flatbuffers.UOffsetT(fwVersion), 0)
+	builder.PrependUOffsetTSlot(1, flatbuffers.UOffsetT(serialNumber), 0)
 }
 func HeaderAddTimestamp(builder *flatbuffers.Builder, timestamp int64) {
-	builder.PrependInt64Slot(5, timestamp, 0)
+	builder.PrependInt64Slot(2, timestamp, 0)
 }
 func HeaderEnd(builder *flatbuffers.Builder) flatbuffers.UOffsetT {
 	return builder.EndObject()

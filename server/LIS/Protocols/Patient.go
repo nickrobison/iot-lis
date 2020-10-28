@@ -31,7 +31,7 @@ func (rcv *Patient) SequenceNumber() int32 {
 	if o != 0 {
 		return rcv._tab.GetInt32(o + rcv._tab.Pos)
 	}
-	return 0
+	return 1
 }
 
 func (rcv *Patient) MutateSequenceNumber(n int32) bool {
@@ -46,25 +46,14 @@ func (rcv *Patient) PatientId() []byte {
 	return nil
 }
 
-func (rcv *Patient) Location() []byte {
-	o := flatbuffers.UOffsetT(rcv._tab.Offset(8))
-	if o != 0 {
-		return rcv._tab.ByteVector(o + rcv._tab.Pos)
-	}
-	return nil
-}
-
 func PatientStart(builder *flatbuffers.Builder) {
-	builder.StartObject(3)
+	builder.StartObject(2)
 }
 func PatientAddSequenceNumber(builder *flatbuffers.Builder, sequenceNumber int32) {
-	builder.PrependInt32Slot(0, sequenceNumber, 0)
+	builder.PrependInt32Slot(0, sequenceNumber, 1)
 }
 func PatientAddPatientId(builder *flatbuffers.Builder, patientId flatbuffers.UOffsetT) {
 	builder.PrependUOffsetTSlot(1, flatbuffers.UOffsetT(patientId), 0)
-}
-func PatientAddLocation(builder *flatbuffers.Builder, location flatbuffers.UOffsetT) {
-	builder.PrependUOffsetTSlot(2, flatbuffers.UOffsetT(location), 0)
 }
 func PatientEnd(builder *flatbuffers.Builder) flatbuffers.UOffsetT {
 	return builder.EndObject()

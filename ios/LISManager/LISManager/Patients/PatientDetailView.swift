@@ -27,7 +27,7 @@ struct PatientDetailView: View {
                 Text("No tests yet")
                 Spacer()
             } else {
-                List(patient.samplesAsArray(), id: \.self) { _ in
+                List(patient.samplesAsArray()) { _ in
                     Text("Test")
                 }
             }
@@ -37,7 +37,7 @@ struct PatientDetailView: View {
                 Text("No results yet")
                 Spacer()
             } else {
-                List(patient.ordersAsArray(), id: \.self) { order in
+                List(patient.ordersAsArray()) { order in
                     ResultRow(order: order)
                 }
             }
@@ -49,7 +49,7 @@ struct PatientDetailView: View {
         }
         .padding([.bottom])
         .sheet(isPresented: $showAdd, content: {
-            TestFlowView(model: TestFlowModel(managedObjectContext, patient: patient))
+            TestFlowView(model: TestFlowModel(self.managedObjectContext, patient: self.patient))
         })
     }
     

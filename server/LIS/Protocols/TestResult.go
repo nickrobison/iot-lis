@@ -85,28 +85,8 @@ func (rcv *TestResult) ResultsLength() int {
 	return 0
 }
 
-func (rcv *TestResult) Comments(obj *Comment, j int) bool {
-	o := flatbuffers.UOffsetT(rcv._tab.Offset(12))
-	if o != 0 {
-		x := rcv._tab.Vector(o)
-		x += flatbuffers.UOffsetT(j) * 4
-		x = rcv._tab.Indirect(x)
-		obj.Init(rcv._tab.Bytes, x)
-		return true
-	}
-	return false
-}
-
-func (rcv *TestResult) CommentsLength() int {
-	o := flatbuffers.UOffsetT(rcv._tab.Offset(12))
-	if o != 0 {
-		return rcv._tab.VectorLen(o)
-	}
-	return 0
-}
-
 func TestResultStart(builder *flatbuffers.Builder) {
-	builder.StartObject(5)
+	builder.StartObject(4)
 }
 func TestResultAddHeader(builder *flatbuffers.Builder, header flatbuffers.UOffsetT) {
 	builder.PrependUOffsetTSlot(0, flatbuffers.UOffsetT(header), 0)
@@ -121,12 +101,6 @@ func TestResultAddResults(builder *flatbuffers.Builder, results flatbuffers.UOff
 	builder.PrependUOffsetTSlot(3, flatbuffers.UOffsetT(results), 0)
 }
 func TestResultStartResultsVector(builder *flatbuffers.Builder, numElems int) flatbuffers.UOffsetT {
-	return builder.StartVector(4, numElems, 4)
-}
-func TestResultAddComments(builder *flatbuffers.Builder, comments flatbuffers.UOffsetT) {
-	builder.PrependUOffsetTSlot(4, flatbuffers.UOffsetT(comments), 0)
-}
-func TestResultStartCommentsVector(builder *flatbuffers.Builder, numElems int) flatbuffers.UOffsetT {
 	return builder.StartVector(4, numElems, 4)
 }
 func TestResultEnd(builder *flatbuffers.Builder) flatbuffers.UOffsetT {

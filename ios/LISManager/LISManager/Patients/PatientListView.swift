@@ -21,7 +21,7 @@ struct PatientListView: View {
     
     var body: some View {
         NavigationView {
-            List(patients, id: \.self) { p in
+            List(patients) { p in
                 NavigationLink(destination: PatientDetailView(patient: p)) {
                     Text("\(p.firstName!)-\(p.lastName!)")
 //                    PersonCellView(person: patient)
