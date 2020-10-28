@@ -9,7 +9,6 @@ import os
 import Foundation
 import CoreBluetooth
 import Combine
-import CombineExt
 
 private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.BluetoothManager", category: "bluetooth")
 
