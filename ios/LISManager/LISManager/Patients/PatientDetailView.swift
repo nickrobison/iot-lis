@@ -27,7 +27,7 @@ struct PatientDetailView: View {
                 Text("No tests yet")
                 Spacer()
             } else {
-                List(patient.samplesAsArray()) { _ in
+                List(patient.samplesAsArray(), id: \.id) { _ in
                     Text("Test")
                 }
             }
@@ -37,7 +37,7 @@ struct PatientDetailView: View {
                 Text("No results yet")
                 Spacer()
             } else {
-                List(patient.ordersAsArray()) { order in
+                List(patient.ordersAsArray(), id: \.id) { order in
                     ResultRow(order: order)
                 }
             }
