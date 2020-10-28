@@ -18,7 +18,18 @@ extension PatientEntity {
     }
     
     func unwrapSamples() -> SampleEntity {
-        let samples = self.samples?.allObjects as! [SampleEntity]
-        return samples.first!
+        return samplesAsArray().first!
+    }
+    
+    func samplesAsArray() -> [SampleEntity] {
+        return self.samples?.allObjects as! [SampleEntity]
+    }
+    
+    func resultsAsArray() -> [ResultEntity] {
+        return self.results?.allObjects as! [ResultEntity]
+    }
+    
+    func ordersAsArray() -> [OrderEntity] {
+        return self.orders?.allObjects as! [OrderEntity]
     }
 }

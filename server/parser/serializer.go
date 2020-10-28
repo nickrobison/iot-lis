@@ -18,24 +18,24 @@ func SerializeToFlatBuffers(res *HSTIMPayload) (*[]byte, error) {
 	// Build patient
 
 	patientID := builder.CreateString(res.Patient.PatientID)
-	patientLoc := builder.CreateString(res.Patient.Location)
+	// patientLoc := builder.CreateString(res.Patient.Location)
 	protocols.PatientStart(builder)
 	protocols.PatientAddSequenceNumber(builder, int32(res.Patient.SequenceNumber))
 	protocols.PatientAddPatientId(builder, patientID)
-	protocols.PatientAddLocation(builder, patientLoc)
+	// protocols.PatientAddLocation(builder, patientLoc)
 	patient := protocols.PatientEnd(builder)
 
 	// Build order
 	orderID := builder.CreateString(res.Order.OrderID)
 	typeName := builder.CreateString(res.Order.TestTypeName)
-	operatorID := builder.CreateString(res.Order.OperatorID)
+	// operatorID := builder.CreateString(res.Order.OperatorID)
 	sampleType := builder.CreateString(string(res.Order.SampleType))
 
 	protocols.OrderStart(builder)
 	protocols.OrderAddSequenceNumber(builder, int32(res.Order.SequenceNumber))
 	protocols.OrderAddOrderId(builder, orderID)
 	protocols.OrderAddTestTypeName(builder, typeName)
-	protocols.OrderAddOperatorId(builder, operatorID)
+	// protocols.OrderAddOperatorId(builder, operatorID)
 	protocols.OrderAddSampleType(builder, sampleType)
 	order := protocols.OrderEnd(builder)
 
@@ -66,16 +66,16 @@ func SerializeToFlatBuffers(res *HSTIMPayload) (*[]byte, error) {
 	// }
 	// delims := builder.EndVector(len(res.Header.Delimeters))
 
-	headerName := builder.CreateString(res.Header.Name)
+	// headerName := builder.CreateString(res.Header.Name)
 	headerSerialNumber := builder.CreateString(res.Header.SerialNumber)
-	headerProcessingID := builder.CreateString(string(res.Header.ProcessingID))
-	headerFWVersion := builder.CreateString(res.Header.FWVersion)
+	// headerProcessingID := builder.CreateString(string(res.Header.ProcessingID))
+	// headerFWVersion := builder.CreateString(res.Header.FWVersion)
 	protocols.HeaderStart(builder)
-	protocols.HeaderAddName(builder, headerName)
+	// protocols.HeaderAddName(builder, headerName)
 	protocols.HeaderAddSerialNumber(builder, headerSerialNumber)
 	// TODO: This should actually be a single byte
-	protocols.HeaderAddProcessingId(builder, headerProcessingID)
-	protocols.HeaderAddFwVersion(builder, headerFWVersion)
+	// protocols.HeaderAddProcessingId(builder, headerProcessingID)
+	// protocols.HeaderAddFwVersion(builder, headerFWVersion)
 	protocols.HeaderAddTimestamp(builder, res.Header.Timestamp.Unix())
 	// protocols.HeaderAddDelimeters(builder, delims)
 	header := protocols.HeaderEnd(builder)

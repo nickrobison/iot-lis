@@ -15,6 +15,7 @@ struct SampleBarcodeView: View {
         VStack {
             Text("Scan the sample ID")
             QRCodeView(msg: sampleID)
+            Text(sampleID).font(.callout).foregroundColor(.gray)
         }
     }
 }

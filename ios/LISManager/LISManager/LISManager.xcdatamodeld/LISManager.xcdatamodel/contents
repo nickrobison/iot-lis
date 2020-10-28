@@ -17,6 +17,7 @@
         <attribute name="orderID" optional="YES" attributeType="String"/>
         <attribute name="sampleType" optional="YES" attributeType="String"/>
         <attribute name="testTypeName" optional="YES" attributeType="String"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientEntity" inverseName="orders" inverseEntity="PatientEntity"/>
         <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="order" inverseEntity="ResultEntity"/>
     </entity>
     <entity name="PatientEntity" representedClassName="PatientEntity" syncable="YES" codeGenerationType="class">
@@ -31,6 +32,7 @@
         <attribute name="sex" optional="YES" attributeType="String"/>
         <attribute name="state" optional="YES" attributeType="String"/>
         <attribute name="zip" optional="YES" attributeType="String"/>
+        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrderEntity" inverseName="patient" inverseEntity="OrderEntity"/>
         <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="patient" inverseEntity="ResultEntity"/>
         <relationship name="samples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="patient" inverseEntity="SampleEntity"/>
     </entity>
@@ -63,8 +65,8 @@
     </entity>
     <elements>
         <element name="DeviceEntity" positionX="-54" positionY="117" width="128" height="118"/>
-        <element name="OrderEntity" positionX="-54" positionY="117" width="128" height="28"/>
-        <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="28"/>
+        <element name="OrderEntity" positionX="-54" positionY="117" width="128" height="133"/>
+        <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="253"/>
         <element name="ResultEntity" positionX="-54" positionY="81" width="128" height="208"/>
         <element name="SampleEntity" positionX="-63" positionY="63" width="128" height="133"/>
         <element name="TimerEntity" positionX="-45" positionY="99" width="128" height="103"/>

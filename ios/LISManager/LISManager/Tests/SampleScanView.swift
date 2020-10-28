@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import xxHash_Swift
 
 struct SampleScanView: View {
     
     @Binding var sampleID: String
-    @Binding var testFlowState: TestFlowState
+    @Binding var testFlowState: TestFlowModel.TestFlowState
+    @Binding var stateIdx: Int
     
     var body: some View {
         VStack {
@@ -26,13 +28,15 @@ struct SampleScanView: View {
     }
     
     private func handleScan(msg: String) {
-        self.sampleID = msg
+        let hashedID = XXH32.digestHex(msg)
+        self.sampleID = hashedID
         self.testFlowState = .patientID
+        self.stateIdx += 1
     }
 }
 
 struct SampleScanView_Previews: PreviewProvider {
     static var previews: some View {
-        SampleScanView(sampleID: .constant("hello there"), testFlowState: .constant(.sampleScan))
+        SampleScanView(sampleID: .constant("hello there"), testFlowState: .constant(.sampleScan), stateIdx: .constant(1))
     }
 }

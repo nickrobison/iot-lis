@@ -31,7 +31,7 @@ func (rcv *Result) SequenceNumber() int32 {
 	if o != 0 {
 		return rcv._tab.GetInt32(o + rcv._tab.Pos)
 	}
-	return 0
+	return 1
 }
 
 func (rcv *Result) MutateSequenceNumber(n int32) bool {
@@ -102,7 +102,7 @@ func ResultStart(builder *flatbuffers.Builder) {
 	builder.StartObject(8)
 }
 func ResultAddSequenceNumber(builder *flatbuffers.Builder, sequenceNumber int32) {
-	builder.PrependInt32Slot(0, sequenceNumber, 0)
+	builder.PrependInt32Slot(0, sequenceNumber, 1)
 }
 func ResultAddAnalyteName(builder *flatbuffers.Builder, analyteName flatbuffers.UOffsetT) {
 	builder.PrependUOffsetTSlot(1, flatbuffers.UOffsetT(analyteName), 0)

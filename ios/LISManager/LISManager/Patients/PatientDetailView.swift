@@ -9,17 +9,10 @@ import SwiftUI
 import CoreData
 
 struct PatientDetailView: View {
+    
     let patient: PatientEntity
-    
-    var samples: FetchRequest<SampleEntity>
-    
     init(patient: PatientEntity) {
         self.patient = patient
-        self.samples = FetchRequest<SampleEntity>(
-            entity: SampleEntity.entity(),
-            sortDescriptors: [
-                NSSortDescriptor(keyPath: \SampleEntity.cartridgeID, ascending: true)],
-            predicate: NSPredicate(format: "patient = %@", patient))
     }
     
     @Environment(\.managedObjectContext) var managedObjectContext
@@ -28,12 +21,24 @@ struct PatientDetailView: View {
         VStack {
             PersonHeader(name: patient.nameComponent, id: patient.id!)
             Divider()
-            if (samples.wrappedValue.isEmpty) {
+            Text("Samples").font(.headline)
+            Divider()
+            if (patient.samples!.count == 0) {
                 Text("No tests yet")
                 Spacer()
             } else {
-                List(samples.wrappedValue, id: \.self) { _ in
+                List(patient.samplesAsArray(), id: \.self) { _ in
                     Text("Test")
+                }
+            }
+            Text("Results").font(.headline)
+            Divider()
+            if (patient.orders!.count == 0) {
+                Text("No results yet")
+                Spacer()
+            } else {
+                List(patient.ordersAsArray(), id: \.self) { order in
+                    ResultRow(order: order)
                 }
             }
             
@@ -44,7 +49,7 @@ struct PatientDetailView: View {
         }
         .padding([.bottom])
         .sheet(isPresented: $showAdd, content: {
-            TestFlowView(patient: self.patient, completionHandler: self.handleScan)
+            TestFlowView(model: TestFlowModel(self.managedObjectContext, patient: self.patient))
         })
     }
     
@@ -80,6 +85,8 @@ struct PatientDetailView_Previews: PreviewProvider {
         let p = PatientEntity()
         p.lastName = "Robison"
         p.firstName = "Nicholas"
+        p.results = []
+        p.samples = []
         return p
     }
 }

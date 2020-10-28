@@ -13,6 +13,7 @@ struct PatientBarcodeView: View {
         VStack {
             Text("Scan the patient ID")
             QRCodeView(msg: patientID)
+            Text(patientID).font(.callout).foregroundColor(.gray)
         }
     }
 }
