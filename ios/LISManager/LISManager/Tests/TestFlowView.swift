@@ -65,7 +65,7 @@ struct TestFlowView: View {
     
     private func handleClick() {
         if (self.model.testFlowState == .finish) {
-            self.model.addSample()
+            self.model.addOrder()
             self.presentationMode.wrappedValue.dismiss()
         } else {
             self.incrementState()

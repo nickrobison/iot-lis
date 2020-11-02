@@ -17,19 +17,15 @@ extension PatientEntity {
         }
     }
     
-    func unwrapSamples() -> SampleEntity {
-        return samplesAsArray().first!
-    }
-    
-    func samplesAsArray() -> [SampleEntity] {
-        return self.samples?.allObjects as! [SampleEntity]
-    }
-    
-    func resultsAsArray() -> [ResultEntity] {
-        return self.results?.allObjects as! [ResultEntity]
+    func unwrapOrders() -> OrderEntity {
+        return ordersAsArray().first!
     }
     
     func ordersAsArray() -> [OrderEntity] {
         return self.orders?.allObjects as! [OrderEntity]
+    }
+    
+    func resultsAsArray() -> [ResultEntity] {
+        return self.results?.allObjects as! [ResultEntity]
     }
 }

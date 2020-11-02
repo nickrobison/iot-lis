@@ -19,6 +19,8 @@
         <attribute name="testTypeName" optional="YES" attributeType="String"/>
         <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientEntity" inverseName="orders" inverseEntity="PatientEntity"/>
         <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="order" inverseEntity="ResultEntity"/>
+        <relationship name="sample" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="order" inverseEntity="SampleEntity"/>
+        <relationship name="timer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimerEntity" inverseName="order" inverseEntity="TimerEntity"/>
     </entity>
     <entity name="PatientEntity" representedClassName="PatientEntity" syncable="YES" codeGenerationType="class">
         <attribute name="address1" optional="YES" attributeType="String"/>
@@ -34,7 +36,6 @@
         <attribute name="zip" optional="YES" attributeType="String"/>
         <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrderEntity" inverseName="patient" inverseEntity="OrderEntity"/>
         <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="patient" inverseEntity="ResultEntity"/>
-        <relationship name="samples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="patient" inverseEntity="SampleEntity"/>
     </entity>
     <entity name="ResultEntity" representedClassName="ResultEntity" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -53,22 +54,21 @@
         <attribute name="cartridgeID" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="device" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DeviceEntity" inverseName="samples" inverseEntity="DeviceEntity"/>
-        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientEntity" inverseName="samples" inverseEntity="PatientEntity"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderEntity" inverseName="sample" inverseEntity="OrderEntity"/>
         <relationship name="result" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="sample" inverseEntity="ResultEntity"/>
-        <relationship name="timer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimerEntity" inverseName="sample" inverseEntity="TimerEntity"/>
     </entity>
     <entity name="TimerEntity" representedClassName="TimerEntity" syncable="YES" codeGenerationType="class">
         <attribute name="duration" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="running" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="started" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="sample" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="timer" inverseEntity="SampleEntity"/>
+        <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderEntity" inverseName="timer" inverseEntity="OrderEntity"/>
     </entity>
     <elements>
         <element name="DeviceEntity" positionX="-54" positionY="117" width="128" height="118"/>
-        <element name="OrderEntity" positionX="-54" positionY="117" width="128" height="133"/>
-        <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="253"/>
+        <element name="OrderEntity" positionX="-54" positionY="117" width="128" height="163"/>
+        <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="238"/>
         <element name="ResultEntity" positionX="-54" positionY="81" width="128" height="208"/>
-        <element name="SampleEntity" positionX="-63" positionY="63" width="128" height="133"/>
+        <element name="SampleEntity" positionX="-63" positionY="63" width="128" height="118"/>
         <element name="TimerEntity" positionX="-45" positionY="99" width="128" height="103"/>
     </elements>
 </model>
