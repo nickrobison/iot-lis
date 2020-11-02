@@ -44,7 +44,7 @@ struct MainOnboardingView: View {
     }
     
     private func handleClick() {
-        if (self.onboardingState == .location) {
+        if self.onboardingState == .location {
             self.updateSettings()
         } else {
             self.incrementState()

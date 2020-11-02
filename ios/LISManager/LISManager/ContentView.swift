@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var pm: PreferencesManager
+    @EnvironmentObject var manager: PreferencesManager
     
     var body: some View {
-        if (pm.settings == nil) {
-            MainOnboardingView { s in
-                pm.settings = s
+        if manager.settings == nil {
+            MainOnboardingView { settings in
+                manager.settings = settings
             }
         } else {
             MainView()
