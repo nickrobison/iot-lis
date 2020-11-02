@@ -11,14 +11,12 @@ import Combine
 
 struct MainView: View {
     
-    @EnvironmentObject var bm: BluetoothManager
-    
     @State private var selection = 0
     var body: some View {
         TabView(selection: $selection) {
             Text("Tab Content 1")
                 .tabItem {
-                    VStack{
+                    VStack {
                         Image(systemName: "house")
                         Text("Home")
                     }

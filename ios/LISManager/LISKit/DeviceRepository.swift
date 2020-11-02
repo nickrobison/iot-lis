@@ -12,5 +12,5 @@ public protocol DeviceRepository {
     func addDevice(_ device: BluetoothDevice)
     func updateDeviceStatus(_ id: UUID, status: ConnectionStatus)
     func getDevices() -> [BluetoothDevice]
-    func disconnectDevices() -> Void
+    func disconnectDevices()
 }

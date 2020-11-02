@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-final class CameraViewController : UIViewController, UIViewControllerRepresentable {
+final class CameraViewController: UIViewController, UIViewControllerRepresentable {
     
     typealias UIViewControllerType = CameraViewController
     
@@ -18,10 +18,10 @@ final class CameraViewController : UIViewController, UIViewControllerRepresentab
     
     var handler: ((String) -> Void)?
     
-    
     override func viewDidLoad() {
         self.controller = BarcodeScanner(self.handler)
-        previewView = UIView(frame: CGRect(x:0, y:0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+        previewView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width,
+                                           height: UIScreen.main.bounds.size.height))
         previewView.contentMode = UIView.ContentMode.scaleAspectFit
         view.addSubview(previewView)
         

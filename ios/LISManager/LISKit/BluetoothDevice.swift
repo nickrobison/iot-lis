@@ -12,7 +12,7 @@ import FlatBuffers
 
 private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.BluetoothDevice", category: "device")
 
-public class BluetoothDevice : NSObject, Identifiable {
+public class BluetoothDevice: NSObject, Identifiable {
     public let id: String
     public let name: String
     public var device: CBPeripheral?
@@ -36,7 +36,7 @@ public class BluetoothDevice : NSObject, Identifiable {
     }
 }
 
-extension BluetoothDevice : CBPeripheralDelegate {
+extension BluetoothDevice: CBPeripheralDelegate {
     
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         

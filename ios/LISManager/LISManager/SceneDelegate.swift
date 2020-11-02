@@ -13,23 +13,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
+    func scene(_ scene: UIScene,
+               willConnectTo session: UISceneSession,
+               options connectionOptions: UIScene.ConnectionOptions) {
+        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        // This delegate does not imply the connecting scene or session are new
+        // (see `application:configurationForConnectingSceneSession` instead).
 
         // Get the managed object context from the shared persistent container.
+        // swiftlint:disable:next force_cast
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let bm = (UIApplication.shared.delegate as! AppDelegate).bm
+        // swiftlint:disable:next force_cast
+        let blueM = (UIApplication.shared.delegate as! AppDelegate).bluetoothManager
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
         // Add the Bluetooth Manager
-        let rm = ResultsManager(ctx: context)
+        let resultM = ResultsManager(ctx: context)
         let contentView = ContentView().environment(\.managedObjectContext, context)
-            .environmentObject(bm)
-            .environmentObject(rm)
+            .environmentObject(blueM)
+            .environmentObject(resultM)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -44,7 +48,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
+        // The scene may re-connect later,
+        // as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
@@ -60,7 +65,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.bm.reconnect()
+        (UIApplication.shared.delegate as? AppDelegate)?.bluetoothManager.reconnect()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -69,10 +74,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.bm.shutdown()
+        (UIApplication.shared.delegate as? AppDelegate)?.bluetoothManager.shutdown()
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 
-
 }
-

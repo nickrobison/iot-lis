@@ -60,7 +60,7 @@ class PatientAddModel: ObservableObject {
     
     private var isFormValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest3(isNameValid, isDemographicsValidPublisher, isAddressValidPublisher)
-            .map{
+            .map {
                 $0 && $1 && $2
         }
         .eraseToAnyPublisher()
@@ -73,10 +73,10 @@ class PatientAddModel: ObservableObject {
             }
             .eraseToAnyPublisher()
     }
-    
+
     private var isDemographicsValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest(stringNotEmpty(self.$gender), stringNotEmpty(self.$sex))
-            .map{
+            .map {
                 $0 && $1
             }
             .eraseToAnyPublisher()
@@ -91,23 +91,27 @@ class PatientAddModel: ObservableObject {
         }
         .eraseToAnyPublisher()
     }
-    
+
     private var isAddressValidPublisher: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest4(stringNotEmpty(self.$address1), stringNotEmpty(self.$city), stringNotEmpty(self.$state), stringNotEmpty(self.$zipCode))
-            .map{
+        Publishers.CombineLatest4(stringNotEmpty(self.$address1), stringNotEmpty(self.$city),
+                                  stringNotEmpty(self.$state), stringNotEmpty(self.$zipCode))
+            .map {
                 $0 && $1 && $2 && $3
             }
             .eraseToAnyPublisher()
     }
-    
+
     init() {
         isFormValidPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.isValid, on: self)
             .store(in: &cancellableSet)
     }
-    
+
     func toModel() -> PatientModel {
-        PatientModel(firstName: self.firstName, lastName: self.lastName, gender: self.gender, sex: self.sex, birthday: self.birthday, address1: self.address1, address2: self.address2, city: self.city, state: self.state, zipCode: self.zipCode)
+        PatientModel(firstName: self.firstName, lastName: self.lastName,
+                     gender: self.gender, sex: self.sex, birthday: self.birthday,
+                     address1: self.address1, address2: self.address2, city: self.city,
+                     state: self.state, zipCode: self.zipCode)
     }
 }

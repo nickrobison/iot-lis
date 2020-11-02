@@ -42,7 +42,6 @@ class PreferencesManager: ObservableObject {
     }
 }
 
-
 struct ApplicationSettings: Codable {
     
 }

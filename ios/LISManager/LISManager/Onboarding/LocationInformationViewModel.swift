@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class LocationInformationViewModel : ObservableObject {
+class LocationInformationViewModel: ObservableObject {
     @Published var locationName = ""
     @Published var locationPostalCode = ""
     @Published var isValid = false
@@ -18,7 +18,7 @@ class LocationInformationViewModel : ObservableObject {
     
     private var formIsValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest(stringNotEmpty(self.$locationName), stringNotEmpty(self.$locationPostalCode))
-            .map{
+            .map {
                 $0 && $1
             }
             .eraseToAnyPublisher()
@@ -39,6 +39,4 @@ class LocationInformationViewModel : ObservableObject {
                 self?.locationPostalCode = val
             })
     }
-    
-
 }

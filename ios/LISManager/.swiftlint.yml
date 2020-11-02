@@ -1,0 +1,13 @@
+disabled_rules:
+  - trailing_whitespace
+
+excluded:
+  - Pods
+
+line_length: 200
+
+identifier_name:
+  min_length: # only min_length
+    warning: 2 # only error
+  max_length:
+    warning: 30

@@ -1,13 +1,16 @@
 PODS:
   - FlatBuffers (0.8.0)
+  - SwiftLint (0.40.3)
   - xxHash-Swift (1.1.0)
 
 DEPENDENCIES:
   - FlatBuffers (from `https://github.com/mustiikhalil/flatbuffers.git`)
+  - SwiftLint
   - xxHash-Swift
 
 SPEC REPOS:
   trunk:
+    - SwiftLint
     - xxHash-Swift
 
 EXTERNAL SOURCES:
@@ -21,8 +24,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   FlatBuffers: cfae8f95023a5a03b1ce22b22f14436ada96a7a2
+  SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
   xxHash-Swift: 38fa4218ebae48ccbaaa4240c0cceec7ee2c7f87
 
-PODFILE CHECKSUM: 571104dc551b08066d1aaa2b62807b6382eb527f
+PODFILE CHECKSUM: 4d35c6ed9922439ac38e9fb371fab32cf59bfdc2
 
 COCOAPODS: 1.10.0.rc.1

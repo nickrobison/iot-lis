@@ -36,10 +36,10 @@ struct ResultInformation {
 
 extension LIS_Protocols_Result {
     func toResultInformation() -> ResultInformation {
-        let ts = self.timestamp
+        let timestamp = self.timestamp
         return ResultInformation(resultType: self.testResultType ?? "unknown",
                                  value: self.testValue ?? "unknown",
-                                 resultDate: Date.init(timeIntervalSince1970: TimeInterval(ts)))
+                                 resultDate: Date.init(timeIntervalSince1970: TimeInterval(timestamp)))
     }
     
     func toEntity(_ ctx: NSManagedObjectContext) -> ResultEntity {

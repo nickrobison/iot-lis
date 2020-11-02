@@ -48,7 +48,7 @@ struct DeviceRow: View {
     }
     
     private func getColor() -> Color {
-        if (showStatus && device.connectionStatus == .disconnected) {
+        if showStatus && device.connectionStatus == .disconnected {
             return .gray
         }
         return .primary

@@ -12,7 +12,7 @@ struct FullscreenButton: View {
     @Binding var isAnimating: Bool
     let handler: (() -> Void)
     var body: some View {
-        Button(action: self.handler){
+        Button(action: self.handler) {
             HStack {
                 Text(self.text)
                     .fontWeight(.semibold)

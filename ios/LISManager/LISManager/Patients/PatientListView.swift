@@ -21,10 +21,10 @@ struct PatientListView: View {
     
     var body: some View {
         NavigationView {
-            List(patients, id: \.self) { p in
-                NavigationLink(destination: PatientDetailView(patient: p)) {
-                    Text("\(p.lastName!), \(p.firstName!)")
-//                    PersonCellView(person: patient)
+            List(patients, id: \.self) { patient in
+                NavigationLink(destination: PatientDetailView(patient: patient)) {
+                    Text("\(patient.firstName!)-\(patient.lastName!)")
+                    //                    PersonCellView(person: patient)
                 }
                 .isDetailLink(true)
             }
@@ -48,7 +48,7 @@ struct PatientListView: View {
         } catch {
             debugPrint(error)
         }
-        
+
     }
 }
 

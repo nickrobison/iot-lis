@@ -76,7 +76,7 @@ class CoreDataDeviceRepository: DeviceRepository {
     }
     
     func disconnectDevices() {
-        self.getDevices().forEach{ device in
+        self.getDevices().forEach { device in
             os_log("Disconnecting: %s", log: logger, type: .debug, device.id)
             self.updateDeviceStatus(UUID.init(uuidString: device.id)!, status: .disconnected)
         }
