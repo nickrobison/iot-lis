@@ -21,19 +21,19 @@ struct PatientDetailView: View {
         VStack {
             PersonHeader(name: patient.nameComponent, id: patient.id!)
             Divider()
-            Text("Samples").font(.headline)
+            Text("Orders").font(.headline)
             Divider()
-            if (patient.samples!.count == 0) {
+            if (patient.orders!.count == 0) {
                 Text("No tests yet")
                 Spacer()
             } else {
-                List(patient.samplesAsArray(), id: \.self) { _ in
+                List(patient.ordersAsArray(), id: \.self) { _ in
                     Text("Test")
                 }
             }
             Text("Results").font(.headline)
             Divider()
-            if (patient.orders!.count == 0) {
+            if (patient.results!.count == 0) {
                 Text("No results yet")
                 Spacer()
             } else {
@@ -63,10 +63,13 @@ struct PatientDetailView: View {
         self.showAdd = false
         
         // Create and save the entity
-        let entity = SampleEntity(context: managedObjectContext)
-        entity.id = UUID()
-        entity.cartridgeID = msg
-        entity.patient = patient
+        let sample = SampleEntity(context: managedObjectContext)
+        sample.id = UUID()
+        sample.cartridgeID = msg
+        
+        let order = OrderEntity(context: managedObjectContext)
+        order.sample = sample
+        order.patient = patient
         
         do {
             try managedObjectContext.save()
@@ -86,7 +89,7 @@ struct PatientDetailView_Previews: PreviewProvider {
         p.lastName = "Robison"
         p.firstName = "Nicholas"
         p.results = []
-        p.samples = []
+        p.orders = []
         return p
     }
 }

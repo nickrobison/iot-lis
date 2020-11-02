@@ -9,20 +9,26 @@ import SwiftUI
 import Combine
 
 struct ResultsView: View {
-    @FetchRequest(
-        entity: OrderEntity.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \OrderEntity.orderID, ascending: true)]
-    )
-    var results: FetchedResults<OrderEntity>
+    var results: FetchRequest<OrderEntity>
+    
+    init() {
+        self.results = FetchRequest<OrderEntity>(entity: OrderEntity.entity(),
+                                                 sortDescriptors: [NSSortDescriptor(keyPath: \OrderEntity.orderID, ascending: true)],
+                                                 predicate: NSPredicate(format: "results.@count != 0"))
+        
+    }
     
     var body: some View {
         NavigationView {
-            List(results, id: \.self) { order in
-                ResultRow(order: order)
-                //                NavigationLink(destination: ResultDetailView()) {
-                ////                    ResultRow(order: result, result: result.results[0])
-                //                }
+            if (results.wrappedValue.count == 0) {
+                Text("No results yet")
+            } else {
+                List(results.wrappedValue, id: \.self) { order in
+                    ResultRow(order: order)
+                    //                NavigationLink(destination: ResultDetailView()) {
+                    ////                    ResultRow(order: result, result: result.results[0])
+                    //                }
+                }
             }
         }
     }

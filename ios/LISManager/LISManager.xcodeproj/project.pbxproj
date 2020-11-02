@@ -19,8 +19,8 @@
 		EB18F8F72547477D00745A59 /* SampleBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F8F62547477D00745A59 /* SampleBarcodeView.swift */; };
 		EB18F8FC2547479500745A59 /* FinishTestFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F8FB2547479500745A59 /* FinishTestFlowView.swift */; };
 		EB18F9012547624800745A59 /* CoreDataDeviceRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB18F9002547624800745A59 /* CoreDataDeviceRepository.swift */; };
-		EB2297B72542279D002332AB /* SampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297B62542279D002332AB /* SampleView.swift */; };
-		EB2297C025422998002332AB /* SampleCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297BF25422998002332AB /* SampleCellView.swift */; };
+		EB2297B72542279D002332AB /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297B62542279D002332AB /* OrderView.swift */; };
+		EB2297C025422998002332AB /* OrderCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297BF25422998002332AB /* OrderCellView.swift */; };
 		EB2297D82543156C002332AB /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2297D72543156C002332AB /* TimerView.swift */; };
 		EB3D3302253F68AF000F5A84 /* test_result_generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D3301253F68AF000F5A84 /* test_result_generated.swift */; };
 		EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D3306253F7D97000F5A84 /* Protocols+Extensions.swift */; };
@@ -165,8 +165,8 @@
 		EB18F8FB2547479500745A59 /* FinishTestFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishTestFlowView.swift; sourceTree = "<group>"; };
 		EB18F9002547624800745A59 /* CoreDataDeviceRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDeviceRepository.swift; sourceTree = "<group>"; };
 		EB1E3EA5253CBF4E0097AC63 /* LISManager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LISManager.entitlements; sourceTree = "<group>"; };
-		EB2297B62542279D002332AB /* SampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleView.swift; sourceTree = "<group>"; };
-		EB2297BF25422998002332AB /* SampleCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleCellView.swift; sourceTree = "<group>"; };
+		EB2297B62542279D002332AB /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		EB2297BF25422998002332AB /* OrderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCellView.swift; sourceTree = "<group>"; };
 		EB2297D72543156C002332AB /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		EB3D3301253F68AF000F5A84 /* test_result_generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test_result_generated.swift; sourceTree = "<group>"; };
 		EB3D3306253F7D97000F5A84 /* Protocols+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Protocols+Extensions.swift"; sourceTree = "<group>"; };
@@ -326,14 +326,14 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		EB2297BB254228A8002332AB /* Samples */ = {
+		EB2297BB254228A8002332AB /* Orders */ = {
 			isa = PBXGroup;
 			children = (
-				EB2297B62542279D002332AB /* SampleView.swift */,
-				EB2297BF25422998002332AB /* SampleCellView.swift */,
+				EB2297B62542279D002332AB /* OrderView.swift */,
+				EB2297BF25422998002332AB /* OrderCellView.swift */,
 				EB2297D72543156C002332AB /* TimerView.swift */,
 			);
-			path = Samples;
+			path = Orders;
 			sourceTree = "<group>";
 		};
 		EB45ACBB253F2E8800EC2D64 /* Results */ = {
@@ -424,7 +424,7 @@
 			children = (
 				EBC76EA2254857A200D0B4B8 /* Models */,
 				EB18F8CE2547390200745A59 /* Tests */,
-				EB2297BB254228A8002332AB /* Samples */,
+				EB2297BB254228A8002332AB /* Orders */,
 				EBDC8C2525409E7A00D69DAD /* Camera */,
 				EBDC8C1F25409E2F00D69DAD /* Patients */,
 				EB45ACBB253F2E8800EC2D64 /* Results */,
@@ -942,7 +942,7 @@
 				EB9B7896253E026900FCAB10 /* MainView.swift in Sources */,
 				EB6332152541EB68002FFA25 /* PatientEntity+Extensions.swift in Sources */,
 				EB9B78BD253E06D000FCAB10 /* DeviceRow.swift in Sources */,
-				EB2297B72542279D002332AB /* SampleView.swift in Sources */,
+				EB2297B72542279D002332AB /* OrderView.swift in Sources */,
 				EB18F9012547624800745A59 /* CoreDataDeviceRepository.swift in Sources */,
 				EBAFE495253A161200BF8868 /* FullscreenButton.swift in Sources */,
 				EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */,
@@ -981,7 +981,7 @@
 				EB18F8DD2547473700745A59 /* SampleScanView.swift in Sources */,
 				EBAFE440253A114200BF8868 /* ContentView.swift in Sources */,
 				EB6332082541E7C7002FFA25 /* InitialsView.swift in Sources */,
-				EB2297C025422998002332AB /* SampleCellView.swift in Sources */,
+				EB2297C025422998002332AB /* OrderCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

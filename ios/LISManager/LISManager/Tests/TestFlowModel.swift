@@ -31,12 +31,15 @@ class TestFlowModel: ObservableObject {
         self.patient = patient
     }
     
-    func addSample() {
+    func addOrder() {
         // Create and save the entity
-        let entity = SampleEntity(context: self.ctx)
-        entity.id = UUID()
-        entity.cartridgeID = self.sampleID
-        entity.patient = self.patient
+        let sample = SampleEntity(context: self.ctx)
+        sample.id = UUID()
+        sample.cartridgeID = self.sampleID
+        
+        let order = OrderEntity(context: self.ctx)
+        order.patient = self.patient
+        order.sample = sample
         
         self.ctx.perform {
             do {

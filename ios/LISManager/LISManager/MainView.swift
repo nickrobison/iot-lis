@@ -31,11 +31,11 @@ struct MainView: View {
                         Text("Patients")
                     }
                 }.tag(1)
-            SampleView()
+            OrderView()
                 .tabItem {
                     VStack {
                         Image(systemName: "doc.text")
-                        Text("Samples")
+                        Text("Orders")
                     }
                 }.tag(2)
             ResultsView()
