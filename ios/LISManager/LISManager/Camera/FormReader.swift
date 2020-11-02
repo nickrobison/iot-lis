@@ -17,13 +17,13 @@ class FormReader: NSObject {
     
     
     func extractText(_ image: UIImage, handler: @escaping (String) -> Void) {
-        let request = VNRecognizeTextRequest { (r, error) in
+        let request = VNRecognizeTextRequest { (req, error) in
             guard error == nil else {
                 os_log("Error detecting text: %s", log: logger, type: .error, error!.localizedDescription)
                 return
             }
             
-            guard let observations = r.results as? [VNRecognizedTextObservation] else {
+            guard let observations = req.results as? [VNRecognizedTextObservation] else {
                 os_log("No observations in image", log: logger, type: .debug)
                 return
             }

@@ -21,12 +21,12 @@ struct InitialsView: View {
                             .clipped())
     }
     
-    private func firstLetter(_ s: String?) -> String {
-        guard let v = s?.first else {
+    private func firstLetter(_ str: String?) -> String {
+        guard let val = str?.first else {
             return ""
         }
         
-        return String(v)
+        return String(val)
     }
 }
 

@@ -16,11 +16,11 @@ struct OrderCellView: View {
                 Text("I'm a sample")
             }
             Divider()
-//            if (sample.timer != nil) {
-//                TimerView(timer: sample.timer!)
-//            } else {
-//                EmptyView()
-//            }
+            if sample.timer != nil {
+                TimerView(timer: sample.timer!)
+            } else {
+                EmptyView()
+            }
         }
         .border(Color.black)
     }
@@ -32,13 +32,13 @@ struct SampleCellView_Previews: PreviewProvider {
     }
     
     static func sampleSample(isRunning: Bool) -> SampleEntity {
-        let e = SampleEntity()
+        let sample = SampleEntity()
+
+        let timer = TimerEntity()
+        timer.running = isRunning
+        timer.duration = 15
         
-//        let t = TimerEntity()
-//        t.running = isRunning
-//        t.duration = 15
-//
-//        e.timer = t
-        return e
+        sample.timer = timer
+        return sample
     }
 }

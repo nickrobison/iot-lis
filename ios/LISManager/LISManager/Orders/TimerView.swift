@@ -32,9 +32,9 @@ struct TimerView_Previews: PreviewProvider {
     }
     
     private static func buildTimer(isRunning: Bool) -> TimerEntity {
-        let t = TimerEntity()
-        t.running = isRunning
-        t.duration = 15
-        return t
+        let timer = TimerEntity()
+        timer.running = isRunning
+        timer.duration = 15
+        return timer
     }
 }

@@ -10,10 +10,10 @@ import Foundation
 extension PatientEntity {
     var nameComponent: PersonNameComponents {
         get {
-            var nc = PersonNameComponents()
-            nc.familyName = self.lastName
-            nc.givenName = self.firstName
-            return nc
+            var nameComp = PersonNameComponents()
+            nameComp.familyName = self.lastName
+            nameComp.givenName = self.firstName
+            return nameComp
         }
     }
     
@@ -26,6 +26,7 @@ extension PatientEntity {
     }
     
     func resultsAsArray() -> [ResultEntity] {
+        // swiftlint:disable:next force_cast
         return self.results?.allObjects as! [ResultEntity]
     }
 }

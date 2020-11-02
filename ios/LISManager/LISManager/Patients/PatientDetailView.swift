@@ -23,7 +23,7 @@ struct PatientDetailView: View {
             Divider()
             Text("Orders").font(.headline)
             Divider()
-            if (patient.orders!.count == 0) {
+            if patient.samples!.count == 0 {
                 Text("No tests yet")
                 Spacer()
             } else {
@@ -33,7 +33,7 @@ struct PatientDetailView: View {
             }
             Text("Results").font(.headline)
             Divider()
-            if (patient.results!.count == 0) {
+            if patient.orders!.count == 0 {
                 Text("No results yet")
                 Spacer()
             } else {
@@ -41,7 +41,6 @@ struct PatientDetailView: View {
                     ResultRow(order: order)
                 }
             }
-            
             Divider()
             Button("Add test") {
                 self.showAdd = true
@@ -52,16 +51,16 @@ struct PatientDetailView: View {
             TestFlowView(model: TestFlowModel(self.managedObjectContext, patient: self.patient))
         })
     }
-    
+
     private func makeCamera() -> some View {
         let controller = CameraViewController()
         controller.handler = self.handleScan
         return controller
     }
-    
+
     private func handleScan(msg: String) {
         self.showAdd = false
-        
+
         // Create and save the entity
         let sample = SampleEntity(context: managedObjectContext)
         sample.id = UUID()
@@ -83,7 +82,7 @@ struct PatientDetailView_Previews: PreviewProvider {
     static var previews: some View {
         PatientDetailView(patient: PatientDetailView_Previews.samplePatient())
     }
-    
+
     private static func samplePatient() -> PatientEntity {
         let p = PatientEntity()
         p.lastName = "Robison"

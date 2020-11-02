@@ -13,9 +13,9 @@ struct ResultRow: View {
     let order: OrderEntity
     
     var formatter: DateFormatter {
-        let d = DateFormatter()
-        d.dateFormat = "E, d MMM - y h:mm a"
-        return d
+        let date = DateFormatter()
+        date.dateFormat = "E, d MMM - y h:mm a"
+        return date
     }
     
     var body: some View {
@@ -29,16 +29,17 @@ struct ResultRow: View {
     }
     
     private func unwrapResult() -> ResultEntity {
+        // swiftlint:disable:next force_cast
         let arry = self.order.results?.allObjects as! [ResultEntity]
         
         return arry.first!
     }
     
     private func buildImage() -> some View {
-        let r = unwrapResult()
-        if r.result! == "negative" {
+        let unwrapped = unwrapResult()
+        if unwrapped.result! == "negative" {
             return Image(systemName: "minus.circle.fill").foregroundColor(.green)
-        } else if r.result! == "positive" {
+        } else if unwrapped.result! == "positive" {
             return Image(systemName: "plus.circle.fill").foregroundColor(.red)
         } else {
             return Image(systemName: "questionmark.circle.fill").foregroundColor(.blue)
@@ -50,15 +51,15 @@ struct ResultRow_Previews: PreviewProvider {
     static var previews: some View {
         ResultRow(order: buildOrder())
     }
-    
+
     private static func buildOrder() -> OrderEntity {
-        let r = ResultEntity()
-        r.result = "positive"
-        r.resultDate = Date()
-        let o = OrderEntity()
-        o.addToResults(r)
-        o.orderID = "O123A"
-        o.sampleType = "SARS"
-        return o
+        let result = ResultEntity()
+        result.result = "positive"
+        result.resultDate = Date()
+        let order = OrderEntity()
+        order.addToResults(result)
+        order.orderID = "O123A"
+        order.sampleType = "SARS"
+        return order
     }
 }
