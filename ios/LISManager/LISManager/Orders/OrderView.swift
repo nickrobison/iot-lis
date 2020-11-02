@@ -19,8 +19,12 @@ struct OrderView: View {
     
     var body: some View {
         NavigationView {
-            List(orders, id: \.self) { order in
-                OrderCellView(order: order)
+            if (orders.count == 0) {
+                Text("No orders yet")
+            } else {
+                List(orders, id: \.self) { order in
+                    OrderCellView(order: order)
+                }
             }
         }
     }

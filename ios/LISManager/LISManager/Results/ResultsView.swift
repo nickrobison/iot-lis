@@ -18,11 +18,15 @@ struct ResultsView: View {
     
     var body: some View {
         NavigationView {
-            List(results, id: \.self) { order in
-                ResultRow(order: order)
-                //                NavigationLink(destination: ResultDetailView()) {
-                ////                    ResultRow(order: result, result: result.results[0])
-                //                }
+            if (results.count == 0) {
+                Text("No results yet")
+            } else {
+                List(results, id: \.self) { order in
+                    ResultRow(order: order)
+                    //                NavigationLink(destination: ResultDetailView()) {
+                    ////                    ResultRow(order: result, result: result.results[0])
+                    //                }
+                }
             }
         }
     }

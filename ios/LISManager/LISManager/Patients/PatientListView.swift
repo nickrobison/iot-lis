@@ -23,7 +23,7 @@ struct PatientListView: View {
         NavigationView {
             List(patients, id: \.self) { p in
                 NavigationLink(destination: PatientDetailView(patient: p)) {
-                    Text("\(p.firstName!)-\(p.lastName!)")
+                    Text("\(p.lastName!), \(p.firstName!)")
 //                    PersonCellView(person: patient)
                 }
                 .isDetailLink(true)
