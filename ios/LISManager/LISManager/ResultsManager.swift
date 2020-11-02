@@ -28,10 +28,10 @@ class ResultsManager: ObservableObject {
                     // Try to match result with sample and patient
                     let value = v.object as! LIS_Protocols_TestResult
                     let patient = value.patient!
-                    let order = value.order!.toEntity(ctx)
+//                    let order = value.order!.toEntity(ctx)
                     let result = value.results(at: 0)!.toEntity(ctx)
                     
-                    guard let sample_id = order.orderID else {
+                    guard let sample_id = value.order?.orderId else {
                         os_log("Result does not have sample ID", log: logger, type: .error)
                         return
                     }
@@ -57,9 +57,16 @@ class ResultsManager: ObservableObject {
                         os_log("Cannot fetch patient", log: logger, type: .error)
                     }
                     
+                    guard let order = sample?.order else {
+                        os_log("Sample does not have attached order", log: logger, type: .error)
+                        return
+                    }
+                    
+                    
                     result.patient = pEntity
                     result.sample = sample
                     result.order = order
+                    order.sampleType = value.order?.testTypeName
                     order.addToResults(result)
                     pEntity?.addToOrders(order)
                     
