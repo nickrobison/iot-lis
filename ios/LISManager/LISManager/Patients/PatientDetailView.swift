@@ -23,7 +23,7 @@ struct PatientDetailView: View {
             Divider()
             Text("Orders").font(.headline)
             Divider()
-            if patient.samples!.count == 0 {
+            if patient.orders!.count == 0 {
                 Text("No tests yet")
                 Spacer()
             } else {
@@ -33,7 +33,7 @@ struct PatientDetailView: View {
             }
             Text("Results").font(.headline)
             Divider()
-            if patient.orders!.count == 0 {
+            if patient.results!.count == 0 {
                 Text("No results yet")
                 Spacer()
             } else {
@@ -84,11 +84,11 @@ struct PatientDetailView_Previews: PreviewProvider {
     }
 
     private static func samplePatient() -> PatientEntity {
-        let p = PatientEntity()
-        p.lastName = "Robison"
-        p.firstName = "Nicholas"
-        p.results = []
-        p.orders = []
-        return p
+        let patient = PatientEntity()
+        patient.lastName = "Robison"
+        patient.firstName = "Nicholas"
+        patient.results = []
+        patient.orders = []
+        return patient
     }
 }

@@ -16,12 +16,13 @@ extension PatientEntity {
             return nameComp
         }
     }
-    
+
     func unwrapOrders() -> OrderEntity {
         return ordersAsArray().first!
     }
     
     func ordersAsArray() -> [OrderEntity] {
+        // swiftlint:disable:next force_cast
         return self.orders?.allObjects as! [OrderEntity]
     }
     

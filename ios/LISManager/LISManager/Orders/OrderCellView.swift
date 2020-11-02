@@ -35,17 +35,17 @@ struct OrderCellView_Previews: PreviewProvider {
     }
 
     static func sampleOrder(isRunning: Bool) -> OrderEntity {
-        let e = OrderEntity()
+        let order = OrderEntity()
 
-        let s = SampleEntity()
-        s.cartridgeID = "I'm a test cartridge"
+        let sample = SampleEntity()
+        sample.cartridgeID = "I'm a test cartridge"
 
-        let t = TimerEntity()
-        t.running = isRunning
-        t.duration = 15
+        let timer = TimerEntity()
+        timer.running = isRunning
+        timer.duration = 15
 
-        e.timer = t
-        e.sample = s
-        return e
+        order.timer = timer
+        order.sample = sample
+        return order
     }
 }
