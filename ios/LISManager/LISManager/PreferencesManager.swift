@@ -43,5 +43,6 @@ class PreferencesManager: ObservableObject {
 }
 
 struct ApplicationSettings: Codable {
-    
+    var zipCode: String
+    var locationName: String
 }

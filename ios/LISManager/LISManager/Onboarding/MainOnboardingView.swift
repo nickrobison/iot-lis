@@ -17,6 +17,8 @@ struct MainOnboardingView: View {
     @State var buttonDisabled = false
     @State private var stateIdx = 0
     
+    var completionHandler: ((ApplicationSettings) -> Void)?
+    
     var body: some View {
         VStack {
             Spacer()
@@ -34,11 +36,24 @@ struct MainOnboardingView: View {
             }
             Spacer()
             FullscreenButton(text: "Next", isAnimating: .constant(false), handler: {
-                self.incrementState()
+                self.handleClick()
             })
             .disabled(self.buttonDisabled)
         }
         .padding([.leading, .trailing, .bottom])
+    }
+    
+    private func handleClick() {
+        if (self.onboardingState == .location) {
+            self.updateSettings()
+        } else {
+            self.incrementState()
+        }
+    }
+    
+    private func updateSettings() {
+        let settings = ApplicationSettings(zipCode: "10293", locationName: "Test Location")
+        self.completionHandler?(settings)
     }
     
     private func incrementState() {

@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var pm: PreferencesManager
+    
     var body: some View {
-        MainView()
-//        MainOnboardingView()
+        if (pm.settings == nil) {
+            MainOnboardingView { s in
+                pm.settings = s
+            }
+        } else {
+            MainView()
+        }
+        
     }
 }
 
