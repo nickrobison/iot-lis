@@ -11,6 +11,8 @@ import Combine
 
 struct MainView: View {
     
+    @EnvironmentObject var pm: PreferencesManager
+    
     @State private var selection = 0
     var body: some View {
         TabView(selection: $selection) {
@@ -50,6 +52,13 @@ struct MainView: View {
                         Text("Devices")
                     }
                 }.tag(4)
+            SettingsView(settings: pm.settings!)
+                .tabItem {
+                    VStack {
+                        Image(systemName: "gear")
+                        Text("Settings")
+                    }
+                }.tag(5)
         }
     }
 }
