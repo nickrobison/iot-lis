@@ -12,7 +12,7 @@ import Combine
 
 private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.BluetoothManager", category: "bluetooth")
 
-public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableObject {
+public class BluetoothManager: NSObject, CBCentralManagerDelegate, ObservableObject {
     
     public static let resultNotification = Notification.Name("ResultNotification")
     
@@ -35,7 +35,6 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
     
     public var deviceRepository: DeviceRepository = MemoryDeviceRepository()
     
-    
     public override init() {
         super.init()
         os_log("Initializing Bluetooth Manager", log: logger, type: .debug)
@@ -57,7 +56,7 @@ public class BluetoothManager : NSObject, CBCentralManagerDelegate, ObservableOb
         connectionManager.connect(periph)
     }
     
-    public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+    public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         os_log("Discovered. ", log: logger, type: .debug)
         discoverSubject.send(BluetoothDevice(id: peripheral.identifier.uuidString, name: peripheral.name ?? "(unnamed)"))
         print(peripheral)

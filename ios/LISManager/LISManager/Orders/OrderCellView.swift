@@ -16,7 +16,7 @@ struct OrderCellView: View {
                 Text("I'm a sample")
             }
             Divider()
-            if (order.timer != nil) {
+            if order.timer != nil {
                 TimerView(timer: order.timer!)
             } else {
                 EmptyView()

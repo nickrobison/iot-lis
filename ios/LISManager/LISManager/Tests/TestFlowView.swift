@@ -21,8 +21,7 @@ struct TestFlowView: View {
     @Environment(\.presentationMode) var presentationMode
 
     @State private var screenBrightness = CGFloat(0.0)
-    
-    
+
     var body: some View {
         VStack {
             buildView().padding([.top])
@@ -32,15 +31,16 @@ struct TestFlowView: View {
     private func buildView() -> some View {
         VStack {
             Spacer()
-            if (self.model.testFlowState == .initial) {
+            if self.model.testFlowState == .initial {
                 InitialTestFlowView()
-            } else if (self.model.testFlowState == .sampleScan) {
-                SampleScanView(sampleID: self.$model.sampleID, testFlowState: self.$model.testFlowState, stateIdx: self.$model.stateIdx)
-            } else if (self.model.testFlowState == .patientID) {
+            } else if self.model.testFlowState == .sampleScan {
+                SampleScanView(sampleID: self.$model.sampleID, testFlowState: self.$model.testFlowState,
+                               stateIdx: self.$model.stateIdx)
+            } else if self.model.testFlowState == .patientID {
                 PatientBarcodeView(patientID: self.model.patient.id!)
-            } else if (self.model.testFlowState == .sampleID) {
+            } else if self.model.testFlowState == .sampleID {
                 SampleBarcodeView(sampleID: self.model.sampleID)
-            } else if (self.model.testFlowState == .finish) {
+            } else if self.model.testFlowState == .finish {
                 FinishTestFlowView(readNow: self.$model.readNow)
             }
             Spacer()
@@ -64,7 +64,7 @@ struct TestFlowView: View {
     }
     
     private func handleClick() {
-        if (self.model.testFlowState == .finish) {
+        if self.model.testFlowState == .finish {
             self.model.addOrder()
             self.presentationMode.wrappedValue.dismiss()
         } else {

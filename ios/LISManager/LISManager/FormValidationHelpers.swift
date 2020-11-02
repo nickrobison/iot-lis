@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 
-
 /**
  {Publisher} for determining whether or not the given string Publisher is returning an empty string.
  */
@@ -16,6 +15,6 @@ func stringNotEmpty(_ publisher: Published<String>.Publisher) -> AnyPublisher<Bo
     publisher
         .debounce(for: 0.8, scheduler: RunLoop.main)
         .removeDuplicates()
-        .map{ $0 != ""}
+        .map { $0 != ""}
         .eraseToAnyPublisher()
 }

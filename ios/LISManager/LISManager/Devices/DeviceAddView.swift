@@ -10,8 +10,7 @@ import LISKit
 import Combine
 
 struct DeviceAddView: View {
-    
-    
+
     let discoveredDevices: AnyPublisher<BluetoothDevice, Never>
     var handler: ((_ id: String) -> Void)?
     @State private var devices: [BluetoothDevice] = []

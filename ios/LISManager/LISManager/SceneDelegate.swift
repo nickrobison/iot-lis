@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // swiftlint:disable:next force_cast
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         // swiftlint:disable:next force_cast
-        let blueM = (UIApplication.shared.delegate as! AppDelegate).bm
+        let blueM = (UIApplication.shared.delegate as! AppDelegate).bluetoothManager
 
         // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
         // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
@@ -65,7 +65,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.bm.reconnect()
+        (UIApplication.shared.delegate as? AppDelegate)?.bluetoothManager.reconnect()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
@@ -74,7 +74,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
 
         // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.bm.shutdown()
+        (UIApplication.shared.delegate as? AppDelegate)?.bluetoothManager.shutdown()
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
 

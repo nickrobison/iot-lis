@@ -9,7 +9,7 @@ import Foundation
 
 extension PatientEntity {
     var nameComponent: PersonNameComponents {
-        get {
+        get { // swiftlint:disable:this implicit_getter
             var nameComp = PersonNameComponents()
             nameComp.familyName = self.lastName
             nameComp.givenName = self.firstName

@@ -19,7 +19,7 @@ struct OrderView: View {
     
     var body: some View {
         NavigationView {
-            if (orders.count == 0) {
+            if orders.count == 0 {
                 Text("No orders yet")
             } else {
                 List(orders, id: \.self) { order in

@@ -76,7 +76,7 @@ class PatientAddModel: ObservableObject {
 
     private var isDemographicsValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest(stringNotEmpty(self.$gender), stringNotEmpty(self.$sex))
-            .map{
+            .map {
                 $0 && $1
             }
             .eraseToAnyPublisher()

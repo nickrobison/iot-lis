@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum OnboardingState : CaseIterable {
+enum OnboardingState: CaseIterable {
     case initial
     case location
 }
@@ -27,9 +27,9 @@ struct MainOnboardingView: View {
     private func buildView() -> some View {
         VStack(alignment: .leading) {
             Spacer()
-            if (self.onboardingState == .initial) {
+            if self.onboardingState == .initial {
                 InitialOnboardingView()
-            } else if (self.onboardingState == .location) {
+            } else if self.onboardingState == .location {
                 LocationInformation(buttonDisabled: $buttonDisabled)
             }
             Spacer()
@@ -41,7 +41,7 @@ struct MainOnboardingView: View {
         .padding([.leading, .trailing, .bottom])
     }
     
-    private func incrementState() -> Void {
+    private func incrementState() {
         self.stateIdx += 1
         self.onboardingState = OnboardingState.allCases[self.stateIdx]
     }

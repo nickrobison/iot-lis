@@ -11,7 +11,7 @@ struct PersonHeader: View {
     let name: PersonNameComponents
     let id: String
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             HStack {
                 InitialsView(name: name)
                 VStack(alignment: .leading) {

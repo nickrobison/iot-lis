@@ -37,6 +37,7 @@ struct SampleScanView: View {
 
 struct SampleScanView_Previews: PreviewProvider {
     static var previews: some View {
-        SampleScanView(sampleID: .constant("hello there"), testFlowState: .constant(.sampleScan), stateIdx: .constant(1))
+        SampleScanView(sampleID: .constant("hello there"),
+                       testFlowState: .constant(.sampleScan), stateIdx: .constant(1))
     }
 }

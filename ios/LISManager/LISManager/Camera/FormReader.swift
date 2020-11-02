@@ -13,9 +13,7 @@ import UIKit
 private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.FormReader", category: "input")
 
 class FormReader: NSObject {
-    
-    
-    
+
     func extractText(_ image: UIImage, handler: @escaping (String) -> Void) {
         let request = VNRecognizeTextRequest { (req, error) in
             guard error == nil else {

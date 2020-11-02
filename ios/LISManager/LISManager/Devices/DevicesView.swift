@@ -9,8 +9,6 @@ import os
 import LISKit
 import SwiftUI
 
-
-
 struct DevicesView: View {
     @EnvironmentObject var bm: BluetoothManager
     

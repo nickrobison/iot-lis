@@ -29,7 +29,8 @@ struct PatientAddView: View {
                         TextField("Sex", text: self.$model.sex)
                     }
                     HStack {
-                        DatePicker(selection: self.$model.birthday, in: ...self.now, displayedComponents: .date, label: {
+                        DatePicker(selection: self.$model.birthday,
+                                   in: ...self.now, displayedComponents: .date, label: {
                             EmptyView()
                         })
                         Spacer()
@@ -60,7 +61,7 @@ struct PatientAddView: View {
     
     private func create() {
         self.completionHandler?(self.model.toModel())
-        self.presentationMode.wrappedValue.dismiss();
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
 

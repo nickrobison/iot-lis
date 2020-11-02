@@ -21,7 +21,7 @@ enum CameraControllerError: Swift.Error {
     case unknown
 }
 
-class BarcodeScanner : NSObject, AVCaptureMetadataOutputObjectsDelegate, ObservableObject {
+class BarcodeScanner: NSObject, AVCaptureMetadataOutputObjectsDelegate, ObservableObject {
     @Published var barcode: String?
     var captureSession: AVCaptureSession?
     var camera: AVCaptureDevice?
@@ -34,7 +34,7 @@ class BarcodeScanner : NSObject, AVCaptureMetadataOutputObjectsDelegate, Observa
     }
     
     func prepare(completionHandler: @escaping (Error?) -> Void) {
-        func createCaptureSession(){
+        func createCaptureSession() {
             self.captureSession = AVCaptureSession()
         }
         
@@ -51,8 +51,9 @@ class BarcodeScanner : NSObject, AVCaptureMetadataOutputObjectsDelegate, Observa
             if let frontCamera = self.camera {
                 self.cameraInput = try AVCaptureDeviceInput(device: frontCamera)
                 
-                if captureSession.canAddInput(self.cameraInput!) { captureSession.addInput(self.cameraInput!)}
-                else { throw CameraControllerError.inputsAreInvalid }
+                if captureSession.canAddInput(self.cameraInput!) {
+                    captureSession.addInput(self.cameraInput!)
+                } else { throw CameraControllerError.inputsAreInvalid }
                 
                 // Enable qr code scanning
                 let metadataOutput = AVCaptureMetadataOutput()
@@ -65,9 +66,7 @@ class BarcodeScanner : NSObject, AVCaptureMetadataOutputObjectsDelegate, Observa
                 metadataOutput.metadataObjectTypes = [.qr, .pdf417, .dataMatrix]
                 // Should be on its own queue?
                 metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-                
-            }
-            else { throw CameraControllerError.noCamerasAvailable }
+            } else { throw CameraControllerError.noCamerasAvailable }
             
             captureSession.startRunning()
             
@@ -78,13 +77,10 @@ class BarcodeScanner : NSObject, AVCaptureMetadataOutputObjectsDelegate, Observa
                 createCaptureSession()
                 try configureCaptureDevices()
                 try configureDeviceInputs()
-            }
-            
-            catch {
-                DispatchQueue.main.async{
+            } catch {
+                DispatchQueue.main.async {
                     completionHandler(error)
                 }
-                
                 return
             }
             
@@ -107,7 +103,8 @@ class BarcodeScanner : NSObject, AVCaptureMetadataOutputObjectsDelegate, Observa
         self.previewLayer?.frame = view.frame
     }
     
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject],
+                        from connection: AVCaptureConnection) {
         if let metadataObject = metadataObjects.first {
             guard let readableObject = metadataObject as? AVMetadataMachineReadableCodeObject else {
                 return

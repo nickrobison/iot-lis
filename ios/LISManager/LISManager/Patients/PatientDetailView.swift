@@ -51,16 +51,16 @@ struct PatientDetailView: View {
             TestFlowView(model: TestFlowModel(self.managedObjectContext, patient: self.patient))
         })
     }
-
+    
     private func makeCamera() -> some View {
         let controller = CameraViewController()
         controller.handler = self.handleScan
         return controller
     }
-
+    
     private func handleScan(msg: String) {
         self.showAdd = false
-
+        
         // Create and save the entity
         let sample = SampleEntity(context: managedObjectContext)
         sample.id = UUID()
@@ -82,7 +82,7 @@ struct PatientDetailView_Previews: PreviewProvider {
     static var previews: some View {
         PatientDetailView(patient: PatientDetailView_Previews.samplePatient())
     }
-
+    
     private static func samplePatient() -> PatientEntity {
         let patient = PatientEntity()
         patient.lastName = "Robison"
