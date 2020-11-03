@@ -13,8 +13,21 @@ import Combine
  */
 func stringNotEmpty(_ publisher: Published<String>.Publisher) -> AnyPublisher<Bool, Never> {
     publisher
-        .debounce(for: 0.8, scheduler: RunLoop.main)
+        .debounce(for: 0.2, scheduler: RunLoop.main)
         .removeDuplicates()
         .map { $0 != ""}
+        .eraseToAnyPublisher()
+}
+
+/**
+ {Publisher} for determining whether or not the given string contains only digits
+ */
+func stringOnlyNumeric(_ publisher: Published<String>.Publisher) -> AnyPublisher<Bool, Never> {
+    publisher
+        .debounce(for: 0.2, scheduler: RunLoop.main)
+        .removeDuplicates()
+        .map {
+            CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: $0))
+        }
         .eraseToAnyPublisher()
 }

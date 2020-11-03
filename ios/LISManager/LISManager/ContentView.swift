@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @EnvironmentObject var manager: PreferencesManager
+    
     var body: some View {
-        MainView()
-//        MainOnboardingView()
+        if manager.settings == nil {
+            MainOnboardingView(model: OnboardingModel(completionHandler: { settings in
+                manager.settings = settings
+            }))
+        } else {
+            MainView()
+        }
+        
     }
 }
 

@@ -9,26 +9,34 @@ import os
 import Foundation
 import MapKit
 import CoreLocation
+import Combine
 
 private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.LocationManager", category: "networking")
 
+enum LocationError: Error {
+    case unknown
+    case location(CLError)
+    case unauthorized
+    case noLocations
+}
+
 class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     private let locationManager = CLLocationManager()
+    private var isCompleted = false
     
-    @Published var postalCode: String = ""
+    var postalCode = PassthroughSubject<String, LocationError>()
     
     override init() {
         super.init()
+    }
+    
+    func requestLocation() {
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
             locationManager.requestLocation()
         }
-    }
-    
-    public func updateLocation(withCounty county: String) {
-        self.postalCode = county
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -38,8 +46,13 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
             
             geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
                 if error == nil {
-                    let firstLocation = placemarks?[0]
-                    self.postalCode = (firstLocation?.postalCode)!
+                    guard let firstLocation = placemarks?[0] else {
+                        self.postalCode.send(completion: .failure(.noLocations))
+                        return
+                    }
+                    self.postalCode.send(firstLocation.postalCode!)
+                    self.postalCode.send(completion: .finished)
+                    
                 } else {
                     os_log("Cannot reverse geocode location", log: logger, type: .error)
                 }
@@ -48,6 +61,10 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        os_log("Get location failed: %s", log: logger, type: .error, error.localizedDescription)
+        guard let clError = error as? CLError else {
+            self.postalCode.send(completion: .failure(.unknown))
+            return
+        }
+        self.postalCode.send(completion: .failure(.location(clError)))
     }
 }
