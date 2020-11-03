@@ -22,6 +22,8 @@ struct MainOnboardingView: View {
             Spacer()
             if self.model.onboardingState == .initial {
                 InitialOnboardingView()
+            } else if self.model.onboardingState == .user {
+                UserLoginView(user: self.$model.user)
             } else if self.model.onboardingState == .location {
                 LocationInformation(locationName: self.$model.locationName, zipCode: self.$model.zipCode)
             }

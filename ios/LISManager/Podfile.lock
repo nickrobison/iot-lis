@@ -1,15 +1,29 @@
 PODS:
   - FlatBuffers (0.8.0)
+  - OktaOidc (3.9.2):
+    - OktaOidc/AppAuth (= 3.9.2)
+    - OktaOidc/Okta (= 3.9.2)
+  - OktaOidc/AppAuth (3.9.2)
+  - OktaOidc/Okta (3.9.2):
+    - OktaOidc/AppAuth
+    - OktaOidc/Okta/Classes (= 3.9.2)
+  - OktaOidc/Okta/Classes (3.9.2):
+    - OktaOidc/AppAuth
+  - OktaStorage (1.1.1)
   - SwiftLint (0.39.2)
   - xxHash-Swift (1.1.0)
 
 DEPENDENCIES:
   - FlatBuffers (from `https://github.com/mustiikhalil/flatbuffers.git`)
+  - OktaOidc
+  - OktaStorage
   - SwiftLint
   - xxHash-Swift
 
 SPEC REPOS:
   trunk:
+    - OktaOidc
+    - OktaStorage
     - SwiftLint
     - xxHash-Swift
 
@@ -24,9 +38,11 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   FlatBuffers: cfae8f95023a5a03b1ce22b22f14436ada96a7a2
+  OktaOidc: 0daa496af1b708564bfb0fa353310562ee170369
+  OktaStorage: 967271af74f1cd8d32c18fffe159013ec22ee59b
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   xxHash-Swift: 38fa4218ebae48ccbaaa4240c0cceec7ee2c7f87
 
-PODFILE CHECKSUM: 4d35c6ed9922439ac38e9fb371fab32cf59bfdc2
+PODFILE CHECKSUM: 788b3497c90d8450c087d28a4646903e5a454cbb
 
 COCOAPODS: 1.10.0.rc.1

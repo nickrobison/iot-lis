@@ -6,6 +6,8 @@ target 'LISManager' do
   use_frameworks!
   pod 'xxHash-Swift'
   pod 'SwiftLint'
+  pod 'OktaOidc'
+  pod 'OktaStorage'
 
   # Pods for LISManager
 
@@ -29,5 +31,4 @@ target 'LISKit' do
     inherit! :search_paths
     # Pods for testing
   end
-
 end
