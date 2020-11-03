@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		10EDAFC12550A8DE009FDA96 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC02550A8DE009FDA96 /* SettingsView.swift */; };
+		10EDAFC62550AE1D009FDA96 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */; };
 		69464CEF618A390A997068B8 /* Pods_LISKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6C57E8DD14B7732B893BEF /* Pods_LISKit.framework */; };
 		737DCD682A2697F51E3FAA1F /* Pods_LISManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01ED7C5E4182572B8B07026 /* Pods_LISManager.framework */; };
 		8752770672A02E6BC063C095 /* Pods_LISKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */; };
@@ -42,7 +43,6 @@
 		EB856FD72541B9D2008996F6 /* PatientAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB856FD62541B9D2008996F6 /* PatientAddView.swift */; };
 		EB856FDF2541B9F8008996F6 /* PatientAddModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB856FDE2541B9F8008996F6 /* PatientAddModel.swift */; };
 		EB856FEF2541C4BA008996F6 /* PatientAddTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB856FEE2541C4BA008996F6 /* PatientAddTests.swift */; };
-		EB9B788A253DF8C100FCAB10 /* LocationInformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B7889253DF8C100FCAB10 /* LocationInformationViewModel.swift */; };
 		EB9B7890253DF95100FCAB10 /* FormValidationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B788F253DF95100FCAB10 /* FormValidationHelpers.swift */; };
 		EB9B7896253E026900FCAB10 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B7895253E026900FCAB10 /* MainView.swift */; };
 		EB9B78A6253E047600FCAB10 /* DevicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9B78A5253E047600FCAB10 /* DevicesView.swift */; };
@@ -144,6 +144,7 @@
 		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		10EDAFC02550A8DE009FDA96 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		149E75223CC0AAC8C3E16552 /* Pods-LISManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.release.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 		156FFA07B122F5A24DCF62EC /* Pods_LISTester.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISTester.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6C57E8DD14B7732B893BEF /* Pods_LISKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -188,7 +189,6 @@
 		EB856FD62541B9D2008996F6 /* PatientAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAddView.swift; sourceTree = "<group>"; };
 		EB856FDE2541B9F8008996F6 /* PatientAddModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAddModel.swift; sourceTree = "<group>"; };
 		EB856FEE2541C4BA008996F6 /* PatientAddTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientAddTests.swift; sourceTree = "<group>"; };
-		EB9B7889253DF8C100FCAB10 /* LocationInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInformationViewModel.swift; sourceTree = "<group>"; };
 		EB9B788F253DF95100FCAB10 /* FormValidationHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormValidationHelpers.swift; sourceTree = "<group>"; };
 		EB9B7895253E026900FCAB10 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EB9B78A5253E047600FCAB10 /* DevicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesView.swift; sourceTree = "<group>"; };
@@ -494,7 +494,7 @@
 				EBAFE486253A152E00BF8868 /* MainOnboardingView.swift */,
 				EBAFE48E253A158B00BF8868 /* InitialOnboardingView.swift */,
 				EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */,
-				EB9B7889253DF8C100FCAB10 /* LocationInformationViewModel.swift */,
+				10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -966,7 +966,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB9B788A253DF8C100FCAB10 /* LocationInformationViewModel.swift in Sources */,
+				10EDAFC62550AE1D009FDA96 /* OnboardingModel.swift in Sources */,
 				EB18F8D52547472700745A59 /* InitialTestFlowView.swift in Sources */,
 				EB18F8F72547477D00745A59 /* SampleBarcodeView.swift in Sources */,
 				EB9B7896253E026900FCAB10 /* MainView.swift in Sources */,

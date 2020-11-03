@@ -8,14 +8,6 @@
 import SwiftUI
 import UIKit
 
-enum TestFlowState: CaseIterable {
-    case initial
-    case sampleScan
-    case patientID
-    case sampleID
-    case finish
-}
-
 struct TestFlowView: View {
     @ObservedObject var model: TestFlowModel
     @Environment(\.presentationMode) var presentationMode

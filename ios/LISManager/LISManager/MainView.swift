@@ -9,11 +9,21 @@ import SwiftUI
 import LISKit
 import Combine
 
+enum MainTabView: CaseIterable {
+    case home
+    case patients
+    case orders
+    case results
+    case devices
+    case settings
+    
+}
+
 struct MainView: View {
     
     @EnvironmentObject var pm: PreferencesManager
     
-    @State private var selection = 0
+    @State private var selection: MainTabView = .home
     var body: some View {
         TabView(selection: $selection) {
             Text("Tab Content 1")
@@ -22,7 +32,7 @@ struct MainView: View {
                         Image(systemName: "house")
                         Text("Home")
                     }
-                }.tag(0)
+                }.tag(MainTabView.home)
             
             PatientListView()
                 .tabItem {
@@ -30,35 +40,35 @@ struct MainView: View {
                         Image(systemName: "rectangle.stack.person.crop.fill")
                         Text("Patients")
                     }
-                }.tag(1)
+                }.tag(MainTabView.patients)
             OrderView()
                 .tabItem {
                     VStack {
                         Image(systemName: "doc.text")
                         Text("Orders")
                     }
-                }.tag(2)
+                }.tag(MainTabView.orders)
             ResultsView()
                 .tabItem {
                     VStack {
                         Image(systemName: "text.badge.checkmark")
                         Text("Results")
                     }
-                }.tag(3)
+                }.tag(MainTabView.results)
             DevicesView()
                 .tabItem {
                     VStack {
                         Image(systemName: "lightbulb")
                         Text("Devices")
                     }
-                }.tag(4)
+                }.tag(MainTabView.devices)
             SettingsView(settings: pm.settings!)
                 .tabItem {
                     VStack {
                         Image(systemName: "gear")
                         Text("Settings")
                     }
-                }.tag(5)
+                }.tag(MainTabView.settings)
         }
     }
 }
