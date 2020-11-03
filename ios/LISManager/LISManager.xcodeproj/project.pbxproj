@@ -10,6 +10,8 @@
 		1099DA622551C03A00D8A062 /* Okta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1099DA612551C03A00D8A062 /* Okta.plist */; };
 		1099DA6C2551C2B600D8A062 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA6B2551C2B600D8A062 /* LoginViewController.swift */; };
 		1099DA7E2551DFFB00D8A062 /* ApplicationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA7D2551DFFB00D8A062 /* ApplicationUser.swift */; };
+		1099DA8E2551ED1A00D8A062 /* LocationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA8D2551ED1A00D8A062 /* LocationSettingsView.swift */; };
+		1099DA932551ED5F00D8A062 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA922551ED5F00D8A062 /* UserSettingsView.swift */; };
 		109BD5EF2551B5D70091BED2 /* UserLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109BD5EE2551B5D70091BED2 /* UserLoginView.swift */; };
 		10EDAFC12550A8DE009FDA96 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC02550A8DE009FDA96 /* SettingsView.swift */; };
 		10EDAFC62550AE1D009FDA96 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */; };
@@ -150,6 +152,8 @@
 		1099DA612551C03A00D8A062 /* Okta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Okta.plist; sourceTree = "<group>"; };
 		1099DA6B2551C2B600D8A062 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1099DA7D2551DFFB00D8A062 /* ApplicationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUser.swift; sourceTree = "<group>"; };
+		1099DA8D2551ED1A00D8A062 /* LocationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingsView.swift; sourceTree = "<group>"; };
+		1099DA922551ED5F00D8A062 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		109BD5EE2551B5D70091BED2 /* UserLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginView.swift; sourceTree = "<group>"; };
 		10EDAFC02550A8DE009FDA96 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
@@ -296,6 +300,8 @@
 			isa = PBXGroup;
 			children = (
 				10EDAFC02550A8DE009FDA96 /* SettingsView.swift */,
+				1099DA8D2551ED1A00D8A062 /* LocationSettingsView.swift */,
+				1099DA922551ED5F00D8A062 /* UserSettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1003,9 +1009,11 @@
 				EBAFE43C253A114200BF8868 /* AppDelegate.swift in Sources */,
 				EBAFE43E253A114200BF8868 /* SceneDelegate.swift in Sources */,
 				EB9B78C5253E0CE700FCAB10 /* DeviceAddView.swift in Sources */,
+				1099DA8E2551ED1A00D8A062 /* LocationSettingsView.swift in Sources */,
 				EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */,
 				EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */,
 				EBC76EA4254857B000D0B4B8 /* DeviceEntity+Extensions.swift in Sources */,
+				1099DA932551ED5F00D8A062 /* UserSettingsView.swift in Sources */,
 				EB18F8D02547391A00745A59 /* TestFlowView.swift in Sources */,
 				EBC76EC425489F0700D0B4B8 /* TimePicker.swift in Sources */,
 				EB6332252541EFBF002FFA25 /* QRCodeView.swift in Sources */,

@@ -7,11 +7,18 @@
 
 import Foundation
 
-struct ApplicationUser {
+struct ApplicationUser: Codable {
     let id: String
     let firstName: String
     let lastName: String
     let username: String
+    
+    init(id: String, firstName: String, lastName: String, username: String) {
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.username = username
+    }
     
     init?(from response: [String: Any]) {
         guard let id = response["sub"] as? String else {
@@ -32,5 +39,12 @@ struct ApplicationUser {
             return nil
         }
         self.username = username
+    }
+    
+    func toComponent() -> PersonNameComponents {
+        var components = PersonNameComponents()
+        components.givenName = self.firstName
+        components.familyName = self.lastName
+        return components
     }
 }

@@ -62,7 +62,7 @@ class OnboardingModel: ObservableObject {
     }
     
     private func updateSettings() {
-        let settings = ApplicationSettings(zipCode: self.zipCode, locationName: self.locationName)
+        let settings = ApplicationSettings(zipCode: self.zipCode, locationName: self.locationName, user: self.user!)
         self.completionHandler?(settings)
     }
     

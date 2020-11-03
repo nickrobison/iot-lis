@@ -14,19 +14,23 @@ struct SettingsView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("Settings").font(.title)
-            Spacer()
-            Text("Location").font(.headline)
             Divider()
-            Text("Location: \(settings.locationName)")
-            Text("Zip: \(settings.zipCode)")
+            UserSettingsView(user: self.settings.user)
+            Divider()
+            LocationSettingsView(locationName: settings.locationName, zipCode: settings.zipCode)
             Spacer()
+            Button("Logout user") {
+                debugPrint("Logout pressed")
+            }
+            .accentColor(.red)
+            
         }
-        .padding([.leading])
+        .padding([.leading, .bottom])
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(settings: ApplicationSettings(zipCode: "98103", locationName: "HHS"))
+        SettingsView(settings: ApplicationSettings(zipCode: "98103", locationName: "HHS", user: ApplicationUser(id: "1", firstName: "Test", lastName: "User", username: "testUser1")))
     }
 }
