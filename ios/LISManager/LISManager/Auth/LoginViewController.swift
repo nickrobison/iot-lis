@@ -29,7 +29,7 @@ final class LoginViewController: UIViewController, UIViewControllerRepresentable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.oktaOidc = try? OktaOidc()
-//        self.loadFromKeychain()
+        self.loadFromKeychain()
     }
     
     func loginUser(handler: @escaping ((Result<ApplicationUser, AuthenticationError>) -> Void)) {
@@ -48,8 +48,7 @@ final class LoginViewController: UIViewController, UIViewControllerRepresentable
             }
             
             do {
-                try self.secureStorage.set(data: authStateData, forKey: LoginViewController.UserKey,
-                                           behindBiometrics: self.secureStorage.isTouchIDSupported() || self.secureStorage.isFaceIDSupported())
+                try self.secureStorage.set(data: authStateData, forKey: LoginViewController.UserKey)
             } catch let error as NSError {
                 handler(.failure(.keychainError(error)))
                 return

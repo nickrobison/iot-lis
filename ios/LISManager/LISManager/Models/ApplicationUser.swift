@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import xxHash_Swift
 
 struct ApplicationUser: Codable {
     let id: String
@@ -24,7 +25,7 @@ struct ApplicationUser: Codable {
         guard let id = response["sub"] as? String else {
             return nil
         }
-        self.id = id
+        self.id = XXH32.digestHex(id)
         
         guard let firstName = response["given_name"] as? String else {
             return nil

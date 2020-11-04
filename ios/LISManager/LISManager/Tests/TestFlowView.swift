@@ -10,6 +10,7 @@ import UIKit
 
 struct TestFlowView: View {
     @ObservedObject var model: TestFlowModel
+    @EnvironmentObject var pManager: PreferencesManager
     @Environment(\.presentationMode) var presentationMode
 
     @State private var screenBrightness = CGFloat(0.0)
@@ -27,9 +28,9 @@ struct TestFlowView: View {
                 InitialTestFlowView()
             } else if self.model.testFlowState == .sampleScan {
                 SampleScanView(sampleID: self.$model.sampleID, testFlowState: self.$model.testFlowState,
-                               stateIdx: self.$model.stateIdx)
+                               stateIdx: self.$model.stateIdx, handler: self.handleClick)
             } else if self.model.testFlowState == .operatorID {
-                OperatorBarcodeView(operatorID: "test-operator")
+                OperatorBarcodeView(operatorID: pManager.settings!.user.id)
             } else if self.model.testFlowState == .patientID {
                 PatientBarcodeView(patientID: self.model.patient.id!)
             } else if self.model.testFlowState == .sampleID {

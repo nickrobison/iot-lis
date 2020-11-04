@@ -12,14 +12,15 @@ struct ContentView: View {
     @EnvironmentObject var manager: PreferencesManager
     
     var body: some View {
-        if manager.settings == nil {
-            MainOnboardingView(model: OnboardingModel(completionHandler: { settings in
-                self.manager.settings = settings
-            }))
-        } else {
-            MainView()
+        Group {
+            if manager.settings == nil {
+                MainOnboardingView(model: OnboardingModel(completionHandler: { settings in
+                    self.manager.settings = settings
+                }))
+            } else {
+                MainView()
+            }
         }
-        
     }
 }
 
