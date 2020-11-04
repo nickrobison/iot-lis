@@ -12,6 +12,7 @@ class OnboardingModel: ObservableObject {
     
     enum OnboardingState: CaseIterable {
         case initial
+        case user
         case location
     }
     
@@ -20,18 +21,24 @@ class OnboardingModel: ObservableObject {
     @Published var locationName = ""
     @Published var zipCode = ""
     @Published var buttonDisabled = false
+    @Published var user: ApplicationUser?
     
     var completionHandler: ((ApplicationSettings) -> Void)?
     
     private var cancellableSet: Set<AnyCancellable> = []
     private var isButtonDisabledPublisher: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest3(self.$onboardingState, stringNotEmpty(self.$locationName), Publishers.CombineLatest(stringNotEmpty(self.$zipCode), stringOnlyNumeric(self.$zipCode)).map { $0 && $1 })
+        Publishers.CombineLatest4(self.$onboardingState, stringNotEmpty(self.$locationName),
+                                  Publishers.CombineLatest(stringNotEmpty(self.$zipCode), stringOnlyNumeric(self.$zipCode))
+                                    .map { $0 && $1 }, self.$user)
             .map {
-                // We only need to perform validation for the location field
-                guard $0 == .location else {
+                switch $0 {
+                case .user:
+                    return $3 == nil
+                case .location:
+                    return !($1 && $2)
+                default:
                     return false
                 }
-                return !($1 && $2)
             }
             .eraseToAnyPublisher()
     }
@@ -53,7 +60,7 @@ class OnboardingModel: ObservableObject {
     }
     
     private func updateSettings() {
-        let settings = ApplicationSettings(zipCode: self.zipCode, locationName: self.locationName)
+        let settings = ApplicationSettings(zipCode: self.zipCode, locationName: self.locationName, user: self.user!)
         self.completionHandler?(settings)
     }
     

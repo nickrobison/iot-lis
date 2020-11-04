@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		109979912552F62B00D558CE /* OperatorBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109979902552F62B00D558CE /* OperatorBarcodeView.swift */; };
+		1099DA622551C03A00D8A062 /* Okta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1099DA612551C03A00D8A062 /* Okta.plist */; };
+		1099DA6C2551C2B600D8A062 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA6B2551C2B600D8A062 /* LoginViewController.swift */; };
+		1099DA7E2551DFFB00D8A062 /* ApplicationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA7D2551DFFB00D8A062 /* ApplicationUser.swift */; };
+		1099DA8E2551ED1A00D8A062 /* LocationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA8D2551ED1A00D8A062 /* LocationSettingsView.swift */; };
+		1099DA932551ED5F00D8A062 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA922551ED5F00D8A062 /* UserSettingsView.swift */; };
+		109BD5EF2551B5D70091BED2 /* UserLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109BD5EE2551B5D70091BED2 /* UserLoginView.swift */; };
 		10EDAFC12550A8DE009FDA96 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC02550A8DE009FDA96 /* SettingsView.swift */; };
 		10EDAFC62550AE1D009FDA96 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */; };
 		69464CEF618A390A997068B8 /* Pods_LISKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6C57E8DD14B7732B893BEF /* Pods_LISKit.framework */; };
@@ -143,10 +150,18 @@
 		01C8FCA30DF5080D239F9865 /* Pods-LISManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.release.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.release.xcconfig"; sourceTree = "<group>"; };
 		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		109979902552F62B00D558CE /* OperatorBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorBarcodeView.swift; sourceTree = "<group>"; };
+		1099DA612551C03A00D8A062 /* Okta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Okta.plist; sourceTree = "<group>"; };
+		1099DA6B2551C2B600D8A062 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1099DA7D2551DFFB00D8A062 /* ApplicationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUser.swift; sourceTree = "<group>"; };
+		1099DA8D2551ED1A00D8A062 /* LocationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingsView.swift; sourceTree = "<group>"; };
+		1099DA922551ED5F00D8A062 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
+		109BD5EE2551B5D70091BED2 /* UserLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginView.swift; sourceTree = "<group>"; };
 		10EDAFC02550A8DE009FDA96 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		149E75223CC0AAC8C3E16552 /* Pods-LISManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.release.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 		156FFA07B122F5A24DCF62EC /* Pods_LISTester.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISTester.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		771A40E962E751D3BABDA7CB /* Pods-LISKit-AuthKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKit-AuthKit.debug.xcconfig"; path = "Target Support Files/Pods-LISKit-AuthKit/Pods-LISKit-AuthKit.debug.xcconfig"; sourceTree = "<group>"; };
 		7B6C57E8DD14B7732B893BEF /* Pods_LISKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D0112A6E95CA7F7FDE5763 /* Pods-LISManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.debug.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8C7B4A69E9FD40422B1B0422 /* Pods_LISManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +171,7 @@
 		AFDAA4C09191C39746EFF8DD /* Pods-LISManager-LISManagerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager-LISManagerUITests.debug.xcconfig"; path = "Target Support Files/Pods-LISManager-LISManagerUITests/Pods-LISManager-LISManagerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C348A028A43B1C90FAC1F647 /* Pods-LISManager-LISManagerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager-LISManagerUITests.release.xcconfig"; path = "Target Support Files/Pods-LISManager-LISManagerUITests/Pods-LISManager-LISManagerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C7666B45919F25A4E95F3B45 /* Pods-LISTester.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISTester.debug.xcconfig"; path = "Target Support Files/Pods-LISTester/Pods-LISTester.debug.xcconfig"; sourceTree = "<group>"; };
+		CD5C3E10083E2211E9B90A13 /* Pods-LISKit-AuthKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKit-AuthKit.release.xcconfig"; path = "Target Support Files/Pods-LISKit-AuthKit/Pods-LISKit-AuthKit.release.xcconfig"; sourceTree = "<group>"; };
 		CE50501CF59E9FE29565CB30 /* Pods-LISKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKit.release.xcconfig"; path = "Target Support Files/Pods-LISKit/Pods-LISKit.release.xcconfig"; sourceTree = "<group>"; };
 		D3302260487A145EC202852F /* Pods-LISKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.debug.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D35E4C8CB51A1399ED60467D /* Pods-LISKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKit.debug.xcconfig"; path = "Target Support Files/Pods-LISKit/Pods-LISKit.debug.xcconfig"; sourceTree = "<group>"; };
@@ -282,10 +298,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1099DA972551F31B00D8A062 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				1099DA6B2551C2B600D8A062 /* LoginViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		10EDAFBC2550A87B009FDA96 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				10EDAFC02550A8DE009FDA96 /* SettingsView.swift */,
+				1099DA8D2551ED1A00D8A062 /* LocationSettingsView.swift */,
+				1099DA922551ED5F00D8A062 /* UserSettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -305,6 +331,8 @@
 				149E75223CC0AAC8C3E16552 /* Pods-LISManagerTests.release.xcconfig */,
 				C7666B45919F25A4E95F3B45 /* Pods-LISTester.debug.xcconfig */,
 				996FDC9A01E4C75CE4CF25B3 /* Pods-LISTester.release.xcconfig */,
+				771A40E962E751D3BABDA7CB /* Pods-LISKit-AuthKit.debug.xcconfig */,
+				CD5C3E10083E2211E9B90A13 /* Pods-LISKit-AuthKit.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -332,6 +360,7 @@
 				EB18F8F62547477D00745A59 /* SampleBarcodeView.swift */,
 				EB18F8FB2547479500745A59 /* FinishTestFlowView.swift */,
 				EBC76EC82548A12800D0B4B8 /* TestFlowModel.swift */,
+				109979902552F62B00D558CE /* OperatorBarcodeView.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -432,6 +461,7 @@
 		EBAFE43A253A114200BF8868 /* LISManager */ = {
 			isa = PBXGroup;
 			children = (
+				1099DA972551F31B00D8A062 /* Auth */,
 				10EDAFBC2550A87B009FDA96 /* Settings */,
 				EBC76EA2254857A200D0B4B8 /* Models */,
 				EB18F8CE2547390200745A59 /* Tests */,
@@ -456,6 +486,7 @@
 				EB9B788F253DF95100FCAB10 /* FormValidationHelpers.swift */,
 				EB9B7895253E026900FCAB10 /* MainView.swift */,
 				EBC5DD0F254350E800637D42 /* ResultsManager.swift */,
+				1099DA612551C03A00D8A062 /* Okta.plist */,
 			);
 			path = LISManager;
 			sourceTree = "<group>";
@@ -495,6 +526,7 @@
 				EBAFE48E253A158B00BF8868 /* InitialOnboardingView.swift */,
 				EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */,
 				10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */,
+				109BD5EE2551B5D70091BED2 /* UserLoginView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -517,6 +549,7 @@
 			children = (
 				EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */,
 				EBC76EA3254857B000D0B4B8 /* DeviceEntity+Extensions.swift */,
+				1099DA7D2551DFFB00D8A062 /* ApplicationUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -663,7 +696,7 @@
 		EBAFE430253A114200BF8868 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1210;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					EBA78C71253D0B100007B23C = {
@@ -727,6 +760,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1099DA622551C03A00D8A062 /* Okta.plist in Resources */,
 				EBAFE44B253A114500BF8868 /* LaunchScreen.storyboard in Resources */,
 				EBAFE448253A114500BF8868 /* Preview Assets.xcassets in Resources */,
 				EBD24E162540CD8C002A3E15 /* TestAssets.xcassets in Resources */,
@@ -986,9 +1020,11 @@
 				EBAFE43C253A114200BF8868 /* AppDelegate.swift in Sources */,
 				EBAFE43E253A114200BF8868 /* SceneDelegate.swift in Sources */,
 				EB9B78C5253E0CE700FCAB10 /* DeviceAddView.swift in Sources */,
+				1099DA8E2551ED1A00D8A062 /* LocationSettingsView.swift in Sources */,
 				EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */,
 				EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */,
 				EBC76EA4254857B000D0B4B8 /* DeviceEntity+Extensions.swift in Sources */,
+				1099DA932551ED5F00D8A062 /* UserSettingsView.swift in Sources */,
 				EB18F8D02547391A00745A59 /* TestFlowView.swift in Sources */,
 				EBC76EC425489F0700D0B4B8 /* TimePicker.swift in Sources */,
 				EB6332252541EFBF002FFA25 /* QRCodeView.swift in Sources */,
@@ -999,13 +1035,17 @@
 				EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */,
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
 				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,
+				109BD5EF2551B5D70091BED2 /* UserLoginView.swift in Sources */,
 				EB856FD72541B9D2008996F6 /* PatientAddView.swift in Sources */,
 				EB18F8FC2547479500745A59 /* FinishTestFlowView.swift in Sources */,
 				EBD24E112540CC42002A3E15 /* FormReader.swift in Sources */,
+				1099DA6C2551C2B600D8A062 /* LoginViewController.swift in Sources */,
 				EBAFE49D253A166A00BF8868 /* ActivityIndicator.swift in Sources */,
 				EB856FDF2541B9F8008996F6 /* PatientAddModel.swift in Sources */,
+				1099DA7E2551DFFB00D8A062 /* ApplicationUser.swift in Sources */,
 				EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */,
 				EB18F8EA2547476800745A59 /* PatientBarcodeView.swift in Sources */,
+				109979912552F62B00D558CE /* OperatorBarcodeView.swift in Sources */,
 				EBC76EC92548A12800D0B4B8 /* TestFlowModel.swift in Sources */,
 				EB3D330C253F7E45000F5A84 /* ResultRow.swift in Sources */,
 				EB3D3319253F86E1000F5A84 /* ResultDetailView.swift in Sources */,

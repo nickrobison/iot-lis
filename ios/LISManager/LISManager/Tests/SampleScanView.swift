@@ -14,6 +14,8 @@ struct SampleScanView: View {
     @Binding var testFlowState: TestFlowModel.TestFlowState
     @Binding var stateIdx: Int
     
+    var handler: (() -> Void)?
+    
     var body: some View {
         VStack {
             Text("Scan your sample")
@@ -30,14 +32,13 @@ struct SampleScanView: View {
     private func handleScan(msg: String) {
         let hashedID = XXH32.digestHex(msg)
         self.sampleID = hashedID
-        self.testFlowState = .patientID
-        self.stateIdx += 1
+        self.handler?()
     }
 }
 
 struct SampleScanView_Previews: PreviewProvider {
     static var previews: some View {
         SampleScanView(sampleID: .constant("hello there"),
-                       testFlowState: .constant(.sampleScan), stateIdx: .constant(1))
+                       testFlowState: .constant(.sampleScan), stateIdx: .constant(1), handler: nil)
     }
 }

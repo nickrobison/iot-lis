@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>issuer</key>
+	<string>https://dev-4281200.okta.com/oauth2/default</string>
+	<key>logoutRedirectUri</key>
+	<string>com.nickrobison.iot-lis.LISManager:/logout</string>
+	<key>clientId</key>
+	<string>0oaj30fvPSAEbe7Q15d5</string>
+	<key>redirectUri</key>
+	<string>com.nickrobison.iot-lis.LISManager:/callback</string>
+	<key>scopes</key>
+	<string>openid profile offline_access</string>
+</dict>
+</plist>
