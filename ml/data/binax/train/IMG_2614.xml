@@ -1,0 +1,26 @@
+<annotation>
+	<folder>binax</folder>
+	<filename>IMG_2614.jpg</filename>
+	<path>/Users/RAAC/Development/iot-lis/ml/data/binax/IMG_2614.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1024</width>
+		<height>1365</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>binax-negative</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>375</xmin>
+			<ymin>415</ymin>
+			<xmax>770</xmax>
+			<ymax>899</ymax>
+		</bndbox>
+	</object>
+</annotation>
