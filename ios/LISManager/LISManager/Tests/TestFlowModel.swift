@@ -13,6 +13,7 @@ class TestFlowModel: ObservableObject {
     enum TestFlowState: CaseIterable {
         case initial
         case sampleScan
+        case operatorID
         case patientID
         case sampleID
         case finish

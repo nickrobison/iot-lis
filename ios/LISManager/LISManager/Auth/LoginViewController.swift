@@ -29,7 +29,7 @@ final class LoginViewController: UIViewController, UIViewControllerRepresentable
     override func viewDidLoad() {
         super.viewDidLoad()
         self.oktaOidc = try? OktaOidc()
-        self.loadFromKeychain()
+//        self.loadFromKeychain()
     }
     
     func loginUser(handler: @escaping ((Result<ApplicationUser, AuthenticationError>) -> Void)) {

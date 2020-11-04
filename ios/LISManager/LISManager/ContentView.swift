@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         if manager.settings == nil {
             MainOnboardingView(model: OnboardingModel(completionHandler: { settings in
-                manager.settings = settings
+                self.manager.settings = settings
             }))
         } else {
             MainView()

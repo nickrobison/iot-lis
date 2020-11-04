@@ -14,8 +14,9 @@ struct UserSettingsView: View {
             HStack {
                 InitialsView(name: self.user.toComponent())
                 VStack(alignment: .leading) {
-                    Text(self.user.firstName).font(.title)
-                    Text(self.user.lastName).font(.callout)
+                    Text(self.user.lastName).font(.title)
+                    Text(self.user.firstName).font(.callout)
+                    Text(self.user.username).font(.caption).italic().foregroundColor(.secondary)
                 }
             }
         }

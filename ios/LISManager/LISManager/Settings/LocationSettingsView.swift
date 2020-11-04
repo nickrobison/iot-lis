@@ -13,10 +13,12 @@ struct LocationSettingsView: View {
     let zipCode: String
     
     var body: some View {
-        Text("Location").font(.headline)
-        Divider()
-        Text("Location: \(locationName)")
-        Text("Zip: \(zipCode)")
+        VStack(alignment: .leading) {
+            Text("Location").font(.headline)
+            Divider()
+            Text("Location Name: \(locationName)")
+            Text("Zip: \(zipCode)")
+        }
     }
 }
 

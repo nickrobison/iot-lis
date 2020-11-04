@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		109979912552F62B00D558CE /* OperatorBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109979902552F62B00D558CE /* OperatorBarcodeView.swift */; };
 		1099DA622551C03A00D8A062 /* Okta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1099DA612551C03A00D8A062 /* Okta.plist */; };
 		1099DA6C2551C2B600D8A062 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA6B2551C2B600D8A062 /* LoginViewController.swift */; };
 		1099DA7E2551DFFB00D8A062 /* ApplicationUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA7D2551DFFB00D8A062 /* ApplicationUser.swift */; };
@@ -149,6 +150,7 @@
 		01C8FCA30DF5080D239F9865 /* Pods-LISManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.release.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.release.xcconfig"; sourceTree = "<group>"; };
 		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		109979902552F62B00D558CE /* OperatorBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorBarcodeView.swift; sourceTree = "<group>"; };
 		1099DA612551C03A00D8A062 /* Okta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Okta.plist; sourceTree = "<group>"; };
 		1099DA6B2551C2B600D8A062 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1099DA7D2551DFFB00D8A062 /* ApplicationUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUser.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				EB18F8F62547477D00745A59 /* SampleBarcodeView.swift */,
 				EB18F8FB2547479500745A59 /* FinishTestFlowView.swift */,
 				EBC76EC82548A12800D0B4B8 /* TestFlowModel.swift */,
+				109979902552F62B00D558CE /* OperatorBarcodeView.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1042,6 +1045,7 @@
 				1099DA7E2551DFFB00D8A062 /* ApplicationUser.swift in Sources */,
 				EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */,
 				EB18F8EA2547476800745A59 /* PatientBarcodeView.swift in Sources */,
+				109979912552F62B00D558CE /* OperatorBarcodeView.swift in Sources */,
 				EBC76EC92548A12800D0B4B8 /* TestFlowModel.swift in Sources */,
 				EB3D330C253F7E45000F5A84 /* ResultRow.swift in Sources */,
 				EB3D3319253F86E1000F5A84 /* ResultDetailView.swift in Sources */,

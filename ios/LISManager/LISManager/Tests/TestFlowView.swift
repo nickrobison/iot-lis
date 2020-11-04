@@ -28,6 +28,8 @@ struct TestFlowView: View {
             } else if self.model.testFlowState == .sampleScan {
                 SampleScanView(sampleID: self.$model.sampleID, testFlowState: self.$model.testFlowState,
                                stateIdx: self.$model.stateIdx)
+            } else if self.model.testFlowState == .operatorID {
+                OperatorBarcodeView(operatorID: "test-operator")
             } else if self.model.testFlowState == .patientID {
                 PatientBarcodeView(patientID: self.model.patient.id!)
             } else if self.model.testFlowState == .sampleID {
