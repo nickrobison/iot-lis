@@ -10,21 +10,26 @@ import SwiftUI
 struct UserLoginView: View {
     
     @Binding var user: ApplicationUser?
+    let controller = LoginViewController()
     
     var body: some View {
         VStack {
             Text("Login to Okta")
-            makeController()
+            controller
         }
-        
+        .onAppear(perform: self.loginUser)
     }
     
-    private func makeController() -> LoginViewController {
-        let controller = LoginViewController()
-        controller.handler = { user in
-            self.user = user
+    private func loginUser() {
+        debugPrint("Logging in user")
+        self.controller.loginUser { result in
+            switch result {
+            case .success(let user):
+                self.user = user
+            case .failure(let error):
+                debugPrint("Error logging in \(error)")
+            }
         }
-        return controller
     }
 }
 

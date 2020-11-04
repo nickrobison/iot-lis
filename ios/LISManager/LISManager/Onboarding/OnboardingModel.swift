@@ -39,8 +39,6 @@ class OnboardingModel: ObservableObject {
                 default:
                     return false
                 }
-                
-                
             }
             .eraseToAnyPublisher()
     }

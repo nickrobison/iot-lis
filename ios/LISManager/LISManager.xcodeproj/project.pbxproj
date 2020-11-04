@@ -296,6 +296,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1099DA972551F31B00D8A062 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				1099DA6B2551C2B600D8A062 /* LoginViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		10EDAFBC2550A87B009FDA96 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +458,7 @@
 		EBAFE43A253A114200BF8868 /* LISManager */ = {
 			isa = PBXGroup;
 			children = (
+				1099DA972551F31B00D8A062 /* Auth */,
 				10EDAFBC2550A87B009FDA96 /* Settings */,
 				EBC76EA2254857A200D0B4B8 /* Models */,
 				EB18F8CE2547390200745A59 /* Tests */,
@@ -515,7 +524,6 @@
 				EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */,
 				10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */,
 				109BD5EE2551B5D70091BED2 /* UserLoginView.swift */,
-				1099DA6B2551C2B600D8A062 /* LoginViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";

@@ -10,6 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     
     var settings: ApplicationSettings
+    let controller = LoginViewController()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -19,8 +20,12 @@ struct SettingsView: View {
             Divider()
             LocationSettingsView(locationName: settings.locationName, zipCode: settings.zipCode)
             Spacer()
+            controller
             Button("Logout user") {
-                debugPrint("Logout pressed")
+                debugPrint("Logging out user")
+                self.controller.logoutUser {_ in
+                    debugPrint("Logged out")
+                }
             }
             .accentColor(.red)
             
