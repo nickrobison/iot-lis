@@ -11,7 +11,6 @@
 		1077B11E255346CE002DBBA8 /* CardModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B11D255346CE002DBBA8 /* CardModelManager.swift */; };
 		1077B12625534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */; };
 		1077B13025543EC1002DBBA8 /* SampleInferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */; };
-		1077B13525543FDC002DBBA8 /* model.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 1077B13425543FDC002DBBA8 /* model.tflite */; };
 		1077B13A25543FF0002DBBA8 /* labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1077B13925543FF0002DBBA8 /* labels.txt */; };
 		1077B13F25544403002DBBA8 /* ImageProcessingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B13E25544403002DBBA8 /* ImageProcessingTests.swift */; };
 		109979912552F62B00D558CE /* OperatorBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109979902552F62B00D558CE /* OperatorBarcodeView.swift */; };
@@ -161,7 +160,6 @@
 		1077B11D255346CE002DBBA8 /* CardModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModelManager.swift; sourceTree = "<group>"; };
 		1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
 		1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleInferenceTests.swift; sourceTree = "<group>"; };
-		1077B13425543FDC002DBBA8 /* model.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = model.tflite; path = ../../../../ml/data/binax/model.tflite; sourceTree = "<group>"; };
 		1077B13925543FF0002DBBA8 /* labels.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
 		1077B13E25544403002DBBA8 /* ImageProcessingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingTests.swift; sourceTree = "<group>"; };
 		109979902552F62B00D558CE /* OperatorBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorBarcodeView.swift; sourceTree = "<group>"; };
@@ -315,7 +313,6 @@
 		1077B11C255346B6002DBBA8 /* TestCards */ = {
 			isa = PBXGroup;
 			children = (
-				1077B13425543FDC002DBBA8 /* model.tflite */,
 				1077B11D255346CE002DBBA8 /* CardModelManager.swift */,
 				1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */,
 				1077B13925543FF0002DBBA8 /* labels.txt */,
@@ -790,7 +787,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1099DA622551C03A00D8A062 /* Okta.plist in Resources */,
-				1077B13525543FDC002DBBA8 /* model.tflite in Resources */,
 				EBAFE44B253A114500BF8868 /* LaunchScreen.storyboard in Resources */,
 				EBAFE448253A114500BF8868 /* Preview Assets.xcassets in Resources */,
 				EBD24E162540CD8C002A3E15 /* TestAssets.xcassets in Resources */,

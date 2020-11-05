@@ -73,8 +73,8 @@ class CardModelManager: NSObject {
     }
     
     func runModel(onFrame buffer: CVPixelBuffer) -> Result<[Inference], Error> {
-        let width = CVPixelBufferGetWidth(buffer)
-        let height = CVPixelBufferGetHeight(buffer)
+        let imageWidth = CVPixelBufferGetWidth(buffer)
+        let imageHeight = CVPixelBufferGetHeight(buffer)
         let sourcePixelFormat = CVPixelBufferGetPixelFormatType(buffer)
         assert(sourcePixelFormat == kCVPixelFormatType_32ARGB ||
                 sourcePixelFormat == kCVPixelFormatType_32BGRA ||
@@ -114,13 +114,15 @@ class CardModelManager: NSObject {
             return .success([])
         }
         
+        let ct = [Float](unsafeData: outputClasses.data) ?? []
+        
         let resultArray = formatResults(
             boundingBox: outputBoundingBox.asArray(of: Float.self),
             outputClasses: outputClasses.asArray(of: Float.self),
             outputScores: outputScores.asArray(of: Float.self),
             outputCount: Int(([Float](unsafeData: outputCount.data) ?? [0])[0]),
-            width: CGFloat(width),
-            height: CGFloat(height))
+            width: CGFloat(imageWidth),
+            height: CGFloat(imageHeight))
         
         return .success(resultArray)
     }

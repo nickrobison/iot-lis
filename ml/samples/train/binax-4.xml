@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>binax-4.jpg</filename>
+	<path>/Users/RAAC/Development/iot-lis/ml/samples/images/binax-4.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>4032</width>
+		<height>3024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>binax</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1535</xmin>
+			<ymin>1148</ymin>
+			<xmax>2720</xmax>
+			<ymax>2337</ymax>
+		</bndbox>
+	</object>
+</annotation>

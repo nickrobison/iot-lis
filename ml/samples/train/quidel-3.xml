@@ -1,0 +1,26 @@
+<annotation>
+	<folder>images</folder>
+	<filename>quidel-3.jpg</filename>
+	<path>/Users/RAAC/Development/iot-lis/ml/samples/images/quidel-3.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>4032</width>
+		<height>3024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>quidel</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1431</xmin>
+			<ymin>1229</ymin>
+			<xmax>3408</xmax>
+			<ymax>1771</ymax>
+		</bndbox>
+	</object>
+</annotation>
