@@ -1,1 +1,2 @@
-binax-negative
+binax
+quidel

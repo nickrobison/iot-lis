@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		103F25102555AF770079551B /* model.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 103F250F2555AF770079551B /* model.tflite */; };
 		1077B1182553454E002DBBA8 /* TesetCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B1172553454E002DBBA8 /* TesetCardScanner.swift */; };
 		1077B11E255346CE002DBBA8 /* CardModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B11D255346CE002DBBA8 /* CardModelManager.swift */; };
 		1077B12625534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */; };
@@ -156,6 +157,7 @@
 		01C8FCA30DF5080D239F9865 /* Pods-LISManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.release.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.release.xcconfig"; sourceTree = "<group>"; };
 		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		103F250F2555AF770079551B /* model.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = model.tflite; path = ../../../../ml/samples/model.tflite; sourceTree = "<group>"; };
 		1077B1172553454E002DBBA8 /* TesetCardScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesetCardScanner.swift; sourceTree = "<group>"; };
 		1077B11D255346CE002DBBA8 /* CardModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModelManager.swift; sourceTree = "<group>"; };
 		1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 		1077B11C255346B6002DBBA8 /* TestCards */ = {
 			isa = PBXGroup;
 			children = (
+				103F250F2555AF770079551B /* model.tflite */,
 				1077B11D255346CE002DBBA8 /* CardModelManager.swift */,
 				1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */,
 				1077B13925543FF0002DBBA8 /* labels.txt */,
@@ -789,6 +792,7 @@
 				1099DA622551C03A00D8A062 /* Okta.plist in Resources */,
 				EBAFE44B253A114500BF8868 /* LaunchScreen.storyboard in Resources */,
 				EBAFE448253A114500BF8868 /* Preview Assets.xcassets in Resources */,
+				103F25102555AF770079551B /* model.tflite in Resources */,
 				EBD24E162540CD8C002A3E15 /* TestAssets.xcassets in Resources */,
 				1077B13A25543FF0002DBBA8 /* labels.txt in Resources */,
 				EBAFE445253A114500BF8868 /* Assets.xcassets in Resources */,
