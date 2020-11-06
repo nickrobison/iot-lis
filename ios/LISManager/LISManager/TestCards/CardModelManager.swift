@@ -42,8 +42,8 @@ class CardModelManager: NSObject {
     // MARK: Model parameters
     let batchSize = 1
     let inputChannels = 3
-    let inputWidth = 1024
-    let inputHeight = 1024
+    let inputWidth = 640
+    let inputHeight = 640
     let threshold: Float = 0.5
     
     /// TensorFlow Lite `Interpreter` object for performing inference on a given model.

@@ -1,13 +1,13 @@
 <annotation>
-	<folder>images</folder>
+	<folder>train</folder>
 	<filename>binax-3.jpg</filename>
-	<path>/Users/RAAC/Development/iot-lis/ml/samples/images/binax-3.jpg</path>
+	<path>/Users/RAAC/Development/iot-lis/ml/samples/train/binax-3.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
 	<size>
-		<width>4032</width>
-		<height>3024</height>
+		<width>3024</width>
+		<height>4032</height>
 		<depth>3</depth>
 	</size>
 	<segmented>0</segmented>
@@ -17,10 +17,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>1558</xmin>
-			<ymin>1191</ymin>
-			<xmax>2396</xmax>
-			<ymax>1856</ymax>
+			<xmin>1159</xmin>
+			<ymin>1553</ymin>
+			<xmax>1864</xmax>
+			<ymax>2395</ymax>
 		</bndbox>
 	</object>
 </annotation>

@@ -8,7 +8,7 @@ target 'LISManager' do
   pod 'SwiftLint'
   pod 'OktaOidc'
   pod 'OktaStorage'
-  pod 'TensorFlowLiteSwift'
+  pod 'TensorFlowLiteSwift', '~> 0.0.1-nightly'
 
   # Pods for LISManager
 

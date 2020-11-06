@@ -11,13 +11,13 @@ PODS:
     - OktaOidc/AppAuth
   - OktaStorage (1.1.1)
   - SwiftLint (0.39.2)
-  - TensorFlowLiteC (2.3.0):
-    - TensorFlowLiteC/Core (= 2.3.0)
-  - TensorFlowLiteC/Core (2.3.0)
-  - TensorFlowLiteSwift (2.3.0):
-    - TensorFlowLiteSwift/Core (= 2.3.0)
-  - TensorFlowLiteSwift/Core (2.3.0):
-    - TensorFlowLiteC (= 2.3.0)
+  - TensorFlowLiteC (0.0.1-nightly.20201104):
+    - TensorFlowLiteC/Core (= 0.0.1-nightly.20201104)
+  - TensorFlowLiteC/Core (0.0.1-nightly.20201104)
+  - TensorFlowLiteSwift (0.0.1-nightly.20201104):
+    - TensorFlowLiteSwift/Core (= 0.0.1-nightly.20201104)
+  - TensorFlowLiteSwift/Core (0.0.1-nightly.20201104):
+    - TensorFlowLiteC (= 0.0.1-nightly.20201104)
   - xxHash-Swift (1.1.0)
 
 DEPENDENCIES:
@@ -25,7 +25,7 @@ DEPENDENCIES:
   - OktaOidc
   - OktaStorage
   - SwiftLint
-  - TensorFlowLiteSwift
+  - TensorFlowLiteSwift (~> 0.0.1-nightly)
   - xxHash-Swift
 
 SPEC REPOS:
@@ -51,10 +51,10 @@ SPEC CHECKSUMS:
   OktaOidc: 0daa496af1b708564bfb0fa353310562ee170369
   OktaStorage: 967271af74f1cd8d32c18fffe159013ec22ee59b
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
-  TensorFlowLiteC: 51f50caf5777f740a70e2c1a5dbdc149e7aeb50b
-  TensorFlowLiteSwift: fb152cc1eec36b25b03a23c07f5d58113170af58
+  TensorFlowLiteC: f5b55c732629afdb6170c5f43b188403652a6c25
+  TensorFlowLiteSwift: 36d47a0f5870f6fdf79c55dd24feb22bf6543172
   xxHash-Swift: 38fa4218ebae48ccbaaa4240c0cceec7ee2c7f87
 
-PODFILE CHECKSUM: eb9482845d9cd2a0a1c37258afe83e69a087e455
+PODFILE CHECKSUM: 326b7706465faf8b3ca2cbc45c9990d31d01eb2e
 
 COCOAPODS: 1.10.0.rc.1
