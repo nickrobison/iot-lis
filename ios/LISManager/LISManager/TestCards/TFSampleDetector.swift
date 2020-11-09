@@ -1,5 +1,5 @@
 //
-//  CardModelManager.swift
+//  TFSampleDetector.swift
 //  LISManager
 //
 //  Created by Nick Robison on 11/4/20.
@@ -9,32 +9,24 @@ import os
 import Accelerate
 import Foundation
 import TensorFlowLite
+import Combine
 import CoreImage
 
-private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.CardModelManager", category: "input")
+// Remove this
+import VideoToolbox
 
-/// Stores one formatted inference.
-struct Inference {
-    let confidence: Float
-    let className: String
-    let rect: CGRect
-    let displayColor: UIColor
-}
+private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.CardModelManager", category: "input")
 
 // Tuple of filename and extension
 typealias FileInfo = (name: String, extension: String)
 
 /// Information about the MobileNet SSD model.
 enum MobileNetSSD {
-    static let modelInfo: FileInfo = (name: "model", extension: "tflite")
-    static let labelsInfo: FileInfo = (name: "labelmap", extension: "txt")
+    static let modelInfo: FileInfo = (name: "model4", extension: "tflite")
+    static let labelsInfo: FileInfo = (name: "labels", extension: "txt")
 }
 
-enum InferenceError: Error {
-    
-}
-
-class CardModelManager: NSObject {
+class TFSampleDetector: NSObject, SampleDetector {
     
     // image mean and std for floating model, should be consistent with parameters used in model training
     let imageMean: Float = 127.5
@@ -63,16 +55,20 @@ class CardModelManager: NSObject {
         // Why? Because, why not?
         options.threadCount = 2
         do {
+            let start = Date()
             interpreter = try Interpreter(modelPath: modelPath, options: options)
             try interpreter.allocateTensors()
+            os_log("Interpreter initialization took: %d ms", log: logger, type: .debug, Date().timeIntervalSince(start) * 1000)
         } catch {
             os_log("Cannot create interpreter: %s", log: logger, type: .error, error.localizedDescription)
             return nil
         }
         super.init()
+        loadLabels(labelInfo)
     }
     
-    func runModel(onFrame buffer: CVPixelBuffer) -> Result<[Inference], Error> {
+    func runModel(onFrame buffer: CVPixelBuffer) -> AnyPublisher<Result<[Inference], Error>, Never> {
+        let subject = PassthroughSubject<Result<[Inference], Error>, Never>()
         let imageWidth = CVPixelBufferGetWidth(buffer)
         let imageHeight = CVPixelBufferGetHeight(buffer)
         let sourcePixelFormat = CVPixelBufferGetPixelFormatType(buffer)
@@ -86,49 +82,91 @@ class CardModelManager: NSObject {
         // Crops the image to the biggest square in the center and scales it down to model dimensions.
         let scaledSize = CGSize(width: inputWidth, height: inputHeight)
         guard let scaledPixelBuffer = buffer.resized(to: scaledSize) else {
-            return .success([])
+            subject.send(.success([]))
+            return subject.eraseToAnyPublisher()
         }
         
-        let outputBoundingBox: Tensor
-        let outputClasses: Tensor
-        let outputScores: Tensor
-        let outputCount: Tensor
-        do {
-            let inputTensor = try interpreter.input(at: 0)
-            
-            // Remove the alpha component
-            guard let rgbData = rgbDataFromBuffer(scaledPixelBuffer, byteCount: self.batchSize * self.inputWidth * self.inputHeight * self.inputChannels,
-                                                  isModelQuantized: inputTensor.dataType == .uInt8) else {
-                return .success([])
+        // Write it out, for test purposes
+        if let image = UIImage(pixelBuffer: scaledPixelBuffer) {
+            if let data = image.pngData() {
+                let filename = getDocumentsDirectory().appendingPathComponent("scaled.png")
+                debugPrint("scaled: \(filename)")
+                try? data.write(to: filename)
+            }
+        }
+        
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+            let interval: TimeInterval
+            let outputBoundingBox: Tensor
+            let outputClasses: Tensor
+            let outputScores: Tensor
+            let outputCount: Tensor
+            do {
+                let inputTensor = try strongSelf.interpreter.input(at: 0)
+                
+                // Remove the alpha component
+                guard let rgbData = strongSelf.rgbDataFromBuffer(scaledPixelBuffer, byteCount: strongSelf.batchSize * strongSelf.inputWidth * strongSelf.inputHeight * strongSelf.inputChannels,
+                                                      isModelQuantized: inputTensor.dataType == .uInt8) else {
+                    subject.send(.success([]))
+                    return
+                }
+                
+                // Write it out
+                if let image = UIImage(data: rgbData) {
+                    if let data = image.pngData() {
+                        let filename = strongSelf.getDocumentsDirectory().appendingPathComponent("rbg.png")
+                        debugPrint("rbg: \(filename)")
+                        try? data.write(to: filename)
+                    }
+                } else {
+                    debugPrint("Cannot write out")
+                }
+                
+                try strongSelf.interpreter.copy(rgbData, toInputAt: 0)
+                
+                // Run inference by invoking the `Interpreter`.
+                let startDate = Date()
+                try strongSelf.interpreter.invoke()
+                interval = Date().timeIntervalSince(startDate) * 1000
+                os_log("Inference took %d ms", log: logger, type: .debug, interval)
+                
+                outputBoundingBox = try strongSelf.interpreter.output(at: 0)
+                outputClasses = try strongSelf.interpreter.output(at: 1)
+                outputScores = try strongSelf.interpreter.output(at: 2)
+                outputCount = try strongSelf.interpreter.output(at: 3)
+            } catch {
+                os_log("Cannot run inference: %s", log: logger, type: .error, error.localizedDescription)
+                subject.send(.success([]))
+                return
             }
             
-            try interpreter.copy(rgbData, toInputAt: 0)
+            let resultArray = strongSelf.formatResults(
+                boundingBox: [Float](unsafeData: outputBoundingBox.data) ?? [],
+                outputClasses: [Float](unsafeData: outputClasses.data) ?? [],
+                outputScores: [Float](unsafeData: outputScores.data) ?? [],
+                outputCount: Int(([Float](unsafeData: outputCount.data) ?? [0])[0]),
+                width: CGFloat(imageWidth),
+                height: CGFloat(imageHeight)
+            )
             
-            try interpreter.invoke()
-            outputBoundingBox = try interpreter.output(at: 0)
-            outputClasses = try interpreter.output(at: 1)
-            outputScores = try interpreter.output(at: 2)
-            outputCount = try interpreter.output(at: 3)
-        } catch {
-            os_log("Cannot run inference: %s", log: logger, type: .error, error.localizedDescription)
-            return .success([])
+            //        let resultArray = formatResults(
+            //            boundingBox: outputBoundingBox.asArray(of: Float.self),
+            //            outputClasses: outputClasses.asArray(of: Float.self),
+            //            outputScores: outputScores.asArray(of: Float.self),
+            //            outputCount: Int(([Float](unsafeData: outputCount.data) ?? [0])[0]),
+            //            width: CGFloat(imageWidth),
+            //            height: CGFloat(imageHeight))
+            
+            subject.send(.success(resultArray))
         }
-        
-        let ct = [Float](unsafeData: outputClasses.data) ?? []
-        
-        let resultArray = formatResults(
-            boundingBox: outputBoundingBox.asArray(of: Float.self),
-            outputClasses: outputClasses.asArray(of: Float.self),
-            outputScores: outputScores.asArray(of: Float.self),
-            outputCount: Int(([Float](unsafeData: outputCount.data) ?? [0])[0]),
-            width: CGFloat(imageWidth),
-            height: CGFloat(imageHeight))
-        
-        return .success(resultArray)
+        return subject.eraseToAnyPublisher()
     }
     
     private func loadLabels(_ labelInfo: FileInfo) {
-        let filename = labelInfo.extension
+        let filename = labelInfo.name
         let fExtension = labelInfo.extension
         
         guard let fileUrl = Bundle.main.url(forResource: filename, withExtension: fExtension) else {
@@ -183,9 +221,11 @@ class CardModelManager: NSObject {
         }
         
         // Not quantized, convert to floats
-        let bytes = [UInt8](byteData)
+        let bytes = [UInt8](unsafeData: byteData)!
         var floats = [Float]()
         for i in 0..<bytes.count { //swiftlint:disable:this identifier_name
+            //            let b = Float(bytes[i])
+            //            floats.append(b)
             floats.append((Float(bytes[i]) - imageMean) / imageStd)
         }
         return Data(copyingBufferOf: floats)
@@ -230,6 +270,11 @@ class CardModelManager: NSObject {
         }
         
         return resultsArray
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
 }
 
@@ -276,5 +321,18 @@ extension Array {
             ))
         }
         #endif  // swift(>=5.0)
+    }
+}
+// Get rid of this
+extension UIImage {
+    public convenience init?(pixelBuffer: CVPixelBuffer) {
+        var cgImage: CGImage?
+        VTCreateCGImageFromCVPixelBuffer(pixelBuffer, options: nil, imageOut: &cgImage)
+        
+        guard let img2 = cgImage else {
+            return nil
+        }
+        
+        self.init(cgImage: img2)
     }
 }

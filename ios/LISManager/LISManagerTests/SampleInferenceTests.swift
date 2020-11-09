@@ -9,14 +9,17 @@ import Foundation
 
 import XCTest
 import UIKit
+import Combine
 @testable import LISManager
 
 class SampleInferenceTests: XCTestCase {
     
-    var model = CardModelManager(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)
+        var model: SampleDetector? = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)
+//    var model: SampleDetector? = CoreMLSampleDetector()
+    var cancellables: Set<AnyCancellable>!
     
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        cancellables = []
     }
     
     override func tearDownWithError() throws {
@@ -24,7 +27,7 @@ class SampleInferenceTests: XCTestCase {
     }
     
     func testMatchingImage() {
-        guard let image = UIImage(named: "Sample Binax Card") else {
+        guard let image = UIImage(named: "binax-7") else {
             fatalError("Cannot find image")
         }
         
@@ -34,60 +37,77 @@ class SampleInferenceTests: XCTestCase {
         
         let results = self.model!.runModel(onFrame: buffer)
         
-        switch results {
-        case .success(let inferences):
-            XCTAssertEqual(1, inferences.count)
-        case .failure(let error):
-            XCTFail(error.localizedDescription)
+        let exp1 = XCTestExpectation()
+        
+        results
+            .sink(receiveValue: { results in
+                switch results {
+                case .success(let inferences):
+                    XCTAssertEqual(1, inferences.count)
+                    XCTAssertEqual("binax", inferences[0].className)
+                case .failure(let error):
+                    XCTFail(error.localizedDescription)
+                }
+                exp1.fulfill()
+            }).store(in: &cancellables)
+        
+        wait(for: [exp1], timeout: 10)
+    }
+    
+    func testQuidelMatchingImage() {
+        guard let image = UIImage(named: "Sample Quidel") else {
+            fatalError("Cannot find image")
         }
+        
+        guard let buffer = image.toPixelBuffer() else {
+            fatalError("Cannot convert to pixel buffer")
+        }
+        
+        let results = self.model!.runModel(onFrame: buffer)
+        
+        let exp1 = XCTestExpectation()
+        
+        results
+            .sink(receiveValue: { results in
+                switch results {
+                case .success(let inferences):
+                    XCTAssertEqual(1, inferences.count)
+                    XCTAssertEqual("quidel", inferences[0].className)
+                case .failure(let error):
+                    XCTFail(error.localizedDescription)
+                }
+                exp1.fulfill()
+            }).store(in: &cancellables)
+        
+        wait(for: [exp1], timeout: 19)
     }
     
     func testNotMatchingImage() {
-        guard let image = UIImage(named: "SampleUSDSForm") else {
+        guard let image = UIImage(named: "Not Quidel") else {
             fatalError("Cannot find image")
         }
-        
+
         guard let buffer = image.toPixelBuffer() else {
             fatalError("Cannot convert to pixel buffer")
         }
-        
+
         let results = self.model!.runModel(onFrame: buffer)
-        
-        switch results {
-        case .success(let inferences):
-            XCTAssertEqual(0, inferences.count)
-        case .failure(let error):
-            XCTFail(error.localizedDescription)
-        }
+
+        let exp1 = XCTestExpectation()
+
+        results
+            .sink(receiveValue: { results in
+                switch results {
+                case .success(let inferences):
+                    XCTAssertEqual(0, inferences.count)
+                case .failure(let error):
+                    XCTFail(error.localizedDescription)
+                }
+                exp1.fulfill()
+            }).store(in: &cancellables)
+
+        wait(for: [exp1], timeout: 10)
     }
-    
-    //    func testExample() throws {
-    //        // This is an example of a functional test case.
-    //        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    //        let model = PatientAddModel()
-    //        model.firstName = "Hello"
-    //        model.lastName = "Nope"
-    //
-    //        let exp1 = XCTestExpectation()
-    //        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-    //            XCTAssertFalse(model.isValid)
-    //            exp1.fulfill()
-    //        }
-    //        wait(for: [exp1], timeout: 5.0)
-    //        model.gender = "M"
-    //        model.sex = "F"
-    //        model.address1 = "hello"
-    //        model.city = "Wash"
-    //        model.state = "DC"
-    //        model.zipCode = "20008"
-    //
-    //        let exp2 = XCTestExpectation()
-    //        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-    //            XCTAssertTrue(model.isValid)
-    //            exp2.fulfill()
-    //        }
-    //        wait(for: [exp2], timeout: 5.0)
-    //    }
 }
 
 extension UIImage {

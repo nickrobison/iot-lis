@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		103F25102555AF770079551B /* model.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 103F250F2555AF770079551B /* model.tflite */; };
 		1077B1182553454E002DBBA8 /* TesetCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B1172553454E002DBBA8 /* TesetCardScanner.swift */; };
-		1077B11E255346CE002DBBA8 /* CardModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B11D255346CE002DBBA8 /* CardModelManager.swift */; };
+		1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */; };
 		1077B12625534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */; };
 		1077B13025543EC1002DBBA8 /* SampleInferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */; };
 		1077B13A25543FF0002DBBA8 /* labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1077B13925543FF0002DBBA8 /* labels.txt */; };
@@ -21,6 +20,11 @@
 		1099DA8E2551ED1A00D8A062 /* LocationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA8D2551ED1A00D8A062 /* LocationSettingsView.swift */; };
 		1099DA932551ED5F00D8A062 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA922551ED5F00D8A062 /* UserSettingsView.swift */; };
 		109BD5EF2551B5D70091BED2 /* UserLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109BD5EE2551B5D70091BED2 /* UserLoginView.swift */; };
+		10E338602558B77E005DA2A4 /* SampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E3385F2558B77E005DA2A4 /* SampleDetector.swift */; };
+		10E338682558B7F8005DA2A4 /* CoreMLSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E338672558B7F8005DA2A4 /* CoreMLSampleDetector.swift */; };
+		10E3386D2558B8BD005DA2A4 /* SampleDetector 2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 10E3386C2558B8BD005DA2A4 /* SampleDetector 2.mlmodel */; };
+		10E338752558E48F005DA2A4 /* model3.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 10E338742558E48F005DA2A4 /* model3.tflite */; };
+		10E3387A2558EAAE005DA2A4 /* model4.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 10E338792558EAAE005DA2A4 /* model4.tflite */; };
 		10EDAFC12550A8DE009FDA96 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC02550A8DE009FDA96 /* SettingsView.swift */; };
 		10EDAFC62550AE1D009FDA96 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */; };
 		69464CEF618A390A997068B8 /* Pods_LISKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6C57E8DD14B7732B893BEF /* Pods_LISKit.framework */; };
@@ -157,9 +161,8 @@
 		01C8FCA30DF5080D239F9865 /* Pods-LISManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.release.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.release.xcconfig"; sourceTree = "<group>"; };
 		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		103F250F2555AF770079551B /* model.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = model.tflite; path = ../../../../ml/samples/model.tflite; sourceTree = "<group>"; };
 		1077B1172553454E002DBBA8 /* TesetCardScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesetCardScanner.swift; sourceTree = "<group>"; };
-		1077B11D255346CE002DBBA8 /* CardModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModelManager.swift; sourceTree = "<group>"; };
+		1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSampleDetector.swift; sourceTree = "<group>"; };
 		1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
 		1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleInferenceTests.swift; sourceTree = "<group>"; };
 		1077B13925543FF0002DBBA8 /* labels.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
@@ -171,6 +174,11 @@
 		1099DA8D2551ED1A00D8A062 /* LocationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingsView.swift; sourceTree = "<group>"; };
 		1099DA922551ED5F00D8A062 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		109BD5EE2551B5D70091BED2 /* UserLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginView.swift; sourceTree = "<group>"; };
+		10E3385F2558B77E005DA2A4 /* SampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDetector.swift; sourceTree = "<group>"; };
+		10E338672558B7F8005DA2A4 /* CoreMLSampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLSampleDetector.swift; sourceTree = "<group>"; };
+		10E3386C2558B8BD005DA2A4 /* SampleDetector 2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "SampleDetector 2.mlmodel"; path = "../../../ml/samples/SampleDetector 2.mlmodel"; sourceTree = "<group>"; };
+		10E338742558E48F005DA2A4 /* model3.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = model3.tflite; path = ../../../../ml/samples/model3.tflite; sourceTree = "<group>"; };
+		10E338792558EAAE005DA2A4 /* model4.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = model4.tflite; path = ../../../../ml/samples/model4.tflite; sourceTree = "<group>"; };
 		10EDAFC02550A8DE009FDA96 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		149E75223CC0AAC8C3E16552 /* Pods-LISManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.release.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -315,10 +323,13 @@
 		1077B11C255346B6002DBBA8 /* TestCards */ = {
 			isa = PBXGroup;
 			children = (
-				103F250F2555AF770079551B /* model.tflite */,
-				1077B11D255346CE002DBBA8 /* CardModelManager.swift */,
+				10E338792558EAAE005DA2A4 /* model4.tflite */,
+				10E338742558E48F005DA2A4 /* model3.tflite */,
+				1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */,
 				1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */,
 				1077B13925543FF0002DBBA8 /* labels.txt */,
+				10E3385F2558B77E005DA2A4 /* SampleDetector.swift */,
+				10E338672558B7F8005DA2A4 /* CoreMLSampleDetector.swift */,
 			);
 			path = TestCards;
 			sourceTree = "<group>";
@@ -486,6 +497,7 @@
 		EBAFE43A253A114200BF8868 /* LISManager */ = {
 			isa = PBXGroup;
 			children = (
+				10E3386C2558B8BD005DA2A4 /* SampleDetector 2.mlmodel */,
 				1077B11C255346B6002DBBA8 /* TestCards */,
 				1099DA972551F31B00D8A062 /* Auth */,
 				10EDAFBC2550A87B009FDA96 /* Settings */,
@@ -789,10 +801,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E3387A2558EAAE005DA2A4 /* model4.tflite in Resources */,
 				1099DA622551C03A00D8A062 /* Okta.plist in Resources */,
 				EBAFE44B253A114500BF8868 /* LaunchScreen.storyboard in Resources */,
+				10E338752558E48F005DA2A4 /* model3.tflite in Resources */,
 				EBAFE448253A114500BF8868 /* Preview Assets.xcassets in Resources */,
-				103F25102555AF770079551B /* model.tflite in Resources */,
 				EBD24E162540CD8C002A3E15 /* TestAssets.xcassets in Resources */,
 				1077B13A25543FF0002DBBA8 /* labels.txt in Resources */,
 				EBAFE445253A114500BF8868 /* Assets.xcassets in Resources */,
@@ -1033,6 +1046,7 @@
 			files = (
 				10EDAFC62550AE1D009FDA96 /* OnboardingModel.swift in Sources */,
 				1077B12625534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift in Sources */,
+				10E338602558B77E005DA2A4 /* SampleDetector.swift in Sources */,
 				EB18F8D52547472700745A59 /* InitialTestFlowView.swift in Sources */,
 				EB18F8F72547477D00745A59 /* SampleBarcodeView.swift in Sources */,
 				EB9B7896253E026900FCAB10 /* MainView.swift in Sources */,
@@ -1063,7 +1077,7 @@
 				EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */,
 				10EDAFC12550A8DE009FDA96 /* SettingsView.swift in Sources */,
 				EBDC8C2F25409F7800D69DAD /* CameraViewController.swift in Sources */,
-				1077B11E255346CE002DBBA8 /* CardModelManager.swift in Sources */,
+				1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */,
 				EBC5DD10254350E800637D42 /* ResultsManager.swift in Sources */,
 				EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */,
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
@@ -1077,7 +1091,9 @@
 				EB856FDF2541B9F8008996F6 /* PatientAddModel.swift in Sources */,
 				1099DA7E2551DFFB00D8A062 /* ApplicationUser.swift in Sources */,
 				EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */,
+				10E338682558B7F8005DA2A4 /* CoreMLSampleDetector.swift in Sources */,
 				EB18F8EA2547476800745A59 /* PatientBarcodeView.swift in Sources */,
+				10E3386D2558B8BD005DA2A4 /* SampleDetector 2.mlmodel in Sources */,
 				109979912552F62B00D558CE /* OperatorBarcodeView.swift in Sources */,
 				EBC76EC92548A12800D0B4B8 /* TestFlowModel.swift in Sources */,
 				EB3D330C253F7E45000F5A84 /* ResultRow.swift in Sources */,
