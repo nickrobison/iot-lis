@@ -25,6 +25,9 @@
 		10E3386D2558B8BD005DA2A4 /* SampleDetector 2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 10E3386C2558B8BD005DA2A4 /* SampleDetector 2.mlmodel */; };
 		10E338752558E48F005DA2A4 /* model3.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 10E338742558E48F005DA2A4 /* model3.tflite */; };
 		10E3387A2558EAAE005DA2A4 /* model4.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 10E338792558EAAE005DA2A4 /* model4.tflite */; };
+		10E86411255988B700F44ED9 /* SampleScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E86410255988B700F44ED9 /* SampleScanner.swift */; };
+		10E8641625598BBE00F44ED9 /* SampleScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8641525598BBE00F44ED9 /* SampleScannerViewController.swift */; };
+		10E8641B25598C6800F44ED9 /* ResultsAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8641A25598C6800F44ED9 /* ResultsAddView.swift */; };
 		10EDAFC12550A8DE009FDA96 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC02550A8DE009FDA96 /* SettingsView.swift */; };
 		10EDAFC62550AE1D009FDA96 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */; };
 		69464CEF618A390A997068B8 /* Pods_LISKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6C57E8DD14B7732B893BEF /* Pods_LISKit.framework */; };
@@ -179,6 +182,9 @@
 		10E3386C2558B8BD005DA2A4 /* SampleDetector 2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "SampleDetector 2.mlmodel"; path = "../../../ml/samples/SampleDetector 2.mlmodel"; sourceTree = "<group>"; };
 		10E338742558E48F005DA2A4 /* model3.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = model3.tflite; path = ../../../../ml/samples/model3.tflite; sourceTree = "<group>"; };
 		10E338792558EAAE005DA2A4 /* model4.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = model4.tflite; path = ../../../../ml/samples/model4.tflite; sourceTree = "<group>"; };
+		10E86410255988B700F44ED9 /* SampleScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleScanner.swift; sourceTree = "<group>"; };
+		10E8641525598BBE00F44ED9 /* SampleScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleScannerViewController.swift; sourceTree = "<group>"; };
+		10E8641A25598C6800F44ED9 /* ResultsAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsAddView.swift; sourceTree = "<group>"; };
 		10EDAFC02550A8DE009FDA96 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		149E75223CC0AAC8C3E16552 /* Pods-LISManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.release.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -418,6 +424,7 @@
 				EB3D3306253F7D97000F5A84 /* Protocols+Extensions.swift */,
 				EB3D330B253F7E45000F5A84 /* ResultRow.swift */,
 				EB3D3318253F86E1000F5A84 /* ResultDetailView.swift */,
+				10E8641A25598C6800F44ED9 /* ResultsAddView.swift */,
 			);
 			path = Results;
 			sourceTree = "<group>";
@@ -612,6 +619,8 @@
 				EBDC8C2E25409F7800D69DAD /* CameraViewController.swift */,
 				EBD24E102540CC42002A3E15 /* FormReader.swift */,
 				1077B1172553454E002DBBA8 /* TesetCardScanner.swift */,
+				10E86410255988B700F44ED9 /* SampleScanner.swift */,
+				10E8641525598BBE00F44ED9 /* SampleScannerViewController.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -1079,9 +1088,11 @@
 				EBDC8C2F25409F7800D69DAD /* CameraViewController.swift in Sources */,
 				1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */,
 				EBC5DD10254350E800637D42 /* ResultsManager.swift in Sources */,
+				10E8641625598BBE00F44ED9 /* SampleScannerViewController.swift in Sources */,
 				EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */,
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
 				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,
+				10E86411255988B700F44ED9 /* SampleScanner.swift in Sources */,
 				109BD5EF2551B5D70091BED2 /* UserLoginView.swift in Sources */,
 				EB856FD72541B9D2008996F6 /* PatientAddView.swift in Sources */,
 				EB18F8FC2547479500745A59 /* FinishTestFlowView.swift in Sources */,
@@ -1089,6 +1100,7 @@
 				1099DA6C2551C2B600D8A062 /* LoginViewController.swift in Sources */,
 				EBAFE49D253A166A00BF8868 /* ActivityIndicator.swift in Sources */,
 				EB856FDF2541B9F8008996F6 /* PatientAddModel.swift in Sources */,
+				10E8641B25598C6800F44ED9 /* ResultsAddView.swift in Sources */,
 				1099DA7E2551DFFB00D8A062 /* ApplicationUser.swift in Sources */,
 				EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */,
 				10E338682558B7F8005DA2A4 /* CoreMLSampleDetector.swift in Sources */,
