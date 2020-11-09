@@ -12,9 +12,6 @@ import TensorFlowLite
 import Combine
 import CoreImage
 
-// Remove this
-import VideoToolbox
-
 private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.CardModelManager", category: "input")
 
 // Tuple of filename and extension
@@ -36,7 +33,7 @@ class TFSampleDetector: NSObject, SampleDetector {
     let inputChannels = 3
     let inputWidth = 640
     let inputHeight = 640
-    let threshold: Float = 0.5
+    let threshold: Float = 0.9
     
     /// TensorFlow Lite `Interpreter` object for performing inference on a given model.
     private var interpreter: Interpreter
@@ -67,8 +64,8 @@ class TFSampleDetector: NSObject, SampleDetector {
         loadLabels(labelInfo)
     }
     
-    func runModel(onFrame buffer: CVPixelBuffer) -> AnyPublisher<Result<[Inference], Error>, Never> {
-        let subject = PassthroughSubject<Result<[Inference], Error>, Never>()
+    func runModel(onFrame buffer: CVPixelBuffer) -> AnyPublisher<[Inference], InferenceError> {
+        let subject = PassthroughSubject<[Inference], InferenceError>()
         let imageWidth = CVPixelBufferGetWidth(buffer)
         let imageHeight = CVPixelBufferGetHeight(buffer)
         let sourcePixelFormat = CVPixelBufferGetPixelFormatType(buffer)
@@ -82,85 +79,59 @@ class TFSampleDetector: NSObject, SampleDetector {
         // Crops the image to the biggest square in the center and scales it down to model dimensions.
         let scaledSize = CGSize(width: inputWidth, height: inputHeight)
         guard let scaledPixelBuffer = buffer.resized(to: scaledSize) else {
-            subject.send(.success([]))
+            subject.send(completion: .failure(.preprocessError(msg: "Cannot resize image")))
             return subject.eraseToAnyPublisher()
         }
         
-        // Write it out, for test purposes
-        if let image = UIImage(pixelBuffer: scaledPixelBuffer) {
-            if let data = image.pngData() {
-                let filename = getDocumentsDirectory().appendingPathComponent("scaled.png")
-                debugPrint("scaled: \(filename)")
-                try? data.write(to: filename)
-            }
-        }
-        
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            guard let strongSelf = self else {
+        DispatchQueue.init(label: "inferenceQueue", qos: .userInitiated).async { [weak self] in
+            guard let self = self else {
                 return
             }
-            let interval: TimeInterval
             let outputBoundingBox: Tensor
             let outputClasses: Tensor
             let outputScores: Tensor
             let outputCount: Tensor
             do {
-                let inputTensor = try strongSelf.interpreter.input(at: 0)
+                // Don't do this. Gross
+                try self.interpreter.allocateTensors()
+                let inputTensor = try self.interpreter.input(at: 0)
                 
                 // Remove the alpha component
-                guard let rgbData = strongSelf.rgbDataFromBuffer(scaledPixelBuffer, byteCount: strongSelf.batchSize * strongSelf.inputWidth * strongSelf.inputHeight * strongSelf.inputChannels,
-                                                      isModelQuantized: inputTensor.dataType == .uInt8) else {
-                    subject.send(.success([]))
+                guard let rgbData = self.rgbDataFromBuffer(scaledPixelBuffer, byteCount: self.batchSize * self.inputWidth * self.inputHeight * self.inputChannels,
+                                                                 isModelQuantized: inputTensor.dataType == .uInt8) else {
+                    subject.send(completion: .failure(.preprocessError(msg: "Cannot remove alpha component")))
                     return
                 }
                 
-                // Write it out
-                if let image = UIImage(data: rgbData) {
-                    if let data = image.pngData() {
-                        let filename = strongSelf.getDocumentsDirectory().appendingPathComponent("rbg.png")
-                        debugPrint("rbg: \(filename)")
-                        try? data.write(to: filename)
-                    }
-                } else {
-                    debugPrint("Cannot write out")
-                }
-                
-                try strongSelf.interpreter.copy(rgbData, toInputAt: 0)
+                try self.interpreter.copy(rgbData, toInputAt: 0)
                 
                 // Run inference by invoking the `Interpreter`.
-                let startDate = Date()
-                try strongSelf.interpreter.invoke()
-                interval = Date().timeIntervalSince(startDate) * 1000
-                os_log("Inference took %d ms", log: logger, type: .debug, interval)
+                let start = DispatchTime.now()
+                try self.interpreter.invoke()
+                let end = DispatchTime.now()
+                let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
+                let interval = Double(nanoTime) / 1_000_000
+                os_log("Inference took %.2f ms", log: logger, type: .debug, interval)
                 
-                outputBoundingBox = try strongSelf.interpreter.output(at: 0)
-                outputClasses = try strongSelf.interpreter.output(at: 1)
-                outputScores = try strongSelf.interpreter.output(at: 2)
-                outputCount = try strongSelf.interpreter.output(at: 3)
+                outputBoundingBox = try self.interpreter.output(at: 0)
+                outputClasses = try self.interpreter.output(at: 1)
+                outputScores = try self.interpreter.output(at: 2)
+                outputCount = try self.interpreter.output(at: 3)
             } catch {
                 os_log("Cannot run inference: %s", log: logger, type: .error, error.localizedDescription)
-                subject.send(.success([]))
+                subject.send(completion: .failure(.unknown(error: error)))
                 return
             }
             
-            let resultArray = strongSelf.formatResults(
-                boundingBox: [Float](unsafeData: outputBoundingBox.data) ?? [],
-                outputClasses: [Float](unsafeData: outputClasses.data) ?? [],
-                outputScores: [Float](unsafeData: outputScores.data) ?? [],
+            let resultArray = self.formatResults(
+                boundingBox: outputBoundingBox.asArray(of: Float.self),
+                outputClasses: outputClasses.asArray(of: Float.self),
+                outputScores: outputScores.asArray(of: Float.self),
                 outputCount: Int(([Float](unsafeData: outputCount.data) ?? [0])[0]),
                 width: CGFloat(imageWidth),
-                height: CGFloat(imageHeight)
-            )
+                height: CGFloat(imageHeight))
             
-            //        let resultArray = formatResults(
-            //            boundingBox: outputBoundingBox.asArray(of: Float.self),
-            //            outputClasses: outputClasses.asArray(of: Float.self),
-            //            outputScores: outputScores.asArray(of: Float.self),
-            //            outputCount: Int(([Float](unsafeData: outputCount.data) ?? [0])[0]),
-            //            width: CGFloat(imageWidth),
-            //            height: CGFloat(imageHeight))
-            
-            subject.send(.success(resultArray))
+            subject.send(resultArray)
         }
         return subject.eraseToAnyPublisher()
     }
@@ -224,8 +195,6 @@ class TFSampleDetector: NSObject, SampleDetector {
         let bytes = [UInt8](unsafeData: byteData)!
         var floats = [Float]()
         for i in 0..<bytes.count { //swiftlint:disable:this identifier_name
-            //            let b = Float(bytes[i])
-            //            floats.append(b)
             floats.append((Float(bytes[i]) - imageMean) / imageStd)
         }
         return Data(copyingBufferOf: floats)
@@ -311,28 +280,6 @@ extension Array {
     /// - Parameter unsafeData: The data containing the bytes to turn into an array.
     init?(unsafeData: Data) {
         guard unsafeData.count % MemoryLayout<Element>.stride == 0 else { return nil }
-        #if swift(>=5.0)
         self = unsafeData.withUnsafeBytes { .init($0.bindMemory(to: Element.self)) }
-        #else
-        self = unsafeData.withUnsafeBytes {
-            .init(UnsafeBufferPointer<Element>(
-                start: $0,
-                count: unsafeData.count / MemoryLayout<Element>.stride
-            ))
-        }
-        #endif  // swift(>=5.0)
-    }
-}
-// Get rid of this
-extension UIImage {
-    public convenience init?(pixelBuffer: CVPixelBuffer) {
-        var cgImage: CGImage?
-        VTCreateCGImageFromCVPixelBuffer(pixelBuffer, options: nil, imageOut: &cgImage)
-        
-        guard let img2 = cgImage else {
-            return nil
-        }
-        
-        self.init(cgImage: img2)
     }
 }

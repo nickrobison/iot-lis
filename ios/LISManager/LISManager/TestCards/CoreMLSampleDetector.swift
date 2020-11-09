@@ -22,13 +22,13 @@ class CoreMLSampleDetector: SampleDetector {
         }
     }
     
-    func runModel(onFrame buffer: CVPixelBuffer) -> AnyPublisher<Result<[Inference], Error>, Never> {
+    func runModel(onFrame buffer: CVPixelBuffer) -> AnyPublisher<[Inference], InferenceError> {
         
-        let subject: PassthroughSubject<Result<[Inference], Error>, Never> = PassthroughSubject()
+        let subject: PassthroughSubject<[Inference], InferenceError> = PassthroughSubject()
         
         let request = VNCoreMLRequest(model: self.model) { [weak self] request, error in
             let results = self?.processClassifications(for: request, error: error)
-            subject.send(.success(results ?? []))
+            subject.send(results ?? [])
         }
         
         request.imageCropAndScaleOption = .centerCrop
@@ -39,7 +39,7 @@ class CoreMLSampleDetector: SampleDetector {
             do {
                 try handler.perform([request])
             } catch {
-                subject.send(.failure(error))
+                subject.send(completion: .failure(.unknown(error: error)))
             }
         }
         

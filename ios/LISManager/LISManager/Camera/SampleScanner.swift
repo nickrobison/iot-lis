@@ -107,13 +107,10 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
             return
         }
         
-        self.detector.runModel(onFrame: pixelBuffer).receive(on: RunLoop.main).sink(receiveValue: { value in
-            switch value {
-            case .success(let inferences):
+        self.detector.runModel(onFrame: pixelBuffer).receive(on: RunLoop.main).sink(receiveCompletion: { error in
+            debugPrint(error)
+        }, receiveValue: { inferences in
                 self.drawInferenceBoxes(inferences)
-            case .failure(let error):
-                debugPrint(error)
-            }
         }).store(in: &self.cancellables)
         
     }
@@ -122,7 +119,7 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
         guard let inference = inferences.first else {
             return
         }
-        debugPrint("I have values from detector")
+        debugPrint("I have detected a: \(inference.className) sample")
         self.maskLayer = CAShapeLayer()
         self.maskLayer!.frame = inference.rect
         self.maskLayer!.cornerRadius = 10

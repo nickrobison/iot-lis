@@ -19,9 +19,10 @@ struct Inference {
 }
 
 enum InferenceError: Error {
-    
+    case preprocessError(msg: String)
+    case unknown(error: Error)
 }
 
 protocol SampleDetector {
-    func runModel(onFrame buffer: CVPixelBuffer) -> AnyPublisher<Result<[Inference], Error>, Never>
+    func runModel(onFrame buffer: CVPixelBuffer) -> AnyPublisher<[Inference], InferenceError>
 }

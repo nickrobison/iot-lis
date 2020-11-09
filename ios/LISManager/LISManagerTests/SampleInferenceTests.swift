@@ -14,8 +14,8 @@ import Combine
 
 class SampleInferenceTests: XCTestCase {
     
-        var model: SampleDetector? = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)
-//    var model: SampleDetector? = CoreMLSampleDetector()
+    var model: SampleDetector? = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)
+    //    var model: SampleDetector? = CoreMLSampleDetector()
     var cancellables: Set<AnyCancellable>!
     
     override func setUpWithError() throws {
@@ -40,14 +40,17 @@ class SampleInferenceTests: XCTestCase {
         let exp1 = XCTestExpectation()
         
         results
-            .sink(receiveValue: { results in
-                switch results {
-                case .success(let inferences):
-                    XCTAssertEqual(1, inferences.count)
-                    XCTAssertEqual("binax", inferences[0].className)
+            .sink(receiveCompletion: { error in
+                switch error {
+                case .finished:
+                    XCTAssertTrue(true)
                 case .failure(let error):
                     XCTFail(error.localizedDescription)
                 }
+                exp1.fulfill()
+            }, receiveValue: { inferences in
+                XCTAssertEqual(1, inferences.count)
+                XCTAssertEqual("binax", inferences[0].className)
                 exp1.fulfill()
             }).store(in: &cancellables)
         
@@ -68,14 +71,17 @@ class SampleInferenceTests: XCTestCase {
         let exp1 = XCTestExpectation()
         
         results
-            .sink(receiveValue: { results in
-                switch results {
-                case .success(let inferences):
-                    XCTAssertEqual(1, inferences.count)
-                    XCTAssertEqual("quidel", inferences[0].className)
+            .sink(receiveCompletion: { error in
+                switch error {
+                case .finished:
+                    XCTAssertTrue(true)
                 case .failure(let error):
                     XCTFail(error.localizedDescription)
                 }
+                exp1.fulfill()
+            }, receiveValue: { inferences in
+                XCTAssertEqual(1, inferences.count)
+                XCTAssertEqual("quidel", inferences[0].className)
                 exp1.fulfill()
             }).store(in: &cancellables)
         
@@ -86,26 +92,29 @@ class SampleInferenceTests: XCTestCase {
         guard let image = UIImage(named: "Not Quidel") else {
             fatalError("Cannot find image")
         }
-
+        
         guard let buffer = image.toPixelBuffer() else {
             fatalError("Cannot convert to pixel buffer")
         }
-
+        
         let results = self.model!.runModel(onFrame: buffer)
-
+        
         let exp1 = XCTestExpectation()
-
+        
         results
-            .sink(receiveValue: { results in
-                switch results {
-                case .success(let inferences):
-                    XCTAssertEqual(0, inferences.count)
+            .sink(receiveCompletion: { error in
+                switch error {
+                case .finished:
+                    XCTAssertTrue(true)
                 case .failure(let error):
                     XCTFail(error.localizedDescription)
                 }
                 exp1.fulfill()
+            }, receiveValue: { inferences in
+                XCTAssertEqual(0, inferences.count)
+                exp1.fulfill()
             }).store(in: &cancellables)
-
+        
         wait(for: [exp1], timeout: 10)
     }
 }
