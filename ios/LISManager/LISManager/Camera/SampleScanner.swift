@@ -19,14 +19,17 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
     var previewLayer: AVCaptureVideoPreviewLayer?
     private lazy var videoDataOutput = AVCaptureVideoDataOutput()
     var completionHandler: (([Inference]) -> Void)?
-    var cancellables: [AnyCancellable] = []
+    var cancellable: AnyCancellable?
     var maskLayer: CAShapeLayer?
     
     private let detector: SampleDetector
+    private let bufferSubject = PassthroughSubject<CVPixelBuffer, Never>()
+    private let inferenceQueue = DispatchQueue(label: "inferenceQueue", qos: .userInitiated)
     
     init(_ completionHandler: (([Inference]) -> Void)?) {
         self.completionHandler = completionHandler
-        self.detector = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)!
+        self.detector = CoreMLSampleDetector()!
+//                self.detector = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)!
     }
     
     func prepare(completionHandler: @escaping (Error?) -> Void) {
@@ -71,8 +74,24 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
             
         }
         
-        DispatchQueue(label: "prepare").async {
+        DispatchQueue(label: "prepare").async { [weak self] in
+            guard let self = self else {
+                return
+            }
             do {
+                // setup the buffer
+                self.cancellable = self.bufferSubject
+                    .subscribe(on: self.inferenceQueue)
+                    .setFailureType(to: InferenceError.self)
+                    .flatMap { buffer in
+                        self.detector.runModel(onFrame: buffer)
+                    }
+                    .receive(on: RunLoop.main)
+                    .sink(receiveCompletion: { _ in
+                        // Not used yet
+                    }, receiveValue: { value in
+                        self.drawInferenceBoxes(value)
+                    })
                 createCaptureSession()
                 try configureCaptureDevices()
                 try configureDeviceInputs()
@@ -107,11 +126,13 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
             return
         }
         
-        self.detector.runModel(onFrame: pixelBuffer).receive(on: RunLoop.main).sink(receiveCompletion: { error in
-            debugPrint(error)
-        }, receiveValue: { inferences in
-                self.drawInferenceBoxes(inferences)
-        }).store(in: &self.cancellables)
+        self.bufferSubject.send(pixelBuffer)
+        
+        //        self.detector.runModel(onFrame: pixelBuffer).receive(on: RunLoop.main).sink(receiveCompletion: { error in
+        //            debugPrint(error)
+        //        }, receiveValue: { inferences in
+        //                self.drawInferenceBoxes(inferences)
+        //        }).store(in: &self.cancellables)
         
     }
     
@@ -120,8 +141,16 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
             return
         }
         debugPrint("I have detected a: \(inference.className) sample")
+        
+        // Rescale the layer
+        let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: -(self.previewLayer?.frame.height ?? 0))
+        let scale = CGAffineTransform.identity.scaledBy(x: self.previewLayer?.frame.width ?? 0, y: self.previewLayer?.frame.height ?? 0)
+        
+        let bounds = inference.rect.applying(scale).applying(transform)
+        self.maskLayer?.removeFromSuperlayer()
+        
         self.maskLayer = CAShapeLayer()
-        self.maskLayer!.frame = inference.rect
+        self.maskLayer!.frame = bounds
         self.maskLayer!.cornerRadius = 10
         self.maskLayer!.opacity = 0.75
         self.maskLayer!.borderColor = inference.displayColor.cgColor

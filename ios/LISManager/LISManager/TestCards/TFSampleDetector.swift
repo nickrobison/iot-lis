@@ -48,12 +48,22 @@ class TFSampleDetector: NSObject, SampleDetector {
             return nil
         }
         
+        // It would be nice to 
+        
+        //        var delegate: Delegate? = CoreMLDelegate()
+        //        if delegate == nil {
+        //            os_log("Initializing Metal delegate", log: logger, type: .debug)
+        //            delegate = MetalDelegate()
+        //        } else {
+        //            os_log("Initializing CoreML delegate", log: logger, type: .debug)
+        //        }
+        
         var options = Interpreter.Options()
         // Why? Because, why not?
         options.threadCount = 2
         do {
             let start = Date()
-            interpreter = try Interpreter(modelPath: modelPath, options: options)
+            self.interpreter = try Interpreter(modelPath: modelPath, options: options)
             try interpreter.allocateTensors()
             os_log("Interpreter initialization took: %d ms", log: logger, type: .debug, Date().timeIntervalSince(start) * 1000)
         } catch {
@@ -82,57 +92,49 @@ class TFSampleDetector: NSObject, SampleDetector {
             subject.send(completion: .failure(.preprocessError(msg: "Cannot resize image")))
             return subject.eraseToAnyPublisher()
         }
-        
-        DispatchQueue.init(label: "inferenceQueue", qos: .userInitiated).async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            let outputBoundingBox: Tensor
-            let outputClasses: Tensor
-            let outputScores: Tensor
-            let outputCount: Tensor
-            do {
-                // Don't do this. Gross
-                try self.interpreter.allocateTensors()
-                let inputTensor = try self.interpreter.input(at: 0)
-                
-                // Remove the alpha component
-                guard let rgbData = self.rgbDataFromBuffer(scaledPixelBuffer, byteCount: self.batchSize * self.inputWidth * self.inputHeight * self.inputChannels,
-                                                                 isModelQuantized: inputTensor.dataType == .uInt8) else {
-                    subject.send(completion: .failure(.preprocessError(msg: "Cannot remove alpha component")))
-                    return
-                }
-                
-                try self.interpreter.copy(rgbData, toInputAt: 0)
-                
-                // Run inference by invoking the `Interpreter`.
-                let start = DispatchTime.now()
-                try self.interpreter.invoke()
-                let end = DispatchTime.now()
-                let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
-                let interval = Double(nanoTime) / 1_000_000
-                os_log("Inference took %.2f ms", log: logger, type: .debug, interval)
-                
-                outputBoundingBox = try self.interpreter.output(at: 0)
-                outputClasses = try self.interpreter.output(at: 1)
-                outputScores = try self.interpreter.output(at: 2)
-                outputCount = try self.interpreter.output(at: 3)
-            } catch {
-                os_log("Cannot run inference: %s", log: logger, type: .error, error.localizedDescription)
-                subject.send(completion: .failure(.unknown(error: error)))
-                return
+        let outputBoundingBox: Tensor
+        let outputClasses: Tensor
+        let outputScores: Tensor
+        let outputCount: Tensor
+        do {
+            let inputTensor = try self.interpreter.input(at: 0)
+            
+            // Remove the alpha component
+            guard let rgbData = self.rgbDataFromBuffer(scaledPixelBuffer, byteCount: self.batchSize * self.inputWidth * self.inputHeight * self.inputChannels,
+                                                       isModelQuantized: inputTensor.dataType == .uInt8) else {
+                subject.send(completion: .failure(.preprocessError(msg: "Cannot remove alpha component")))
+                return subject.eraseToAnyPublisher()
             }
             
-            let resultArray = self.formatResults(
-                boundingBox: outputBoundingBox.asArray(of: Float.self),
-                outputClasses: outputClasses.asArray(of: Float.self),
-                outputScores: outputScores.asArray(of: Float.self),
-                outputCount: Int(([Float](unsafeData: outputCount.data) ?? [0])[0]),
-                width: CGFloat(imageWidth),
-                height: CGFloat(imageHeight))
+            try self.interpreter.copy(rgbData, toInputAt: 0)
             
-            subject.send(resultArray)
+            // Run inference by invoking the `Interpreter`.
+            let start = DispatchTime.now()
+            try self.interpreter.invoke()
+            let end = DispatchTime.now()
+            let nanoTime = end.uptimeNanoseconds - start.uptimeNanoseconds // <<<<< Difference in nano seconds (UInt64)
+            let interval = Double(nanoTime) / 1_000_000
+            os_log("Inference took %.2f ms", log: logger, type: .debug, interval)
+            
+            outputBoundingBox = try self.interpreter.output(at: 0)
+            outputClasses = try self.interpreter.output(at: 1)
+            outputScores = try self.interpreter.output(at: 2)
+            outputCount = try self.interpreter.output(at: 3)
+        } catch {
+            os_log("Cannot run inference: %s", log: logger, type: .error, error.localizedDescription)
+            subject.send(completion: .failure(.unknown(error: error)))
+            return subject.eraseToAnyPublisher()
         }
+        
+        let resultArray = self.formatResults(
+            boundingBox: outputBoundingBox.asArray(of: Float.self),
+            outputClasses: outputClasses.asArray(of: Float.self),
+            outputScores: outputScores.asArray(of: Float.self),
+            outputCount: Int(([Float](unsafeData: outputCount.data) ?? [0])[0]),
+            width: CGFloat(imageWidth),
+            height: CGFloat(imageHeight))
+        
+        subject.send(resultArray)
         return subject.eraseToAnyPublisher()
     }
     
@@ -192,12 +194,21 @@ class TFSampleDetector: NSObject, SampleDetector {
         }
         
         // Not quantized, convert to floats
+        // Let's try to be clever and use Accelerate
         let bytes = [UInt8](unsafeData: byteData)!
-        var floats = [Float]()
-        for i in 0..<bytes.count { //swiftlint:disable:this identifier_name
-            floats.append((Float(bytes[i]) - imageMean) / imageStd)
-        }
-        return Data(copyingBufferOf: floats)
+        var floats = [Float](repeating: .nan, count: destinationBuffer.rowBytes * height)
+        // Convert from UInt8 to Float
+        vDSP.convertElements(of: bytes, to: &floats)
+        
+        // Create vectors for multiplication and subtraction
+        let meanVec = [Float](repeating: imageMean, count: floats.count)
+        // Invert the Image standard deviation so we can use multiplication, rather than division
+        let meanStdDev = [Float](repeating: (1.0  / imageStd), count: floats.count)
+        
+        var results = [Float](repeating: .nan, count: floats.count)
+        vDSP.multiply(subtraction: (floats, meanVec), meanStdDev, result: &results)
+
+        return Data(copyingBufferOf: results)
     }
     
     /// Filters out all the results with confidence score < threshold and returns the top N results

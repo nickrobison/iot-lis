@@ -14,10 +14,18 @@ PODS:
   - TensorFlowLiteC (0.0.1-nightly.20201104):
     - TensorFlowLiteC/Core (= 0.0.1-nightly.20201104)
   - TensorFlowLiteC/Core (0.0.1-nightly.20201104)
-  - TensorFlowLiteSwift (0.0.1-nightly.20201104):
-    - TensorFlowLiteSwift/Core (= 0.0.1-nightly.20201104)
+  - TensorFlowLiteC/CoreML (0.0.1-nightly.20201104):
+    - TensorFlowLiteC/Core
+  - TensorFlowLiteC/Metal (0.0.1-nightly.20201104):
+    - TensorFlowLiteC/Core
   - TensorFlowLiteSwift/Core (0.0.1-nightly.20201104):
     - TensorFlowLiteC (= 0.0.1-nightly.20201104)
+  - TensorFlowLiteSwift/CoreML (0.0.1-nightly.20201104):
+    - TensorFlowLiteC/CoreML (= 0.0.1-nightly.20201104)
+    - TensorFlowLiteSwift/Core (= 0.0.1-nightly.20201104)
+  - TensorFlowLiteSwift/Metal (0.0.1-nightly.20201104):
+    - TensorFlowLiteC/Metal (= 0.0.1-nightly.20201104)
+    - TensorFlowLiteSwift/Core (= 0.0.1-nightly.20201104)
   - xxHash-Swift (1.1.0)
 
 DEPENDENCIES:
@@ -25,7 +33,8 @@ DEPENDENCIES:
   - OktaOidc
   - OktaStorage
   - SwiftLint
-  - TensorFlowLiteSwift (~> 0.0.1-nightly)
+  - TensorFlowLiteSwift/CoreML (~> 0.0.1-nightly)
+  - TensorFlowLiteSwift/Metal (~> 0.0.1-nightly)
   - xxHash-Swift
 
 SPEC REPOS:
@@ -55,6 +64,6 @@ SPEC CHECKSUMS:
   TensorFlowLiteSwift: 36d47a0f5870f6fdf79c55dd24feb22bf6543172
   xxHash-Swift: 38fa4218ebae48ccbaaa4240c0cceec7ee2c7f87
 
-PODFILE CHECKSUM: 326b7706465faf8b3ca2cbc45c9990d31d01eb2e
+PODFILE CHECKSUM: abbf0f69b422675e73d1a3964974e74636dc60b9
 
 COCOAPODS: 1.10.0.rc.1

@@ -35,24 +35,24 @@ class SampleInferenceTests: XCTestCase {
             fatalError("Cannot convert to pixel buffer")
         }
         
-        let results = self.model!.runModel(onFrame: buffer)
-        
         let exp1 = XCTestExpectation()
         
-        results
-            .sink(receiveCompletion: { error in
-                switch error {
-                case .finished:
-                    XCTAssertTrue(true)
-                case .failure(let error):
-                    XCTFail(error.localizedDescription)
-                }
-                exp1.fulfill()
-            }, receiveValue: { inferences in
-                XCTAssertEqual(1, inferences.count)
-                XCTAssertEqual("binax", inferences[0].className)
-                exp1.fulfill()
-            }).store(in: &cancellables)
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.model!.runModel(onFrame: buffer)
+                .sink(receiveCompletion: { error in
+                    switch error {
+                    case .finished:
+                        XCTAssertTrue(true)
+                    case .failure(let error):
+                        XCTFail(error.localizedDescription)
+                    }
+                    exp1.fulfill()
+                }, receiveValue: { inferences in
+                    XCTAssertEqual(1, inferences.count)
+                    XCTAssertEqual("binax", inferences[0].className)
+                    exp1.fulfill()
+                }).store(in: &self.cancellables)
+        }
         
         wait(for: [exp1], timeout: 10)
     }

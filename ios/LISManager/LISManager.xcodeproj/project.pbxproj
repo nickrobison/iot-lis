@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1077B1182553454E002DBBA8 /* TesetCardScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B1172553454E002DBBA8 /* TesetCardScanner.swift */; };
 		1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */; };
 		1077B12625534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */; };
 		1077B13025543EC1002DBBA8 /* SampleInferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */; };
@@ -164,7 +163,6 @@
 		01C8FCA30DF5080D239F9865 /* Pods-LISManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.release.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.release.xcconfig"; sourceTree = "<group>"; };
 		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1077B1172553454E002DBBA8 /* TesetCardScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TesetCardScanner.swift; sourceTree = "<group>"; };
 		1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSampleDetector.swift; sourceTree = "<group>"; };
 		1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
 		1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleInferenceTests.swift; sourceTree = "<group>"; };
@@ -618,7 +616,6 @@
 				EBDC8C2625409E8300D69DAD /* BarcodeScanner.swift */,
 				EBDC8C2E25409F7800D69DAD /* CameraViewController.swift */,
 				EBD24E102540CC42002A3E15 /* FormReader.swift */,
-				1077B1172553454E002DBBA8 /* TesetCardScanner.swift */,
 				10E86410255988B700F44ED9 /* SampleScanner.swift */,
 				10E8641525598BBE00F44ED9 /* SampleScannerViewController.swift */,
 			);
@@ -1113,7 +1110,6 @@
 				EB18F8DD2547473700745A59 /* SampleScanView.swift in Sources */,
 				EBAFE440253A114200BF8868 /* ContentView.swift in Sources */,
 				EB6332082541E7C7002FFA25 /* InitialsView.swift in Sources */,
-				1077B1182553454E002DBBA8 /* TesetCardScanner.swift in Sources */,
 				EB2297C025422998002332AB /* OrderCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

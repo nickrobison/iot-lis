@@ -16,7 +16,7 @@ class CoreMLSampleDetector: SampleDetector {
     
     init?() {
         do {
-            self.model = try VNCoreMLModel(for: SampleDetector_2().model)
+            self.model = try VNCoreMLModel(for: SampleDetector_2(configuration: MLModelConfiguration()).model)
         } catch {
             return nil
         }
