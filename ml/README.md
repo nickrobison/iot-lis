@@ -77,11 +77,11 @@ Setup on CADES is pretty simple. Make sure you load the correct CUDA version (10
 ```bash
 module load cuda/10.1
 conda create -n tf-gpu python=3.7
-conda activate tf-gpu
-pip install tf-nightly-gpu
+source activate tf-gpu
+conda install tensorflow-gpu
 
 # Install object detection API
-cd samples/tf/models/research
+cd ml/tf/research
 protoc object_detection/protos/*.proto --python_out=.
 # Install TensorFlow Object Detection API.
 cp object_detection/packages/tf2/setup.py .
@@ -96,9 +96,9 @@ Sorry.
 
 ```bash
 module load python
-conda create -n tf-gpu python=3.7
+conda create -n tf-gpu
 conda activate tf-gpu
-pip install tf-nightly-gpu
+conda install tensorflow-gpu
 
 # Install object detection API
 cd samples/tf/models/research

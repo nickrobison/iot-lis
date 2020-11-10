@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		102B119F255A2EC80033999C /* mobilenet.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 102B119D255A2EC80033999C /* mobilenet.tflite */; };
+		102B11A0255A2EC80033999C /* resnet.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 102B119E255A2EC80033999C /* resnet.tflite */; };
 		1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */; };
 		1077B12625534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */; };
 		1077B13025543EC1002DBBA8 /* SampleInferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */; };
@@ -22,8 +24,6 @@
 		10E338602558B77E005DA2A4 /* SampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E3385F2558B77E005DA2A4 /* SampleDetector.swift */; };
 		10E338682558B7F8005DA2A4 /* CoreMLSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E338672558B7F8005DA2A4 /* CoreMLSampleDetector.swift */; };
 		10E3386D2558B8BD005DA2A4 /* SampleDetector 2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 10E3386C2558B8BD005DA2A4 /* SampleDetector 2.mlmodel */; };
-		10E338752558E48F005DA2A4 /* model3.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 10E338742558E48F005DA2A4 /* model3.tflite */; };
-		10E3387A2558EAAE005DA2A4 /* model4.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 10E338792558EAAE005DA2A4 /* model4.tflite */; };
 		10E86411255988B700F44ED9 /* SampleScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E86410255988B700F44ED9 /* SampleScanner.swift */; };
 		10E8641625598BBE00F44ED9 /* SampleScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8641525598BBE00F44ED9 /* SampleScannerViewController.swift */; };
 		10E8641B25598C6800F44ED9 /* ResultsAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8641A25598C6800F44ED9 /* ResultsAddView.swift */; };
@@ -163,6 +163,8 @@
 		01C8FCA30DF5080D239F9865 /* Pods-LISManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.release.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.release.xcconfig"; sourceTree = "<group>"; };
 		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		102B119D255A2EC80033999C /* mobilenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = mobilenet.tflite; path = ../../../../ml/samples/mobilenet.tflite; sourceTree = "<group>"; };
+		102B119E255A2EC80033999C /* resnet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = resnet.tflite; path = ../../../../ml/samples/resnet.tflite; sourceTree = "<group>"; };
 		1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSampleDetector.swift; sourceTree = "<group>"; };
 		1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
 		1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleInferenceTests.swift; sourceTree = "<group>"; };
@@ -178,8 +180,6 @@
 		10E3385F2558B77E005DA2A4 /* SampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDetector.swift; sourceTree = "<group>"; };
 		10E338672558B7F8005DA2A4 /* CoreMLSampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLSampleDetector.swift; sourceTree = "<group>"; };
 		10E3386C2558B8BD005DA2A4 /* SampleDetector 2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "SampleDetector 2.mlmodel"; path = "../../../ml/samples/SampleDetector 2.mlmodel"; sourceTree = "<group>"; };
-		10E338742558E48F005DA2A4 /* model3.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = model3.tflite; path = ../../../../ml/samples/model3.tflite; sourceTree = "<group>"; };
-		10E338792558EAAE005DA2A4 /* model4.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = model4.tflite; path = ../../../../ml/samples/model4.tflite; sourceTree = "<group>"; };
 		10E86410255988B700F44ED9 /* SampleScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleScanner.swift; sourceTree = "<group>"; };
 		10E8641525598BBE00F44ED9 /* SampleScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleScannerViewController.swift; sourceTree = "<group>"; };
 		10E8641A25598C6800F44ED9 /* ResultsAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsAddView.swift; sourceTree = "<group>"; };
@@ -327,8 +327,8 @@
 		1077B11C255346B6002DBBA8 /* TestCards */ = {
 			isa = PBXGroup;
 			children = (
-				10E338792558EAAE005DA2A4 /* model4.tflite */,
-				10E338742558E48F005DA2A4 /* model3.tflite */,
+				102B119D255A2EC80033999C /* mobilenet.tflite */,
+				102B119E255A2EC80033999C /* resnet.tflite */,
 				1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */,
 				1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */,
 				1077B13925543FF0002DBBA8 /* labels.txt */,
@@ -807,12 +807,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10E3387A2558EAAE005DA2A4 /* model4.tflite in Resources */,
+				102B11A0255A2EC80033999C /* resnet.tflite in Resources */,
 				1099DA622551C03A00D8A062 /* Okta.plist in Resources */,
 				EBAFE44B253A114500BF8868 /* LaunchScreen.storyboard in Resources */,
-				10E338752558E48F005DA2A4 /* model3.tflite in Resources */,
 				EBAFE448253A114500BF8868 /* Preview Assets.xcassets in Resources */,
 				EBD24E162540CD8C002A3E15 /* TestAssets.xcassets in Resources */,
+				102B119F255A2EC80033999C /* mobilenet.tflite in Resources */,
 				1077B13A25543FF0002DBBA8 /* labels.txt in Resources */,
 				EBAFE445253A114500BF8868 /* Assets.xcassets in Resources */,
 			);

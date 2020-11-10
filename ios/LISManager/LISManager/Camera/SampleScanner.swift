@@ -28,8 +28,8 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
     
     init(_ completionHandler: (([Inference]) -> Void)?) {
         self.completionHandler = completionHandler
-        self.detector = CoreMLSampleDetector()!
-//                self.detector = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)!
+//        self.detector = CoreMLSampleDetector()!
+        self.detector = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)!
     }
     
     func prepare(completionHandler: @escaping (Error?) -> Void) {
@@ -86,6 +86,7 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
                     .flatMap { buffer in
                         self.detector.runModel(onFrame: buffer)
                     }
+                    .retry(10) // Sometimes, TF throws an exception, but we don't want to die, we want to keep going
                     .receive(on: RunLoop.main)
                     .sink(receiveCompletion: { _ in
                         // Not used yet
@@ -151,6 +152,7 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
         
         self.maskLayer = CAShapeLayer()
         self.maskLayer!.frame = bounds
+//        self.maskLayer!.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
         self.maskLayer!.cornerRadius = 10
         self.maskLayer!.opacity = 0.75
         self.maskLayer!.borderColor = inference.displayColor.cgColor
