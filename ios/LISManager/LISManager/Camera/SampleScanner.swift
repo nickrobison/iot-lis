@@ -25,11 +25,17 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
     private let detector: SampleDetector
     private let bufferSubject = PassthroughSubject<CVPixelBuffer, Never>()
     private let inferenceQueue = DispatchQueue(label: "inferenceQueue", qos: .userInitiated)
+    private let sampleBufferQueue = DispatchQueue(label: "sampleBufferQueue", qos: .userInitiated)
     
     init(_ completionHandler: (([Inference]) -> Void)?) {
         self.completionHandler = completionHandler
-//        self.detector = CoreMLSampleDetector()!
-        self.detector = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)!
+        self.detector = CoreMLSampleDetector()!
+        //        self.detector = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)!
+        self.completionHandler = completionHandler
+    }
+    
+    deinit {
+        self.cancellable?.cancel()
     }
     
     func prepare(completionHandler: @escaping (Error?) -> Void) {
@@ -56,7 +62,7 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
                 
                 // Enable video input
                 
-                let sampleBufferQueue = DispatchQueue(label: "sampleBufferQueue")
+                
                 self.videoDataOutput.setSampleBufferDelegate(self, queue: sampleBufferQueue)
                 videoDataOutput.alwaysDiscardsLateVideoFrames = true
                 videoDataOutput.videoSettings = [ String(kCVPixelBufferPixelFormatTypeKey): kCMPixelFormat_32BGRA]
@@ -86,6 +92,7 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
                     .flatMap { buffer in
                         self.detector.runModel(onFrame: buffer)
                     }
+                    .removeDuplicates()
                     .retry(10) // Sometimes, TF throws an exception, but we don't want to die, we want to keep going
                     .receive(on: RunLoop.main)
                     .sink(receiveCompletion: { _ in
@@ -128,13 +135,6 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
         }
         
         self.bufferSubject.send(pixelBuffer)
-        
-        //        self.detector.runModel(onFrame: pixelBuffer).receive(on: RunLoop.main).sink(receiveCompletion: { error in
-        //            debugPrint(error)
-        //        }, receiveValue: { inferences in
-        //                self.drawInferenceBoxes(inferences)
-        //        }).store(in: &self.cancellables)
-        
     }
     
     private func drawInferenceBoxes(_ inferences: [Inference]) {
@@ -152,12 +152,15 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
         
         self.maskLayer = CAShapeLayer()
         self.maskLayer!.frame = bounds
-//        self.maskLayer!.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
+        //        self.maskLayer!.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
         self.maskLayer!.cornerRadius = 10
         self.maskLayer!.opacity = 0.75
         self.maskLayer!.borderColor = inference.displayColor.cgColor
         self.maskLayer!.borderWidth = 5.0
         
         self.previewLayer!.insertSublayer(self.maskLayer!, at: 1)
+        
+        // Send it along
+        self.completionHandler?(inferences)
     }
 }

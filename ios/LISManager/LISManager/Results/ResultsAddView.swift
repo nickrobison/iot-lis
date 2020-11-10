@@ -8,8 +8,18 @@
 import SwiftUI
 
 struct ResultsAddView: View {
+    @State var inferences: [Inference] = []
+    
     var body: some View {
-        makeCamera()
+        ZStack {
+            makeCamera()
+            VStack {
+                ForEach(self.inferences, id: \.self) { inference in
+                    ResultCardView(sampleType: inference.className)
+                }
+            }
+            .animation(.easeIn)
+        }
     }
     
     private func makeCamera() -> some View {
@@ -19,7 +29,9 @@ struct ResultsAddView: View {
     }
     
     private func handleScan(inferences: [Inference]) {
-        
+        debugPrint("Pushing \(inferences.count) inferences")
+        // This is where we need to determine if we already have the sample, or not
+        self.inferences = inferences
     }
 }
 

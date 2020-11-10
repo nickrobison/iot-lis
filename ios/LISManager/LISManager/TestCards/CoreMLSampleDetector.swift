@@ -16,7 +16,7 @@ class CoreMLSampleDetector: SampleDetector {
     
     init?() {
         do {
-            self.model = try VNCoreMLModel(for: SampleDetector_2(configuration: MLModelConfiguration()).model)
+            self.model = try VNCoreMLModel(for: SampleDetector_4(configuration: MLModelConfiguration()).model)
         } catch {
             return nil
         }
@@ -52,12 +52,13 @@ class CoreMLSampleDetector: SampleDetector {
         }
         let classifications = results as? [VNRecognizedObjectObservation]
         
-        guard let classz = classifications?.first else {
+        guard let classz = classifications else {
             return []
         }
         
-        let label = classz.labels[0]
-        let inf = Inference(confidence: label.confidence, className: label.identifier, rect: classz.boundingBox, displayColor: .purple)
-        return [inf]
+        return classz.map {
+            let label = $0.labels[0]
+            return Inference(confidence: label.confidence, className: label.identifier, rect: $0.boundingBox, displayColor: .purple)
+        }
     }
 }
