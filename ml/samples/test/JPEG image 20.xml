@@ -1,0 +1,29 @@
+<annotation>
+    <folder>new</folder>
+    <filename>JPEG image 20.jpeg</filename>
+    <size>
+        <width>3264</width>
+        <height>2448</height>
+        <depth>3</depth>
+    </size>
+    <object>
+        <name>binax</name>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>2053</xmin>
+            <ymin>513</ymin>
+            <xmax>2289</xmax>
+            <ymax>843</ymax>
+        </bndbox>
+    </object>
+    <object>
+        <name>quidel</name>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>1829</xmin>
+            <ymin>488</ymin>
+            <xmax>1970</xmax>
+            <ymax>838</ymax>
+        </bndbox>
+    </object>
+</annotation>
