@@ -24,6 +24,7 @@
 		109BD5EF2551B5D70091BED2 /* UserLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109BD5EE2551B5D70091BED2 /* UserLoginView.swift */; };
 		10E338602558B77E005DA2A4 /* SampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E3385F2558B77E005DA2A4 /* SampleDetector.swift */; };
 		10E338682558B7F8005DA2A4 /* CoreMLSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E338672558B7F8005DA2A4 /* CoreMLSampleDetector.swift */; };
+		10E6C9AD2576EBCB00323E4C /* mobilenet.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 101F10E82576E481009D9CE8 /* mobilenet.tflite */; };
 		10E86411255988B700F44ED9 /* SampleScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E86410255988B700F44ED9 /* SampleScanner.swift */; };
 		10E8641625598BBE00F44ED9 /* SampleScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8641525598BBE00F44ED9 /* SampleScannerViewController.swift */; };
 		10E8641B25598C6800F44ED9 /* ResultsAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8641A25598C6800F44ED9 /* ResultsAddView.swift */; };
@@ -817,6 +818,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E6C9AD2576EBCB00323E4C /* mobilenet.tflite in Resources */,
 				1099DA622551C03A00D8A062 /* Okta.plist in Resources */,
 				EBAFE44B253A114500BF8868 /* LaunchScreen.storyboard in Resources */,
 				EBAFE448253A114500BF8868 /* Preview Assets.xcassets in Resources */,

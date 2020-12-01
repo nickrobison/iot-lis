@@ -13,9 +13,9 @@ import Combine
 @testable import LISManager
 
 class SampleInferenceTests: XCTestCase {
-    
-    var model: SampleDetector? = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)
-    //    var model: SampleDetector? = CoreMLSampleDetector()
+
+//    var model: SampleDetector? = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)
+        var model: SampleDetector? = CoreMLSampleDetector()
     var cancellables: Set<AnyCancellable>!
     
     override func setUpWithError() throws {
