@@ -41,6 +41,9 @@ stages:
           pool:
             vmImage: 'macOS-10.15'
           steps:
+          - checkout: self
+            submodules: true
+            lfs: true
           - bash: |
               brew install flatbuffers --HEAD
             displayName: Install system dependencies
