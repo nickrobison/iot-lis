@@ -1,9 +1,17 @@
 # IOT-LIS
 
+## Clone repo
+
+This project makes use of [GIT LFS](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/configuring-git-large-file-storage) which means you'll need to install it before cloning.
+
+```bash
+brew install git-lfs
+git clone git@github.com:nickrobison/iot-lis.git
+```
+
 ## Dev Dependencies
 
 ```bash
-brew install rbenv
 brew install flatbuffers --HEAD # We need head until the Swift code settles down
 rbenv install
 gem install bundler
