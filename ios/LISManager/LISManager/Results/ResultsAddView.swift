@@ -15,7 +15,7 @@ struct ResultsAddView: View {
             makeCamera()
             VStack {
                 ForEach(self.inferences, id: \.self) { inference in
-                    ResultCardView(sampleType: inference.className)
+                    ResultCardView(testType: inference.className)
                 }
             }
             .animation(.easeIn)

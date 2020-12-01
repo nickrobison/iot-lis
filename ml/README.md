@@ -44,13 +44,13 @@ CoreML trains locally using CreateML, for Tensorflow, we use Cades and Cori to h
 For Tensorflow training (which generates data in place):
 
 ```bash
-python ml/tf/models/research/object_detection/model_main_tf2.py --model_dir {PATH_TO_MODEL} --{PATH_TO_MODEL/pipeline.config
+python ml/tf/research/object_detection/model_main_tf2.py --model_dir {PATH_TO_MODEL} --{PATH_TO_MODEL/pipeline.config
 ```
 
 1. Export the model to TFLite compatible Graph
 
 ```bash
-python ml/tf/models/research/object_detection/export_tflite_graph_tf2.py --pipeline_config_path {PATH_TO_MODEL}pipeline.config --trained_checkpoint_dir {PATH_TO_MODEL}checkpoint --output_directory {PATH_TO_OUTPUT_DIRECTORY}
+python ml/tf/research/object_detection/export_tflite_graph_tf2.py --pipeline_config_path {PATH_TO_MODEL}pipeline.config --trained_checkpoint_dir {PATH_TO_MODEL}checkpoint --output_directory {PATH_TO_OUTPUT_DIRECTORY}
 ```
 
 1. Compile the model to TFLite
@@ -97,7 +97,7 @@ Sorry.
 ```bash
 module load python
 conda create -n tf-gpu
-conda activate tf-gpu
+source activate tf-gpu
 conda install tensorflow-gpu
 
 # Install object detection API
@@ -111,6 +111,8 @@ python -m pip install --use-feature=2020-resolver .
 A SLURM script is provided [here](scripts/cori-train.sh).
 You'll need to change the filenames.
 Sorry.
+
+> Note: For CORI, you'll need to make sure you load the *esslurm* module. `module load esslurm`
 
 # Additional docs
 Given how fast the Tensorflow APIs change, there's a bunch of outdated documentation, here are some helpful docs for piecing it all together.

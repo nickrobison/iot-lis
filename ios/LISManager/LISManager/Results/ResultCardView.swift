@@ -10,20 +10,18 @@ import SwiftUI
 struct ResultCardView: View {
     
     @State private var positive = false
-    @State private var testType = "Binax"
-    
-    var sampleType: String
+    @State var testType: String
     
     var body: some View {
         VStack {
             HStack {
-                Image(sampleType)
+                Image(testType)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 100)
                     .cornerRadius(15)
                 Spacer()
-                Text("\(testType) Sample").font(.headline)
+                Text("\(testType.capitalizingFirstLetter()) Sample").font(.headline)
                 Spacer()
             }
             HStack {
@@ -38,7 +36,8 @@ struct ResultCardView: View {
                 debugPrint("Submitting")
             }
         }
-        .frame(width: nil, height: 230)
+        .frame(width: 300, height: 230)
+        .padding([.leading, .trailing])
         .background(Color.white)
         .cornerRadius(10)
                 .overlay(RoundedRectangle(cornerRadius: 10)
@@ -48,6 +47,6 @@ struct ResultCardView: View {
 
 struct ResultCardView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultCardView(sampleType: "binax")
+        ResultCardView(testType: "binax")
     }
 }

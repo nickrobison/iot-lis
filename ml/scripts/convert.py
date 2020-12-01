@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-converter = tf.lite.TFLiteConverter.from_saved_model("models/mobilenet/saved_model")
+converter = tf.lite.TFLiteConverter.from_saved_model("models/mobilenet_samples/saved_model")
 converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS,
                                        tf.lite.OpsSet.SELECT_TF_OPS]
 converter.experimental_new_converter = True

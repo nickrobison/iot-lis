@@ -20,7 +20,7 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
     private lazy var videoDataOutput = AVCaptureVideoDataOutput()
     var completionHandler: (([Inference]) -> Void)?
     var cancellable: AnyCancellable?
-    var maskLayer: CAShapeLayer?
+    var maskLayer: [CAShapeLayer] = []
     
     private let detector: SampleDetector
     private let bufferSubject = PassthroughSubject<CVPixelBuffer, Never>()
@@ -30,6 +30,7 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
     init(_ completionHandler: (([Inference]) -> Void)?) {
         self.completionHandler = completionHandler
         self.detector = CoreMLSampleDetector()!
+        // We can uncomment this for the TF model, if we want, but it's not very good yet.
         //        self.detector = TFSampleDetector(modelInfo: MobileNetSSD.modelInfo, labelInfo: MobileNetSSD.labelsInfo)!
         self.completionHandler = completionHandler
     }
@@ -61,8 +62,6 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
                 } else { throw CameraControllerError.inputsAreInvalid }
                 
                 // Enable video input
-                
-                
                 self.videoDataOutput.setSampleBufferDelegate(self, queue: sampleBufferQueue)
                 videoDataOutput.alwaysDiscardsLateVideoFrames = true
                 videoDataOutput.videoSettings = [ String(kCVPixelBufferPixelFormatTypeKey): kCMPixelFormat_32BGRA]
@@ -75,9 +74,7 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
                 }
                 
             } else { throw CameraControllerError.noCamerasAvailable }
-            
             captureSession.startRunning()
-            
         }
         
         DispatchQueue(label: "prepare").async { [weak self] in
@@ -138,9 +135,20 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
     }
     
     private func drawInferenceBoxes(_ inferences: [Inference]) {
-        guard let inference = inferences.first else {
-            return
-        }
+        
+        self.maskLayer.forEach { $0.removeFromSuperlayer()}
+        self.maskLayer = []
+        
+        // Draw each inference
+        inferences.forEach(self.drawInference)
+        
+        self.maskLayer.forEach { self.previewLayer!.insertSublayer($0, at: 1)}
+        
+        // Send it along
+        self.completionHandler?(inferences)
+    }
+    
+    private func drawInference(_ inference: Inference) {
         debugPrint("I have detected a: \(inference.className) sample")
         
         // Rescale the layer
@@ -148,19 +156,14 @@ class SampleScanner: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate, Obs
         let scale = CGAffineTransform.identity.scaledBy(x: self.previewLayer?.frame.width ?? 0, y: self.previewLayer?.frame.height ?? 0)
         
         let bounds = inference.rect.applying(scale).applying(transform)
-        self.maskLayer?.removeFromSuperlayer()
         
-        self.maskLayer = CAShapeLayer()
-        self.maskLayer!.frame = bounds
-        //        self.maskLayer!.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
-        self.maskLayer!.cornerRadius = 10
-        self.maskLayer!.opacity = 0.75
-        self.maskLayer!.borderColor = inference.displayColor.cgColor
-        self.maskLayer!.borderWidth = 5.0
+        let mask = CAShapeLayer()
+        mask.frame = bounds
+        mask.cornerRadius = 10
+        mask.opacity = 0.75
+        mask.borderColor = inference.displayColor.cgColor
+        mask.borderWidth = 5.0
         
-        self.previewLayer!.insertSublayer(self.maskLayer!, at: 1)
-        
-        // Send it along
-        self.completionHandler?(inferences)
+        self.maskLayer.append(mask)
     }
 }
