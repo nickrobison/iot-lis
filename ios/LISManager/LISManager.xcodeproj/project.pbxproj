@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		101F10E02576D973009D9CE8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F10DF2576D973009D9CE8 /* String+Extensions.swift */; };
+		101F10EA2576E490009D9CE8 /* SampleDetector 5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */; };
 		1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */; };
 		1077B12625534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */; };
 		1077B13025543EC1002DBBA8 /* SampleInferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */; };
@@ -163,7 +164,8 @@
 		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		101F10DF2576D973009D9CE8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		101F10E72576E106009D9CE8 /* mobilenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = mobilenet.tflite; path = ../../../../ml/samples/mobilenet.tflite; sourceTree = "<group>"; };
+		101F10E82576E481009D9CE8 /* mobilenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = mobilenet.tflite; path = ../../../../ml/samples/mobilenet.tflite; sourceTree = "<group>"; };
+		101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "SampleDetector 5.mlmodel"; path = "../../../../ml/samples/SampleDetector.mlproj/Models/SampleDetector 5.mlmodel"; sourceTree = "<group>"; };
 		1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSampleDetector.swift; sourceTree = "<group>"; };
 		1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
 		1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleInferenceTests.swift; sourceTree = "<group>"; };
@@ -334,7 +336,8 @@
 		1077B11C255346B6002DBBA8 /* TestCards */ = {
 			isa = PBXGroup;
 			children = (
-				101F10E72576E106009D9CE8 /* mobilenet.tflite */,
+				101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */,
+				101F10E82576E481009D9CE8 /* mobilenet.tflite */,
 				1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */,
 				1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */,
 				1077B13925543FF0002DBBA8 /* labels.txt */,
@@ -1068,6 +1071,7 @@
 				EBAFE495253A161200BF8868 /* FullscreenButton.swift in Sources */,
 				EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */,
 				EBAFE47E253A136700BF8868 /* PreferencesManager.swift in Sources */,
+				101F10EA2576E490009D9CE8 /* SampleDetector 5.mlmodel in Sources */,
 				EBAFE4A7253A1B7900BF8868 /* LocationManager.swift in Sources */,
 				EBDC8C2725409E8300D69DAD /* BarcodeScanner.swift in Sources */,
 				EB2297D82543156C002332AB /* TimerView.swift in Sources */,
