@@ -1,0 +1,29 @@
+<annotation>
+    <folder>train</folder>
+    <filename>binax+quidel-21.jpg</filename>
+    <size>
+        <width>3024</width>
+        <height>4032</height>
+        <depth>3</depth>
+    </size>
+    <object>
+        <name>binax</name>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>668</xmin>
+            <ymin>873</ymin>
+            <xmax>2159</xmax>
+            <ymax>1930</ymax>
+        </bndbox>
+    </object>
+    <object>
+        <name>quidel</name>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>555</xmin>
+            <ymin>2342</ymin>
+            <xmax>2237</xmax>
+            <ymax>2811</ymax>
+        </bndbox>
+    </object>
+</annotation>

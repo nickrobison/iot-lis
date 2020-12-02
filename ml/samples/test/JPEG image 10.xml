@@ -1,0 +1,19 @@
+<annotation>
+    <folder>new</folder>
+    <filename>JPEG image 10.jpeg</filename>
+    <size>
+        <width>3024</width>
+        <height>4032</height>
+        <depth>3</depth>
+    </size>
+    <object>
+        <name>quidel</name>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>458</xmin>
+            <ymin>1485</ymin>
+            <xmax>1140</xmax>
+            <ymax>3001</ymax>
+        </bndbox>
+    </object>
+</annotation>

@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101F10E02576D973009D9CE8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F10DF2576D973009D9CE8 /* String+Extensions.swift */; };
+		101F10EA2576E490009D9CE8 /* SampleDetector 5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */; };
+		1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */; };
+		1077B12625534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */; };
+		1077B13025543EC1002DBBA8 /* SampleInferenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */; };
+		1077B13A25543FF0002DBBA8 /* labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1077B13925543FF0002DBBA8 /* labels.txt */; };
+		1077B13F25544403002DBBA8 /* ImageProcessingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B13E25544403002DBBA8 /* ImageProcessingTests.swift */; };
+		108F1514255AF2B300D17A4C /* ResultCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108F1513255AF2B300D17A4C /* ResultCardView.swift */; };
 		109979912552F62B00D558CE /* OperatorBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109979902552F62B00D558CE /* OperatorBarcodeView.swift */; };
 		1099DA622551C03A00D8A062 /* Okta.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1099DA612551C03A00D8A062 /* Okta.plist */; };
 		1099DA6C2551C2B600D8A062 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA6B2551C2B600D8A062 /* LoginViewController.swift */; };
@@ -14,6 +22,12 @@
 		1099DA8E2551ED1A00D8A062 /* LocationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA8D2551ED1A00D8A062 /* LocationSettingsView.swift */; };
 		1099DA932551ED5F00D8A062 /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1099DA922551ED5F00D8A062 /* UserSettingsView.swift */; };
 		109BD5EF2551B5D70091BED2 /* UserLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109BD5EE2551B5D70091BED2 /* UserLoginView.swift */; };
+		10E338602558B77E005DA2A4 /* SampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E3385F2558B77E005DA2A4 /* SampleDetector.swift */; };
+		10E338682558B7F8005DA2A4 /* CoreMLSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E338672558B7F8005DA2A4 /* CoreMLSampleDetector.swift */; };
+		10E6C9AD2576EBCB00323E4C /* mobilenet.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 101F10E82576E481009D9CE8 /* mobilenet.tflite */; };
+		10E86411255988B700F44ED9 /* SampleScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E86410255988B700F44ED9 /* SampleScanner.swift */; };
+		10E8641625598BBE00F44ED9 /* SampleScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8641525598BBE00F44ED9 /* SampleScannerViewController.swift */; };
+		10E8641B25598C6800F44ED9 /* ResultsAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8641A25598C6800F44ED9 /* ResultsAddView.swift */; };
 		10EDAFC12550A8DE009FDA96 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC02550A8DE009FDA96 /* SettingsView.swift */; };
 		10EDAFC62550AE1D009FDA96 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */; };
 		69464CEF618A390A997068B8 /* Pods_LISKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6C57E8DD14B7732B893BEF /* Pods_LISKit.framework */; };
@@ -150,6 +164,15 @@
 		01C8FCA30DF5080D239F9865 /* Pods-LISManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManager.release.xcconfig"; path = "Target Support Files/Pods-LISManager/Pods-LISManager.release.xcconfig"; sourceTree = "<group>"; };
 		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		101F10DF2576D973009D9CE8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		101F10E82576E481009D9CE8 /* mobilenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = mobilenet.tflite; path = ../../../../ml/samples/mobilenet.tflite; sourceTree = "<group>"; };
+		101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "SampleDetector 5.mlmodel"; path = "../../../../ml/samples/SampleDetector.mlproj/Models/SampleDetector 5.mlmodel"; sourceTree = "<group>"; };
+		1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFSampleDetector.swift; sourceTree = "<group>"; };
+		1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extensions.swift"; sourceTree = "<group>"; };
+		1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleInferenceTests.swift; sourceTree = "<group>"; };
+		1077B13925543FF0002DBBA8 /* labels.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
+		1077B13E25544403002DBBA8 /* ImageProcessingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingTests.swift; sourceTree = "<group>"; };
+		108F1513255AF2B300D17A4C /* ResultCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCardView.swift; sourceTree = "<group>"; };
 		109979902552F62B00D558CE /* OperatorBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperatorBarcodeView.swift; sourceTree = "<group>"; };
 		1099DA612551C03A00D8A062 /* Okta.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Okta.plist; sourceTree = "<group>"; };
 		1099DA6B2551C2B600D8A062 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +180,11 @@
 		1099DA8D2551ED1A00D8A062 /* LocationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSettingsView.swift; sourceTree = "<group>"; };
 		1099DA922551ED5F00D8A062 /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		109BD5EE2551B5D70091BED2 /* UserLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginView.swift; sourceTree = "<group>"; };
+		10E3385F2558B77E005DA2A4 /* SampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDetector.swift; sourceTree = "<group>"; };
+		10E338672558B7F8005DA2A4 /* CoreMLSampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLSampleDetector.swift; sourceTree = "<group>"; };
+		10E86410255988B700F44ED9 /* SampleScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleScanner.swift; sourceTree = "<group>"; };
+		10E8641525598BBE00F44ED9 /* SampleScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleScannerViewController.swift; sourceTree = "<group>"; };
+		10E8641A25598C6800F44ED9 /* ResultsAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsAddView.swift; sourceTree = "<group>"; };
 		10EDAFC02550A8DE009FDA96 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		149E75223CC0AAC8C3E16552 /* Pods-LISManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.release.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -298,6 +326,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		101F10DB2576D952009D9CE8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				101F10DF2576D973009D9CE8 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1077B11C255346B6002DBBA8 /* TestCards */ = {
+			isa = PBXGroup;
+			children = (
+				101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */,
+				101F10E82576E481009D9CE8 /* mobilenet.tflite */,
+				1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */,
+				1077B12525534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift */,
+				1077B13925543FF0002DBBA8 /* labels.txt */,
+				10E3385F2558B77E005DA2A4 /* SampleDetector.swift */,
+				10E338672558B7F8005DA2A4 /* CoreMLSampleDetector.swift */,
+			);
+			path = TestCards;
+			sourceTree = "<group>";
+		};
 		1099DA972551F31B00D8A062 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +432,8 @@
 				EB3D3306253F7D97000F5A84 /* Protocols+Extensions.swift */,
 				EB3D330B253F7E45000F5A84 /* ResultRow.swift */,
 				EB3D3318253F86E1000F5A84 /* ResultDetailView.swift */,
+				10E8641A25598C6800F44ED9 /* ResultsAddView.swift */,
+				108F1513255AF2B300D17A4C /* ResultCardView.swift */,
 			);
 			path = Results;
 			sourceTree = "<group>";
@@ -461,6 +513,8 @@
 		EBAFE43A253A114200BF8868 /* LISManager */ = {
 			isa = PBXGroup;
 			children = (
+				101F10DB2576D952009D9CE8 /* Extensions */,
+				1077B11C255346B6002DBBA8 /* TestCards */,
 				1099DA972551F31B00D8A062 /* Auth */,
 				10EDAFBC2550A87B009FDA96 /* Settings */,
 				EBC76EA2254857A200D0B4B8 /* Models */,
@@ -506,6 +560,8 @@
 				EBAFE455253A114500BF8868 /* LISManagerTests.swift */,
 				EBAFE457253A114500BF8868 /* Info.plist */,
 				EB856FEE2541C4BA008996F6 /* PatientAddTests.swift */,
+				1077B12F25543EC1002DBBA8 /* SampleInferenceTests.swift */,
+				1077B13E25544403002DBBA8 /* ImageProcessingTests.swift */,
 			);
 			path = LISManagerTests;
 			sourceTree = "<group>";
@@ -571,6 +627,8 @@
 				EBDC8C2625409E8300D69DAD /* BarcodeScanner.swift */,
 				EBDC8C2E25409F7800D69DAD /* CameraViewController.swift */,
 				EBD24E102540CC42002A3E15 /* FormReader.swift */,
+				10E86410255988B700F44ED9 /* SampleScanner.swift */,
+				10E8641525598BBE00F44ED9 /* SampleScannerViewController.swift */,
 			);
 			path = Camera;
 			sourceTree = "<group>";
@@ -760,10 +818,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10E6C9AD2576EBCB00323E4C /* mobilenet.tflite in Resources */,
 				1099DA622551C03A00D8A062 /* Okta.plist in Resources */,
 				EBAFE44B253A114500BF8868 /* LaunchScreen.storyboard in Resources */,
 				EBAFE448253A114500BF8868 /* Preview Assets.xcassets in Resources */,
 				EBD24E162540CD8C002A3E15 /* TestAssets.xcassets in Resources */,
+				1077B13A25543FF0002DBBA8 /* labels.txt in Resources */,
 				EBAFE445253A114500BF8868 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1001,6 +1061,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				10EDAFC62550AE1D009FDA96 /* OnboardingModel.swift in Sources */,
+				1077B12625534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift in Sources */,
+				10E338602558B77E005DA2A4 /* SampleDetector.swift in Sources */,
 				EB18F8D52547472700745A59 /* InitialTestFlowView.swift in Sources */,
 				EB18F8F72547477D00745A59 /* SampleBarcodeView.swift in Sources */,
 				EB9B7896253E026900FCAB10 /* MainView.swift in Sources */,
@@ -1011,6 +1073,7 @@
 				EBAFE495253A161200BF8868 /* FullscreenButton.swift in Sources */,
 				EBAFE4A2253A1A3600BF8868 /* LocationInformation.swift in Sources */,
 				EBAFE47E253A136700BF8868 /* PreferencesManager.swift in Sources */,
+				101F10EA2576E490009D9CE8 /* SampleDetector 5.mlmodel in Sources */,
 				EBAFE4A7253A1B7900BF8868 /* LocationManager.swift in Sources */,
 				EBDC8C2725409E8300D69DAD /* BarcodeScanner.swift in Sources */,
 				EB2297D82543156C002332AB /* TimerView.swift in Sources */,
@@ -1019,8 +1082,10 @@
 				EBAFE48F253A158B00BF8868 /* InitialOnboardingView.swift in Sources */,
 				EBAFE43C253A114200BF8868 /* AppDelegate.swift in Sources */,
 				EBAFE43E253A114200BF8868 /* SceneDelegate.swift in Sources */,
+				101F10E02576D973009D9CE8 /* String+Extensions.swift in Sources */,
 				EB9B78C5253E0CE700FCAB10 /* DeviceAddView.swift in Sources */,
 				1099DA8E2551ED1A00D8A062 /* LocationSettingsView.swift in Sources */,
+				108F1514255AF2B300D17A4C /* ResultCardView.swift in Sources */,
 				EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */,
 				EB3D3307253F7D97000F5A84 /* Protocols+Extensions.swift in Sources */,
 				EBC76EA4254857B000D0B4B8 /* DeviceEntity+Extensions.swift in Sources */,
@@ -1031,10 +1096,13 @@
 				EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */,
 				10EDAFC12550A8DE009FDA96 /* SettingsView.swift in Sources */,
 				EBDC8C2F25409F7800D69DAD /* CameraViewController.swift in Sources */,
+				1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */,
 				EBC5DD10254350E800637D42 /* ResultsManager.swift in Sources */,
+				10E8641625598BBE00F44ED9 /* SampleScannerViewController.swift in Sources */,
 				EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */,
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
 				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,
+				10E86411255988B700F44ED9 /* SampleScanner.swift in Sources */,
 				109BD5EF2551B5D70091BED2 /* UserLoginView.swift in Sources */,
 				EB856FD72541B9D2008996F6 /* PatientAddView.swift in Sources */,
 				EB18F8FC2547479500745A59 /* FinishTestFlowView.swift in Sources */,
@@ -1042,8 +1110,10 @@
 				1099DA6C2551C2B600D8A062 /* LoginViewController.swift in Sources */,
 				EBAFE49D253A166A00BF8868 /* ActivityIndicator.swift in Sources */,
 				EB856FDF2541B9F8008996F6 /* PatientAddModel.swift in Sources */,
+				10E8641B25598C6800F44ED9 /* ResultsAddView.swift in Sources */,
 				1099DA7E2551DFFB00D8A062 /* ApplicationUser.swift in Sources */,
 				EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */,
+				10E338682558B7F8005DA2A4 /* CoreMLSampleDetector.swift in Sources */,
 				EB18F8EA2547476800745A59 /* PatientBarcodeView.swift in Sources */,
 				109979912552F62B00D558CE /* OperatorBarcodeView.swift in Sources */,
 				EBC76EC92548A12800D0B4B8 /* TestFlowModel.swift in Sources */,
@@ -1060,6 +1130,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1077B13F25544403002DBBA8 /* ImageProcessingTests.swift in Sources */,
+				1077B13025543EC1002DBBA8 /* SampleInferenceTests.swift in Sources */,
 				EBAFE456253A114500BF8868 /* LISManagerTests.swift in Sources */,
 				EB856FEF2541C4BA008996F6 /* PatientAddTests.swift in Sources */,
 			);

@@ -1,0 +1,19 @@
+<annotation>
+    <folder>new</folder>
+    <filename>JPEG image 29.jpeg</filename>
+    <size>
+        <width>4032</width>
+        <height>3024</height>
+        <depth>3</depth>
+    </size>
+    <object>
+        <name>binax</name>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>600</xmin>
+            <ymin>1312</ymin>
+            <xmax>1853</xmax>
+            <ymax>2438</ymax>
+        </bndbox>
+    </object>
+</annotation>

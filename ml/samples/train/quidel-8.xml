@@ -1,0 +1,19 @@
+<annotation>
+    <folder>train</folder>
+    <filename>quidel-8.jpg</filename>
+    <size>
+        <width>3024</width>
+        <height>4032</height>
+        <depth>3</depth>
+    </size>
+    <object>
+        <name>quidel</name>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>130</xmin>
+            <ymin>1942</ymin>
+            <xmax>2861</xmax>
+            <ymax>2680</ymax>
+        </bndbox>
+    </object>
+</annotation>

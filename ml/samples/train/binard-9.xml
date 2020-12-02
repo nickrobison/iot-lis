@@ -1,0 +1,19 @@
+<annotation>
+    <folder>train</folder>
+    <filename>binard-9.jpg</filename>
+    <size>
+        <width>3024</width>
+        <height>4032</height>
+        <depth>3</depth>
+    </size>
+    <object>
+        <name>binax</name>
+        <difficult>0</difficult>
+        <bndbox>
+            <xmin>144</xmin>
+            <ymin>1285</ymin>
+            <xmax>1194</xmax>
+            <ymax>2364</ymax>
+        </bndbox>
+    </object>
+</annotation>

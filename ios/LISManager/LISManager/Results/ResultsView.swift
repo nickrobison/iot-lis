@@ -10,6 +10,7 @@ import Combine
 
 struct ResultsView: View {
     var results: FetchRequest<OrderEntity>
+    @State private var showAdd = false
     
     init() {
         self.results = FetchRequest<OrderEntity>(entity: OrderEntity.entity(),
@@ -22,13 +23,19 @@ struct ResultsView: View {
     
     var body: some View {
         NavigationView {
-            if results.wrappedValue.count == 0 {
-                Text("No results yet")
-            } else {
-                List(results.wrappedValue, id: \.self) { order in
-                    ResultRow(order: order)
-                }
+            List(results.wrappedValue, id: \.self) { order in
+                ResultRow(order: order)
             }
+            .navigationBarTitle("Results")
+            .navigationBarItems(trailing: Button(action: {
+                debugPrint("Add result")
+                self.showAdd = true
+            }, label: {
+                Image(systemName: "plus")
+            }))
+            .sheet(isPresented: self.$showAdd, content: {
+                ResultsAddView()
+            })
         }
     }
 }
