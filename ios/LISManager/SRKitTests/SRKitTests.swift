@@ -11,6 +11,8 @@ import PromiseKit
 
 class SRKitTests: XCTestCase {
     
+    var backend: SRBackend = SRHttpBackend(connect: "http://127.0.0.1:8080/graphql")
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -20,8 +22,6 @@ class SRKitTests: XCTestCase {
     }
     
     func testPatientGet() throws {
-        var backend = SRHttpBackend(connect: "http://127.0.0.1:8080/graphql")
-        
         // This is an example of a functional test case.s
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let exp1 = XCTestExpectation()
