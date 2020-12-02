@@ -36,23 +36,3 @@ stages:
                 command: 'test'
                 arguments: '-v -race'
                 workingDirectory: '$(System.DefaultWorkingDirectory)/server'
-        - job: Compile_iOS
-          displayName: Compile iOS Projects
-          pool:
-            vmImage: 'macOS-10.15'
-          steps:
-          - bash: |
-              brew install flatbuffers --HEAD
-            displayName: Install system dependencies
-          - task: CocoaPods@0
-            inputs:
-              workingDirectory: 'ios/LISManager'
-              forceRepoUpdate: false
-          - task: Xcode@5
-            inputs:
-              sdk: '$(sdk)'
-              scheme: '$(scheme)'
-              configuration: '$(configuration)'
-              xcodeVersion: '11' # Options: default, 10, 9, 8, specifyPath
-              exportPath: '$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
-              xcWorkspacePath: ios/LISManager/LISManager.xcworkspace
