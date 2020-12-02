@@ -1,4 +1,4 @@
-""" Sample TensorFlow XML-to-TFRecord converter
+"""Sample TensorFlow XML-to-TFRecord converter
 
 usage: generate_tfrecord.py [-h] [-x XML_DIR] [-l LABELS_PATH] [-o OUTPUT_PATH] [-i IMAGE_DIR] [-c CSV_PATH]
 
@@ -75,7 +75,6 @@ def xml_to_csv(path):
     Pandas DataFrame
         The produced dataframe
     """
-
     xml_list = []
     for xml_file in glob.glob(path + '/*.xml'):
         tree = ET.parse(xml_file)
@@ -123,7 +122,7 @@ def create_tf_example(group, path):
     classes_text = []
     classes = []
 
-    for index, row in group.object.iterrows():
+    for _, row in group.object.iterrows():
         xmins.append(row['xmin'] / width)
         xmaxs.append(row['xmax'] / width)
         ymins.append(row['ymin'] / height)

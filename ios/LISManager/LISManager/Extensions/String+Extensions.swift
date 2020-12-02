@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 /**
  Capitalize the first letter of the string
  */

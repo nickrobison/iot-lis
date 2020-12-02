@@ -107,8 +107,7 @@ class TFSampleDetector: NSObject, SampleDetector {
             subject.send(completion: .failure(.preprocessError(msg: "Cannot resize image")))
             return subject.eraseToAnyPublisher()
         }
-        
-        
+
         DispatchQueue.init(label: "inference", qos: .userInitiated).async {
             
             let outputBoundingBox: Tensor
