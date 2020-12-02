@@ -58,6 +58,16 @@
                ReferencedContainer = "container:LISManager.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "10C96D632577FBE700DE79B7"
+               BuildableName = "SRKitTests.xctest"
+               BlueprintName = "SRKitTests"
+               ReferencedContainer = "container:LISManager.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

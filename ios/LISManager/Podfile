@@ -33,3 +33,14 @@ target 'LISKit' do
     # Pods for testing
   end
 end
+
+target 'SRKit' do
+  use_frameworks!
+
+  pod 'Apollo'
+  pod 'PromiseKit'
+
+  target 'SRKitTests' do
+    inherit! :search_paths
+  end
+end

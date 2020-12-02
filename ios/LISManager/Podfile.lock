@@ -1,4 +1,7 @@
 PODS:
+  - Apollo (0.38.0):
+    - Apollo/Core (= 0.38.0)
+  - Apollo/Core (0.38.0)
   - FlatBuffers (0.8.0)
   - OktaOidc (3.9.2):
     - OktaOidc/AppAuth (= 3.9.2)
@@ -10,6 +13,15 @@ PODS:
   - OktaOidc/Okta/Classes (3.9.2):
     - OktaOidc/AppAuth
   - OktaStorage (1.1.1)
+  - PromiseKit (6.13.1):
+    - PromiseKit/CorePromise (= 6.13.1)
+    - PromiseKit/Foundation (= 6.13.1)
+    - PromiseKit/UIKit (= 6.13.1)
+  - PromiseKit/CorePromise (6.13.1)
+  - PromiseKit/Foundation (6.13.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.13.1):
+    - PromiseKit/CorePromise
   - SwiftLint (0.39.2)
   - TensorFlowLiteC (0.0.1-nightly.20201104):
     - TensorFlowLiteC/Core (= 0.0.1-nightly.20201104)
@@ -29,9 +41,11 @@ PODS:
   - xxHash-Swift (1.1.0)
 
 DEPENDENCIES:
+  - Apollo
   - FlatBuffers (from `https://github.com/mustiikhalil/flatbuffers.git`)
   - OktaOidc
   - OktaStorage
+  - PromiseKit
   - SwiftLint
   - TensorFlowLiteSwift/CoreML (~> 0.0.1-nightly)
   - TensorFlowLiteSwift/Metal (~> 0.0.1-nightly)
@@ -39,8 +53,10 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Apollo
     - OktaOidc
     - OktaStorage
+    - PromiseKit
     - SwiftLint
     - TensorFlowLiteC
     - TensorFlowLiteSwift
@@ -56,14 +72,16 @@ CHECKOUT OPTIONS:
     :git: https://github.com/mustiikhalil/flatbuffers.git
 
 SPEC CHECKSUMS:
+  Apollo: 251ec627f88171008d15f94c6ee2d6182e4498b4
   FlatBuffers: cfae8f95023a5a03b1ce22b22f14436ada96a7a2
   OktaOidc: 0daa496af1b708564bfb0fa353310562ee170369
   OktaStorage: 967271af74f1cd8d32c18fffe159013ec22ee59b
+  PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
   TensorFlowLiteC: f5b55c732629afdb6170c5f43b188403652a6c25
   TensorFlowLiteSwift: 36d47a0f5870f6fdf79c55dd24feb22bf6543172
   xxHash-Swift: 38fa4218ebae48ccbaaa4240c0cceec7ee2c7f87
 
-PODFILE CHECKSUM: abbf0f69b422675e73d1a3964974e74636dc60b9
+PODFILE CHECKSUM: b3da4d88666beae39538b84e1ab2d409ebdb3fad
 
 COCOAPODS: 1.10.0.rc.1
