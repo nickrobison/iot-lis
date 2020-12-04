@@ -7,23 +7,26 @@
 
 import SwiftUI
 import CoreData
+import SRKit
 
 struct PatientListView: View {
     
-    @FetchRequest(
-        entity: PatientEntity.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \PatientEntity.lastName, ascending: true)]
-    )
-    var patients: FetchedResults<PatientEntity>
+//    @FetchRequest(
+//        entity: PatientEntity.entity(),
+//        sortDescriptors: [
+//            NSSortDescriptor(keyPath: \PatientEntity.lastName, ascending: true)]
+//    )
+//    var patients: FetchedResults<PatientEntity>
     @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.srBackend) private var backend
+    @State private var patients: [SRPerson] = []
     @State private var showAdd = false
     
     var body: some View {
         NavigationView {
-            List(patients, id: \.self) { patient in
-                NavigationLink(destination: PatientDetailView(patient: patient)) {
-                    Text("\(patient.firstName!)-\(patient.lastName!)")
+            List(patients) { patient in
+                NavigationLink(destination: PatientDetailView(patient: patient.toEntity(managedObjectContext))) {
+                    Text("\(patient.firstName)-\(patient.lastName)")
                     //                    PersonCellView(person: patient)
                 }
                 .isDetailLink(true)
@@ -35,20 +38,22 @@ struct PatientListView: View {
                                         self.showAdd = true
                                     }, label: { Image(systemName: "plus")}))
         }
+        .onReceive(self.backend.getPatients().assertNoFailure(), perform: { patient in
+            self.patients.append(patient)
+        })
         .sheet(isPresented: $showAdd, content: {
             PatientAddView(completionHandler: self.addPatient)
         })
     }
     
     private func addPatient(patient: PatientModel) {
-        debugPrint("Patient")
-        do {
-            _ = patient.toEntity(self.managedObjectContext)
-            try self.managedObjectContext.save()
-        } catch {
-            debugPrint(error)
-        }
-
+        debugPrint("Add Patient")
+//        do {
+//            _ = patient.toEntity(self.managedObjectContext)
+//            try self.managedObjectContext.save()
+//        } catch {
+//            debugPrint(error)
+//        }
     }
 }
 

@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		100750A325798C1B0045B778 /* SRPerson+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100750A225798C1B0045B778 /* SRPerson+Extensions.swift */; };
+		100A2C302578418D00899918 /* SRPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100A2C2F2578418D00899918 /* SRPerson.swift */; };
+		10123571257A9D2300BA5DB2 /* SRNoOptBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */; };
 		101F10E02576D973009D9CE8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F10DF2576D973009D9CE8 /* String+Extensions.swift */; };
 		101F10EA2576E490009D9CE8 /* SampleDetector 5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */; };
 		1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */; };
@@ -60,7 +63,7 @@
 		EB3D330C253F7E45000F5A84 /* ResultRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D330B253F7E45000F5A84 /* ResultRow.swift */; };
 		EB3D3319253F86E1000F5A84 /* ResultDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3D3318253F86E1000F5A84 /* ResultDetailView.swift */; };
 		EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB45ACBC253F2E9D00EC2D64 /* ResultsView.swift */; };
-		EB5D3427253DEB990076E30B /* BuildFile in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EB5D3427253DEB990076E30B /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6331FD2541E770002FFA25 /* PatientDetailView.swift */; };
 		EB6332082541E7C7002FFA25 /* InitialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6332072541E7C7002FFA25 /* InitialsView.swift */; };
 		EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB63320F2541EA00002FFA25 /* PersonHeader.swift */; };
@@ -174,7 +177,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EB5D3427253DEB990076E30B /* BuildFile in Embed Frameworks */,
+				EB5D3427253DEB990076E30B /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +201,9 @@
 		021035533A6028A1E319DDF2 /* Pods-SRKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRKit.release.xcconfig"; path = "Target Support Files/Pods-SRKit/Pods-SRKit.release.xcconfig"; sourceTree = "<group>"; };
 		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		100750A225798C1B0045B778 /* SRPerson+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SRPerson+Extensions.swift"; sourceTree = "<group>"; };
+		100A2C2F2578418D00899918 /* SRPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPerson.swift; sourceTree = "<group>"; };
+		10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRNoOptBackend.swift; sourceTree = "<group>"; };
 		101F10DF2576D973009D9CE8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		101F10E82576E481009D9CE8 /* mobilenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = mobilenet.tflite; path = ../../../../ml/samples/mobilenet.tflite; sourceTree = "<group>"; };
 		101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "SampleDetector 5.mlmodel"; path = "../../../../ml/samples/SampleDetector.mlproj/Models/SampleDetector 5.mlmodel"; sourceTree = "<group>"; };
@@ -398,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				101F10DF2576D973009D9CE8 /* String+Extensions.swift */,
+				100750A225798C1B0045B778 /* SRPerson+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -434,6 +441,8 @@
 				10C96DA82577FF8C00DE79B7 /* SRBackend.swift */,
 				10C96DAF2578118A00DE79B7 /* SRHttpBackend.swift */,
 				10C96DB62578127300DE79B7 /* PatientList.graphql */,
+				100A2C2F2578418D00899918 /* SRPerson.swift */,
+				10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */,
 			);
 			path = SRKit;
 			sourceTree = "<group>";
@@ -1044,7 +1053,8 @@
 		};
 		10C96D922577FC4000DE79B7 /* Apollo CLI */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -1275,7 +1285,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10123571257A9D2300BA5DB2 /* SRNoOptBackend.swift in Sources */,
 				10C96DA92577FF8C00DE79B7 /* SRBackend.swift in Sources */,
+				100A2C302578418D00899918 /* SRPerson.swift in Sources */,
 				10AEFEAB2578168F00B7140A /* API.swift in Sources */,
 				10C96DB02578118A00DE79B7 /* SRHttpBackend.swift in Sources */,
 			);
@@ -1360,6 +1372,7 @@
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
 				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,
 				10E86411255988B700F44ED9 /* SampleScanner.swift in Sources */,
+				100750A325798C1B0045B778 /* SRPerson+Extensions.swift in Sources */,
 				109BD5EF2551B5D70091BED2 /* UserLoginView.swift in Sources */,
 				EB856FD72541B9D2008996F6 /* PatientAddView.swift in Sources */,
 				EB18F8FC2547479500745A59 /* FinishTestFlowView.swift in Sources */,
@@ -1468,7 +1481,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SRKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1499,7 +1512,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = SRKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

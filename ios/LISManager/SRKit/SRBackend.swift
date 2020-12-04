@@ -6,10 +6,8 @@
 //
 
 import Foundation
-import PromiseKit
+import Combine
 
-protocol SRBackend {
-    
-    func getPatients() -> Promise<[String]>
-    
+public protocol SRBackend {
+    func getPatients() -> AnyPublisher<SRPerson, Error>
 }

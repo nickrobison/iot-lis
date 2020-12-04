@@ -1,5 +1,14 @@
 query PatientList {
   patients {
     internalId
+    firstName
+    lastName
+    birthDate
+    street
+    streetTwo
+    city
+    state
+    zipCode
+    gender
   }
 }

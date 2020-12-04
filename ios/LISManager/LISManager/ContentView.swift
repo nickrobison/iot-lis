@@ -6,6 +6,23 @@
 //
 
 import SwiftUI
+import SRKit
+
+struct SRBackendKey: EnvironmentKey {
+    typealias Value = SRBackend
+    static var defaultValue: Value = SRNoOtpBackend()
+}
+
+extension EnvironmentValues {
+    var srBackend: SRBackend {
+        get {
+            return self[SRBackendKey.self]
+        }
+        set {
+            self[SRBackendKey.self] = newValue
+        }
+    }
+}
 
 struct ContentView: View {
     
@@ -19,6 +36,7 @@ struct ContentView: View {
                 }))
             } else {
                 MainView()
+                    .environment(\.srBackend, SRHttpBackend(connect: "http://127.0.0.1:8080/graphql"))
             }
         }
     }

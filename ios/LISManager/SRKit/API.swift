@@ -12,6 +12,15 @@ public final class PatientListQuery: GraphQLQuery {
       patients {
         __typename
         internalId
+        firstName
+        lastName
+        birthDate
+        street
+        streetTwo
+        city
+        state
+        zipCode
+        gender
       }
     }
     """
@@ -56,6 +65,15 @@ public final class PatientListQuery: GraphQLQuery {
         return [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
           GraphQLField("internalId", type: .scalar(GraphQLID.self)),
+          GraphQLField("firstName", type: .scalar(String.self)),
+          GraphQLField("lastName", type: .scalar(String.self)),
+          GraphQLField("birthDate", type: .scalar(String.self)),
+          GraphQLField("street", type: .scalar(String.self)),
+          GraphQLField("streetTwo", type: .scalar(String.self)),
+          GraphQLField("city", type: .scalar(String.self)),
+          GraphQLField("state", type: .scalar(String.self)),
+          GraphQLField("zipCode", type: .scalar(String.self)),
+          GraphQLField("gender", type: .scalar(String.self)),
         ]
       }
 
@@ -65,8 +83,8 @@ public final class PatientListQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(internalId: GraphQLID? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Patient", "internalId": internalId])
+      public init(internalId: GraphQLID? = nil, firstName: String? = nil, lastName: String? = nil, birthDate: String? = nil, street: String? = nil, streetTwo: String? = nil, city: String? = nil, state: String? = nil, zipCode: String? = nil, gender: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Patient", "internalId": internalId, "firstName": firstName, "lastName": lastName, "birthDate": birthDate, "street": street, "streetTwo": streetTwo, "city": city, "state": state, "zipCode": zipCode, "gender": gender])
       }
 
       public var __typename: String {
@@ -84,6 +102,87 @@ public final class PatientListQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "internalId")
+        }
+      }
+
+      public var firstName: String? {
+        get {
+          return resultMap["firstName"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "firstName")
+        }
+      }
+
+      public var lastName: String? {
+        get {
+          return resultMap["lastName"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "lastName")
+        }
+      }
+
+      public var birthDate: String? {
+        get {
+          return resultMap["birthDate"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "birthDate")
+        }
+      }
+
+      public var street: String? {
+        get {
+          return resultMap["street"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "street")
+        }
+      }
+
+      public var streetTwo: String? {
+        get {
+          return resultMap["streetTwo"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "streetTwo")
+        }
+      }
+
+      public var city: String? {
+        get {
+          return resultMap["city"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "city")
+        }
+      }
+
+      public var state: String? {
+        get {
+          return resultMap["state"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "state")
+        }
+      }
+
+      public var zipCode: String? {
+        get {
+          return resultMap["zipCode"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "zipCode")
+        }
+      }
+
+      public var gender: String? {
+        get {
+          return resultMap["gender"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "gender")
         }
       }
     }
