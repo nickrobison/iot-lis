@@ -29,13 +29,6 @@ struct ResultRow: View {
         }
     }
     
-//    private func unwrapResult() -> ResultEntity {
-//        // swiftlint:disable:next force_cast
-//        let arry = self.order.results?.allObjects as! [ResultEntity]
-//
-//        return arry.first!
-//    }
-    
     private func buildImage() -> some View {
         if order.result == .negative {
             return Image(systemName: "minus.circle.fill").foregroundColor(.green)

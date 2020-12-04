@@ -189,6 +189,95 @@ public final class PatientListQuery: GraphQLQuery {
   }
 }
 
+public final class AddPatientMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation AddPatient($id: String, $firstName: String!, $lastName: String!, $middleName: String, $suffix: String, $birthDate: String!, $street: String!, $street2: String, $city: String, $state: String!, $zipCode: String!, $county: String, $email: String, $telephone: String!, $race: String, $ethnicity: String, $gender: String, $role: String, $employedInHealthcare: Boolean!, $residentCongregateSetting: Boolean!) {
+      addPatient(lookupId: $id, firstName: $firstName, middleName: $middleName, lastName: $lastName, suffix: $suffix, birthDate: $birthDate, street: $street, streetTwo: $street2, city: $city, state: $state, zipCode: $zipCode, telephone: $telephone, role: $role, email: $email, county: $county, race: $race, ethnicity: $ethnicity, gender: $gender, residentCongregateSetting: $residentCongregateSetting, employedInHealthcare: $employedInHealthcare)
+    }
+    """
+
+  public let operationName: String = "AddPatient"
+
+  public var id: String?
+  public var firstName: String
+  public var lastName: String
+  public var middleName: String?
+  public var suffix: String?
+  public var birthDate: String
+  public var street: String
+  public var street2: String?
+  public var city: String?
+  public var state: String
+  public var zipCode: String
+  public var county: String?
+  public var email: String?
+  public var telephone: String
+  public var race: String?
+  public var ethnicity: String?
+  public var gender: String?
+  public var role: String?
+  public var employedInHealthcare: Bool
+  public var residentCongregateSetting: Bool
+
+  public init(id: String? = nil, firstName: String, lastName: String, middleName: String? = nil, suffix: String? = nil, birthDate: String, street: String, street2: String? = nil, city: String? = nil, state: String, zipCode: String, county: String? = nil, email: String? = nil, telephone: String, race: String? = nil, ethnicity: String? = nil, gender: String? = nil, role: String? = nil, employedInHealthcare: Bool, residentCongregateSetting: Bool) {
+    self.id = id
+    self.firstName = firstName
+    self.lastName = lastName
+    self.middleName = middleName
+    self.suffix = suffix
+    self.birthDate = birthDate
+    self.street = street
+    self.street2 = street2
+    self.city = city
+    self.state = state
+    self.zipCode = zipCode
+    self.county = county
+    self.email = email
+    self.telephone = telephone
+    self.race = race
+    self.ethnicity = ethnicity
+    self.gender = gender
+    self.role = role
+    self.employedInHealthcare = employedInHealthcare
+    self.residentCongregateSetting = residentCongregateSetting
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id, "firstName": firstName, "lastName": lastName, "middleName": middleName, "suffix": suffix, "birthDate": birthDate, "street": street, "street2": street2, "city": city, "state": state, "zipCode": zipCode, "county": county, "email": email, "telephone": telephone, "race": race, "ethnicity": ethnicity, "gender": gender, "role": role, "employedInHealthcare": employedInHealthcare, "residentCongregateSetting": residentCongregateSetting]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("addPatient", arguments: ["lookupId": GraphQLVariable("id"), "firstName": GraphQLVariable("firstName"), "middleName": GraphQLVariable("middleName"), "lastName": GraphQLVariable("lastName"), "suffix": GraphQLVariable("suffix"), "birthDate": GraphQLVariable("birthDate"), "street": GraphQLVariable("street"), "streetTwo": GraphQLVariable("street2"), "city": GraphQLVariable("city"), "state": GraphQLVariable("state"), "zipCode": GraphQLVariable("zipCode"), "telephone": GraphQLVariable("telephone"), "role": GraphQLVariable("role"), "email": GraphQLVariable("email"), "county": GraphQLVariable("county"), "race": GraphQLVariable("race"), "ethnicity": GraphQLVariable("ethnicity"), "gender": GraphQLVariable("gender"), "residentCongregateSetting": GraphQLVariable("residentCongregateSetting"), "employedInHealthcare": GraphQLVariable("employedInHealthcare")], type: .scalar(String.self)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(addPatient: String? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "addPatient": addPatient])
+    }
+
+    public var addPatient: String? {
+      get {
+        return resultMap["addPatient"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "addPatient")
+      }
+    }
+  }
+}
+
 public final class TestResultListQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
@@ -241,7 +330,7 @@ public final class TestResultListQuery: GraphQLQuery {
     }
 
     public struct TestResult: GraphQLSelectionSet {
-      public static let possibleTypes: [String] = ["TestOrder"]
+      public static let possibleTypes: [String] = ["TestResult"]
 
       public static var selections: [GraphQLSelection] {
         return [
@@ -260,7 +349,7 @@ public final class TestResultListQuery: GraphQLQuery {
       }
 
       public init(internalId: GraphQLID? = nil, patient: Patient? = nil, dateTested: String? = nil, result: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "TestOrder", "internalId": internalId, "patient": patient.flatMap { (value: Patient) -> ResultMap in value.resultMap }, "dateTested": dateTested, "result": result])
+        self.init(unsafeResultMap: ["__typename": "TestResult", "internalId": internalId, "patient": patient.flatMap { (value: Patient) -> ResultMap in value.resultMap }, "dateTested": dateTested, "result": result])
       }
 
       public var __typename: String {

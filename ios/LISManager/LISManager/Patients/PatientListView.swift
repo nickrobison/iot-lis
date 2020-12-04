@@ -7,19 +7,21 @@
 
 import SwiftUI
 import SRKit
+import Combine
 
 struct PatientListView: View {
 
     @Environment(\.managedObjectContext) var managedObjectContext
-    @Environment(\.srBackend) private var backend
+    @Environment(\.srBackend) var backend: SRBackend
     @State private var patients: [SRPerson] = []
     @State private var showAdd = false
+    @State private var cancel: AnyCancellable?
     
     var body: some View {
         NavigationView {
             List(patients) { patient in
                 NavigationLink(destination: PatientDetailView(patient: patient)) {
-                    Text("\(patient.firstName)-\(patient.lastName)")
+                    Text("\(patient.firstName), \(patient.lastName)")
                     //                    PersonCellView(person: patient)
                 }
                 .isDetailLink(true)
@@ -31,22 +33,23 @@ struct PatientListView: View {
                                         self.showAdd = true
                                     }, label: { Image(systemName: "plus")}))
         }
-        .onReceive(self.backend.getPatients().assertNoFailure(), perform: { patient in
-            self.patients.append(patient)
-        })
+        .onAppear {
+            self.cancel = self.backend.getPatients()
+                .assertNoFailure()
+                .collect()
+                .sink(receiveValue: { value in
+                    debugPrint("Adding values")
+                    self.patients = value
+                })
+        }
         .sheet(isPresented: $showAdd, content: {
-            PatientAddView(completionHandler: self.addPatient)
+            PatientAddView(model: PatientAddModel(backend: backend), completionHandler: self.addPatient)
         })
     }
     
-    private func addPatient(patient: PatientModel) {
+    private func addPatient(patient: SRPerson) {
         debugPrint("Add Patient")
-//        do {
-//            _ = patient.toEntity(self.managedObjectContext)
-//            try self.managedObjectContext.save()
-//        } catch {
-//            debugPrint(error)
-//        }
+        self.patients.append(patient)
     }
 }
 

@@ -50,4 +50,8 @@ extension PatientListQuery.Data.Patient {
     }
 }
 
-
+extension Date {
+    func toGraphQLDate() -> String {
+        dateFormatter.string(from: self)
+    }
+}

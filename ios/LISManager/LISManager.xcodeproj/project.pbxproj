@@ -14,6 +14,7 @@
 		1012359A257AA6F000BA5DB2 /* SRTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10123599257AA6F000BA5DB2 /* SRTestResult.swift */; };
 		101235A6257AB51500BA5DB2 /* TestResults.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 101235A5257AB51500BA5DB2 /* TestResults.graphql */; };
 		101235B2257AB58A00BA5DB2 /* GraphQL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101235B1257AB58A00BA5DB2 /* GraphQL+Extensions.swift */; };
+		101235D4257ADE1900BA5DB2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101235D3257ADE1900BA5DB2 /* String+Extensions.swift */; };
 		101F10E02576D973009D9CE8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F10DF2576D973009D9CE8 /* String+Extensions.swift */; };
 		101F10EA2576E490009D9CE8 /* SampleDetector 5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */; };
 		1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */; };
@@ -37,7 +38,7 @@
 		10C96D722577FBE700DE79B7 /* SRKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 10C96D5C2577FBE700DE79B7 /* SRKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		10C96DA92577FF8C00DE79B7 /* SRBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C96DA82577FF8C00DE79B7 /* SRBackend.swift */; };
 		10C96DB02578118A00DE79B7 /* SRHttpBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C96DAF2578118A00DE79B7 /* SRHttpBackend.swift */; };
-		10C96DB72578127300DE79B7 /* PatientList.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 10C96DB62578127300DE79B7 /* PatientList.graphql */; };
+		10C96DB72578127300DE79B7 /* PatientQueries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 10C96DB62578127300DE79B7 /* PatientQueries.graphql */; };
 		10E338602558B77E005DA2A4 /* SampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E3385F2558B77E005DA2A4 /* SampleDetector.swift */; };
 		10E338682558B7F8005DA2A4 /* CoreMLSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E338672558B7F8005DA2A4 /* CoreMLSampleDetector.swift */; };
 		10E6C9AD2576EBCB00323E4C /* mobilenet.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 101F10E82576E481009D9CE8 /* mobilenet.tflite */; };
@@ -212,6 +213,7 @@
 		10123599257AA6F000BA5DB2 /* SRTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTestResult.swift; sourceTree = "<group>"; };
 		101235A5257AB51500BA5DB2 /* TestResults.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestResults.graphql; sourceTree = "<group>"; };
 		101235B1257AB58A00BA5DB2 /* GraphQL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GraphQL+Extensions.swift"; sourceTree = "<group>"; };
+		101235D3257ADE1900BA5DB2 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		101F10DF2576D973009D9CE8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		101F10E82576E481009D9CE8 /* mobilenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = mobilenet.tflite; path = ../../../../ml/samples/mobilenet.tflite; sourceTree = "<group>"; };
 		101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "SampleDetector 5.mlmodel"; path = "../../../../ml/samples/SampleDetector.mlproj/Models/SampleDetector 5.mlmodel"; sourceTree = "<group>"; };
@@ -238,7 +240,7 @@
 		10C96D9D2577FD6700DE79B7 /* schema.graphqls */ = {isa = PBXFileReference; lastKnownFileType = text; path = schema.graphqls; sourceTree = "<group>"; };
 		10C96DA82577FF8C00DE79B7 /* SRBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRBackend.swift; sourceTree = "<group>"; };
 		10C96DAF2578118A00DE79B7 /* SRHttpBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRHttpBackend.swift; sourceTree = "<group>"; };
-		10C96DB62578127300DE79B7 /* PatientList.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = PatientList.graphql; sourceTree = "<group>"; };
+		10C96DB62578127300DE79B7 /* PatientQueries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = PatientQueries.graphql; sourceTree = "<group>"; };
 		10E3385F2558B77E005DA2A4 /* SampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDetector.swift; sourceTree = "<group>"; };
 		10E338672558B7F8005DA2A4 /* CoreMLSampleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLSampleDetector.swift; sourceTree = "<group>"; };
 		10E86410255988B700F44ED9 /* SampleScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleScanner.swift; sourceTree = "<group>"; };
@@ -418,6 +420,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		101235D2257ADE0800BA5DB2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				101235B1257AB58A00BA5DB2 /* GraphQL+Extensions.swift */,
+				101235D3257ADE1900BA5DB2 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		101F10DB2576D952009D9CE8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,6 +463,7 @@
 		10C96D5D2577FBE700DE79B7 /* SRKit */ = {
 			isa = PBXGroup;
 			children = (
+				101235D2257ADE0800BA5DB2 /* Extensions */,
 				10123577257AA5C400BA5DB2 /* Models */,
 				10AEFEAA2578168F00B7140A /* API.swift */,
 				10C96D9D2577FD6700DE79B7 /* schema.graphqls */,
@@ -459,10 +471,9 @@
 				10C96D5F2577FBE700DE79B7 /* Info.plist */,
 				10C96DA82577FF8C00DE79B7 /* SRBackend.swift */,
 				10C96DAF2578118A00DE79B7 /* SRHttpBackend.swift */,
-				10C96DB62578127300DE79B7 /* PatientList.graphql */,
+				10C96DB62578127300DE79B7 /* PatientQueries.graphql */,
 				10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */,
 				101235A5257AB51500BA5DB2 /* TestResults.graphql */,
-				101235B1257AB58A00BA5DB2 /* GraphQL+Extensions.swift */,
 			);
 			path = SRKit;
 			sourceTree = "<group>";
@@ -993,7 +1004,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10C96DB72578127300DE79B7 /* PatientList.graphql in Resources */,
+				10C96DB72578127300DE79B7 /* PatientQueries.graphql in Resources */,
 				101235A6257AB51500BA5DB2 /* TestResults.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1310,6 +1321,7 @@
 				1012359A257AA6F000BA5DB2 /* SRTestResult.swift in Sources */,
 				10C96DA92577FF8C00DE79B7 /* SRBackend.swift in Sources */,
 				100A2C302578418D00899918 /* SRPerson.swift in Sources */,
+				101235D4257ADE1900BA5DB2 /* String+Extensions.swift in Sources */,
 				10123579257AA5D300BA5DB2 /* SRTestOrder.swift in Sources */,
 				101235B2257AB58A00BA5DB2 /* GraphQL+Extensions.swift in Sources */,
 				10AEFEAB2578168F00B7140A /* API.swift in Sources */,

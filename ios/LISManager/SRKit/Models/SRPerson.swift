@@ -21,6 +21,7 @@ public struct SRPerson: Identifiable {
     public let orders: [SRTestOrder]
     public let results: [SRTestResult]
     
+    // swiftlint:disable:next line_length
     public init(id: UUID, firstName: String, lastName: String, birthday: Date, street: String, street2: String, city: String, state: String, zip: String, gender: String, orders: [SRTestOrder], results: [SRTestResult]) {
         self.id = id
         self.firstName = firstName

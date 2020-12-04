@@ -1,0 +1,39 @@
+query PatientList {
+  patients {
+    internalId
+    firstName
+    lastName
+    birthDate
+    street
+    streetTwo
+    city
+    state
+    zipCode
+    gender
+  }
+}
+
+mutation AddPatient($id: String, $firstName: String!, $lastName: String!, $middleName: String, $suffix: String, $birthDate: String!, $street: String!, $street2: String, $city: String, $state: String!, $zipCode: String!, $county: String, $email: String, $telephone: String!, $race: String, $ethnicity: String, $gender: String, $role: String, $employedInHealthcare: Boolean!, $residentCongregateSetting: Boolean!) {
+  addPatient(
+    lookupId: $id
+    firstName: $firstName
+    middleName: $middleName
+    lastName: $lastName
+    suffix: $suffix
+    birthDate: $birthDate
+    street: $street
+    streetTwo: $street2
+    city: $city
+    state: $state
+    zipCode: $zipCode
+    telephone: $telephone
+    role: $role
+    email: $email
+    county: $county
+    race: $race
+    ethnicity: $ethnicity
+    gender: $gender
+    residentCongregateSetting: $residentCongregateSetting
+    employedInHealthcare: $employedInHealthcare
+  )
+}
