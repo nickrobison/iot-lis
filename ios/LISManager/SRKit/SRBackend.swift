@@ -10,4 +10,6 @@ import Combine
 
 public protocol SRBackend {
     func getPatients() -> AnyPublisher<SRPerson, Error>
+//    func getOrders() -> AnyPublisher<SRTestOrder, Error>
+    func getResults() -> AnyPublisher<SRTestResult, Error>
 }

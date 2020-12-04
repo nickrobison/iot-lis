@@ -188,3 +188,164 @@ public final class PatientListQuery: GraphQLQuery {
     }
   }
 }
+
+public final class TestResultListQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query TestResultList {
+      testResults {
+        __typename
+        internalId
+        patient {
+          __typename
+          internalId
+        }
+        dateTested
+        result
+      }
+    }
+    """
+
+  public let operationName: String = "TestResultList"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("testResults", type: .list(.object(TestResult.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(testResults: [TestResult?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "testResults": testResults.flatMap { (value: [TestResult?]) -> [ResultMap?] in value.map { (value: TestResult?) -> ResultMap? in value.flatMap { (value: TestResult) -> ResultMap in value.resultMap } } }])
+    }
+
+    public var testResults: [TestResult?]? {
+      get {
+        return (resultMap["testResults"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [TestResult?] in value.map { (value: ResultMap?) -> TestResult? in value.flatMap { (value: ResultMap) -> TestResult in TestResult(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [TestResult?]) -> [ResultMap?] in value.map { (value: TestResult?) -> ResultMap? in value.flatMap { (value: TestResult) -> ResultMap in value.resultMap } } }, forKey: "testResults")
+      }
+    }
+
+    public struct TestResult: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["TestOrder"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("internalId", type: .scalar(GraphQLID.self)),
+          GraphQLField("patient", type: .object(Patient.selections)),
+          GraphQLField("dateTested", type: .scalar(String.self)),
+          GraphQLField("result", type: .scalar(String.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(internalId: GraphQLID? = nil, patient: Patient? = nil, dateTested: String? = nil, result: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "TestOrder", "internalId": internalId, "patient": patient.flatMap { (value: Patient) -> ResultMap in value.resultMap }, "dateTested": dateTested, "result": result])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var internalId: GraphQLID? {
+        get {
+          return resultMap["internalId"] as? GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "internalId")
+        }
+      }
+
+      public var patient: Patient? {
+        get {
+          return (resultMap["patient"] as? ResultMap).flatMap { Patient(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "patient")
+        }
+      }
+
+      public var dateTested: String? {
+        get {
+          return resultMap["dateTested"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "dateTested")
+        }
+      }
+
+      public var result: String? {
+        get {
+          return resultMap["result"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "result")
+        }
+      }
+
+      public struct Patient: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["Patient"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("internalId", type: .scalar(GraphQLID.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(internalId: GraphQLID? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Patient", "internalId": internalId])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var internalId: GraphQLID? {
+          get {
+            return resultMap["internalId"] as? GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "internalId")
+          }
+        }
+      }
+    }
+  }
+}

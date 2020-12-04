@@ -7,11 +7,12 @@
 
 import SwiftUI
 import CoreData
+import SRKit
 
 struct PatientDetailView: View {
     
-    let patient: PatientEntity
-    init(patient: PatientEntity) {
+    let patient: SRPerson
+    init(patient: SRPerson) {
         self.patient = patient
     }
     
@@ -19,25 +20,25 @@ struct PatientDetailView: View {
     @State private var showAdd = false
     var body: some View {
         VStack {
-            PersonHeader(name: patient.nameComponent, id: patient.id!)
+            PersonHeader(name: patient.nameComponent, id: patient.id.uuidString)
             Divider()
             Text("Orders").font(.headline)
             Divider()
-            if patient.orders!.count == 0 {
+            if patient.orders.count == 0 {
                 Text("No tests yet")
                 Spacer()
             } else {
-                List(patient.ordersAsArray(), id: \.self) { _ in
+                List(patient.orders) { _ in
                     Text("Test")
                 }
             }
             Text("Results").font(.headline)
             Divider()
-            if patient.results!.count == 0 {
+            if patient.results.count == 0 {
                 Text("No results yet")
                 Spacer()
             } else {
-                List(patient.ordersAsArray(), id: \.self) { order in
+                List(patient.results) { order in
                     ResultRow(order: order)
                 }
             }
@@ -47,9 +48,9 @@ struct PatientDetailView: View {
             }
         }
         .padding([.bottom])
-        .sheet(isPresented: $showAdd, content: {
-            TestFlowView(model: TestFlowModel(self.managedObjectContext, patient: self.patient))
-        })
+        //        .sheet(isPresented: $showAdd, content: {
+        //            TestFlowView(model: TestFlowModel(self.managedObjectContext, patient: self.patient))
+        //        })
     }
     
     private func makeCamera() -> some View {
@@ -59,22 +60,22 @@ struct PatientDetailView: View {
     }
     
     private func handleScan(msg: String) {
-        self.showAdd = false
-        
-        // Create and save the entity
-        let sample = SampleEntity(context: managedObjectContext)
-        sample.id = UUID()
-        sample.cartridgeID = msg
-        
-        let order = OrderEntity(context: managedObjectContext)
-        order.sample = sample
-        order.patient = patient
-        
-        do {
-            try managedObjectContext.save()
-        } catch {
-            debugPrint(error)
-        }
+        //        self.showAdd = false
+        //
+        //        // Create and save the entity
+        //        let sample = SampleEntity(context: managedObjectContext)
+        //        sample.id = UUID()
+        //        sample.cartridgeID = msg
+        //
+        //        let order = OrderEntity(context: managedObjectContext)
+        //        order.sample = sample
+        //        order.patient = patient
+        //
+        //        do {
+        //            try managedObjectContext.save()
+        //        } catch {
+        //            debugPrint(error)
+        //        }
     }
 }
 
@@ -83,12 +84,7 @@ struct PatientDetailView_Previews: PreviewProvider {
         PatientDetailView(patient: PatientDetailView_Previews.samplePatient())
     }
     
-    private static func samplePatient() -> PatientEntity {
-        let patient = PatientEntity()
-        patient.lastName = "Robison"
-        patient.firstName = "Nicholas"
-        patient.results = []
-        patient.orders = []
-        return patient
+    private static func samplePatient() -> SRPerson {
+        return SRPerson(lastName: "Robison", firstName: "Nicholas")
     }
 }

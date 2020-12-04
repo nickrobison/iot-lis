@@ -14,7 +14,7 @@ public struct SRHttpBackend: SRBackend {
     private let client: ApolloClient
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
-        df.dateFormat = "yyy-MM-dd"
+        df.dateFormat = "yyyy-MM-dd"
         return df
     }()
     
@@ -34,7 +34,7 @@ public struct SRHttpBackend: SRBackend {
                 patients.filter { patient in
                     patient != nil
                 }.map {
-                    self.toSRPerson(patient: $0!)
+                    $0!.toSRPerson()
                 }.forEach {
                     publisher.send($0)
                 }
@@ -46,17 +46,30 @@ public struct SRHttpBackend: SRBackend {
         return publisher.eraseToAnyPublisher()
     }
     
-    private func toSRPerson(patient: PatientListQuery.Data.Patient) -> SRPerson {
-        let id = String(patient.internalId!.utf8)
-        let birthDate = self.dateFormatter.date(from: patient.birthDate!)!
+    public func getResults() -> AnyPublisher<SRTestResult, Error> {
+        let publisher = PassthroughSubject<SRTestResult, Error>()
         
-        return SRPerson(id: UUID(uuidString: id)!, firstName: patient.firstName!, lastName: patient.lastName!,
-                        birthday: birthDate,
-                        street: patient.street!,
-                        street2: patient.streetTwo!,
-                        city: patient.city!,
-                        state: patient.state!,
-                        zip: patient.zipCode!,
-                        gender: patient.gender!)
+        self.client.fetch(query: TestResultListQuery()) { result in
+            switch result {
+            case .success(let data):
+                guard let results = data.data?.testResults else {
+                    publisher.send(completion: .finished)
+                    return
+                }
+                results.filter {
+                    $0 != nil
+                }.map {
+                    $0!.toSRTestResult()
+                }.forEach {
+                    publisher.send($0)
+                }
+                publisher.send(completion: .finished)
+            case .failure(let error):
+                publisher.send(completion: .failure(error))
+                
+            }
+        }
+        
+        return publisher.eraseToAnyPublisher()
     }
 }

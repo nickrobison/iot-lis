@@ -1,0 +1,10 @@
+query TestResultList {
+  testResults {
+    internalId
+    patient {
+      internalId
+    }
+    dateTested
+    result
+  }
+}

@@ -7,10 +7,11 @@
 
 import SwiftUI
 import LISKit
+import SRKit
 
 struct ResultRow: View {
     
-    let order: OrderEntity
+    let order: SRTestResult
     
     var formatter: DateFormatter {
         let date = DateFormatter()
@@ -21,25 +22,24 @@ struct ResultRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(order.sampleType!)
+                Text(order.sampleType)
                 buildImage().font(.subheadline)
             }.font(.subheadline)
-            Text(formatter.string(from: unwrapResult().resultDate!)).font(.caption)
+            Text(formatter.string(from: order.dateTested)).font(.caption)
         }
     }
     
-    private func unwrapResult() -> ResultEntity {
-        // swiftlint:disable:next force_cast
-        let arry = self.order.results?.allObjects as! [ResultEntity]
-        
-        return arry.first!
-    }
+//    private func unwrapResult() -> ResultEntity {
+//        // swiftlint:disable:next force_cast
+//        let arry = self.order.results?.allObjects as! [ResultEntity]
+//
+//        return arry.first!
+//    }
     
     private func buildImage() -> some View {
-        let unwrapped = unwrapResult()
-        if unwrapped.result! == "negative" {
+        if order.result == .negative {
             return Image(systemName: "minus.circle.fill").foregroundColor(.green)
-        } else if unwrapped.result! == "positive" {
+        } else if order.result == .positive {
             return Image(systemName: "plus.circle.fill").foregroundColor(.red)
         } else {
             return Image(systemName: "questionmark.circle.fill").foregroundColor(.blue)
@@ -52,14 +52,7 @@ struct ResultRow_Previews: PreviewProvider {
         ResultRow(order: buildOrder())
     }
 
-    private static func buildOrder() -> OrderEntity {
-        let result = ResultEntity()
-        result.result = "positive"
-        result.resultDate = Date()
-        let order = OrderEntity()
-        order.addToResults(result)
-        order.orderID = "O123A"
-        order.sampleType = "SARS"
-        return order
+    private static func buildOrder() -> SRTestResult {
+        return SRTestResult(id: UUID(), patientID: UUID(), sampleType: "CARS", dateTested: Date(), result: .positive)
     }
 }

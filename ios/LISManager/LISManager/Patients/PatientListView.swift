@@ -6,17 +6,10 @@
 //
 
 import SwiftUI
-import CoreData
 import SRKit
 
 struct PatientListView: View {
-    
-//    @FetchRequest(
-//        entity: PatientEntity.entity(),
-//        sortDescriptors: [
-//            NSSortDescriptor(keyPath: \PatientEntity.lastName, ascending: true)]
-//    )
-//    var patients: FetchedResults<PatientEntity>
+
     @Environment(\.managedObjectContext) var managedObjectContext
     @Environment(\.srBackend) private var backend
     @State private var patients: [SRPerson] = []
@@ -25,7 +18,7 @@ struct PatientListView: View {
     var body: some View {
         NavigationView {
             List(patients) { patient in
-                NavigationLink(destination: PatientDetailView(patient: patient.toEntity(managedObjectContext))) {
+                NavigationLink(destination: PatientDetailView(patient: patient)) {
                     Text("\(patient.firstName)-\(patient.lastName)")
                     //                    PersonCellView(person: patient)
                 }

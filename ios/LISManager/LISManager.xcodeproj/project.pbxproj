@@ -10,6 +10,10 @@
 		100750A325798C1B0045B778 /* SRPerson+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100750A225798C1B0045B778 /* SRPerson+Extensions.swift */; };
 		100A2C302578418D00899918 /* SRPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100A2C2F2578418D00899918 /* SRPerson.swift */; };
 		10123571257A9D2300BA5DB2 /* SRNoOptBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */; };
+		10123579257AA5D300BA5DB2 /* SRTestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10123578257AA5D300BA5DB2 /* SRTestOrder.swift */; };
+		1012359A257AA6F000BA5DB2 /* SRTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10123599257AA6F000BA5DB2 /* SRTestResult.swift */; };
+		101235A6257AB51500BA5DB2 /* TestResults.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 101235A5257AB51500BA5DB2 /* TestResults.graphql */; };
+		101235B2257AB58A00BA5DB2 /* GraphQL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101235B1257AB58A00BA5DB2 /* GraphQL+Extensions.swift */; };
 		101F10E02576D973009D9CE8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101F10DF2576D973009D9CE8 /* String+Extensions.swift */; };
 		101F10EA2576E490009D9CE8 /* SampleDetector 5.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */; };
 		1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077B11D255346CE002DBBA8 /* TFSampleDetector.swift */; };
@@ -204,6 +208,10 @@
 		100750A225798C1B0045B778 /* SRPerson+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SRPerson+Extensions.swift"; sourceTree = "<group>"; };
 		100A2C2F2578418D00899918 /* SRPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPerson.swift; sourceTree = "<group>"; };
 		10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRNoOptBackend.swift; sourceTree = "<group>"; };
+		10123578257AA5D300BA5DB2 /* SRTestOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTestOrder.swift; sourceTree = "<group>"; };
+		10123599257AA6F000BA5DB2 /* SRTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTestResult.swift; sourceTree = "<group>"; };
+		101235A5257AB51500BA5DB2 /* TestResults.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestResults.graphql; sourceTree = "<group>"; };
+		101235B1257AB58A00BA5DB2 /* GraphQL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GraphQL+Extensions.swift"; sourceTree = "<group>"; };
 		101F10DF2576D973009D9CE8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		101F10E82576E481009D9CE8 /* mobilenet.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = mobilenet.tflite; path = ../../../../ml/samples/mobilenet.tflite; sourceTree = "<group>"; };
 		101F10E92576E48F009D9CE8 /* SampleDetector 5.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "SampleDetector 5.mlmodel"; path = "../../../../ml/samples/SampleDetector.mlproj/Models/SampleDetector 5.mlmodel"; sourceTree = "<group>"; };
@@ -400,6 +408,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10123577257AA5C400BA5DB2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				100A2C2F2578418D00899918 /* SRPerson.swift */,
+				10123578257AA5D300BA5DB2 /* SRTestOrder.swift */,
+				10123599257AA6F000BA5DB2 /* SRTestResult.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		101F10DB2576D952009D9CE8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +452,7 @@
 		10C96D5D2577FBE700DE79B7 /* SRKit */ = {
 			isa = PBXGroup;
 			children = (
+				10123577257AA5C400BA5DB2 /* Models */,
 				10AEFEAA2578168F00B7140A /* API.swift */,
 				10C96D9D2577FD6700DE79B7 /* schema.graphqls */,
 				10C96D5E2577FBE700DE79B7 /* SRKit.h */,
@@ -441,8 +460,9 @@
 				10C96DA82577FF8C00DE79B7 /* SRBackend.swift */,
 				10C96DAF2578118A00DE79B7 /* SRHttpBackend.swift */,
 				10C96DB62578127300DE79B7 /* PatientList.graphql */,
-				100A2C2F2578418D00899918 /* SRPerson.swift */,
 				10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */,
+				101235A5257AB51500BA5DB2 /* TestResults.graphql */,
+				101235B1257AB58A00BA5DB2 /* GraphQL+Extensions.swift */,
 			);
 			path = SRKit;
 			sourceTree = "<group>";
@@ -974,6 +994,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				10C96DB72578127300DE79B7 /* PatientList.graphql in Resources */,
+				101235A6257AB51500BA5DB2 /* TestResults.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1286,8 +1307,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				10123571257A9D2300BA5DB2 /* SRNoOptBackend.swift in Sources */,
+				1012359A257AA6F000BA5DB2 /* SRTestResult.swift in Sources */,
 				10C96DA92577FF8C00DE79B7 /* SRBackend.swift in Sources */,
 				100A2C302578418D00899918 /* SRPerson.swift in Sources */,
+				10123579257AA5D300BA5DB2 /* SRTestOrder.swift in Sources */,
+				101235B2257AB58A00BA5DB2 /* GraphQL+Extensions.swift in Sources */,
 				10AEFEAB2578168F00B7140A /* API.swift in Sources */,
 				10C96DB02578118A00DE79B7 /* SRHttpBackend.swift in Sources */,
 			);
