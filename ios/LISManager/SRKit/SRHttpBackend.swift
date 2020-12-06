@@ -11,8 +11,7 @@ import Combine
 import PromiseKit
 
 public struct SRHttpBackend: SRBackend {
-    
-    
+
     private let client: ApolloClient
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -25,6 +24,8 @@ public struct SRHttpBackend: SRBackend {
     public init(connect to: String) {
         self.client = ApolloClient(url: URL.init(string: to)!)
     }
+    
+    // MARK: - Patient Methods
     
     public func getPatients() -> AnyPublisher<SRPerson, Error> {
         let publisher = PassthroughSubject<SRPerson, Error>()
@@ -109,6 +110,10 @@ public struct SRHttpBackend: SRBackend {
         
         return subject.eraseToAnyPublisher()
     }
+    
+    // MARK: - Order methods
+    
+    // MARK: - Result methods
     
     private func updatePersonCache(patient: SRPerson, id: UUID, transaction: ApolloStore.ReadWriteTransaction, seal: Resolver<SRPerson>) throws {
         let query = PatientListQuery()

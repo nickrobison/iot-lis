@@ -121,7 +121,7 @@ class PatientAddModel: ObservableObject {
     }
     
     func submitPatient() -> Promise<SRPerson> {
-        // swiftlint:disable:next function_parameter_count line_length
+        // swiftlint:disable:next line_length
         return self.backend.addPatient(externalID: "", firstName: self.firstName, lastName: self.lastName, birthDate: self.birthday, street: self.address1, street2: self.address2, city: self.city, state: self.state, zipCode: self.zipCode, county: "", gender: self.gender)
     }
 }

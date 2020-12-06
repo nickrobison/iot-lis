@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SRKit
 
 class TestFlowModel: ObservableObject {
     
@@ -23,13 +24,15 @@ class TestFlowModel: ObservableObject {
     @Published var stateIdx = 0
     @Published var sampleID = ""
     @Published var readNow = false
-    let patient: PatientEntity
+    let patient: SRPerson
+    let backend: SRBackend
     
     private let ctx: NSManagedObjectContext
     
-    init(_ ctx: NSManagedObjectContext, patient: PatientEntity) {
+    init(_ ctx: NSManagedObjectContext, patient: SRPerson, backend: SRBackend) {
         self.ctx = ctx
         self.patient = patient
+        self.backend = backend
     }
     
     func addOrder() {
@@ -39,8 +42,11 @@ class TestFlowModel: ObservableObject {
         sample.cartridgeID = self.sampleID
         
         let order = OrderEntity(context: self.ctx)
-        order.patient = self.patient
+        order.patientHashedID = self.patient.hashedID
         order.sample = sample
+        order.orderDate = Date()
+        
+        // Add the order to the patient
         
         self.ctx.perform {
             do {

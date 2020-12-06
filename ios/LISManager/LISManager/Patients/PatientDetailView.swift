@@ -12,23 +12,31 @@ import SRKit
 struct PatientDetailView: View {
     
     let patient: SRPerson
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.srBackend) var backend: SRBackend
+    @State private var showAdd = false
+    
+    private var orders: FetchRequest<OrderEntity>
+    
     init(patient: SRPerson) {
         self.patient = patient
+        
+        self.orders = FetchRequest<OrderEntity>(entity: OrderEntity.entity(),
+                                                sortDescriptors: [NSSortDescriptor(keyPath: \OrderEntity.orderDate, ascending: false)],
+                                                predicate: NSPredicate(format: "patientHashedID == %@", self.patient.hashedID))
     }
     
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @State private var showAdd = false
     var body: some View {
         VStack {
-            PersonHeader(name: patient.nameComponent, id: patient.id.uuidString)
+            PersonHeader(name: patient.nameComponent, id: patient.hashedID)
             Divider()
             Text("Orders").font(.headline)
             Divider()
-            if patient.orders.count == 0 {
+            if self.orders.wrappedValue.count == 0 {
                 Text("No tests yet")
                 Spacer()
             } else {
-                List(patient.orders) { _ in
+                List(self.orders.wrappedValue, id: \.self) { _ in
                     Text("Test")
                 }
             }
@@ -48,9 +56,9 @@ struct PatientDetailView: View {
             }
         }
         .padding([.bottom])
-        //        .sheet(isPresented: $showAdd, content: {
-        //            TestFlowView(model: TestFlowModel(self.managedObjectContext, patient: self.patient))
-        //        })
+        .sheet(isPresented: $showAdd, content: {
+            TestFlowView(model: TestFlowModel(self.managedObjectContext, patient: self.patient, backend: backend))
+        })
     }
     
     private func makeCamera() -> some View {

@@ -39,6 +39,7 @@ target 'SRKit' do
 
   pod 'Apollo'
   pod 'PromiseKit'
+  pod 'xxHash-Swift'
 
   target 'SRKitTests' do
     inherit! :search_paths

@@ -32,7 +32,7 @@ struct TestFlowView: View {
             } else if self.model.testFlowState == .operatorID {
                 OperatorBarcodeView(operatorID: pManager.settings!.user.id)
             } else if self.model.testFlowState == .patientID {
-                PatientBarcodeView(patientID: self.model.patient.id!)
+                PatientBarcodeView(patientID: self.model.patient.hashedID)
             } else if self.model.testFlowState == .sampleID {
                 SampleBarcodeView(sampleID: self.model.sampleID)
             } else if self.model.testFlowState == .finish {

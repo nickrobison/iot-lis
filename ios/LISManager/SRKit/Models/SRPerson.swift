@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import xxHash_Swift
 
 public struct SRPerson: Identifiable {
     public let id: UUID
@@ -20,6 +21,12 @@ public struct SRPerson: Identifiable {
     public let gender: String
     public let orders: [SRTestOrder]
     public let results: [SRTestResult]
+    
+    // TODO: This should be memoized
+    public var hashedID: String {
+        let idString = self.firstName + self.lastName + self.zip
+        return XXH32.digestHex(idString)
+    }
     
     // swiftlint:disable:next line_length
     public init(id: UUID, firstName: String, lastName: String, birthday: Date, street: String, street2: String, city: String, state: String, zip: String, gender: String, orders: [SRTestOrder], results: [SRTestResult]) {
