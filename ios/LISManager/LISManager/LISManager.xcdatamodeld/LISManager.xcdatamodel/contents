@@ -41,6 +41,7 @@
     </entity>
     <entity name="ResultEntity" representedClassName="ResultEntity" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="patientHashedID" optional="YES" attributeType="String"/>
         <attribute name="range" optional="YES" attributeType="String"/>
         <attribute name="result" optional="YES" attributeType="String"/>
         <attribute name="resultDate" attributeType="Date" usesScalarValueType="NO"/>
@@ -69,7 +70,7 @@
         <element name="DeviceEntity" positionX="-54" positionY="117" width="128" height="118"/>
         <element name="OrderEntity" positionX="-54" positionY="117" width="128" height="193"/>
         <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="238"/>
-        <element name="ResultEntity" positionX="-54" positionY="81" width="128" height="208"/>
+        <element name="ResultEntity" positionX="-54" positionY="81" width="128" height="223"/>
         <element name="SampleEntity" positionX="-63" positionY="63" width="128" height="118"/>
         <element name="TimerEntity" positionX="-45" positionY="99" width="128" height="103"/>
     </elements>

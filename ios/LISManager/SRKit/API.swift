@@ -438,3 +438,58 @@ public final class TestResultListQuery: GraphQLQuery {
     }
   }
 }
+
+public final class AddTestResultMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation AddTestResult($DeviceID: String!, $Result: String!, $PatientID: String!) {
+      addTestResult(deviceId: $DeviceID, result: $Result, patientId: $PatientID)
+    }
+    """
+
+  public let operationName: String = "AddTestResult"
+
+  public var DeviceID: String
+  public var Result: String
+  public var PatientID: String
+
+  public init(DeviceID: String, Result: String, PatientID: String) {
+    self.DeviceID = DeviceID
+    self.Result = Result
+    self.PatientID = PatientID
+  }
+
+  public var variables: GraphQLMap? {
+    return ["DeviceID": DeviceID, "Result": Result, "PatientID": PatientID]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("addTestResult", arguments: ["deviceId": GraphQLVariable("DeviceID"), "result": GraphQLVariable("Result"), "patientId": GraphQLVariable("PatientID")], type: .scalar(String.self)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(addTestResult: String? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "addTestResult": addTestResult])
+    }
+
+    public var addTestResult: String? {
+      get {
+        return resultMap["addTestResult"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "addTestResult")
+      }
+    }
+  }
+}

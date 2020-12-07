@@ -36,7 +36,7 @@ struct ContentView: View {
                 }))
             } else {
                 MainView()
-                    .environment(\.srBackend, SRHttpBackend(connect: "http://192.168.2.114:8080/graphql"))
+                    .environment(\.srBackend, SRHttpBackend(connect: "http://127.0.0.1:8080/graphql"))
             }
         }
     }

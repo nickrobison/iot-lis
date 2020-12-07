@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum TestResultEnum: CaseIterable {
+public enum TestResultEnum: String {
     case positive
     case negative
     case unknown

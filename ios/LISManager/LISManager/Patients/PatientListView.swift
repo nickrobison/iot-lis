@@ -34,7 +34,7 @@ struct PatientListView: View {
                                     }, label: { Image(systemName: "plus")}))
         }
         .onAppear {
-            self.cancel = self.backend.getPatients()
+            self.cancel = self.backend.subscribeToPatient()
                 .assertNoFailure()
                 .collect()
                 .sink(receiveValue: { value in

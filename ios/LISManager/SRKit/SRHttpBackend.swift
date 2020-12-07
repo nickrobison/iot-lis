@@ -11,7 +11,7 @@ import Combine
 import PromiseKit
 
 public struct SRHttpBackend: SRBackend {
-
+    
     private let client: ApolloClient
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -27,27 +27,39 @@ public struct SRHttpBackend: SRBackend {
     
     // MARK: - Patient Methods
     
-    public func getPatients() -> AnyPublisher<SRPerson, Error> {
-        let publisher = PassthroughSubject<SRPerson, Error>()
-        self.client.fetch(query: PatientListQuery()) { result in
-            switch result {
-            case .success(let resData):
-                guard let patients = resData.data?.patients else {
-                    publisher.send(completion: .finished)
-                    return
+    public func getPatients() -> Promise<[SRPerson]> {
+        Promise<[SRPerson]> { seal in
+            self.client.fetch(query: PatientListQuery()) { result in
+                switch result {
+                case .success(let resData):
+                    guard let patients = resData.data?.patients else {
+                        seal.fulfill([])
+                        return
+                    }
+                    let people = patients.filter { patient in
+                        patient != nil
+                    }.map {
+                        $0!.toSRPerson()
+                    }
+                    seal.fulfill(people)
+                case .failure(let error):
+                    seal.reject(error)
                 }
-                patients.filter { patient in
-                    patient != nil
-                }.map {
-                    $0!.toSRPerson()
-                }.forEach {
-                    publisher.send($0)
-                }
-                publisher.send(completion: .finished)
-            case .failure(let error):
-                publisher.send(completion: .failure(error))
             }
         }
+    }
+    
+    public func subscribeToPatient() -> AnyPublisher<SRPerson, Error> {
+        let publisher = PassthroughSubject<SRPerson, Error>()
+        self.getPatients().done { result in
+            result.forEach { patient in
+                publisher.send(patient)
+            }
+            publisher.send(completion: .finished)
+        }.catch { error in
+            publisher.send(completion: .failure(error))
+        }
+        
         return publisher.eraseToAnyPublisher()
     }
     
@@ -110,10 +122,30 @@ public struct SRHttpBackend: SRBackend {
         
         return subject.eraseToAnyPublisher()
     }
-    
     // MARK: - Order methods
     
-    // MARK: - Result methods
+    // MARK: - Result methodss
+    
+    public func add(result: TestResultEnum, on date: Date, to hashedPatientID: String) -> Promise<Void> {
+        return Promise<Void> { seal in
+            self.getPatients()
+                .done { patients in
+                    guard let patient = patients.filter({ $0.hashedID == hashedPatientID}).first else {
+                        seal.fulfill(())
+                        return
+                    }
+                    self.client.perform(mutation: AddTestResultMutation(DeviceID: "fix me", Result: result.rawValue, PatientID: patient.id.uuidString)) { result in
+                        
+                        switch result {
+                        case .success:
+                            seal.fulfill(())
+                        case .failure(let error):
+                            seal.reject(error)
+                        }
+                    }
+                }
+        }
+    }
     
     private func updatePersonCache(patient: SRPerson, id: UUID, transaction: ApolloStore.ReadWriteTransaction, seal: Resolver<SRPerson>) throws {
         let query = PatientListQuery()

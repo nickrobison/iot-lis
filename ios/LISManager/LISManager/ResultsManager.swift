@@ -11,7 +11,7 @@ import CoreData
 import Combine
 import LISKit
 
-private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.ResultsManager", category: "results")
+private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager", category: "results")
 
 class ResultsManager: ObservableObject {
     

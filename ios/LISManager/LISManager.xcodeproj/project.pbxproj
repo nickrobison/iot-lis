@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		100750A325798C1B0045B778 /* SRPerson+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100750A225798C1B0045B778 /* SRPerson+Extensions.swift */; };
 		100A2C302578418D00899918 /* SRPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100A2C2F2578418D00899918 /* SRPerson.swift */; };
+		100EC3F1257DC495008EF266 /* SRMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100EC3F0257DC495008EF266 /* SRMonitor.swift */; };
 		10123571257A9D2300BA5DB2 /* SRNoOptBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */; };
 		10123579257AA5D300BA5DB2 /* SRTestOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10123578257AA5D300BA5DB2 /* SRTestOrder.swift */; };
 		1012359A257AA6F000BA5DB2 /* SRTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10123599257AA6F000BA5DB2 /* SRTestResult.swift */; };
@@ -208,6 +209,7 @@
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		100750A225798C1B0045B778 /* SRPerson+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SRPerson+Extensions.swift"; sourceTree = "<group>"; };
 		100A2C2F2578418D00899918 /* SRPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPerson.swift; sourceTree = "<group>"; };
+		100EC3F0257DC495008EF266 /* SRMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRMonitor.swift; sourceTree = "<group>"; };
 		10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRNoOptBackend.swift; sourceTree = "<group>"; };
 		10123578257AA5D300BA5DB2 /* SRTestOrder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTestOrder.swift; sourceTree = "<group>"; };
 		10123599257AA6F000BA5DB2 /* SRTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRTestResult.swift; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 				EB9B7895253E026900FCAB10 /* MainView.swift */,
 				EBC5DD0F254350E800637D42 /* ResultsManager.swift */,
 				1099DA612551C03A00D8A062 /* Okta.plist */,
+				100EC3F0257DC495008EF266 /* SRMonitor.swift */,
 			);
 			path = LISManager;
 			sourceTree = "<group>";
@@ -1406,6 +1409,7 @@
 				10E8641625598BBE00F44ED9 /* SampleScannerViewController.swift in Sources */,
 				EBDC8C2125409E5A00D69DAD /* PatientListView.swift in Sources */,
 				EBAFE443253A114200BF8868 /* LISManager.xcdatamodeld in Sources */,
+				100EC3F1257DC495008EF266 /* SRMonitor.swift in Sources */,
 				EBAFE487253A152E00BF8868 /* MainOnboardingView.swift in Sources */,
 				10E86411255988B700F44ED9 /* SampleScanner.swift in Sources */,
 				100750A325798C1B0045B778 /* SRPerson+Extensions.swift in Sources */,
