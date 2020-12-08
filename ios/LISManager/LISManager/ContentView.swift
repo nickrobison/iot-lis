@@ -27,6 +27,7 @@ extension EnvironmentValues {
 struct ContentView: View {
     
     @EnvironmentObject var manager: PreferencesManager
+    @Environment(\.managedObjectContext) var ctx
     
     var body: some View {
         Group {
@@ -36,7 +37,8 @@ struct ContentView: View {
                 }))
             } else {
                 MainView()
-                    .environment(\.srBackend, SRHttpBackend(connect: "http://127.0.0.1:8080/graphql"))
+                    .environment(\.srBackend, SRHttpBackend(connect: "http://172.20.10.2:8080/graphql"))
+                    .environmentObject(SRMonitor(ctx: ctx, backend: SRHttpBackend(connect: "http://172.20.10.2:8080/graphql")))
             }
         }
     }

@@ -9,19 +9,35 @@ import Foundation
 import SRKit
 import CoreData
 import Combine
+import os
+
+private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager", category: "monitor")
+
+struct ResultWrapper {
+    let patientHashedID: String
+    let result: String
+}
 
 // This is a terrible hack for monitoring when ResultEntities get added and then submitting them to the GraphQL backend
-struct SRMonitor {
+class SRMonitor: ObservableObject {
     private let ctx: NSManagedObjectContext
     private let backend: SRBackend
-    private let cancel: AnyCancellable?
+    private var cancel: [AnyCancellable] = []
+    
+    private let resultSubject = PassthroughSubject<ResultWrapper, Never>()
+    private let monitorQueue = DispatchQueue.init(label: "coreDataMonitor")
+    private let uploadQueue = DispatchQueue.init(label: "resultUploadQueue")
     
     init(ctx: NSManagedObjectContext, backend: SRBackend) {
         self.ctx = ctx
         self.backend = backend
-        
-        // Start the monitoring
-        self.cancel = NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave, object: ctx)
+        self.start()
+    }
+    
+    func start() {
+        os_log("Starting SR Monitor", log: logger, type: .debug)
+        NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave, object: ctx)
+            .subscribe(on: self.monitorQueue)
             .filter { notification in
                 notification.userInfo != nil
             }
@@ -35,12 +51,28 @@ struct SRMonitor {
                             guard let patientID = result.patientHashedID else {
                                 return
                             }
-                            // If we actually have a result entity, then we need to post it to the SRBackend
-                            // TODO: Make this actually work, because it doesn't right now.
-                            backend.add(result: .positive, on: result.resultDate!, to: patientID)
+                            self.resultSubject.send(ResultWrapper(patientHashedID: patientID, result: result.result!))
                         }
                     }
                 }
-            }
+            }.store(in: &self.cancel)
+        
+        self.resultSubject
+            .subscribe(on: self.uploadQueue)
+            .flatMap({ result -> AnyPublisher<Void, Never> in
+                let subject = PassthroughSubject<Void, Never>()
+                os_log("Received result to upload", log: logger, type: .debug)
+                self.backend.add(result: .positive, on: Date(), to: result.patientHashedID).done { _ in
+                    subject.send()
+                }.catch { _ in
+                    // Signal error, but keep going
+//                    subject.send(completion: .failure(error))
+                }
+                return subject.eraseToAnyPublisher()
+            })
+            .sink(receiveValue: {
+                // Done
+            })
+            .store(in: &self.cancel)
     }
 }

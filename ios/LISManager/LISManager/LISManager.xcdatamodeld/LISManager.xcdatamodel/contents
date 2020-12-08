@@ -13,7 +13,7 @@
         </uniquenessConstraints>
     </entity>
     <entity name="OrderEntity" representedClassName="OrderEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="operatorID" attributeType="String"/>
+        <attribute name="operatorID" optional="YES" attributeType="String"/>
         <attribute name="orderDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="orderID" optional="YES" attributeType="String"/>
         <attribute name="patientHashedID" optional="YES" attributeType="String"/>
