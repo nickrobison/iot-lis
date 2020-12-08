@@ -40,15 +40,35 @@ public struct SRNoOtpBackend: SRBackend {
         }
     }
     
-    public func getResults() -> AnyPublisher<SRTestResult, Error> {
+    public func addPatientToQueue(id: UUID) -> Promise<Void> {
+        os_log(SRNoOtpBackend.LOGMSG, log: logger, type: .error)
+        return Promise<Void> { seal in
+            seal.reject("Cannot add patients to queue")
+        }
+    }
+    
+    public func subscribeToResults() -> AnyPublisher<SRTestResult, Error> {
         os_log(SRNoOtpBackend.LOGMSG, log: logger, type: .error)
         return Empty<SRTestResult, Error>(completeImmediately: true).eraseToAnyPublisher()
+    }
+    
+    public func getResults() -> Promise<[SRTestResult]> {
+        return Promise<[SRTestResult]> { seal in
+            seal.fulfill([])
+        }
     }
     
     public func add(result: TestResultEnum, on date: Date, to hashedPatientID: String) -> Promise<Void> {
         os_log(SRNoOtpBackend.LOGMSG, log: logger, type: .error)
         return Promise<Void> { seal in
             seal.reject("Cannot add test results")
+        }
+    }
+    
+    public func getDevices() -> Promise<[SRDevice]> {
+        os_log(SRNoOtpBackend.LOGMSG, log: logger, type: .error)
+        return Promise<[SRDevice]> { seal in
+            seal.fulfill([])
         }
     }
 }

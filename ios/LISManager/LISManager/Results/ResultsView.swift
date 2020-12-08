@@ -13,6 +13,7 @@ struct ResultsView: View {
     @Environment(\.srBackend) private var backend
     @State private var results: [SRTestResult] = []
     @State private var showAdd = false
+    @State private var cancel: AnyCancellable?
     
     var body: some View {
         NavigationView {
@@ -36,8 +37,14 @@ struct ResultsView: View {
                 ResultsAddView()
             })
         }
-        .onReceive(self.backend.getResults().assertNoFailure(), perform: { result in
-            self.results.append(result)
-        })
+        .onAppear {
+            self.cancel = self.backend.subscribeToResults()
+                .assertNoFailure()
+                .collect()
+                .sink(receiveValue: { value in
+                    debugPrint("Adding values")
+                    self.results = value
+                })
+        }
     }
 }

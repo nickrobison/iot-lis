@@ -9,9 +9,12 @@ import Foundation
 import Apollo
 import Combine
 import PromiseKit
+import os
 
-public struct SRHttpBackend: SRBackend {
-    
+private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.SRKit", category: "HTTPBackend")
+
+public class SRHttpBackend: SRBackend {
+
     private let client: ApolloClient
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -20,9 +23,18 @@ public struct SRHttpBackend: SRBackend {
     }()
     
     private let patientSubject = PassthroughSubject<SRPerson, Error>()
+    private var deviceMap: [String: UUID] = [:]
     
     public init(connect to: String) {
         self.client = ApolloClient(url: URL.init(string: to)!)
+        
+        // Populate the device map
+        self.getDevices().done { devices in
+            for device in devices {
+                os_log("Adding device: '%s' to map.", log: logger, type: .debug, device.model)
+                self.deviceMap[device.model] = device.id
+            }
+        }
     }
     
     // MARK: - Patient Methods
@@ -96,36 +108,60 @@ public struct SRHttpBackend: SRBackend {
         }
     }
     
-    public func getResults() -> AnyPublisher<SRTestResult, Error> {
-        let subject = PassthroughSubject<SRTestResult, Error>()
-        self.client.fetch(query: TestResultListQuery()) { result in
-            switch result {
-            case .success(let data):
-                guard let results = data.data?.testResults else {
-                    subject.send(completion: .finished)
-                    return
+    public func addPatientToQueue(id: UUID) -> Promise<Void> {
+        return Promise<Void> { seal in
+            self.client.perform(mutation: AddPatientToQueueMutation(id: id.uuidString, symptoms: "{}qq", firstTest: false, noSymptoms: true)) { result in
+                switch result {
+                case .success:
+                    seal.fulfill(())
+                case .failure(let error):
+                    seal.reject(error)
                 }
-                results.filter {
-                    $0 != nil
-                }.map {
-                    $0!.toSRTestResult()
-                }.forEach {
-                    debugPrint("Sending along")
-                    subject.send($0)
-                }
-                subject.send(completion: .finished)
-            case .failure(let error):
-                subject.send(completion: .failure(error))
-                
             }
+        }
+    }
+    
+    // MARK: - Order methods
+    
+    // MARK: - Result methods
+    
+    public func getResults() -> Promise<[SRTestResult]> {
+        return Promise<[SRTestResult]> { seal in
+            self.client.fetch(query: TestResultListQuery()) { result in
+                switch result {
+                case .success(let data):
+                    guard let results = data.data?.testResults else {
+                        seal.fulfill([])
+                        return
+                    }
+                    let filtered = results.filter {
+                        $0 != nil
+                    }.map {
+                        $0!.toSRTestResult()
+                    }
+                    seal.fulfill(filtered)
+                case .failure(let error):
+                    seal.reject(error)
+                }
+            }
+        }
+    }
+    
+    public func subscribeToResults() -> AnyPublisher<SRTestResult, Error> {
+        let subject = PassthroughSubject<SRTestResult, Error>()
+        
+        self.getResults().done { results in
+            for result in results {
+                subject.send(result)
+            }
+            subject.send(completion: .finished)
+        }.catch { error in
+            subject.send(completion: .failure(error))
         }
         
         return subject.eraseToAnyPublisher()
     }
-    // MARK: - Order methods
-    
-    // MARK: - Result methodss
-    
+
     public func add(result: TestResultEnum, on date: Date, to hashedPatientID: String) -> Promise<Void> {
         return Promise<Void> { seal in
             self.getPatients()
@@ -134,8 +170,14 @@ public struct SRHttpBackend: SRBackend {
                         seal.fulfill(())
                         return
                     }
-                    self.client.perform(mutation: AddTestResultMutation(DeviceID: "fix me", Result: result.rawValue, PatientID: patient.id.uuidString)) { result in
-                        
+                    
+                    // Get the ID of the device we're testing
+                    guard let deviceID = self.deviceMap["Sofia 2 SARS Antigen FIA"] else {
+                        seal.reject("Cannot find test device")
+                        return
+                    }
+                    
+                    self.client.perform(mutation: AddTestResultMutation(DeviceID: deviceID.uuidString, Result: result.rawValue, PatientID: patient.id.uuidString)) { result in
                         switch result {
                         case .success:
                             seal.fulfill(())
@@ -147,6 +189,25 @@ public struct SRHttpBackend: SRBackend {
         }
     }
     
+    // MARK: - Device methods
+    
+    public func getDevices() -> Promise<[SRDevice]> {
+        return Promise<[SRDevice]> { seal in
+            self.client.fetch(query: DeviceListQuery()) { result in
+                switch result {
+                case .success(let data):
+                    guard let devices = data.data?.deviceType else {
+                        seal.fulfill([])
+                        return
+                    }
+                    seal.fulfill(devices.map({ $0!.toSRDevice() }))
+                case .failure(let error):
+                    seal.reject(error)
+                }
+            }
+        }
+    }
+
     private func updatePersonCache(patient: SRPerson, id: UUID, transaction: ApolloStore.ReadWriteTransaction, seal: Resolver<SRPerson>) throws {
         let query = PatientListQuery()
         try transaction.update(query: query) {(data: inout PatientListQuery.Data) in

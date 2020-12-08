@@ -4,6 +4,125 @@
 import Apollo
 import Foundation
 
+public final class DeviceListQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query DeviceList {
+      deviceType {
+        __typename
+        internalId
+        manufacturer
+        model
+        loincCode
+      }
+    }
+    """
+
+  public let operationName: String = "DeviceList"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("deviceType", type: .list(.object(DeviceType.selections))),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(deviceType: [DeviceType?]? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "deviceType": deviceType.flatMap { (value: [DeviceType?]) -> [ResultMap?] in value.map { (value: DeviceType?) -> ResultMap? in value.flatMap { (value: DeviceType) -> ResultMap in value.resultMap } } }])
+    }
+
+    public var deviceType: [DeviceType?]? {
+      get {
+        return (resultMap["deviceType"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [DeviceType?] in value.map { (value: ResultMap?) -> DeviceType? in value.flatMap { (value: ResultMap) -> DeviceType in DeviceType(unsafeResultMap: value) } } }
+      }
+      set {
+        resultMap.updateValue(newValue.flatMap { (value: [DeviceType?]) -> [ResultMap?] in value.map { (value: DeviceType?) -> ResultMap? in value.flatMap { (value: DeviceType) -> ResultMap in value.resultMap } } }, forKey: "deviceType")
+      }
+    }
+
+    public struct DeviceType: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["DeviceType"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("internalId", type: .scalar(GraphQLID.self)),
+          GraphQLField("manufacturer", type: .scalar(String.self)),
+          GraphQLField("model", type: .scalar(String.self)),
+          GraphQLField("loincCode", type: .scalar(String.self)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(internalId: GraphQLID? = nil, manufacturer: String? = nil, model: String? = nil, loincCode: String? = nil) {
+        self.init(unsafeResultMap: ["__typename": "DeviceType", "internalId": internalId, "manufacturer": manufacturer, "model": model, "loincCode": loincCode])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var internalId: GraphQLID? {
+        get {
+          return resultMap["internalId"] as? GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "internalId")
+        }
+      }
+
+      public var manufacturer: String? {
+        get {
+          return resultMap["manufacturer"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "manufacturer")
+        }
+      }
+
+      public var model: String? {
+        get {
+          return resultMap["model"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "model")
+        }
+      }
+
+      public var loincCode: String? {
+        get {
+          return resultMap["loincCode"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "loincCode")
+        }
+      }
+    }
+  }
+}
+
 public final class PatientListQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
@@ -273,6 +392,71 @@ public final class AddPatientMutation: GraphQLMutation {
       }
       set {
         resultMap.updateValue(newValue, forKey: "addPatient")
+      }
+    }
+  }
+}
+
+public final class AddPatientToQueueMutation: GraphQLMutation {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    mutation AddPatientToQueue($id: String!, $pregnancy: String, $symptoms: String, $firstTest: Boolean, $priorTestDate: String, $priorTestResult: String, $symptomOnset: String, $noSymptoms: Boolean) {
+      addPatientToQueue(patientId: $id, pregnancy: $pregnancy, symptoms: $symptoms, firstTest: $firstTest, priorTestDate: $priorTestDate, priorTestResult: $priorTestResult, symptomOnset: $symptomOnset, noSymptoms: $noSymptoms)
+    }
+    """
+
+  public let operationName: String = "AddPatientToQueue"
+
+  public var id: String
+  public var pregnancy: String?
+  public var symptoms: String?
+  public var firstTest: Bool?
+  public var priorTestDate: String?
+  public var priorTestResult: String?
+  public var symptomOnset: String?
+  public var noSymptoms: Bool?
+
+  public init(id: String, pregnancy: String? = nil, symptoms: String? = nil, firstTest: Bool? = nil, priorTestDate: String? = nil, priorTestResult: String? = nil, symptomOnset: String? = nil, noSymptoms: Bool? = nil) {
+    self.id = id
+    self.pregnancy = pregnancy
+    self.symptoms = symptoms
+    self.firstTest = firstTest
+    self.priorTestDate = priorTestDate
+    self.priorTestResult = priorTestResult
+    self.symptomOnset = symptomOnset
+    self.noSymptoms = noSymptoms
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id, "pregnancy": pregnancy, "symptoms": symptoms, "firstTest": firstTest, "priorTestDate": priorTestDate, "priorTestResult": priorTestResult, "symptomOnset": symptomOnset, "noSymptoms": noSymptoms]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Mutation"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("addPatientToQueue", arguments: ["patientId": GraphQLVariable("id"), "pregnancy": GraphQLVariable("pregnancy"), "symptoms": GraphQLVariable("symptoms"), "firstTest": GraphQLVariable("firstTest"), "priorTestDate": GraphQLVariable("priorTestDate"), "priorTestResult": GraphQLVariable("priorTestResult"), "symptomOnset": GraphQLVariable("symptomOnset"), "noSymptoms": GraphQLVariable("noSymptoms")], type: .scalar(String.self)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(addPatientToQueue: String? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Mutation", "addPatientToQueue": addPatientToQueue])
+    }
+
+    public var addPatientToQueue: String? {
+      get {
+        return resultMap["addPatientToQueue"] as? String
+      }
+      set {
+        resultMap.updateValue(newValue, forKey: "addPatientToQueue")
       }
     }
   }

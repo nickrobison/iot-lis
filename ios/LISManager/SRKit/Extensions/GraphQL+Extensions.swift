@@ -14,9 +14,18 @@ private let dateFormatter: DateFormatter = {
     return df
 }()
 
+private let isoDateFormatter: ISO8601DateFormatter = {
+    let df = ISO8601DateFormatter()
+    df.formatOptions = [.withInternetDateTime,
+                                   .withDashSeparatorInDate,
+                                   .withFullDate,
+                                   .withFractionalSeconds]
+    return df
+}()
+
 extension GraphQLID {
     func uuid() -> UUID {
-        UUID.init(uuidString: String(self.utf8))!
+        UUID.init(uuidString: self)!
     }
 }
 
@@ -24,11 +33,19 @@ extension TestResultListQuery.Data.TestResult {
     
     func toSRTestResult() -> SRTestResult {
         
-        // We'll need to parse the actual string at some point
-        let result = TestResultEnum.positive
+        let df = ISO8601DateFormatter()
+        df.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         
-        let patientID = self.patient?.internalId?.uuid()
-        return SRTestResult(id: self.internalId!.uuid(), patientID: patientID!, sampleType: "COVID", dateTested: dateFormatter.date(from: self.dateTested!)!, result: result)
+        let patient = self.patient!
+        
+        let pid = patient.internalId!
+        let id = self.internalId!
+        let tested = self.dateTested!
+        // FIXME: This is nonsense, why doesn't it parse????????
+        let dString = isoDateFormatter.string(from: Date())
+        let dateTested = df.date(from: dString)
+        let result = TestResultEnum(rawValue: self.result!)
+        return SRTestResult(id: UUID(uuidString: id)!, patientID: UUID(uuidString: pid)!, sampleType: "COVID", dateTested: Date(), result: result!)
     }
 }
 
@@ -47,6 +64,13 @@ extension PatientListQuery.Data.Patient {
                         gender: self.gender!,
                         orders: [],
                         results: [])
+    }
+}
+
+extension DeviceListQuery.Data.DeviceType {
+    
+    func toSRDevice() -> SRDevice {
+        return SRDevice(id: self.internalId!.uuid(), manufacturer: self.manufacturer!, model: self.model!, loincCode: self.loincCode!)
     }
 }
 

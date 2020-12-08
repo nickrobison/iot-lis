@@ -48,6 +48,8 @@
 		10E8641B25598C6800F44ED9 /* ResultsAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E8641A25598C6800F44ED9 /* ResultsAddView.swift */; };
 		10EDAFC12550A8DE009FDA96 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC02550A8DE009FDA96 /* SettingsView.swift */; };
 		10EDAFC62550AE1D009FDA96 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */; };
+		10FAE2E3258002DE00D6F292 /* SRDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FAE2E2258002DD00D6F292 /* SRDevice.swift */; };
+		10FAE2EA2580032400D6F292 /* DeviceQueries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 10FAE2E92580032400D6F292 /* DeviceQueries.graphql */; };
 		2B76996FA6C18C6D345C055B /* Pods_SRKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A3E2DAC80ACFA6D2742936D /* Pods_SRKitTests.framework */; };
 		69464CEF618A390A997068B8 /* Pods_LISKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6C57E8DD14B7732B893BEF /* Pods_LISKit.framework */; };
 		737DCD682A2697F51E3FAA1F /* Pods_LISManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01ED7C5E4182572B8B07026 /* Pods_LISManager.framework */; };
@@ -250,6 +252,8 @@
 		10E8641A25598C6800F44ED9 /* ResultsAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsAddView.swift; sourceTree = "<group>"; };
 		10EDAFC02550A8DE009FDA96 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		10FAE2E2258002DD00D6F292 /* SRDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRDevice.swift; sourceTree = "<group>"; };
+		10FAE2E92580032400D6F292 /* DeviceQueries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = DeviceQueries.graphql; sourceTree = "<group>"; };
 		149E75223CC0AAC8C3E16552 /* Pods-LISManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISManagerTests.release.xcconfig"; path = "Target Support Files/Pods-LISManagerTests/Pods-LISManagerTests.release.xcconfig"; sourceTree = "<group>"; };
 		156FFA07B122F5A24DCF62EC /* Pods_LISTester.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISTester.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B3F9BF0142C43D4A2D543FA /* Pods-SRKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SRKitTests.debug.xcconfig"; path = "Target Support Files/Pods-SRKitTests/Pods-SRKitTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -418,6 +422,7 @@
 				100A2C2F2578418D00899918 /* SRPerson.swift */,
 				10123578257AA5D300BA5DB2 /* SRTestOrder.swift */,
 				10123599257AA6F000BA5DB2 /* SRTestResult.swift */,
+				10FAE2E2258002DD00D6F292 /* SRDevice.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 				10C96DB62578127300DE79B7 /* PatientQueries.graphql */,
 				10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */,
 				101235A5257AB51500BA5DB2 /* TestResults.graphql */,
+				10FAE2E92580032400D6F292 /* DeviceQueries.graphql */,
 			);
 			path = SRKit;
 			sourceTree = "<group>";
@@ -1009,6 +1015,7 @@
 			files = (
 				10C96DB72578127300DE79B7 /* PatientQueries.graphql in Resources */,
 				101235A6257AB51500BA5DB2 /* TestResults.graphql in Resources */,
+				10FAE2EA2580032400D6F292 /* DeviceQueries.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1322,6 +1329,7 @@
 			files = (
 				10123571257A9D2300BA5DB2 /* SRNoOptBackend.swift in Sources */,
 				1012359A257AA6F000BA5DB2 /* SRTestResult.swift in Sources */,
+				10FAE2E3258002DE00D6F292 /* SRDevice.swift in Sources */,
 				10C96DA92577FF8C00DE79B7 /* SRBackend.swift in Sources */,
 				100A2C302578418D00899918 /* SRPerson.swift in Sources */,
 				101235D4257ADE1900BA5DB2 /* String+Extensions.swift in Sources */,

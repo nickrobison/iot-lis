@@ -8,9 +8,9 @@
 import Foundation
 
 public enum TestResultEnum: String {
-    case positive
-    case negative
-    case unknown
+    case positive = "POSITIVE"
+    case negative = "NEGATIVE"
+    case invalid = "INVALID"
 }
 
 public struct SRTestResult: Identifiable {

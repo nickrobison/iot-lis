@@ -15,7 +15,7 @@ private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager", cat
 
 struct ResultWrapper {
     let patientHashedID: String
-    let result: String
+    let result: TestResultEnum
 }
 
 // This is a terrible hack for monitoring when ResultEntities get added and then submitting them to the GraphQL backend
@@ -51,7 +51,8 @@ class SRMonitor: ObservableObject {
                             guard let patientID = result.patientHashedID else {
                                 return
                             }
-                            self.resultSubject.send(ResultWrapper(patientHashedID: patientID, result: result.result!))
+                            let resultEnum = TestResultEnum(rawValue: result.result!.uppercased())
+                            self.resultSubject.send(ResultWrapper(patientHashedID: patientID, result: resultEnum!))
                         }
                     }
                 }
