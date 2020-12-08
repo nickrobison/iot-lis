@@ -7,24 +7,24 @@
 
 import SwiftUI
 import Combine
+import SRKit
 
 struct ResultsView: View {
-    var results: FetchRequest<OrderEntity>
+    @Environment(\.srBackend) private var backend
+    @State private var results: [SRTestResult] = []
     @State private var showAdd = false
-    
-    init() {
-        self.results = FetchRequest<OrderEntity>(entity: OrderEntity.entity(),
-                                                 sortDescriptors: [NSSortDescriptor(keyPath:
-                                                                                        \OrderEntity.orderID,
-                                                                                    ascending: true)],
-                                                 predicate: NSPredicate(format: "results.@count != 0"))
-        
-    }
+    @State private var cancel: AnyCancellable?
     
     var body: some View {
         NavigationView {
-            List(results.wrappedValue, id: \.self) { order in
-                ResultRow(order: order)
+            Group {
+                if results.count == 0 {
+                    Text("No results yet")
+                } else {
+                    List(results) { result in
+                        ResultRow(order: result)
+                    }
+                }
             }
             .navigationBarTitle("Results")
             .navigationBarItems(trailing: Button(action: {
@@ -36,6 +36,15 @@ struct ResultsView: View {
             .sheet(isPresented: self.$showAdd, content: {
                 ResultsAddView()
             })
+        }
+        .onAppear {
+            self.cancel = self.backend.subscribeToResults()
+                .assertNoFailure()
+                .collect()
+                .sink(receiveValue: { value in
+                    debugPrint("Adding values")
+                    self.results = value
+                })
         }
     }
 }

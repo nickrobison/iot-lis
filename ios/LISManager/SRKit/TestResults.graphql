@@ -1,0 +1,14 @@
+query TestResultList {
+  testResults {
+    internalId
+    patient {
+      internalId
+    }
+    dateTested
+    result
+  }
+}
+
+mutation AddTestResult($DeviceID: String!, $Result: String!, $PatientID: String!) {
+  addTestResult(deviceId: $DeviceID, result: $Result, patientId: $PatientID)
+}

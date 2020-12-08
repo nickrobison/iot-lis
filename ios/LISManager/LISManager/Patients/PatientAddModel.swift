@@ -9,6 +9,8 @@ import Foundation
 import Combine
 import CoreData
 import xxHash_Swift
+import SRKit
+import PromiseKit
 
 struct PatientModel {
     let firstName: String
@@ -62,8 +64,8 @@ class PatientAddModel: ObservableObject {
         Publishers.CombineLatest3(isNameValid, isDemographicsValidPublisher, isAddressValidPublisher)
             .map {
                 $0 && $1 && $2
-        }
-        .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
     }
     
     private var isNameValid: AnyPublisher<Bool, Never> {
@@ -73,7 +75,7 @@ class PatientAddModel: ObservableObject {
             }
             .eraseToAnyPublisher()
     }
-
+    
     private var isDemographicsValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest(stringNotEmpty(self.$gender), stringNotEmpty(self.$sex))
             .map {
@@ -88,10 +90,10 @@ class PatientAddModel: ObservableObject {
             .removeDuplicates()
             .map {
                 $0 != PatientAddModel.today
-        }
-        .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
     }
-
+    
     private var isAddressValidPublisher: AnyPublisher<Bool, Never> {
         Publishers.CombineLatest4(stringNotEmpty(self.$address1), stringNotEmpty(self.$city),
                                   stringNotEmpty(self.$state), stringNotEmpty(self.$zipCode))
@@ -100,18 +102,26 @@ class PatientAddModel: ObservableObject {
             }
             .eraseToAnyPublisher()
     }
-
-    init() {
+    
+    private var backend: SRBackend
+    
+    init(backend: SRBackend) {
+        self.backend = backend
         isFormValidPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.isValid, on: self)
             .store(in: &cancellableSet)
     }
-
+    
     func toModel() -> PatientModel {
         PatientModel(firstName: self.firstName, lastName: self.lastName,
                      gender: self.gender, sex: self.sex, birthday: self.birthday,
                      address1: self.address1, address2: self.address2, city: self.city,
                      state: self.state, zipCode: self.zipCode)
+    }
+    
+    func submitPatient() -> Promise<SRPerson> {
+        // swiftlint:disable:next line_length
+        return self.backend.addPatient(externalID: "", firstName: self.firstName, lastName: self.lastName, birthDate: self.birthday, street: self.address1, street2: self.address2, city: self.city, state: self.state, zipCode: self.zipCode, county: "", gender: self.gender)
     }
 }

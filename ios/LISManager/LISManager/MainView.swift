@@ -22,8 +22,10 @@ enum MainTabView: CaseIterable {
 struct MainView: View {
     
     @EnvironmentObject var pm: PreferencesManager
-    
+    @Environment(\.srBackend) var backend
+    @Environment(\.managedObjectContext) var ctx
     @State private var selection: MainTabView = .home
+    
     var body: some View {
         TabView(selection: $selection) {
             Text("Tab Content 1")

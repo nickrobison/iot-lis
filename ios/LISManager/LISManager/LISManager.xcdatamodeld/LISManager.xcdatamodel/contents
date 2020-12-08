@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="DeviceEntity" representedClassName="DeviceEntity" syncable="YES" codeGenerationType="class">
         <attribute name="connectionStatusValue" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="deviceID" attributeType="UUID" usesScalarValueType="NO"/>
@@ -14,7 +14,9 @@
     </entity>
     <entity name="OrderEntity" representedClassName="OrderEntity" syncable="YES" codeGenerationType="class">
         <attribute name="operatorID" optional="YES" attributeType="String"/>
+        <attribute name="orderDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="orderID" optional="YES" attributeType="String"/>
+        <attribute name="patientHashedID" optional="YES" attributeType="String"/>
         <attribute name="sampleType" optional="YES" attributeType="String"/>
         <attribute name="testTypeName" optional="YES" attributeType="String"/>
         <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientEntity" inverseName="orders" inverseEntity="PatientEntity"/>
@@ -39,6 +41,7 @@
     </entity>
     <entity name="ResultEntity" representedClassName="ResultEntity" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="patientHashedID" optional="YES" attributeType="String"/>
         <attribute name="range" optional="YES" attributeType="String"/>
         <attribute name="result" optional="YES" attributeType="String"/>
         <attribute name="resultDate" attributeType="Date" usesScalarValueType="NO"/>
@@ -65,9 +68,9 @@
     </entity>
     <elements>
         <element name="DeviceEntity" positionX="-54" positionY="117" width="128" height="118"/>
-        <element name="OrderEntity" positionX="-54" positionY="117" width="128" height="163"/>
+        <element name="OrderEntity" positionX="-54" positionY="117" width="128" height="193"/>
         <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="238"/>
-        <element name="ResultEntity" positionX="-54" positionY="81" width="128" height="208"/>
+        <element name="ResultEntity" positionX="-54" positionY="81" width="128" height="223"/>
         <element name="SampleEntity" positionX="-63" positionY="63" width="128" height="118"/>
         <element name="TimerEntity" positionX="-45" positionY="99" width="128" height="103"/>
     </elements>

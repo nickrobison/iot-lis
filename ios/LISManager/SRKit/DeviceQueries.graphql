@@ -1,0 +1,8 @@
+query DeviceList {
+  deviceType {
+    internalId
+    manufacturer
+    model
+    loincCode
+  }
+}

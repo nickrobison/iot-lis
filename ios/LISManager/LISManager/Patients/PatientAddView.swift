@@ -6,15 +6,14 @@
 //
 
 import SwiftUI
+import SRKit
 
 struct PatientAddView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var model = PatientAddModel()
-    
+    @ObservedObject var model: PatientAddModel    
     private let now = Date()
     
-    var completionHandler: ((PatientModel) -> Void)?
-    //    private let minDate = Calendar.current.date(byAdding: .year, value: -65, to: Date())!
+    var completionHandler: ((SRPerson) -> Void)?
     
     var body: some View {
         NavigationView {
@@ -60,13 +59,16 @@ struct PatientAddView: View {
     }
     
     private func create() {
-        self.completionHandler?(self.model.toModel())
-        self.presentationMode.wrappedValue.dismiss()
+        self.model.submitPatient().done { patient in
+            debugPrint("I have added a patient")
+            self.completionHandler?(patient)
+            self.presentationMode.wrappedValue.dismiss()
+        }
     }
 }
 
 struct PatientAddView_Previews: PreviewProvider {
     static var previews: some View {
-        PatientAddView()
+        PatientAddView(model: PatientAddModel(backend: SRNoOtpBackend()))
     }
 }

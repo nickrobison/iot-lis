@@ -7,6 +7,10 @@
 
 import Foundation
 import CoreData
+import SRKit
+import os
+
+private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager", category: "TestFlowModel")
 
 class TestFlowModel: ObservableObject {
     
@@ -23,13 +27,15 @@ class TestFlowModel: ObservableObject {
     @Published var stateIdx = 0
     @Published var sampleID = ""
     @Published var readNow = false
-    let patient: PatientEntity
     
+    let patient: SRPerson
+    let backend: SRBackend
     private let ctx: NSManagedObjectContext
     
-    init(_ ctx: NSManagedObjectContext, patient: PatientEntity) {
+    init(_ ctx: NSManagedObjectContext, patient: SRPerson, backend: SRBackend) {
         self.ctx = ctx
         self.patient = patient
+        self.backend = backend
     }
     
     func addOrder() {
@@ -39,15 +45,23 @@ class TestFlowModel: ObservableObject {
         sample.cartridgeID = self.sampleID
         
         let order = OrderEntity(context: self.ctx)
-        order.patient = self.patient
+        order.patientHashedID = self.patient.hashedID
         order.sample = sample
+        order.orderDate = Date()
         
-        self.ctx.perform {
-            do {
-                try self.ctx.save()
-            } catch {
-                debugPrint(error)
+        // Add the order to the patient
+        self.backend.addPatientToQueue(id: self.patient.id).done {
+            self.ctx.perform {
+                do {
+                    try self.ctx.save()
+                } catch {
+                    debugPrint(error)
+                }
             }
+        }.catch { error in
+            os_log("Unable to add patient %s to queue: %s", log: logger, type: .error, self.patient.id.uuidString, error.localizedDescription)
         }
+        
+        
     }
 }

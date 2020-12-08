@@ -11,7 +11,7 @@ import CoreData
 import Combine
 import LISKit
 
-private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.ResultsManager", category: "results")
+private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager", category: "results")
 
 class ResultsManager: ObservableObject {
     
@@ -52,6 +52,7 @@ class ResultsManager: ObservableObject {
                     
                     if sample == nil {
                         os_log("Cannot fetch sample", log: logger, type: .error)
+                        return
                     }
                     let pEntity = try? ctx.fetch(patientReq).first
 
@@ -59,7 +60,7 @@ class ResultsManager: ObservableObject {
                         os_log("Cannot fetch patient", log: logger, type: .error)
                     }
 
-                    guard let order = sample?.order else {
+                    guard let order = sample!.order else {
                         os_log("Sample does not have attached order", log: logger, type: .error)
                         return
                     }
@@ -67,6 +68,7 @@ class ResultsManager: ObservableObject {
                     result.patient = pEntity
                     result.sample = sample
                     result.order = order
+                    result.patientHashedID = patientID
                     order.sampleType = value.order?.testTypeName
                     order.addToResults(result)
                     pEntity?.addToOrders(order)

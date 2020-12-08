@@ -6,24 +6,22 @@
 //
 
 import SwiftUI
-import CoreData
+import SRKit
+import Combine
 
 struct PatientListView: View {
-    
-    @FetchRequest(
-        entity: PatientEntity.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \PatientEntity.lastName, ascending: true)]
-    )
-    var patients: FetchedResults<PatientEntity>
+
     @Environment(\.managedObjectContext) var managedObjectContext
+    @Environment(\.srBackend) var backend: SRBackend
+    @State private var patients: [SRPerson] = []
     @State private var showAdd = false
+    @State private var cancel: AnyCancellable?
     
     var body: some View {
         NavigationView {
-            List(patients, id: \.self) { patient in
+            List(patients) { patient in
                 NavigationLink(destination: PatientDetailView(patient: patient)) {
-                    Text("\(patient.firstName!)-\(patient.lastName!)")
+                    Text("\(patient.firstName), \(patient.lastName)")
                     //                    PersonCellView(person: patient)
                 }
                 .isDetailLink(true)
@@ -35,20 +33,23 @@ struct PatientListView: View {
                                         self.showAdd = true
                                     }, label: { Image(systemName: "plus")}))
         }
+        .onAppear {
+            self.cancel = self.backend.subscribeToPatient()
+                .assertNoFailure()
+                .collect()
+                .sink(receiveValue: { value in
+                    debugPrint("Adding values")
+                    self.patients = value
+                })
+        }
         .sheet(isPresented: $showAdd, content: {
-            PatientAddView(completionHandler: self.addPatient)
+            PatientAddView(model: PatientAddModel(backend: backend), completionHandler: self.addPatient)
         })
     }
     
-    private func addPatient(patient: PatientModel) {
-        debugPrint("Patient")
-        do {
-            _ = patient.toEntity(self.managedObjectContext)
-            try self.managedObjectContext.save()
-        } catch {
-            debugPrint(error)
-        }
-
+    private func addPatient(patient: SRPerson) {
+        debugPrint("Add Patient")
+        self.patients.append(patient)
     }
 }
 

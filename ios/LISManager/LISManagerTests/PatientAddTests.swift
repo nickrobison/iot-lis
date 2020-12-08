@@ -8,6 +8,7 @@
 import XCTest
 import UIKit
 @testable import LISManager
+import SRKit
 
 class PatientAddTests: XCTestCase {
 
@@ -22,7 +23,7 @@ class PatientAddTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        let model = PatientAddModel()
+        let model = PatientAddModel(backend: SRNoOtpBackend())
         model.firstName = "Hello"
         model.lastName = "Nope"
         
