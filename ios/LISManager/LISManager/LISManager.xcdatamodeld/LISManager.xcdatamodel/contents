@@ -19,25 +19,9 @@
         <attribute name="patientHashedID" optional="YES" attributeType="String"/>
         <attribute name="sampleType" optional="YES" attributeType="String"/>
         <attribute name="testTypeName" optional="YES" attributeType="String"/>
-        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientEntity" inverseName="orders" inverseEntity="PatientEntity"/>
         <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="order" inverseEntity="ResultEntity"/>
         <relationship name="sample" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="order" inverseEntity="SampleEntity"/>
         <relationship name="timer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TimerEntity" inverseName="order" inverseEntity="TimerEntity"/>
-    </entity>
-    <entity name="PatientEntity" representedClassName="PatientEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="address1" optional="YES" attributeType="String"/>
-        <attribute name="address2" optional="YES" attributeType="String"/>
-        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="city" optional="YES" attributeType="String"/>
-        <attribute name="firstName" optional="YES" attributeType="String"/>
-        <attribute name="gender" optional="YES" attributeType="String"/>
-        <attribute name="id" attributeType="String"/>
-        <attribute name="lastName" optional="YES" attributeType="String"/>
-        <attribute name="sex" optional="YES" attributeType="String"/>
-        <attribute name="state" optional="YES" attributeType="String"/>
-        <attribute name="zip" optional="YES" attributeType="String"/>
-        <relationship name="orders" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OrderEntity" inverseName="patient" inverseEntity="OrderEntity"/>
-        <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResultEntity" inverseName="patient" inverseEntity="ResultEntity"/>
     </entity>
     <entity name="ResultEntity" representedClassName="ResultEntity" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -50,7 +34,6 @@
         <attribute name="units" optional="YES" attributeType="String"/>
         <relationship name="device" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DeviceEntity" inverseName="results" inverseEntity="DeviceEntity"/>
         <relationship name="order" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="OrderEntity" inverseName="results" inverseEntity="OrderEntity"/>
-        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PatientEntity" inverseName="results" inverseEntity="PatientEntity"/>
         <relationship name="sample" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SampleEntity" inverseName="result" inverseEntity="SampleEntity"/>
     </entity>
     <entity name="SampleEntity" representedClassName="SampleEntity" syncable="YES" codeGenerationType="class">
@@ -68,9 +51,8 @@
     </entity>
     <elements>
         <element name="DeviceEntity" positionX="-54" positionY="117" width="128" height="118"/>
-        <element name="OrderEntity" positionX="-54" positionY="117" width="128" height="193"/>
-        <element name="PatientEntity" positionX="-63" positionY="-18" width="128" height="238"/>
-        <element name="ResultEntity" positionX="-54" positionY="81" width="128" height="223"/>
+        <element name="OrderEntity" positionX="-54" positionY="117" width="128" height="178"/>
+        <element name="ResultEntity" positionX="-54" positionY="81" width="128" height="208"/>
         <element name="SampleEntity" positionX="-63" positionY="63" width="128" height="118"/>
         <element name="TimerEntity" positionX="-45" positionY="99" width="128" height="103"/>
     </elements>

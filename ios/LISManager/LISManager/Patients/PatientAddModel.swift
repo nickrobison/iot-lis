@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import CoreData
 import xxHash_Swift
 import SRKit
 import PromiseKit
@@ -23,14 +22,6 @@ struct PatientModel {
     let city: String
     let state: String
     let zipCode: String
-    
-    func toEntity(_ context: NSManagedObjectContext) -> PatientEntity {
-        let entity = PatientEntity(context: context)
-        entity.firstName = self.firstName
-        entity.lastName = self.lastName
-        entity.id = getID()
-        return entity
-    }
     
     func getID() -> String {
         let idString = self.firstName + self.lastName + self.zipCode
