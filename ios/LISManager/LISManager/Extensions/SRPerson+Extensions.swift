@@ -23,9 +23,4 @@ extension SRPerson {
             return nameComp
         }
     }
-    
-    func toEntity(_ ctx: NSManagedObjectContext) -> PatientEntity {
-        let patient = PatientEntity(context: ctx)
-        return patient
-    }
 }

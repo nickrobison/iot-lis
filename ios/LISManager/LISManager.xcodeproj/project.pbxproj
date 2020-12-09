@@ -75,7 +75,6 @@
 		EB6331FE2541E770002FFA25 /* PatientDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6331FD2541E770002FFA25 /* PatientDetailView.swift */; };
 		EB6332082541E7C7002FFA25 /* InitialsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6332072541E7C7002FFA25 /* InitialsView.swift */; };
 		EB6332102541EA00002FFA25 /* PersonHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB63320F2541EA00002FFA25 /* PersonHeader.swift */; };
-		EB6332152541EB68002FFA25 /* PatientEntity+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */; };
 		EB6332252541EFBF002FFA25 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6332242541EFBE002FFA25 /* QRCodeView.swift */; };
 		EB71A1C8253E73CD0079F73A /* LISKit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1C6253E73CD0079F73A /* LISKit.xcdatamodeld */; };
 		EB71A1CE253E74E00079F73A /* ConnectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB71A1CD253E74E00079F73A /* ConnectionStatus.swift */; };
@@ -295,7 +294,6 @@
 		EB6331FD2541E770002FFA25 /* PatientDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailView.swift; sourceTree = "<group>"; };
 		EB6332072541E7C7002FFA25 /* InitialsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialsView.swift; sourceTree = "<group>"; };
 		EB63320F2541EA00002FFA25 /* PersonHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHeader.swift; sourceTree = "<group>"; };
-		EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PatientEntity+Extensions.swift"; sourceTree = "<group>"; };
 		EB6332242541EFBE002FFA25 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 		EB71A1C7253E73CD0079F73A /* LISKit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LISKit.xcdatamodel; sourceTree = "<group>"; };
 		EB71A1CD253E74E00079F73A /* ConnectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionStatus.swift; sourceTree = "<group>"; };
@@ -753,7 +751,6 @@
 		EBC76EA2254857A200D0B4B8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EB6332142541EB68002FFA25 /* PatientEntity+Extensions.swift */,
 				EBC76EA3254857B000D0B4B8 /* DeviceEntity+Extensions.swift */,
 				1099DA7D2551DFFB00D8A062 /* ApplicationUser.swift */,
 			);
@@ -1382,7 +1379,6 @@
 				EB18F8D52547472700745A59 /* InitialTestFlowView.swift in Sources */,
 				EB18F8F72547477D00745A59 /* SampleBarcodeView.swift in Sources */,
 				EB9B7896253E026900FCAB10 /* MainView.swift in Sources */,
-				EB6332152541EB68002FFA25 /* PatientEntity+Extensions.swift in Sources */,
 				EB9B78BD253E06D000FCAB10 /* DeviceRow.swift in Sources */,
 				EB2297B72542279D002332AB /* OrderView.swift in Sources */,
 				EB18F9012547624800745A59 /* CoreDataDeviceRepository.swift in Sources */,
