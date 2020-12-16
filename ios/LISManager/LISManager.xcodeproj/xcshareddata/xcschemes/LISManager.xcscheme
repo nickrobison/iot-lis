@@ -68,6 +68,16 @@
                ReferencedContainer = "container:LISManager.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "10E284C1258A9B7800B0F0C8"
+               BuildableName = "SampleKitTests.xctest"
+               BlueprintName = "SampleKitTests"
+               ReferencedContainer = "container:LISManager.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
