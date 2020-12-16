@@ -8,7 +8,6 @@ target 'LISManager' do
   pod 'SwiftLint'
   pod 'OktaOidc'
   pod 'OktaStorage'
-  pod 'TensorFlowLiteSwift', '~> 0.0.1-nightly', :subspecs => ['CoreML', 'Metal']
 
   # Pods for LISManager
 
@@ -42,6 +41,16 @@ target 'SRKit' do
   pod 'xxHash-Swift'
 
   target 'SRKitTests' do
+    inherit! :search_paths
+  end
+end
+
+target 'SampleKit' do
+  use_frameworks!
+
+  pod 'TensorFlowLiteSwift', '~> 0.0.1-nightly', :subspecs => ['CoreML', 'Metal']
+
+  target 'SampleKitTests' do
     inherit! :search_paths
   end
 end

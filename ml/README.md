@@ -23,7 +23,13 @@ cp object_detection/packages/tf2/setup.py .
 python -m pip install --use-feature=2020-resolver .
 ```
 
-## Training flow
+## Sample detection
+
+This model detects the various sample types supported by the application.
+It's built on an Object Detection model; Yolo, in the case of CoreML, and Resnet101 or MobileNet V2 for Tensorflow.
+Resnet doesn't seem to work particularly well, but MobileNet is quick and accurate.
+
+### Training flow
 
 Overall, model training features a couple of specific steps.
 
@@ -62,11 +68,37 @@ The compilation script is provided, but you'll need to manually change the filen
 python ml/scripts/convert.py
 ```
 
-## Sample detection
+## Binax Now Reader
 
-This model detects the various sample types supported by the application.
-It's built on an Object Detection model; Yolo, in the case of CoreML, and Resnet101 or MobileNet V2 for Tensorflow.
-Resnet doesn't seem to work particularly well, but MobileNet is quick and accurate.
+This model reads a BinaxNow card and classifies the result as postive, negative and inconclusive.
+It's not great yet, but moving in the right direction.
+The idea is that we can use the Sample Detection model to crop down to the specific image and then apply a smaller, more tightly focused model.
+
+### Training flow
+
+1. Train the model
+CoreML trains locally using CreateML, for Tensorflow, we use Cades and Cori to handle the distributed training.
+
+    For Tensorflow training (which generates data in place):
+
+    ```bash
+    python ml/tf/research/object_detection/model_main_tf2.py --model_dir {PATH_TO_MODEL} --{PATH_TO_MODEL/pipeline.config
+    ```
+
+1. Export the model to TFLite compatible Graph
+
+    ```bash
+    python ml/tf/research/object_detection/export_tflite_graph_tf2.py --pipeline_config_path {PATH_TO_MODEL}pipeline.config --trained_checkpoint_dir {PATH_TO_MODEL}checkpoint --output_directory {PATH_TO_OUTPUT_DIRECTORY}
+    ```
+
+1. Compile the model to TFLite
+
+    > Note: Must be run using `tf-nightly`
+
+    The compilation script is provided, but you'll need to manually change the filenames (sorry)
+    ```bash
+    python ml/scripts/convert.py
+    ```
 
 ## Cluster setup
 
