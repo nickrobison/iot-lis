@@ -123,6 +123,156 @@ public final class DeviceListQuery: GraphQLQuery {
   }
 }
 
+public final class GetFacilitiesQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query GetFacilities {
+      organization {
+        __typename
+        testingFacility {
+          __typename
+          id
+          name
+          street
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "GetFacilities"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("organization", type: .object(Organization.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(organization: Organization? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "organization": organization.flatMap { (value: Organization) -> ResultMap in value.resultMap }])
+    }
+
+    public var organization: Organization? {
+      get {
+        return (resultMap["organization"] as? ResultMap).flatMap { Organization(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "organization")
+      }
+    }
+
+    public struct Organization: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["Organization"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("testingFacility", type: .list(.object(TestingFacility.selections))),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(testingFacility: [TestingFacility?]? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Organization", "testingFacility": testingFacility.flatMap { (value: [TestingFacility?]) -> [ResultMap?] in value.map { (value: TestingFacility?) -> ResultMap? in value.flatMap { (value: TestingFacility) -> ResultMap in value.resultMap } } }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var testingFacility: [TestingFacility?]? {
+        get {
+          return (resultMap["testingFacility"] as? [ResultMap?]).flatMap { (value: [ResultMap?]) -> [TestingFacility?] in value.map { (value: ResultMap?) -> TestingFacility? in value.flatMap { (value: ResultMap) -> TestingFacility in TestingFacility(unsafeResultMap: value) } } }
+        }
+        set {
+          resultMap.updateValue(newValue.flatMap { (value: [TestingFacility?]) -> [ResultMap?] in value.map { (value: TestingFacility?) -> ResultMap? in value.flatMap { (value: TestingFacility) -> ResultMap in value.resultMap } } }, forKey: "testingFacility")
+        }
+      }
+
+      public struct TestingFacility: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["Facility"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .scalar(GraphQLID.self)),
+            GraphQLField("name", type: .scalar(String.self)),
+            GraphQLField("street", type: .scalar(String.self)),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID? = nil, name: String? = nil, street: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "Facility", "id": id, "name": name, "street": street])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID? {
+          get {
+            return resultMap["id"] as? GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String? {
+          get {
+            return resultMap["name"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var street: String? {
+          get {
+            return resultMap["street"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "street")
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class PatientListQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
@@ -401,13 +551,14 @@ public final class AddPatientToQueueMutation: GraphQLMutation {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    mutation AddPatientToQueue($id: String!, $pregnancy: String, $symptoms: String, $firstTest: Boolean, $priorTestDate: String, $priorTestResult: String, $symptomOnset: String, $noSymptoms: Boolean) {
-      addPatientToQueue(patientId: $id, pregnancy: $pregnancy, symptoms: $symptoms, firstTest: $firstTest, priorTestDate: $priorTestDate, priorTestResult: $priorTestResult, symptomOnset: $symptomOnset, noSymptoms: $noSymptoms)
+    mutation AddPatientToQueue($facilityID: String!, $id: String!, $pregnancy: String, $symptoms: String, $firstTest: Boolean, $priorTestDate: String, $priorTestResult: String, $symptomOnset: String, $noSymptoms: Boolean) {
+      addPatientToQueue(facilityId: $facilityID, patientId: $id, pregnancy: $pregnancy, symptoms: $symptoms, firstTest: $firstTest, priorTestDate: $priorTestDate, priorTestResult: $priorTestResult, symptomOnset: $symptomOnset, noSymptoms: $noSymptoms)
     }
     """
 
   public let operationName: String = "AddPatientToQueue"
 
+  public var facilityID: String
   public var id: String
   public var pregnancy: String?
   public var symptoms: String?
@@ -417,7 +568,8 @@ public final class AddPatientToQueueMutation: GraphQLMutation {
   public var symptomOnset: String?
   public var noSymptoms: Bool?
 
-  public init(id: String, pregnancy: String? = nil, symptoms: String? = nil, firstTest: Bool? = nil, priorTestDate: String? = nil, priorTestResult: String? = nil, symptomOnset: String? = nil, noSymptoms: Bool? = nil) {
+  public init(facilityID: String, id: String, pregnancy: String? = nil, symptoms: String? = nil, firstTest: Bool? = nil, priorTestDate: String? = nil, priorTestResult: String? = nil, symptomOnset: String? = nil, noSymptoms: Bool? = nil) {
+    self.facilityID = facilityID
     self.id = id
     self.pregnancy = pregnancy
     self.symptoms = symptoms
@@ -429,7 +581,7 @@ public final class AddPatientToQueueMutation: GraphQLMutation {
   }
 
   public var variables: GraphQLMap? {
-    return ["id": id, "pregnancy": pregnancy, "symptoms": symptoms, "firstTest": firstTest, "priorTestDate": priorTestDate, "priorTestResult": priorTestResult, "symptomOnset": symptomOnset, "noSymptoms": noSymptoms]
+    return ["facilityID": facilityID, "id": id, "pregnancy": pregnancy, "symptoms": symptoms, "firstTest": firstTest, "priorTestDate": priorTestDate, "priorTestResult": priorTestResult, "symptomOnset": symptomOnset, "noSymptoms": noSymptoms]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -437,7 +589,7 @@ public final class AddPatientToQueueMutation: GraphQLMutation {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("addPatientToQueue", arguments: ["patientId": GraphQLVariable("id"), "pregnancy": GraphQLVariable("pregnancy"), "symptoms": GraphQLVariable("symptoms"), "firstTest": GraphQLVariable("firstTest"), "priorTestDate": GraphQLVariable("priorTestDate"), "priorTestResult": GraphQLVariable("priorTestResult"), "symptomOnset": GraphQLVariable("symptomOnset"), "noSymptoms": GraphQLVariable("noSymptoms")], type: .scalar(String.self)),
+        GraphQLField("addPatientToQueue", arguments: ["facilityId": GraphQLVariable("facilityID"), "patientId": GraphQLVariable("id"), "pregnancy": GraphQLVariable("pregnancy"), "symptoms": GraphQLVariable("symptoms"), "firstTest": GraphQLVariable("firstTest"), "priorTestDate": GraphQLVariable("priorTestDate"), "priorTestResult": GraphQLVariable("priorTestResult"), "symptomOnset": GraphQLVariable("symptomOnset"), "noSymptoms": GraphQLVariable("noSymptoms")], type: .scalar(String.self)),
       ]
     }
 
@@ -466,8 +618,8 @@ public final class TestResultListQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
     """
-    query TestResultList {
-      testResults {
+    query TestResultList($facilityID: String!) {
+      testResults(facilityId: $facilityID) {
         __typename
         internalId
         patient {
@@ -482,7 +634,14 @@ public final class TestResultListQuery: GraphQLQuery {
 
   public let operationName: String = "TestResultList"
 
-  public init() {
+  public var facilityID: String
+
+  public init(facilityID: String) {
+    self.facilityID = facilityID
+  }
+
+  public var variables: GraphQLMap? {
+    return ["facilityID": facilityID]
   }
 
   public struct Data: GraphQLSelectionSet {
@@ -490,7 +649,7 @@ public final class TestResultListQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("testResults", type: .list(.object(TestResult.selections))),
+        GraphQLField("testResults", arguments: ["facilityId": GraphQLVariable("facilityID")], type: .list(.object(TestResult.selections))),
       ]
     }
 

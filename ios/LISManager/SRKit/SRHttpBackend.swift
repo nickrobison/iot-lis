@@ -16,6 +16,7 @@ private let logger = OSLog(subsystem: "com.nickrobison.iot_list.LISManager.SRKit
 public class SRHttpBackend: SRBackend {
 
     private let client: ApolloClient
+    private let facilityID: UUID
     private let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
@@ -25,8 +26,9 @@ public class SRHttpBackend: SRBackend {
     private let patientSubject = PassthroughSubject<SRPerson, Error>()
     private var deviceMap: [String: UUID] = [:]
     
-    public init(connect to: String) {
-        self.client = ApolloClient(url: URL.init(string: to)!)
+    public init(connect to: URL, for facility: UUID) {
+        self.client = ApolloClient(url: to)
+        self.facilityID = facility
         
         // Populate the device map
         self.getDevices().done { devices in
@@ -110,7 +112,7 @@ public class SRHttpBackend: SRBackend {
     
     public func addPatientToQueue(id: UUID) -> Promise<Void> {
         return Promise<Void> { seal in
-            self.client.perform(mutation: AddPatientToQueueMutation(id: id.uuidString, symptoms: "{}qq", firstTest: false, noSymptoms: true)) { result in
+            self.client.perform(mutation: AddPatientToQueueMutation(facilityID: self.facilityID.uuidString, id: id.uuidString, symptoms: "{}qq", firstTest: false, noSymptoms: true)) { result in
                 switch result {
                 case .success:
                     seal.fulfill(())
@@ -127,7 +129,7 @@ public class SRHttpBackend: SRBackend {
     
     public func getResults() -> Promise<[SRTestResult]> {
         return Promise<[SRTestResult]> { seal in
-            self.client.fetch(query: TestResultListQuery()) { result in
+            self.client.fetch(query: TestResultListQuery(facilityID: self.facilityID.uuidString)) { result in
                 switch result {
                 case .success(let data):
                     guard let results = data.data?.testResults else {

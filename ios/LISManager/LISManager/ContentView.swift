@@ -36,11 +36,15 @@ struct ContentView: View {
                     self.manager.settings = settings
                 }))
             } else {
-                MainView()
-                    .environment(\.srBackend, SRHttpBackend(connect: "http://172.20.10.2:8080/graphql"))
-                    .environmentObject(SRMonitor(ctx: ctx, backend: SRHttpBackend(connect: "http://172.20.10.2:8080/graphql")))
+                buildMainView()
             }
         }
+    }
+    
+    private func buildMainView() -> some View {
+        MainView()
+            .environment(\.srBackend, SRHttpBackend(connect: self.manager.settings!.backendURI, for: self.manager.settings!.facilityID))
+            .environmentObject(SRMonitor(ctx: ctx, backend: SRHttpBackend(connect: self.manager.settings!.backendURI, for: self.manager.settings!.facilityID)))
     }
 }
 

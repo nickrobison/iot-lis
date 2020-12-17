@@ -45,5 +45,7 @@ class PreferencesManager: ObservableObject {
 struct ApplicationSettings: Codable {
     var zipCode: String
     var locationName: String
+    var backendURI: URL
     var user: ApplicationUser
+    var facilityID: UUID
 }

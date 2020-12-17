@@ -7,6 +7,8 @@
 
 import Foundation
 import Combine
+import SRKit
+import Apollo
 
 class OnboardingModel: ObservableObject {
     
@@ -22,20 +24,27 @@ class OnboardingModel: ObservableObject {
     @Published var zipCode = ""
     @Published var buttonDisabled = false
     @Published var user: ApplicationUser?
+    @Published var backendURL: URL = URL(string: "http://127.0.0.1:8080/graphql")!
+    @Published var facilities: [SRFacility] = []
+    @Published var selectedFacilityID: UUID?
     
     var completionHandler: ((ApplicationSettings) -> Void)?
     
     private var cancellableSet: Set<AnyCancellable> = []
     private var isButtonDisabledPublisher: AnyPublisher<Bool, Never> {
-        Publishers.CombineLatest4(self.$onboardingState, stringNotEmpty(self.$locationName),
-                                  Publishers.CombineLatest(stringNotEmpty(self.$zipCode), stringOnlyNumeric(self.$zipCode))
-                                    .map { $0 && $1 }, self.$user)
+        Publishers.CombineLatest3(self.$onboardingState,
+                                  self.$selectedFacilityID,
+//                                  stringNotEmpty(self.$locationName),
+//                                  Publishers.CombineLatest(stringNotEmpty(self.$zipCode), stringOnlyNumeric(self.$zipCode))
+//                                    .map { $0 && $1 },
+                                    self.$user)
             .map {
                 switch $0 {
                 case .user:
-                    return $3 == nil
+                    return $2 == nil
                 case .location:
-                    return !($1 && $2)
+                    return $1 == nil
+//                    return !($1 && $2)
                 default:
                     return false
                 }
@@ -43,12 +52,31 @@ class OnboardingModel: ObservableObject {
             .eraseToAnyPublisher()
     }
     
+    private let queue = DispatchQueue(label: "onboarding", qos: .userInteractive)
+    private var client: ApolloClient?
+    
     init(completionHandler: ((ApplicationSettings) -> Void)?) {
         self.completionHandler = completionHandler
         isButtonDisabledPublisher
             .receive(on: RunLoop.main)
             .assign(to: \.buttonDisabled, on: self)
             .store(in: &cancellableSet)
+    }
+    
+    func fetchFacilities(for organization: UUID) {
+        self.client = ApolloClient(url: self.backendURL)
+        self.client?.fetch(query: GetFacilitiesQuery()) { [weak self] result in
+            switch result {
+            case .success(let resData):
+                debugPrint("I have things")
+                if let facilities = resData.data?.organization?.testingFacility {
+                    self?.facilities = facilities.filter { $0 != nil }
+                        .map { $0!.toSRFacility()}
+                }
+            case .failure(let error):
+                debugPrint("An error: \(error)")
+            }
+        }
     }
     
     func handleClick() {
@@ -60,7 +88,9 @@ class OnboardingModel: ObservableObject {
     }
     
     private func updateSettings() {
-        let settings = ApplicationSettings(zipCode: self.zipCode, locationName: self.locationName, user: self.user!)
+        let settings = ApplicationSettings(zipCode: self.zipCode, locationName: self.locationName,
+                                           backendURI: self.backendURL,
+                                           user: self.user!, facilityID: self.selectedFacilityID!)
         self.completionHandler?(settings)
     }
     
