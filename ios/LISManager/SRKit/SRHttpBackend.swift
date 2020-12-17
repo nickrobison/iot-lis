@@ -26,8 +26,8 @@ public class SRHttpBackend: SRBackend {
     private let patientSubject = PassthroughSubject<SRPerson, Error>()
     private var deviceMap: [String: UUID] = [:]
     
-    public init(connect to: String, for facility: UUID) {
-        self.client = ApolloClient(url: URL.init(string: to)!)
+    public init(connect to: URL, for facility: UUID) {
+        self.client = ApolloClient(url: to)
         self.facilityID = facility
         
         // Populate the device map

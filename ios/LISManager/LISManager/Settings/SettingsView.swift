@@ -36,6 +36,13 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(settings: ApplicationSettings(zipCode: "98103", locationName: "HHS", user: ApplicationUser(id: "1", firstName: "Test", lastName: "User", username: "testUser1", organizationID: UUID()), facilityID: UUID()))
+        SettingsView(settings: ApplicationSettings(
+                        zipCode: "98103", locationName: "HHS",
+                        backendURI: URL(string: "http://test.com")!,
+                        user: ApplicationUser(id: "1",
+                                              firstName: "Test", lastName: "User",
+                                              username: "testUser1",
+                                              organizationID: UUID()),
+                        facilityID: UUID()))
     }
 }

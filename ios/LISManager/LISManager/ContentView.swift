@@ -43,8 +43,8 @@ struct ContentView: View {
     
     private func buildMainView() -> some View {
         MainView()
-            .environment(\.srBackend, SRHttpBackend(connect: "http://127.0.0.1:8080/graphql", for: self.manager.settings!.facilityID))
-            .environmentObject(SRMonitor(ctx: ctx, backend: SRHttpBackend(connect: "http://127.0.0.1:8080/graphql", for: self.manager.settings!.facilityID)))
+            .environment(\.srBackend, SRHttpBackend(connect: self.manager.settings!.backendURI, for: self.manager.settings!.facilityID))
+            .environmentObject(SRMonitor(ctx: ctx, backend: SRHttpBackend(connect: self.manager.settings!.backendURI, for: self.manager.settings!.facilityID)))
     }
 }
 

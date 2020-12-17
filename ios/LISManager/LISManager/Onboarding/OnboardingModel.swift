@@ -87,7 +87,7 @@ class OnboardingModel: ObservableObject {
     }
     
     private func updateSettings() {
-        let settings = ApplicationSettings(zipCode: self.zipCode, locationName: self.locationName, user: self.user!, facilityID: self.selectedFacilityID!)
+        let settings = ApplicationSettings(zipCode: self.zipCode, locationName: self.locationName, backendURI: URL(string: "http://127.0.0.1:8080/graphql")!, user: self.user!, facilityID: self.selectedFacilityID!)
         self.completionHandler?(settings)
     }
     
