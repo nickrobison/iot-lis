@@ -40,7 +40,7 @@ struct MainOnboardingView: View {
         FacilitySelectionView(facilities: self.model.facilities, selectedFacility: self.$model.selectedFacilityID)
             .onAppear {
                 // This, of course, has to go away
-                self.model.fetchFacilities(connect: "http://127.0.0.1:8080/graphql", for: self.model.user!.organizationID)
+                self.model.fetchFacilities(for: self.model.user!.organizationID)
             }
     }
 }

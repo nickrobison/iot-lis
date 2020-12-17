@@ -24,6 +24,7 @@ class OnboardingModel: ObservableObject {
     @Published var zipCode = ""
     @Published var buttonDisabled = false
     @Published var user: ApplicationUser?
+    @Published var backendURL: URL = URL(string: "http://127.0.0.1:8080/graphql")!
     @Published var facilities: [SRFacility] = []
     @Published var selectedFacilityID: UUID?
     
@@ -62,8 +63,8 @@ class OnboardingModel: ObservableObject {
             .store(in: &cancellableSet)
     }
     
-    func fetchFacilities(connect to: String, for organization: UUID) {
-        self.client = ApolloClient(url: URL.init(string: to)!)
+    func fetchFacilities(for organization: UUID) {
+        self.client = ApolloClient(url: self.backendURL)
         self.client?.fetch(query: GetFacilitiesQuery()) { [weak self] result in
             switch result {
             case .success(let resData):
@@ -87,7 +88,9 @@ class OnboardingModel: ObservableObject {
     }
     
     private func updateSettings() {
-        let settings = ApplicationSettings(zipCode: self.zipCode, locationName: self.locationName, backendURI: URL(string: "http://127.0.0.1:8080/graphql")!, user: self.user!, facilityID: self.selectedFacilityID!)
+        let settings = ApplicationSettings(zipCode: self.zipCode, locationName: self.locationName,
+                                           backendURI: self.backendURL,
+                                           user: self.user!, facilityID: self.selectedFacilityID!)
         self.completionHandler?(settings)
     }
     
