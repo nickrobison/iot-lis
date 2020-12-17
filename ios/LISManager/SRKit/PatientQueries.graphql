@@ -38,8 +38,9 @@ mutation AddPatient($id: String, $firstName: String!, $lastName: String!, $middl
   )
 }
 
-mutation AddPatientToQueue($id: String!, $pregnancy: String, $symptoms: String, $firstTest: Boolean, $priorTestDate: String, $priorTestResult: String, $symptomOnset: String, $noSymptoms: Boolean) {
+mutation AddPatientToQueue($facilityID: String!, $id: String!, $pregnancy: String, $symptoms: String, $firstTest: Boolean, $priorTestDate: String, $priorTestResult: String, $symptomOnset: String, $noSymptoms: Boolean) {
   addPatientToQueue(
+    facilityId: $facilityID,
     patientId: $id,
     pregnancy: $pregnancy,
     symptoms: $symptoms,

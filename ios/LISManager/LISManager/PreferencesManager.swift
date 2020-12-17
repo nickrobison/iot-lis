@@ -46,4 +46,5 @@ struct ApplicationSettings: Codable {
     var zipCode: String
     var locationName: String
     var user: ApplicationUser
+    var facilityID: UUID
 }

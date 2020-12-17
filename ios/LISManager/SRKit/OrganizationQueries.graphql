@@ -1,0 +1,9 @@
+query GetFacilities {
+  organization {
+    testingFacility {
+      id
+      name
+      street
+    }
+  }
+}

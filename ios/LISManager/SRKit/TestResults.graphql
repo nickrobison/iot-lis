@@ -1,5 +1,5 @@
-query TestResultList {
-  testResults {
+query TestResultList($facilityID: String!) {
+  testResults(facilityId: $facilityID) {
     internalId
     patient {
       internalId

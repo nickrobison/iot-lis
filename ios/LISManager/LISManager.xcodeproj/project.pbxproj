@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		100750A325798C1B0045B778 /* SRPerson+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100750A225798C1B0045B778 /* SRPerson+Extensions.swift */; };
+		1007B0F1258BB01F00D5D66F /* OrganizationQueries.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 1007B0F0258BB01F00D5D66F /* OrganizationQueries.graphql */; };
+		1007B0F8258BB07700D5D66F /* SRFacility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1007B0F7258BB07700D5D66F /* SRFacility.swift */; };
+		1007B0FF258BB21F00D5D66F /* GraphQL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1007B0FE258BB21F00D5D66F /* GraphQL+Extensions.swift */; };
+		1007B106258BB2D200D5D66F /* FacilitySelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1007B105258BB2D200D5D66F /* FacilitySelectionView.swift */; };
+		1007B119258BB7DF00D5D66F /* FacilityRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1007B118258BB7DF00D5D66F /* FacilityRow.swift */; };
 		100A2C302578418D00899918 /* SRPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100A2C2F2578418D00899918 /* SRPerson.swift */; };
 		100EC3F1257DC495008EF266 /* SRMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100EC3F0257DC495008EF266 /* SRMonitor.swift */; };
 		10123571257A9D2300BA5DB2 /* SRNoOptBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */; };
@@ -209,6 +214,11 @@
 		0683FBFC155649207EA722C1 /* Pods-LISKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LISKitTests.release.xcconfig"; path = "Target Support Files/Pods-LISKitTests/Pods-LISKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		0C92DEA4ECA473E5B6347463 /* Pods_LISKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LISKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		100750A225798C1B0045B778 /* SRPerson+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SRPerson+Extensions.swift"; sourceTree = "<group>"; };
+		1007B0F0258BB01F00D5D66F /* OrganizationQueries.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = OrganizationQueries.graphql; sourceTree = "<group>"; };
+		1007B0F7258BB07700D5D66F /* SRFacility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRFacility.swift; sourceTree = "<group>"; };
+		1007B0FE258BB21F00D5D66F /* GraphQL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GraphQL+Extensions.swift"; sourceTree = "<group>"; };
+		1007B105258BB2D200D5D66F /* FacilitySelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilitySelectionView.swift; sourceTree = "<group>"; };
+		1007B118258BB7DF00D5D66F /* FacilityRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityRow.swift; sourceTree = "<group>"; };
 		100A2C2F2578418D00899918 /* SRPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRPerson.swift; sourceTree = "<group>"; };
 		100EC3F0257DC495008EF266 /* SRMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRMonitor.swift; sourceTree = "<group>"; };
 		10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRNoOptBackend.swift; sourceTree = "<group>"; };
@@ -421,6 +431,7 @@
 				10123578257AA5D300BA5DB2 /* SRTestOrder.swift */,
 				10123599257AA6F000BA5DB2 /* SRTestResult.swift */,
 				10FAE2E2258002DD00D6F292 /* SRDevice.swift */,
+				1007B0F7258BB07700D5D66F /* SRFacility.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -439,6 +450,7 @@
 			children = (
 				101F10DF2576D973009D9CE8 /* String+Extensions.swift */,
 				100750A225798C1B0045B778 /* SRPerson+Extensions.swift */,
+				1007B0FE258BB21F00D5D66F /* GraphQL+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -480,6 +492,7 @@
 				10123570257A9D2300BA5DB2 /* SRNoOptBackend.swift */,
 				101235A5257AB51500BA5DB2 /* TestResults.graphql */,
 				10FAE2E92580032400D6F292 /* DeviceQueries.graphql */,
+				1007B0F0258BB01F00D5D66F /* OrganizationQueries.graphql */,
 			);
 			path = SRKit;
 			sourceTree = "<group>";
@@ -731,6 +744,8 @@
 				EBAFE4A1253A1A3600BF8868 /* LocationInformation.swift */,
 				10EDAFC52550AE1D009FDA96 /* OnboardingModel.swift */,
 				109BD5EE2551B5D70091BED2 /* UserLoginView.swift */,
+				1007B105258BB2D200D5D66F /* FacilitySelectionView.swift */,
+				1007B118258BB7DF00D5D66F /* FacilityRow.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1013,6 +1028,7 @@
 				10C96DB72578127300DE79B7 /* PatientQueries.graphql in Resources */,
 				101235A6257AB51500BA5DB2 /* TestResults.graphql in Resources */,
 				10FAE2EA2580032400D6F292 /* DeviceQueries.graphql in Resources */,
+				1007B0F1258BB01F00D5D66F /* OrganizationQueries.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1328,6 +1344,7 @@
 				1012359A257AA6F000BA5DB2 /* SRTestResult.swift in Sources */,
 				10FAE2E3258002DE00D6F292 /* SRDevice.swift in Sources */,
 				10C96DA92577FF8C00DE79B7 /* SRBackend.swift in Sources */,
+				1007B0F8258BB07700D5D66F /* SRFacility.swift in Sources */,
 				100A2C302578418D00899918 /* SRPerson.swift in Sources */,
 				101235D4257ADE1900BA5DB2 /* String+Extensions.swift in Sources */,
 				10123579257AA5D300BA5DB2 /* SRTestOrder.swift in Sources */,
@@ -1374,8 +1391,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				10EDAFC62550AE1D009FDA96 /* OnboardingModel.swift in Sources */,
+				1007B119258BB7DF00D5D66F /* FacilityRow.swift in Sources */,
 				1077B12625534ECB002DBBA8 /* CVPixelBuffer+Extensions.swift in Sources */,
 				10E338602558B77E005DA2A4 /* SampleDetector.swift in Sources */,
+				1007B0FF258BB21F00D5D66F /* GraphQL+Extensions.swift in Sources */,
 				EB18F8D52547472700745A59 /* InitialTestFlowView.swift in Sources */,
 				EB18F8F72547477D00745A59 /* SampleBarcodeView.swift in Sources */,
 				EB9B7896253E026900FCAB10 /* MainView.swift in Sources */,
@@ -1408,6 +1427,7 @@
 				EB45ACBD253F2E9D00EC2D64 /* ResultsView.swift in Sources */,
 				10EDAFC12550A8DE009FDA96 /* SettingsView.swift in Sources */,
 				EBDC8C2F25409F7800D69DAD /* CameraViewController.swift in Sources */,
+				1007B106258BB2D200D5D66F /* FacilitySelectionView.swift in Sources */,
 				1077B11E255346CE002DBBA8 /* TFSampleDetector.swift in Sources */,
 				EBC5DD10254350E800637D42 /* ResultsManager.swift in Sources */,
 				10E8641625598BBE00F44ED9 /* SampleScannerViewController.swift in Sources */,

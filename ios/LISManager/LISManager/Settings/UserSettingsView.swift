@@ -26,6 +26,6 @@ struct UserSettingsView: View {
 
 struct UserSettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        UserSettingsView(user: ApplicationUser(id: "1", firstName: "Test", lastName: "User", username: "test@test.com"))
+        UserSettingsView(user: ApplicationUser(id: "1", firstName: "Test", lastName: "User", username: "test@test.com", organizationID: UUID()))
     }
 }

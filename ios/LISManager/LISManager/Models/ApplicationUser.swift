@@ -13,12 +13,14 @@ struct ApplicationUser: Codable {
     let firstName: String
     let lastName: String
     let username: String
+    let organizationID: UUID
     
-    init(id: String, firstName: String, lastName: String, username: String) {
+    init(id: String, firstName: String, lastName: String, username: String, organizationID: UUID) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
         self.username = username
+        self.organizationID = organizationID
     }
     
     init?(from response: [String: Any]) {
@@ -40,6 +42,7 @@ struct ApplicationUser: Codable {
             return nil
         }
         self.username = username
+        self.organizationID = UUID(uuidString: "61ba05f9-5688-4119-aa31-60e75d814dc2")!
     }
     
     func toComponent() -> PersonNameComponents {

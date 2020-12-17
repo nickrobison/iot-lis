@@ -25,7 +25,7 @@ struct MainOnboardingView: View {
             } else if self.model.onboardingState == .user {
                 UserLoginView(user: self.$model.user)
             } else if self.model.onboardingState == .location {
-                LocationInformation(locationName: self.$model.locationName, zipCode: self.$model.zipCode)
+                buildFacilityView()
             }
             Spacer()
             FullscreenButton(text: "Next", isAnimating: .constant(false), handler: {
@@ -34,6 +34,14 @@ struct MainOnboardingView: View {
             .disabled(self.model.buttonDisabled)
         }
         .padding([.leading, .trailing, .bottom])
+    }
+    
+    private func buildFacilityView() -> some View {
+        FacilitySelectionView(facilities: self.model.facilities, selectedFacility: self.$model.selectedFacilityID)
+            .onAppear {
+                // This, of course, has to go away
+                self.model.fetchFacilities(connect: "http://127.0.0.1:8080/graphql", for: self.model.user!.organizationID)
+            }
     }
 }
 
